@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfWdtRdRecordDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfWdtRdRecordDetail">
+        <id column="wdt_rd_record_detail_id" property="wdtRdRecordDetailId" />
+        <result column="wdt_rd_record_id" property="wdtRdRecordId" />
+        <result column="rd_record_id" property="rdRecordId" />
+        <result column="rd_record_code" property="rdRecordCode" />
+        <result column="rd_record_detail_id" property="rdRecordDetailId" />
+        <result column="inventory_id" property="inventoryId" />
+        <result column="inventory_code" property="inventoryCode" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="vendor_code" property="vendorCode" />
+        <result column="tax_rate" property="taxRate" />
+        <result column="tax_price" property="taxPrice" />
+        <result column="unit_price" property="unitPrice" />
+        <result column="quantity" property="quantity" />
+        <result column="box_code" property="boxCode" />
+        <result column="is_delete" property="isDelete" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="po_detail_id" property="poDetailId" />
+        <result column="po_code" property="poCode" />
+        <result column="pu_arr_detail_id" property="puArrDetailId" />
+        <result column="pu_arrival_id" property="puArrivalId" />
+        <result column="pu_arrival_code" property="puArrivalCode" />
+        <result column="arrival_qty" property="arrivalQty" />
+        <result column="rejection_qty" property="rejectionQty" />
+        <result column="actual_qty" property="actualQty" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        wdt_rd_record_detail_id, wdt_rd_record_id, rd_record_id, rd_record_code, rd_record_detail_id, inventory_id, inventory_code, vendor_id, vendor_code, tax_rate, tax_price, unit_price, quantity, box_code, is_delete, company_id, create_by, create_name, create_date, update_by, update_name, update_date, po_detail_id, po_code, pu_arr_detail_id, pu_arrival_id, pu_arrival_code, arrival_qty, rejection_qty, actual_qty
+    </sql>
+
+</mapper>

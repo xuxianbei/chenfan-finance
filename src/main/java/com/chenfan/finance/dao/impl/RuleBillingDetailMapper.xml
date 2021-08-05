@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.RuleBillingDetailMapper">
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.RuleBillingDetail">
+        <id column="rule_billing_detail_id" jdbcType="BIGINT" property="ruleBillingDetailId" />
+        <result column="rule_billing_id" jdbcType="BIGINT" property="ruleBillingId" />
+        <result column="rule_type" jdbcType="VARCHAR" property="ruleType" />
+        <result column="goods_range" jdbcType="BIT" property="goodsRange" />
+        <result column="rule_level" jdbcType="VARCHAR" property="ruleLevel" />
+        <result column="deduction_rate" jdbcType="DECIMAL" property="deductionRate" />
+        <result column="rule_level_condition" jdbcType="VARCHAR" property="ruleLevelCondition" />
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+        <result column="brand_ids" jdbcType="VARCHAR" property="brandIds" />
+        <result column="qc_deduction_type" jdbcType="VARCHAR" property="qcDeductionType" />
+        <result column="middle_class_ids" jdbcType="VARCHAR" property="middleClassIds" />
+        <result column="season" jdbcType="VARCHAR" property="season" />
+        <result column="deduction_amount" jdbcType="DECIMAL" property="deductionAmount" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    rule_billing_detail_id, rule_billing_id, rule_type, goods_range, rule_level, deduction_rate,
+    rule_level_condition, is_delete,brand_ids,qc_deduction_type,middle_class_ids,season,deduction_amount
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from rule_billing_detail
+        where rule_billing_id = #{ruleBillingId}
+        and rule_type = #{ruleType}
+        and is_delete = 0
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from rule_billing_detail
+    where rule_billing_detail_id = #{ruleBillingDetailId,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.chenfan.finance.model.RuleBillingDetail">
+        insert into rule_billing_detail (rule_billing_detail_id, rule_billing_id,
+        rule_type, goods_range, rule_level,
+        deduction_rate, rule_level_condition)
+        values
+        <foreach collection="details" item="detail" separator=",">
+            (#{detail.ruleBillingDetailId,jdbcType=BIGINT}, #{detail.ruleBillingId,jdbcType=BIGINT},
+            #{detail.ruleType,jdbcType=VARCHAR}, #{detail.goodsRange,jdbcType=BIT}, #{detail.ruleLevel,jdbcType=VARCHAR},
+            #{detail.deductionRate,jdbcType=DECIMAL}, #{detail.ruleLevelCondition,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+    <insert id="insertSelective" parameterType="com.chenfan.finance.model.RuleBillingDetail">
+        insert into rule_billing_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ruleBillingDetailId != null">
+                rule_billing_detail_id,
+            </if>
+            <if test="ruleBillingId != null">
+                rule_billing_id,
+            </if>
+            <if test="ruleType != null">
+                rule_type,
+            </if>
+            <if test="goodsRange != null">
+                goods_range,
+            </if>
+            <if test="ruleLevel != null">
+                rule_level,
+            </if>
+            <if test="deductionRate != null">
+                deduction_rate,
+            </if>
+            <if test="ruleLevelCondition != null">
+                rule_level_condition,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="brandIds != null">
+                brand_ids,
+            </if>
+            <if test="qcDeductionType != null">
+                qc_deduction_type,
+            </if>
+            <if test="middleClassIds != null">
+                middle_class_ids,
+            </if>
+            <if test="season != null">
+                season,
+            </if>
+            <if test="deductionAmount != null">
+                deduction_amount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ruleBillingDetailId != null">
+                #{ruleBillingDetailId,jdbcType=BIGINT},
+            </if>
+            <if test="ruleBillingId != null">
+                #{ruleBillingId,jdbcType=BIGINT},
+            </if>
+            <if test="ruleType != null">
+                #{ruleType,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsRange != null">
+                #{goodsRange,jdbcType=BIT},
+            </if>
+            <if test="ruleLevel != null">
+                #{ruleLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="deductionRate != null">
+                #{deductionRate,jdbcType=DECIMAL},
+            </if>
+            <if test="ruleLevelCondition != null">
+                #{ruleLevelCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="brandIds != null">
+                #{brandIds},
+            </if>
+            <if test="qcDeductionType != null">
+                #{qcDeductionType},
+            </if>
+            <if test="middleClassIds != null">
+                #{middleClassIds},
+            </if>
+            <if test="season != null">
+                #{season},
+            </if>
+            <if test="deductionAmount != null">
+                #{deductionAmount},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.chenfan.finance.model.RuleBillingDetail">
+        update rule_billing_detail
+        <set>
+            <if test="ruleBillingId != null">
+                rule_billing_id = #{ruleBillingId,jdbcType=BIGINT},
+            </if>
+            <if test="ruleType != null">
+                rule_type = #{ruleType,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsRange != null">
+                goods_range = #{goodsRange,jdbcType=BIT},
+            </if>
+            <if test="ruleLevel != null">
+                rule_level = #{ruleLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="deductionRate != null">
+                deduction_rate = #{deductionRate,jdbcType=DECIMAL},
+            </if>
+            <if test="ruleLevelCondition != null">
+                rule_level_condition = #{ruleLevelCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+        </set>
+        where rule_billing_detail_id = #{ruleBillingDetailId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.chenfan.finance.model.RuleBillingDetail">
+    update rule_billing_detail
+    set rule_billing_id = #{ruleBillingId,jdbcType=BIGINT},
+      rule_type = #{ruleType,jdbcType=VARCHAR},
+      goods_range = #{goodsRange,jdbcType=BIT},
+      rule_level = #{ruleLevel,jdbcType=VARCHAR},
+      deduction_rate = #{deductionRate,jdbcType=DECIMAL},
+      rule_level_condition = #{ruleLevelCondition,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType = INTEGER}
+    where rule_billing_detail_id = #{ruleBillingDetailId,jdbcType=BIGINT}
+  </update>
+
+    <update id="updateById" parameterType="java.lang.Long">
+    update rule_billing_detail
+    set
+      is_delete = 1
+    where rule_billing_id = #{ruleBillingId,jdbcType=BIGINT}
+  </update>
+</mapper>

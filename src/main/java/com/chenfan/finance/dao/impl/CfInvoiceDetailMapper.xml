@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfInvoiceDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfInvoiceDetail">
+        <id column="invoice_detail_id" property="invoiceDetailId" />
+        <result column="invoice_id" property="invoiceId" />
+        <result column="charge_id" property="chargeId" />
+        <result column="charge_type" property="chargeType" />
+        <result column="arap_type" property="arapType" />
+        <result column="charge_source" property="chargeSource" />
+        <result column="charge_source_code" property="chargeSourceCode" />
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode" />
+        <result column="product_code" property="productCode" />
+        <result column="balance" property="balance" />
+        <result column="currency_code" property="currencyCode" />
+        <result column="exchange_rate" property="exchangeRate" />
+        <result column="price_pp" property="pricePp" />
+        <result column="charge_unit" property="chargeUnit" />
+        <result column="invoice_qty" property="invoiceQty" />
+        <result column="invoice_debit" property="invoiceDebit" />
+        <result column="invoice_credit" property="invoiceCredit" />
+        <result column="remark" property="remark" />
+        <result column="customer_invoice_no" property="customerInvoiceNo" />
+        <result column="customer_invoice_date" property="customerInvoiceDate" />
+        <result column="payment_days" property="paymentDays"/>
+        <result column="finance_entity" property="financeEntity"/>
+        <result column="create_date" property="createDate"/>
+        <result column="create_name" property="createName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        invoice_detail_id, invoice_id, charge_id, charge_type, arap_type, charge_source, charge_source_code, charge_source_detail_code, product_code, balance, currency_code, exchange_rate, price_pp, charge_unit, invoice_qty, invoice_debit, invoice_credit, remark, customer_invoice_no, customer_invoice_date
+    </sql>
+    <select id="selectInvoiceCountByChargeIds" resultType="java.lang.Integer">
+    select COUNT(1) from (
+        select invoice_id
+        from cf_invoice_detail
+        where charge_id in
+        <foreach collection="chargeIds" item="chargeId" open="(" separator="," close=")">
+            #{chargeId}
+        </foreach>
+        GROUP BY invoice_id
+    ) as r
+    </select>
+    <select id="selectChargeIdsByInvoiceId" resultType="java.lang.Long">
+        SELECT charge_id FROM cf_invoice_detail WHERE invoice_id =#{id}
+    </select>
+    <delete id="deleteByUpdate">
+        delete from cf_invoice_detail
+        where invoice_id = #{invoiceId,jdbcType=BIGINT}
+        <if test="invoiceDetailIds != null and invoiceDetailIds.size>0">
+            AND invoice_detail_id  NOT IN
+            <foreach collection="invoiceDetailIds" item="invoiceDetailId" open="(" separator="," close=")">
+                #{invoiceDetailId}
+            </foreach>
+        </if>
+    </delete>
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="invoiceDetailId">
+        INSERT INTO cf_invoice_detail(invoice_id, charge_id, charge_type, arap_type,
+        charge_source, charge_source_code, charge_source_detail_code, product_code, balance, currency_code, exchange_rate, price_pp,
+        charge_unit, invoice_qty, invoice_debit, invoice_credit, remark, customer_invoice_no, customer_invoice_date)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.invoiceId,jdbcType=BIGINT}, #{item.chargeId,jdbcType=BIGINT}, #{item.chargeType,jdbcType=VARCHAR},
+            #{item.arapType,jdbcType=BIT}, #{item.chargeSource,jdbcType=INTEGER}, #{item.chargeSourceCode,jdbcType=VARCHAR},
+            #{item.chargeSourceDetailCode,jdbcType=VARCHAR}, #{item.productCode,jdbcType=VARCHAR}, #{item.balance,jdbcType=VARCHAR}, #{item.currencyCode,jdbcType=VARCHAR},
+            #{item.exchangeRate,jdbcType=DECIMAL}, #{item.pricePp,jdbcType=DECIMAL}, #{item.chargeUnit,jdbcType=VARCHAR},
+            #{item.invoiceQty,jdbcType=INTEGER}, #{item.invoiceDebit,jdbcType=DECIMAL}, #{item.invoiceCredit,jdbcType=DECIMAL},
+            #{item.remark,jdbcType=VARCHAR}, #{item.customerInvoiceNo,jdbcType=VARCHAR}, #{item.customerInvoiceDate})
+        </foreach>
+    </insert>
+
+    <update id="updateInvoiceNo">
+        UPDATE cf_invoice_detail
+        SET
+        customer_invoice_no = #{customerInvoiceNo},
+        customer_invoice_date = #{customerInvoiceDate},
+        remark = #{remark}
+        WHERE invoice_id = #{invoiceId} AND product_code = #{productCode}
+    </update>
+    <update id="updateEpricePpByChargeIds">
+        UPDATE cf_invoice_detail
+        SET
+        price_pp = price_pp+money
+        WHERE
+        charge_id in
+        <foreach collection="delayChargeIds" item="delayChargeId" index="index"
+                 open="(" separator="," close=")">
+            #{delayChargeIds}
+        </foreach>
+
+    </update>
+</mapper>

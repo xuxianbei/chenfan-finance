@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfPoHeaderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfPoHeader">
+        <id column="po_id" property="poId" />
+        <result column="po_code" property="poCode" />
+        <result column="new_plan_order_main_id" property="newPlanOrderMainId" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="vendor_code" property="vendorCode" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="state" property="state" />
+        <result column="order_type" property="orderType" />
+        <result column="child_order_type" property="childOrderType" />
+        <result column="print_count" property="printCount" />
+        <result column="accessory_requisitions_id" property="accessoryRequisitionsId" />
+        <result column="accessory_requisitions_code" property="accessoryRequisitionsCode" />
+        <result column="account_bill_code" property="accountBillCode" />
+        <result column="hs_status" property="hsStatus" />
+        <result column="retainage" property="retainage" />
+        <result column="retainage_ratio" property="retainageRatio" />
+        <result column="bargain" property="bargain" />
+        <result column="bargain_ratio" property="bargainRatio" />
+        <result column="verify_by" property="verifyBy" />
+        <result column="verify_name" property="verifyName" />
+        <result column="verify_date" property="verifyDate" />
+        <result column="close_by" property="closeBy" />
+        <result column="close_name" property="closeName" />
+        <result column="close_date" property="closeDate" />
+        <result column="remark" property="remark" />
+        <result column="cwh_code" property="cwhCode" />
+        <result column="sys_org_code" property="sysOrgCode" />
+        <result column="sys_company_code" property="sysCompanyCode" />
+        <result column="is_delete" property="isDelete" />
+        <result column="hire_purchase" property="hirePurchase" />
+        <result column="return_id" property="returnId" />
+        <result column="return_code" property="returnCode" />
+        <result column="po_type" property="poType" />
+        <result column="source_number" property="sourceNumber" />
+        <result column="source_type" property="sourceType" />
+        <result column="source_order_id" property="sourceOrderId" />
+        <result column="company_id" property="companyId" />
+        <result column="create_name" property="createName" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_name" property="updateName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        po_id, po_code, new_plan_order_main_id, vendor_id, vendor_code, brand_id, brand_name, state, order_type, child_order_type, print_count, accessory_requisitions_id, accessory_requisitions_code, account_bill_code, hs_status, retainage, retainage_ratio, bargain, bargain_ratio, verify_by, verify_name, verify_date, close_by, close_name, close_date, remark, cwh_code, sys_org_code, sys_company_code, is_delete, hire_purchase, return_id, return_code, po_type, source_number, source_type, source_order_id, company_id, create_name, create_by, create_date, update_name, update_by, update_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from cf_po_header
+        where po_id = #{poId,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.chenfan.finance.model.CfPoHeader" >
+        update cf_po_header
+        <set >
+            <if test="poCode != null" >
+                po_code = #{poCode,jdbcType=VARCHAR},
+            </if>
+            <if test="newPlanOrderMainId != null" >
+                new_plan_order_main_id = #{newPlanOrderMainId,jdbcType=INTEGER},
+            </if>
+            <if test="vendorId != null" >
+                vendor_id = #{vendorId,jdbcType=INTEGER},
+            </if>
+            <if test="vendorCode != null" >
+                vendor_code = #{vendorCode,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId != null" >
+                brand_id = #{brandId,jdbcType=INTEGER},
+            </if>
+            <if test="brandName != null" >
+                brand_name = #{brandName,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="orderType != null" >
+                order_type = #{orderType,jdbcType=INTEGER},
+            </if>
+            <if test="childOrderType != null" >
+                child_order_type = #{childOrderType,jdbcType=INTEGER},
+            </if>
+            <if test="printCount != null" >
+                print_count = #{printCount,jdbcType=INTEGER},
+            </if>
+            <if test="accountBillCode != null" >
+                account_bill_code = #{accountBillCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hsStatus != null" >
+                hs_status = #{hsStatus,jdbcType=INTEGER},
+            </if>
+            <if test="retainage != null">
+                <choose>
+                    <when test="retainage == -1">
+                        retainage = null,
+                    </when>
+                    <otherwise>
+                        retainage = #{retainage,jdbcType=DECIMAL},
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="retainageRatio != null">
+                <choose>
+                    <when test="retainageRatio == -1">
+                        retainage_ratio = null,
+                    </when>
+                    <otherwise>
+                        retainage_ratio = #{retainageRatio,jdbcType=DECIMAL},
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="bargain != null">
+                <choose>
+                    <when test="bargain == -1">
+                        bargain = null,
+                    </when>
+                    <otherwise>
+                        bargain = #{bargain,jdbcType=DECIMAL},
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="bargainRatio != null">
+                <choose>
+                    <when test="bargainRatio == -1">
+                        bargain_ratio = null,
+                    </when>
+                    <otherwise>
+                        bargain_ratio = #{bargainRatio,jdbcType=DECIMAL},
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="verifyBy != null" >
+                verify_by = #{verifyBy,jdbcType=BIGINT},
+            </if>
+            <if test="verifyName != null" >
+                verify_name = #{verifyName,jdbcType=VARCHAR},
+            </if>
+            <if test="verifyDate != null" >
+                verify_date = #{verifyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="closeBy != null" >
+                close_by = #{closeBy,jdbcType=BIGINT},
+            </if>
+            <if test="closeName != null" >
+                close_name = #{closeName,jdbcType=VARCHAR},
+            </if>
+            <if test="closeDate != null" >
+                close_date = #{closeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="cwhCode != null" >
+                cwh_code = #{cwhCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sysOrgCode != null" >
+                sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sysCompanyCode != null" >
+                sys_company_code = #{sysCompanyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createName != null" >
+                create_name = #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null" >
+                create_by = #{createBy,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateName != null" >
+                update_name = #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy != null" >
+                update_by = #{updateBy,jdbcType=BIGINT},
+            </if>
+            <if test="updateDate != null" >
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null" >
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="hirePurchase != null" >
+                hire_purchase = #{hirePurchase,jdbcType=DECIMAL},
+            </if>
+            <if test="returnId != null" >
+                return_id = #{returnId,jdbcType=INTEGER},
+            </if>
+            <if test="returnCode != null" >
+                return_code = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="poType != null" >
+                po_type = #{poType,jdbcType=INTEGER},
+            </if>
+            <if test="sourceNumber != null" >
+                source_number = #{sourceNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null" >
+                source_type = #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="accessoryRequisitionsId != null" >
+                accessory_requisitions_id = #{accessoryRequisitionsId},
+            </if>
+            <if test="accessoryRequisitionsCode != null" >
+                accessory_requisitions_code = #{accessoryRequisitionsCode},
+            </if>
+        </set>
+        where po_id = #{poId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateHirePurchase">
+        update cf_po_header
+        <if test="type==1">
+            set hire_purchase=IFNULL(hire_purchase,0)+#{payValue}
+        </if>
+        <if test="type==0">
+            set hire_purchase=IFNULL(hire_purchase,0)-#{payValue}
+        </if>
+        where po_id = #{poId,jdbcType=BIGINT}
+    </update>
+
+    <resultMap id="payInfoMap" type="com.chenfan.finance.model.vo.PayApplyInfo">
+        <result column="includedTaxMoneyCount" property="includedTaxMoneyCount"/>
+        <result column="vendor_code" property="vendorCode"/>
+        <result column="vendor_id" property="vendorId"/>
+        <result column="vendor_name" property="vendorName"/>
+        <result column="brand_name" property="brandName"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="accname" property="accName"/>
+        <result column="cven_bank" property="bank"/>
+        <result column="po_type" property="poType"/>
+        <result column="cven_account" property="bankAccount"/>
+    </resultMap>
+    <select id="selectPayInfo" resultMap="payInfoMap">
+        SELECT IFNULL(
+                       sum(p.included_tax_money),
+                       0.00
+                   ) includedTaxMoneyCount,
+               m.vendor_id,
+               m.brand_id,
+               m.brand_name,
+               m.po_type,
+               m.vendor_id,
+               m.vendor_code
+        FROM cf_po_header m
+                 LEFT JOIN cf_po_detail p ON m.po_id = p.po_id
+        WHERE m.po_id = #{poId}
+          and p.is_delete = 0
+    </select>
+
+    <select id="selectAllCode" resultMap="BaseResultMap">
+        select po_id,po_code from cf_po_header
+        where is_delete = 0
+    </select>
+
+    <update id="updateHsStatusByPoIds">
+        update cf_po_header set hs_status = #{hsStatus}
+        where po_id in
+        <foreach collection="poIds" item="poId" index="index"
+                 open="(" separator="," close=")">
+            #{poId}
+        </foreach>
+    </update>
+
+    <resultMap id="PurchaseOrderMap" type="com.chenfan.finance.model.vo.CfPoHeaderVo">
+        <result column="po_id" property="poId"/>
+        <result column="po_code" property="poCode"/>
+        <result column="source_number" property="sourceNumber"/>
+        <result column="source_type" property="sourceType"/>
+        <result column="order_type" property="orderType"/>
+        <result column="child_order_type" property="childOrderType"/>
+        <result column="create_date" property="createDate"/>
+        <result column="vendor_id" property="vendorId"/>
+        <result column="vendor_code" property="vendorCode"/>
+        <result column="vendor_name" property="vendorName"/>
+        <result column="quantity" property="quantity"/>
+        <result column="shortCount" property="shortCount"/>
+        <result column="arriveCount" property="arriveCount"/>
+        <result column="brand_name" property="brandName"/>
+        <result column="createDateString" property="createDateString"/>
+        <result column="remark" property="remark"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="customerName" property="customerName"/>
+        <result column="po_type" property="poType"/>
+        <result column="ven_abb_name" property="venAbbName"/>
+        <result column="tax_unit_price" property="taxUnitPrice" jdbcType="DECIMAL"/>
+        <result column="qualifiedQuantityCount" property="qualifiedQuantityCount" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <select id="selectPurchaseOrder" resultMap="PurchaseOrderMap">
+            SELECT
+            base.po_id,
+            base.po_code,
+            base.source_number,
+            base.source_type,
+            base.brand_name,
+            base.brand_id,
+            base.order_type,
+            base.child_order_type,
+            base.vendor_id,
+            base.vendor_code,
+            base.create_date,
+            base.po_type,
+            DATE_FORMAT( base.create_date, '%Y-%m-%d' ) AS createDateString,
+            base.remark,
+            cpd.quantity,
+            cpd.arriveCount,
+            base.is_delete,
+            base.state,
+            (CASE
+            WHEN (   cpd.quantity - cpd.arriveCount ) >= 0
+            THEN ( cpd.quantity - cpd.arriveCount )
+            ELSE 0
+            END
+            ) AS shortCount
+            FROM
+	            cf_po_header base
+	            LEFT JOIN (
+                    SELECT
+                        IFNULL( SUM( quantity ), 0.00 ) as quantity,
+                        IFNULL( SUM( arrival_qty ), 0.00 ) as arriveCount,
+                        po_id
+                    FROM
+                        cf_po_detail
+                    WHERE
+                        is_delete = 0
+                    GROUP BY
+                        po_id
+	            ) cpd ON base.po_id = cpd.po_id
+        HAVING
+         base.is_delete = 0
+        AND base.state = 1
+        AND base.po_type = #{poType}
+        <if test="poCode != null and poCode != ''">
+            AND base.po_code LIKE concat('%',#{poCode},'%')
+        </if>
+        <if test="sourceNumber != null and sourceNumber != ''">
+            AND base.source_number LIKE concat('%',#{sourceNumber},'%')
+        </if>
+        <if test="sourceType != null and sourceType != ''">
+            AND base.source_type = #{sourceType}
+        </if>
+        <if test="sourceType == 0">
+            AND base.source_type = 0
+        </if>
+        <if test="orderType != null and orderType != '' and orderType != 7 ">
+            AND base.order_type = #{orderType}
+            AND base.child_order_type is null
+        </if>
+        <if test="childOrderType !=null and childOrderType!='' and orderType == 7 ">
+            and base.order_type = 1
+            and base.child_order_type = 1
+        </if>
+        <if test="vendorId != null and vendorId != ''">
+            AND base.vendor_id = #{vendorId}
+        </if>
+        <if test="createDateBegin!=null and createDateBegin!=''">
+            and base.create_date >= #{createDateBegin}
+        </if>
+        <if test="createDateEnd!=null and createDateEnd!=''">
+            and base.create_date <![CDATA[<=]]> #{createDateEnd}
+        </if>
+      order by base.po_id desc
+    </select>
+
+
+
+
+
+    <select id="selectListToInitPay" resultMap="PurchaseOrderMap">
+        SELECT
+            pos.tax_unit_price,
+            IFNULL( qualifiedQuantityCount, 0.00 ) qualifiedQuantityCount
+        FROM
+            cf_po_header po
+            INNER JOIN cf_po_detail pos ON po.po_id = pos.po_id
+            LEFT JOIN (
+                SELECT
+                    pd.po_detail_id,
+                    IFNULL( SUM( pd.arrival_qty ), 0.00 ) qualifiedQuantityCount
+                FROM
+                    cf_po_detail pd
+                    INNER JOIN cf_po_header p ON pd.po_id = p.po_id
+                WHERE
+                    pd.po_code = #{poCode}
+                    AND pd.is_delete = 0
+                GROUP BY
+                    pd.po_detail_id
+                    ) q ON q.po_detail_id = pos.po_detail_id
+        WHERE
+            pos.is_delete = 0
+            AND po.po_code = #{poCode}
+    </select>
+    <select id="selectPoCodeByChargeId" resultType="com.chenfan.finance.model.dto.SPoHeader">
+      SELECT
+        po.po_code,
+        cc.product_code
+    FROM
+        cf_po_header po
+        LEFT JOIN cf_rd_record_detail rdd ON po.po_id = rdd.po_id
+        LEFT JOIN cf_charge cc ON cc.charge_source_detail_id = rdd.rd_record_detail_id
+        LEFT JOIN cf_invoice_header ON cc.invoice_no = cf_invoice_header.invoice_no
+    WHERE
+        cf_invoice_header.invoice_id = #{invoiceId}
+        AND cc.charge_type IN ( 1, 7 )
+    GROUP BY
+        product_code,
+        po_code
+    </select>
+    <!--selectPoInfoDifferences-->
+    <select id="selectPoInfoDifferences" resultType="string">
+        SELECT a.po_code FROM
+        `${plm}`.po_header a LEFT JOIN `${eopofa}`.cf_po_header b
+        on a.po_id=b.po_id
+        where b.po_id is null
+        and a.is_delete=0
+        and a.state=1
+        and a.brand_id in
+        <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and a.verify_date BETWEEN  #{startTime} AND #{endTime}
+    </select>
+    <!--selectPoDetailInfoDifferences-->
+    <select id="selectPoDetailInfoDifferences" resultType="hashmap">
+        SELECT
+        ph.po_code,
+        cpd.po_detail_id,
+        cpd.quantity as cfquantity,
+        cpd.tax_unit_price as cftaxUnitPrice,
+        cpd.unit_price as cfunitPrice,
+        cpd.tax_rate as cftaxRate,
+        cpd.markup_unit_price as cfmarkupUnitPrice,
+        cpd.markup_rate as cfmarkupRate,
+        cpd.con_end_date as cfconEndDate,
+        pd.quantity as quantity,
+        pd.tax_unit_price as taxUnitPrice,
+        pd.unit_price as unitPrice,
+        pd.tax_rate as taxRate,
+        pd.markup_unit_price as markupUnitPrice,
+        pd.markup_rate as markupRate,
+        pd.con_end_date  as conEndDate
+        FROM `${eopofa}`.cf_po_detail cpd LEFT JOIN  `${plm}`.po_detail pd
+        on cpd.po_detail_id=pd.po_detail_id
+        LEFT JOIN  `${eopofa}`.cf_po_header ph on cpd.po_id=ph.po_id
+        where
+        (cpd.quantity  <![CDATA[<>]]> cpd.quantity
+        or cpd.tax_unit_price  <![CDATA[<>]]>  cpd.tax_unit_price
+        or cpd.unit_price  <![CDATA[<>]]>  cpd.unit_price
+        or cpd.tax_rate  <![CDATA[<>]]>  cpd.tax_rate
+        or cpd.markup_unit_price  <![CDATA[<>]]>  cpd.markup_unit_price
+        or cpd.markup_rate  <![CDATA[<>]]>  cpd.markup_rate
+        or cpd.con_end_date  <![CDATA[<>]]>  cpd.con_end_date)
+        and ph.verify_date BETWEEN  #{startTime} AND #{endTime}
+    </select>
+</mapper>

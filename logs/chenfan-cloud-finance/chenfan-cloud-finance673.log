@@ -1,0 +1,88 @@
+05-24  16:48:10.312  INFO  -||- [com.alibaba.nacos.client.config.impl.LocalConfigInfoProcessor] [main] => LOCAL_SNAPSHOT_PATH:C:\Users\2797\nacos\config
+05-24  16:48:10.337  INFO  -||- [com.alibaba.nacos.client.config.impl.Limiter] [main] => limitTime:5.0
+05-24  16:48:10.351  WARN  -||- [com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder] [main] => Ignore the empty nacos configuration and get it based on dataId[cc] & group[TEST_GROUP]
+05-24  16:48:10.354  WARN  -||- [com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder] [main] => Ignore the empty nacos configuration and get it based on dataId[cc.yaml] & group[TEST_GROUP]
+05-24  16:48:10.356  INFO  -||- [com.alibaba.nacos.client.config.utils.JVMUtil] [main] => isMultiInstance:false
+05-24  16:48:10.364  INFO  -||- [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration] [main] => Located property source: [BootstrapPropertySource {name='bootstrapProperties-cc-test.yaml,TEST_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-cc.yaml,TEST_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-cc,TEST_GROUP'}]
+05-24  16:48:10.417  INFO  -||- [com.chenfan.finance.FinanceApplication] [main] => The following profiles are active: test
+05-24  16:48:11.680  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+05-24  16:48:11.683  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+05-24  16:48:12.047  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-24  16:48:12.047  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-24  16:48:12.100  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 45ms. Found 0 JPA repository interfaces.
+05-24  16:48:12.107  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-24  16:48:12.107  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+05-24  16:48:12.131  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 23ms. Found 0 MongoDB repository interfaces.
+05-24  16:48:12.143  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-24  16:48:12.145  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+05-24  16:48:12.174  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+05-24  16:48:12.266  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+05-24  16:48:12.415  INFO  -||- [org.springframework.context.annotation.ConfigurationClassPostProcessor] [main] => Cannot enhance @Configuration bean definition 'com.chenfan.ccp.autoconfigure.GlobalMqMessageConfigure' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+05-24  16:48:12.503  INFO  -||- [org.springframework.cloud.context.scope.GenericScope] [main] => BeanFactory id=c4b1dc0d-1832-3a38-b8da-0981fa8e7db1
+05-24  16:48:12.540  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.BaseInfoRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.541  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.BaseRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.542  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.McnRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.542  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.PrivilegeUserServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.544  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.PurchaseRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.544  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.TaskRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.546  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.VendorCenterServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.547  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.process.client.ProcessClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:12.548  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.code.generate.CodeGenerateClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:48:13.152  INFO  -||- [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] => Tomcat initialized with port(s): 8092 (http)
+05-24  16:48:13.163  INFO  -||- [org.apache.catalina.core.StandardService] [main] => Starting service [Tomcat]
+05-24  16:48:13.163  INFO  -||- [org.apache.catalina.core.StandardEngine] [main] => Starting Servlet engine: [Apache Tomcat/9.0.37]
+05-24  16:48:13.336  INFO  -||- [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] [main] => Initializing Spring embedded WebApplicationContext
+05-24  16:48:13.336  INFO  -||- [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] => Root WebApplicationContext: initialization completed in 2896 ms
+05-24  16:48:13.763  INFO  -||- [org.redisson.Version] [main] => Redisson 3.14.0
+05-24  16:48:14.398  INFO  -||- [org.redisson.connection.pool.MasterPubSubConnectionPool] [redisson-netty-2-19] => 1 connections initialized for /10.228.81.233:6379
+05-24  16:48:14.447  INFO  -||- [org.redisson.connection.pool.MasterConnectionPool] [redisson-netty-2-22] => 24 connections initialized for /10.228.81.233:6379
+05-24  16:48:15.554  INFO  -||- [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure] [main] => Init DruidDataSource
+05-24  16:48:15.944  WARN  -||- [com.alibaba.druid.pool.DruidDataSource] [main] => removeAbandoned is true, not use in production.
+05-24  16:48:16.350  INFO  -||- [com.alibaba.druid.pool.DruidDataSource] [main] => {dataSource-1} inited
+05-24  16:48:16.618  INFO  -||- [org.hibernate.jpa.internal.util.LogHelper] [main] => HHH000204: Processing PersistenceUnitInfo [name: default]
+05-24  16:48:16.756  INFO  -||- [org.hibernate.Version] [main] => HHH000412: Hibernate ORM core version 5.4.18.Final
+05-24  16:48:16.985  INFO  -||- [org.hibernate.annotations.common.Version] [main] => HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+05-24  16:48:17.201  INFO  -||- [org.hibernate.dialect.Dialect] [main] => HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+05-24  16:48:17.570  INFO  -||- [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] => HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+05-24  16:48:17.592  INFO  -||- [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [main] => Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-24  16:48:18.311  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.CfBankAndCashMapper.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete]
+05-24  16:48:18.887  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingDetailMapper.insert] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Insert]
+05-24  16:48:18.891  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingDetailMapper.updateById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.UpdateById]
+05-24  16:48:18.907  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingHeaderMapper.insert] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Insert]
+05-24  16:48:18.912  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingHeaderMapper.selectById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectById]
+05-24  16:48:19.149  WARN  -||- [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] => spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-24  16:48:21.414  INFO  -||- [com.alibaba.nacos.client.naming] [main] => initializer namespace from System Property :null
+05-24  16:48:21.415  INFO  -||- [com.alibaba.nacos.client.naming] [main] => initializer namespace from System Environment :null
+05-24  16:48:21.416  INFO  -||- [com.alibaba.nacos.client.naming] [main] => initializer namespace from System Property :null
+05-24  16:48:21.532  INFO  -||- [org.mongodb.driver.cluster] [main] => Cluster created with settings {hosts=[10.228.86.202:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+05-24  16:48:21.993  INFO  -||- [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] [main] => Exposing 0 endpoint(s) beneath base path '/actuator'
+05-24  16:48:22.187  INFO  -||- [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] [main] => Initializing ExecutorService 'sheduleClearMemory'
+05-24  16:48:22.197  INFO  -||- [com.chenfan.finance.config.XxlJobConfig] [main] => >>>>>>>>>>> xxl-job config init.
+05-24  16:48:22.257  WARN  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => No URLs will be polled as dynamic configuration sources.
+05-24  16:48:22.257  INFO  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+05-24  16:48:22.262  WARN  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => No URLs will be polled as dynamic configuration sources.
+05-24  16:48:22.262  INFO  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+05-24  16:48:22.570  INFO  -||- [org.mongodb.driver.cluster] [cluster-ClusterId{value='60ab68559c5ec60fa95fb2a1', description='null'}-10.228.86.202:27017] => Exception in monitor thread while connecting to server 10.228.86.202:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:70)
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:128)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:117)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mongodb.internal.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:64)
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:79)
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:65)
+	... 3 common frames omitted
+05-24  16:48:23.519  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:qcTaskJob, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@39342312[class com.chenfan.finance.job.FinanceJob#qcTaskJob]
+05-24  16:48:23.519  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:monitoringTask, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@243fe859[class com.chenfan.finance.job.FinanceJob#monitoringTask]
+05-24  16:48:23.519  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:cfRdCalculateTaskJob, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@384edc3b[class com.chenfan.finance.job.FinanceJob#cfRdCalculateTaskJob]
+05-24  16:48:23.519  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:cfWdtRdCalculateTaskJob, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@13421eb0[class com.chenfan.finance.job.FinanceJob#cfWdtRdCalculateTaskJob]
+05-24  16:48:23.643  INFO  -||- [com.xxl.job.core.server.EmbedServer] [Thread-85] => >>>>>>>>>>> xxl-job remoting server start success, nettype = class com.xxl.job.core.server.EmbedServer, port = 9999

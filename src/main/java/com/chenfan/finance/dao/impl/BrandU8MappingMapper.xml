@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.BrandU8MappingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.BrandU8Mapping">
+        <result column="brand_id" property="brandId" />
+        <result column="u8_db_v1" property="u8DbV1" />
+        <result column="u8_db_v2" property="u8DbV2" />
+        <result column="u8_db_v3" property="u8DbV3" />
+        <result column="p_db_v1" property="pDbV1" />
+        <result column="p_db_v2" property="pDbV2" />
+        <result column="p_db_v3" property="pDbV3" />
+        <result column="start_date_v1" property="startDateV1" />
+        <result column="start_date_v2" property="startDateV2" />
+        <result column="start_date_v3" property="startDateV3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        brand_id, u8_db_v1, u8_db_v2, u8_db_v3, p_db_v1, p_db_v2, p_db_v3, start_date_v1, start_date_v2, start_date_v3
+    </sql>
+
+</mapper>

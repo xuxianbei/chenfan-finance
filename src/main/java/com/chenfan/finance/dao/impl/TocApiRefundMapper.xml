@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocApiRefundMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocApiRefund">
+
+    <result column="platform_id" jdbcType="TINYINT" property="platformId" />
+    <result column="shop_id" jdbcType="SMALLINT" property="shopId" />
+    <result column="refund_no" jdbcType="VARCHAR" property="refundNo" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="process_status" jdbcType="TINYINT" property="processStatus" />
+    <result column="guarantee_mode" jdbcType="TINYINT" property="guaranteeMode" />
+    <result column="cs_status" jdbcType="TINYINT" property="csStatus" />
+    <result column="advance_status" jdbcType="TINYINT" property="advanceStatus" />
+    <result column="op_constraint" jdbcType="INTEGER" property="opConstraint" />
+    <result column="refund_version" jdbcType="VARCHAR" property="refundVersion" />
+    <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
+    <result column="pay_no" jdbcType="VARCHAR" property="payNo" />
+    <result column="refund_amount" jdbcType="DECIMAL" property="refundAmount" />
+    <result column="actual_refund_amount" jdbcType="DECIMAL" property="actualRefundAmount" />
+    <result column="current_phase_timeout" jdbcType="TIMESTAMP" property="currentPhaseTimeout" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="logistics_name" jdbcType="VARCHAR" property="logisticsName" />
+    <result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
+    <result column="buyer_nick" jdbcType="VARCHAR" property="buyerNick" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="refund_time" jdbcType="TIMESTAMP" property="refundTime" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="is_aftersale" jdbcType="INTEGER" property="isAftersale" />
+    <result column="refund_mask" jdbcType="INTEGER" property="refundMask" />
+    <result column="is_external" jdbcType="TINYINT" property="isExternal" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="modify_flag" jdbcType="INTEGER" property="modifyFlag" />
+    <result column="tag" jdbcType="INTEGER" property="tag" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+  platform_id, shop_id, refund_no, tid, `type`, `status`, process_status,
+    guarantee_mode, cs_status, advance_status, op_constraint, refund_version, pay_account, 
+    pay_no, refund_amount, actual_refund_amount, current_phase_timeout, title, logistics_name, 
+    logistics_no, buyer_nick, address, refund_time, operator_id, is_aftersale, refund_mask, 
+    is_external, reason, remark, modify_flag, tag, modified, created
+  </sql>
+  </mapper>

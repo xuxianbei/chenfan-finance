@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfClearHeaderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfClearHeader">
+        <id column="clear_id" property="clearId" />
+        <result column="clear_no" property="clearNo" />
+        <result column="clear_method" property="clearMethod" />
+        <result column="clear_status" property="clearStatus" />
+        <result column="job_type" property="jobType"/>
+        <result column="actual_ar_ap_date" property="actualArApDate" />
+        <result column="brand_id" property="brandId" />
+        <result column="balance" property="balance" />
+        <result column="fi_user" property="fiUser" />
+        <result column="bank" property="bank" />
+        <result column="bank_no" property="bankNo" />
+        <result column="bank_amount" property="bankAmount" />
+        <result column="check_no" property="checkNo" />
+        <result column="currency_code" property="currencyCode" />
+        <result column="exchange_rate" property="exchangeRate" />
+        <result column="clear_date" property="clearDate" />
+        <result column="clear_by" property="clearBy" />
+        <result column="clear_debit" property="clearDebit" />
+        <result column="clear_credit" property="clearCredit" />
+        <result column="clear_type" property="clearType" />
+        <result column="clear_balance" property="clearBalance" />
+        <result column="now_clear_debit" property="nowClearDebit" />
+        <result column="now_clear_credit" property="nowClearCredit" />
+        <result column="now_clear_type" property="nowClearType" />
+        <result column="now_clear_balance" property="nowClearBalance" />
+        <result column="last_balance_debit" property="lastBalanceDebit" />
+        <result column="last_balance_credit" property="lastBalanceCredit" />
+        <result column="last_balance_type" property="lastBalanceType" />
+        <result column="last_balance_balance" property="lastBalanceBalance" />
+        <result column="now_balance_debit" property="nowBalanceDebit" />
+        <result column="now_balance_credit" property="nowBalanceCredit" />
+        <result column="now_balance_type" property="nowBalanceType" />
+        <result column="now_balance_balance" property="nowBalanceBalance" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="record_seq_no" property="recordSeqNo" />
+        <result column="receipt_screenshot" property="receiptScreenshot" />
+        <result column="collection_and_pay_remark" property="collectionAndPayRemark" />
+        <result column="reject_reason" property="rejectReason" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        clear_id, clear_no, clear_method, clear_status, actual_ar_ap_date, brand_id, balance, fi_user, bank, bank_no, bank_amount, check_no, currency_code, exchange_rate, clear_date, clear_by, clear_debit, clear_credit, clear_type, clear_balance, now_clear_debit, now_clear_credit, now_clear_type, now_clear_balance, last_balance_debit, last_balance_credit, last_balance_type, last_balance_balance, now_balance_debit, now_balance_credit, now_balance_type, now_balance_balance, remark, company_id, create_by, create_name, create_date, update_by, update_name, update_date
+        ,record_seq_no,receipt_screenshot,collection_and_pay_remark,reject_reason
+    </sql>
+
+    <resultMap id="DetailsByClearNoResultMap" type="com.chenfan.finance.model.vo.CfClearDetailU8VO">
+        <id column="clear_detail_id" property="clearDetailId" />
+        <result column="invoice_no" property="invoiceNo" />
+        <result column="invoice_title" property="invoiceTitle" />
+        <result column="balance" property="balance" />
+        <result column="balance_name" property="balanceName" />
+        <result column="charge_id" property="chargeId" />
+        <result column="arap_type" property="arapType" />
+        <result column="clear_debit" property="clearDebit" />
+        <result column="clear_credit" property="clearCredit" />
+        <result column="cleared_amount" property="clearedAmount" />
+        <result column="last_balance" property="lastBalance" />
+        <result column="now_balance" property="nowBalance" />
+        <result column="actual_clear_amount" property="actualClearAmount" />
+
+
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+    </resultMap>
+
+    <select id="getDetailsByClearNo" resultMap="DetailsByClearNoResultMap">
+       SELECT
+            cf_clear_detail.*,
+            cf_charge.*
+        FROM
+            cf_clear_header
+        LEFT JOIN cf_clear_detail USING (clear_id)
+        LEFT JOIN cf_charge  USING(charge_id)
+        WHERE
+            cf_clear_detail.actual_clear_amount>0
+          and
+            cf_clear_header.clear_no = #{clearNo}
+    </select>
+
+</mapper>

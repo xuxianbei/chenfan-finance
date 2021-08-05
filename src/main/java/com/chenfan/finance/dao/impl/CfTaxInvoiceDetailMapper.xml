@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfTaxInvoiceDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfTaxInvoiceDetail">
+        <id column="tax_invoice_detail_id" property="taxInvoiceDetailId" />
+        <result column="tax_invoice_id" property="taxInvoiceId" />
+        <result column="charge_id" property="chargeId" />
+        <result column="charge_code" property="chargeCode" />
+        <result column="balance" property="balance" />
+        <result column="charge_type" property="chargeType" />
+        <result column="arap_type" property="arapType" />
+        <result column="exchange_rate" property="exchangeRate" />
+        <result column="price_pp" property="pricePp" />
+        <result column="invoice_qty" property="invoiceQty" />
+        <result column="currency_code" property="currencyCode" />
+        <result column="invoice_debit" property="invoiceDebit" />
+        <result column="finance_entity" property="financeEntity" />
+        <result column="charge_source_type" property="chargeSourceType" />
+        <result column="charge_source_code" property="chargeSourceCode" />
+        <result column="remark" property="remark" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        tax_invoice_detail_id, tax_invoice_id, charge_id, charge_code, balance, charge_type, arap_type, exchange_rate, price_pp, invoice_qty, currency_code, invoice_debit, finance_entity, charge_source_type, charge_source_code, remark, create_by, create_name, create_date, update_by, update_date
+    </sql>
+
+</mapper>

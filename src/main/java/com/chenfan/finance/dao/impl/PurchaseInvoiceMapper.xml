@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.PurchaseInvoiceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.PurchaseInvoice">
+        <id column="purchase_invoice_id" property="purchaseInvoiceId" />
+        <result column="purchase_invoice_code" property="purchaseInvoiceCode" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="vendor_code" property="vendorCode" />
+        <result column="remark" property="remark" />
+        <result column="account_bill_id" property="accountBillId" />
+        <result column="account_bill_code" property="accountBillCode" />
+        <result column="invoice_type" property="invoiceType" />
+        <result column="sys_org_code" property="sysOrgCode" />
+        <result column="sys_company_code" property="sysCompanyCode" />
+        <result column="create_name" property="createName" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_name" property="updateName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="is_delete" property="isDelete" />
+        <result column="company_id" property="companyId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        purchase_invoice_id, purchase_invoice_code, vendor_id, vendor_code, remark, account_bill_id, account_bill_code, invoice_type, sys_org_code, sys_company_code, create_name, create_by, create_date, update_name, update_by, update_date, is_delete, company_id
+    </sql>
+
+    <insert id="insertAuto" keyColumn="purchase_invoice_id" keyProperty="purchaseInvoiceId" parameterType="com.chenfan.finance.model.PurchaseInvoice" useGeneratedKeys="true">
+    insert into purchase_invoice (purchase_invoice_code, vendor_id, vendor_code,
+      remark, account_bill_id, account_bill_code,
+      invoice_type, sys_org_code, sys_company_code,
+      create_name, create_by, create_date,
+      update_name, update_by, update_date,
+      is_delete, company_id, inventory_type,
+      customer_invoice_no)
+    values (#{purchaseInvoiceCode,jdbcType=VARCHAR}, #{vendorId,jdbcType=INTEGER}, #{vendorCode,jdbcType=VARCHAR},
+      #{remark,jdbcType=VARCHAR}, #{accountBillId,jdbcType=INTEGER}, #{accountBillCode,jdbcType=VARCHAR},
+      #{invoiceType,jdbcType=VARCHAR}, #{sysOrgCode,jdbcType=VARCHAR}, #{sysCompanyCode,jdbcType=VARCHAR},
+      #{createName,jdbcType=VARCHAR}, #{createBy,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateName,jdbcType=VARCHAR}, #{updateBy,jdbcType=BIGINT}, #{updateDate,jdbcType=TIMESTAMP},
+      #{isDelete,jdbcType=BOOLEAN}, #{companyId,jdbcType=BIGINT}, #{inventoryType,jdbcType=INTEGER},
+      #{customerInvoiceNo,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>

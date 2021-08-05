@@ -1,0 +1,73 @@
+05-24  16:47:13.638  INFO  -||- [com.alibaba.nacos.client.config.impl.LocalConfigInfoProcessor] [main] => LOCAL_SNAPSHOT_PATH:C:\Users\2797\nacos\config
+05-24  16:47:13.663  INFO  -||- [com.alibaba.nacos.client.config.impl.Limiter] [main] => limitTime:5.0
+05-24  16:47:13.681  WARN  -||- [com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder] [main] => Ignore the empty nacos configuration and get it based on dataId[finance] & group[TEST_GROUP]
+05-24  16:47:13.684  WARN  -||- [com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder] [main] => Ignore the empty nacos configuration and get it based on dataId[finance.yaml] & group[TEST_GROUP]
+05-24  16:47:13.687  INFO  -||- [com.alibaba.nacos.client.config.utils.JVMUtil] [main] => isMultiInstance:false
+05-24  16:47:13.698  INFO  -||- [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration] [main] => Located property source: [BootstrapPropertySource {name='bootstrapProperties-finance-test.yaml,TEST_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-finance.yaml,TEST_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-finance,TEST_GROUP'}]
+05-24  16:47:13.777  INFO  -||- [com.chenfan.finance.FinanceApplication] [main] => The following profiles are active: test
+05-24  16:47:15.532  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+05-24  16:47:15.537  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+05-24  16:47:15.944  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-24  16:47:15.945  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-24  16:47:15.988  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 36ms. Found 0 JPA repository interfaces.
+05-24  16:47:15.993  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-24  16:47:15.993  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+05-24  16:47:16.013  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 19ms. Found 0 MongoDB repository interfaces.
+05-24  16:47:16.023  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-24  16:47:16.024  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+05-24  16:47:16.051  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+05-24  16:47:16.123  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+05-24  16:47:16.275  INFO  -||- [org.springframework.context.annotation.ConfigurationClassPostProcessor] [main] => Cannot enhance @Configuration bean definition 'com.chenfan.ccp.autoconfigure.GlobalMqMessageConfigure' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+05-24  16:47:16.352  INFO  -||- [org.springframework.cloud.context.scope.GenericScope] [main] => BeanFactory id=c4b1dc0d-1832-3a38-b8da-0981fa8e7db1
+05-24  16:47:16.386  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.BaseInfoRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.387  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.BaseRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.388  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.McnRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.388  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.PrivilegeUserServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.390  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.PurchaseRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.390  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.TaskRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.392  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.VendorCenterServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.393  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.process.client.ProcessClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:16.394  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.code.generate.CodeGenerateClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-24  16:47:17.004  INFO  -||- [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] => Tomcat initialized with port(s): 8092 (http)
+05-24  16:47:17.014  INFO  -||- [org.apache.catalina.core.StandardService] [main] => Starting service [Tomcat]
+05-24  16:47:17.015  INFO  -||- [org.apache.catalina.core.StandardEngine] [main] => Starting Servlet engine: [Apache Tomcat/9.0.37]
+05-24  16:47:17.143  INFO  -||- [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] [main] => Initializing Spring embedded WebApplicationContext
+05-24  16:47:17.144  INFO  -||- [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] => Root WebApplicationContext: initialization completed in 3320 ms
+05-24  16:47:17.472  INFO  -||- [org.redisson.Version] [main] => Redisson 3.14.0
+05-24  16:47:17.827  INFO  -||- [org.redisson.connection.pool.MasterPubSubConnectionPool] [redisson-netty-2-22] => 1 connections initialized for /10.228.81.233:6379
+05-24  16:47:17.843  INFO  -||- [org.redisson.connection.pool.MasterConnectionPool] [redisson-netty-2-19] => 24 connections initialized for /10.228.81.233:6379
+05-24  16:47:18.343  INFO  -||- [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure] [main] => Init DruidDataSource
+05-24  16:47:18.391  WARN  -||- [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] [main] => Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$JpaInvokerConfiguration': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+05-24  16:47:18.418  INFO  -||- [org.apache.catalina.core.StandardService] [main] => Stopping service [Tomcat]
+05-24  16:47:18.457  WARN  -||- [org.apache.catalina.loader.WebappClassLoaderBase] [main] => The web application [ROOT] appears to have started a thread named [Thread-48] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.net.dns.ResolverConfigurationImpl.notifyAddrChange0(Native Method)
+ sun.net.dns.ResolverConfigurationImpl$AddressChangeListener.run(ResolverConfigurationImpl.java:144)
+05-24  16:47:18.457  WARN  -||- [org.apache.catalina.loader.WebappClassLoaderBase] [main] => The web application [ROOT] appears to have started a thread named [Thread-51] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Thread.sleep(Native Method)
+ java.lang.Thread.sleep(Thread.java:340)
+ java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386)
+ com.chenfan.ccp.plug.log.config.FilterConfig$CustomFilter.lambda$init$0(FilterConfig.java:69)
+ com.chenfan.ccp.plug.log.config.FilterConfig$CustomFilter$$Lambda$706/1550575634.run(Unknown Source)
+ java.lang.Thread.run(Thread.java:748)
+05-24  16:47:18.472  INFO  -||- [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] => 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+05-24  16:47:18.478  ERROR -||- [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] [main] => 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+

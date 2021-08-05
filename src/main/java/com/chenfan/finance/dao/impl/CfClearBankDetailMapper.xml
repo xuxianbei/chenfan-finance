@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfClearBankDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfClearBankDetail">
+        <id column="clear_bank_detail_id" property="clearBankDetailId" />
+        <result column="clear_id" property="clearId" />
+        <result column="bank_and_cash_id" property="bankAndCashId" />
+        <result column="record_seq_no" property="recordSeqNo" />
+        <result column="record_type" property="recordType" />
+        <result column="amount" property="amount" />
+        <result column="balance_balance" property="balanceBalance" />
+        <result column="last_balance" property="lastBalance" />
+        <result column="arap_type" property="arapType" />
+        <result column="arap_date" property="arapDate" />
+        <result column="payment_branch" property="paymentBranch" />
+        <result column="remark" property="remark" />
+        <result column="create_date" property="createDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        clear_bank_detail_id, clear_id, bank_and_cash_id, record_seq_no, record_type, amount, balance_balance, last_balance, arap_type, arap_date, payment_branch, remark, create_date
+    </sql>
+
+</mapper>

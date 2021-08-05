@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocExpendOrderMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocExpendOrder">
+    <id column="oid" jdbcType="VARCHAR" property="oid" />
+    <result column="finance_no" jdbcType="VARCHAR" property="financeNo" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="total_share_amount" jdbcType="DECIMAL" property="totalShareAmount" />
+    <result column="detail_received" jdbcType="DECIMAL" property="detailReceived" />
+    <result column="total_amt_after_share" jdbcType="DECIMAL" property="totalAmtAfterShare" />
+    <result column="shop_alipay_account" jdbcType="VARCHAR" property="shopAlipayAccount" />
+    <result column="pay_date" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="received_date" jdbcType="TIMESTAMP" property="receivedDate" />
+    <result column="sale_qty" jdbcType="INTEGER" property="saleQty" />
+    <result column="sale_spec_no" jdbcType="VARCHAR" property="saleSpecNo" />
+    <result column="sale_goods_no" jdbcType="VARCHAR" property="saleGoodsNo" />
+    <result column="sale_goods_name" jdbcType="VARCHAR" property="saleGoodsName" />
+    <result column="sale_spec_name" jdbcType="VARCHAR" property="saleSpecName" />
+    <result column="refund_qyt" jdbcType="INTEGER" property="refundQyt" />
+    <result column="check_type" jdbcType="INTEGER" property="checkType" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="refund_no" jdbcType="VARCHAR" property="refundNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oid, finance_no, tid, total_share_amount, detail_received, total_amt_after_share, 
+    shop_alipay_account, pay_date, received_date, sale_qty, sale_spec_no, sale_goods_no, 
+    sale_goods_name, sale_spec_name, refund_qyt, check_type, price, refund_no,create_order_date,shop_id,trade_no
+  </sql>
+<!--updateOrderNo-->
+  <update id="updateOrderNo" >
+    update toc_expend_order
+    set order_no=#{orderNo}
+    <where>
+        oid in
+      <foreach collection="oids" item="item" index="index" separator="," open="(" close=")">
+        #{item}
+      </foreach>
+    </where>
+  </update>
+
+  <!--    int insertList(List<TocExpendOrder> list);-->
+  <insert id="insertList" parameterType="list">
+    insert into toc_expend_order (  oid,finance_no, tid, total_share_amount,
+      detail_received, total_amt_after_share, shop_alipay_account,
+      pay_date, received_date, sale_qty,
+      sale_spec_no, sale_goods_no, sale_goods_name,
+      sale_spec_name, refund_qyt, check_type,
+      price, refund_no,create_order_date,stock_out_date,shop_id,trade_no)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.oid},#{item.financeNo,jdbcType=VARCHAR}, #{item.tid,jdbcType=VARCHAR}, #{item.totalShareAmount,jdbcType=DECIMAL},
+      #{item.detailReceived,jdbcType=DECIMAL}, #{item.totalAmtAfterShare,jdbcType=DECIMAL}, #{item.shopAlipayAccount,jdbcType=VARCHAR},
+      #{item.payDate,jdbcType=TIMESTAMP}, #{item.receivedDate,jdbcType=TIMESTAMP}, #{item.saleQty,jdbcType=INTEGER},
+      #{item.saleSpecNo,jdbcType=VARCHAR}, #{item.saleGoodsNo,jdbcType=VARCHAR}, #{item.saleGoodsName,jdbcType=VARCHAR},
+      #{item.saleSpecName,jdbcType=VARCHAR}, #{item.refundQyt,jdbcType=INTEGER}, #{item.checkType,jdbcType=INTEGER},
+      #{item.price,jdbcType=DECIMAL}, #{item.refundNo,jdbcType=VARCHAR},#{item.createOrderDate},
+      #{item.stockOutDate},#{item.shopId},#{item.tradeNo})
+    </foreach>
+  </insert>
+
+  <select id="getRefundNoOfUsedByTids" resultType="string">
+    select  refund_no
+    from   `toc_expend_order`
+    where  tid in
+    <foreach collection="tids" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  refund_no is not null
+  </select>
+  <select id="getExpend" resultType="com.chenfan.finance.model.bo.TocU8Detail">
+    select
+      sale_goods_no as spuCode,
+      sale_spec_no as skuCode,
+      sale_spec_name as skuName,
+      sale_goods_name as spuName,
+      GROUP_CONCAT( oid ) as oids,
+      SUM( total_amt_after_share ) as totalMoney,
+      SUM( 0-IFNULL(refund_qyt,0) ) as skuCount,
+      1 as havaRefundFinance
+    from toc_expend_order
+    where
+    shop_alipay_account IN
+    <foreach collection="shopAccounts" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  check_type in
+    <foreach collection="checkTypes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND received_date <![CDATA[ >= ]]>  #{start,jdbcType=TIMESTAMP} and  received_date <![CDATA[ < ]]> #{end,jdbcType=TIMESTAMP}
+    GROUP BY
+    sale_goods_no,
+    sale_spec_no
+  </select>
+  <!--getExpendOfOther-->
+  <select id="getExpendOfOther" resultType="com.chenfan.finance.model.bo.TocU8Detail">
+    select
+    CONCAT('OT000001',check_type) as spuCode,
+    CONCAT('OT0000011',check_type)  as skuCode,
+    CONCAT('退差价或者补偿——自定义',check_type)  as skuName,
+    CONCAT('退差价或者补偿——自定义',check_type)  as spuName,
+    GROUP_CONCAT( oid ) as oids,
+    SUM( total_amt_after_share ) as totalMoney,
+    SUM( -1 ) as skuCount,
+    1 as havaRefundFinance
+    from toc_expend_order
+    where
+    shop_alipay_account IN
+    <foreach collection="shopAccounts" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  check_type in
+    <foreach collection="checkTypes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND received_date <![CDATA[ >= ]]>  #{start,jdbcType=TIMESTAMP} and  received_date <![CDATA[ < ]]> #{end,jdbcType=TIMESTAMP}
+    GROUP BY check_type
+  </select>
+  <select id="getExpendOfIncomeRefund" resultType="com.chenfan.finance.model.bo.TocU8Detail">
+    SELECT
+    sale_goods_no as spuCode,
+    sale_spec_no as skuCode,
+    sale_spec_name as skuName,
+    sale_goods_name as spuName,
+    GROUP_CONCAT( oid ) as oids,
+    SUM( 0-total_amt_refund ) as totalMoney,
+    SUM( 0-refund_qyt ) as skuCount,
+    0 as  havaRefundFinance
+    FROM
+    `toc_income_order`
+    WHERE
+    shop_alipay_account IN
+    <foreach collection="shopAccounts" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  check_type in
+    <foreach collection="checkTypes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  received_date <![CDATA[ >= ]]>  #{start,jdbcType=TIMESTAMP} and  received_date <![CDATA[ < ]]> #{end,jdbcType=TIMESTAMP}
+    AND total_amt_refund <![CDATA[ <> ]]> 0
+    GROUP BY
+    sale_goods_no,
+    sale_spec_no
+  </select>
+  <select id="getExpendOfIncomeEquity" resultType="com.chenfan.finance.model.bo.TocU8Detail">
+    SELECT
+    CONCAT('EQ000001',check_type) as spuCode,
+    CONCAT('EQ0000011',check_type)  as skuCode,
+    CONCAT('权益金——自定义',check_type)  as skuName,
+    CONCAT('权益金——自定义',check_type)  as spuName,
+    GROUP_CONCAT( oid ) as oids,
+    SUM( 0-total_amt_equity ) as totalMoney,
+    SUM( -1 ) as skuCount,
+    0 as  havaRefundFinance
+    FROM
+    `toc_income_order`
+    WHERE
+    shop_alipay_account IN
+    <foreach collection="shopAccounts" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  check_type in
+    <foreach collection="checkTypes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND received_date <![CDATA[ >= ]]>  #{start,jdbcType=TIMESTAMP} and  received_date <![CDATA[ < ]]> #{end,jdbcType=TIMESTAMP}
+    AND total_amt_equity <![CDATA[ <> ]]> 0
+    GROUP BY check_type
+  </select>
+  <select id="getExpendOfIncomeOther" resultType="com.chenfan.finance.model.bo.TocU8Detail">
+    SELECT
+    CONCAT('OT000001',check_type) as spuCode,
+    CONCAT('OT0000011',check_type)  as skuCode,
+    CONCAT('差价或者补偿——自定义',check_type)  as skuName,
+    CONCAT('差价或者补偿——自定义',check_type)  as spuName,
+    GROUP_CONCAT( oid ) as oids,
+    SUM( 0-total_amt_refund ) as totalMoney,
+    SUM( -1 ) as skuCount,
+    0 as  havaRefundFinance
+    FROM
+    `toc_income_order`
+    WHERE
+    shop_alipay_account IN
+    <foreach collection="shopAccounts" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND  check_type in
+    <foreach collection="checkTypes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND received_date <![CDATA[ >= ]]>  #{start,jdbcType=TIMESTAMP} and  received_date <![CDATA[ < ]]> #{end,jdbcType=TIMESTAMP}
+    AND total_amt_refund <![CDATA[ <> ]]> 0
+    GROUP BY check_type
+  </select>
+
+  <!--selectListByOids-->
+  <select id="selectListByOids" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from toc_expend_order
+    WHERE oid in
+    <foreach collection="oids" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+</mapper>

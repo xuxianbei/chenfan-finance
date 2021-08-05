@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfPoDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfPoDetail">
+        <id column="po_detail_id" property="poDetailId" />
+        <result column="po_id" property="poId" />
+        <result column="po_code" property="poCode" />
+        <result column="inventory_id" property="inventoryId" />
+        <result column="inventory_code" property="inventoryCode" />
+        <result column="product_code" property="productCode" />
+
+        <result column="tax_unit_price" property="taxUnitPrice" />
+        <result column="unit_price" property="unitPrice" />
+        <result column="tax_rate" property="taxRate" />
+        <result column="free_tax_money" property="freeTaxMoney" />
+        <result column="included_tax_money" property="includedTaxMoney" />
+        <result column="tax_money" property="taxMoney" />
+        <result column="exch_name" property="exchName" />
+        <result column="con_start_date" property="conStartDate" />
+        <result column="con_end_date" property="conEndDate" />
+        <result column="gsp" property="gsp" />
+        <result column="appvouch_detail_id" property="appvouchDetailId" />
+        <result column="remark" property="remark" />
+        <result column="detail_status" property="detailStatus" />
+        <result column="is_delete" property="isDelete" />
+        <result column="markup_unit_price" property="markupUnitPrice" />
+        <result column="markup_rate" property="markupRate" />
+        <result column="return_detail_id" property="returnDetailId" />
+        <result column="update_date" property="updateDate" />
+        <result column="accessory_requisitions_info_id" property="accessoryRequisitionsInfoId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        po_detail_id, po_id, po_code, inventory_id, inventory_code, product_code, qty, tax_unit_price, unit_price, tax_rate, free_tax_money, included_tax_money, tax_money, exch_name, con_start_date, con_end_date, gsp, appvouch_detail_id, remark, detail_status, is_delete, markup_unit_price, markup_rate, return_detail_id, update_date, accessory_requisitions_info_id
+    </sql>
+
+    <select id="queryCfPoDetailExtends" resultType="com.chenfan.finance.model.vo.CfPoDetailExtendVo">
+        select
+        cpd.po_detail_id,
+        cpd.po_id,
+        cpd.po_code,
+        cpd.inventory_id,
+        cpd.inventory_code,
+        cpd.product_code,
+        cpd.tax_unit_price,
+        cpd.unit_price,
+        cpd.tax_rate,
+        cpd.free_tax_money,
+        cpd.included_tax_money,
+        cpd.tax_money,
+        cpd.exch_name,
+        cpd.con_start_date,
+        cpd.con_end_date,
+        cpd.gsp,
+        cpd.appvouch_detail_id,
+        cpd.remark,
+        cpd.detail_status,
+        cpd.is_delete,
+        cpd.markup_unit_price,
+        cpd.markup_rate,
+        cpd.return_detail_id,
+        cpd.update_date,
+        cpd.accessory_requisitions_info_id ,
+            cph.po_type,
+            cph.bargain,
+            cph.retainage,
+            cph.hs_status,
+            cph.brand_id,
+            cph.vendor_id
+        from cf_po_detail cpd
+        left join cf_po_header cph on cpd.po_id = cph.po_id
+        where cpd.po_detail_id in
+        <foreach collection="poDetailIds" item="poDetailId" index="index"
+                 open="(" separator="," close=")">
+            #{poDetailId}
+        </foreach>
+    </select>
+
+    <select id="queryPoDetailByGroupConditions" resultType="com.chenfan.finance.model.CfPoDetail">
+        select c.* from cf_po_detail c
+        where c.is_delete = 0
+        and c.tax_unit_price = #{taxUnitPrice}
+        and c.tax_rate = #{taxRate}
+        and c.product_code = #{productCode}
+        limit 1
+    </select>
+
+
+    <select id="selectDiffOfOriginal" resultMap="BaseResultMap">
+           select
+            cpd.po_detail_id,
+            cpd.po_id,
+            cpd.po_code,
+            cpd.inventory_id,
+            cpd.inventory_code,
+            cpd.product_code,
+            cpd.tax_unit_price,
+            cpd.unit_price,
+            cpd.tax_rate,
+            cpd.free_tax_money,
+            cpd.included_tax_money,
+            cpd.tax_money,
+            cpd.exch_name,
+            cpd.con_start_date,
+            cpd.con_end_date,
+            cpd.gsp,
+            cpd.appvouch_detail_id,
+            cpd.remark,
+            cpd.detail_status,
+            cpd.is_delete,
+            cpd.markup_unit_price,
+            cpd.markup_rate,
+            cpd.return_detail_id,
+            cpd.update_date,
+            cpd.accessory_requisitions_info_id
+             FROM `${eopofa}`.cf_po_detail  `cpd` LEFT JOIN  `${plm}`.po_detail  `pd` on `cpd`.po_detail_id=`pd`.po_detail_id
+            left join `${eopofa}`.cf_po_header cph on cpd.po_id = cph.po_id
+             where (cpd.tax_unit_price &lt;&gt; `pd`.tax_unit_price
+             or cpd.unit_price &lt;&gt; `pd`.unit_price
+             or cpd.markup_unit_price &lt;&gt; `pd`.markup_unit_price
+             or cpd.markup_rate &lt;&gt; `pd`.markup_rate)
+             and cph.create_date  BETWEEN #{startTime} AND #{endTime}
+
+    </select>
+
+</mapper>

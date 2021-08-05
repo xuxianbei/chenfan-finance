@@ -1,0 +1,812 @@
+05-18  16:55:53.496  INFO  -||- [com.alibaba.nacos.client.config.impl.LocalConfigInfoProcessor] [main] => LOCAL_SNAPSHOT_PATH:C:\Users\2797\nacos\config
+05-18  16:55:53.520  INFO  -||- [com.alibaba.nacos.client.config.impl.Limiter] [main] => limitTime:5.0
+05-18  16:55:53.535  WARN  -||- [com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder] [main] => Ignore the empty nacos configuration and get it based on dataId[cc] & group[TEST_GROUP]
+05-18  16:55:53.538  WARN  -||- [com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder] [main] => Ignore the empty nacos configuration and get it based on dataId[cc.yaml] & group[TEST_GROUP]
+05-18  16:55:53.539  INFO  -||- [com.alibaba.nacos.client.config.utils.JVMUtil] [main] => isMultiInstance:false
+05-18  16:55:53.548  INFO  -||- [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration] [main] => Located property source: [BootstrapPropertySource {name='bootstrapProperties-cc-test.yaml,TEST_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-cc.yaml,TEST_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-cc,TEST_GROUP'}]
+05-18  16:55:53.596  INFO  -||- [com.chenfan.finance.FinanceApplication] [main] => The following profiles are active: test
+05-18  16:55:54.713  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+05-18  16:55:54.716  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+05-18  16:55:54.964  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-18  16:55:54.964  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-18  16:55:55.005  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 34ms. Found 0 JPA repository interfaces.
+05-18  16:55:55.011  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-18  16:55:55.011  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+05-18  16:55:55.030  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 18ms. Found 0 MongoDB repository interfaces.
+05-18  16:55:55.039  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Multiple Spring Data modules found, entering strict repository configuration mode!
+05-18  16:55:55.040  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+05-18  16:55:55.063  INFO  -||- [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] => Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+05-18  16:55:55.119  WARN  -||- [org.springframework.boot.actuate.endpoint.EndpointId] [main] => Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+05-18  16:55:55.234  INFO  -||- [org.springframework.context.annotation.ConfigurationClassPostProcessor] [main] => Cannot enhance @Configuration bean definition 'com.chenfan.ccp.autoconfigure.GlobalMqMessageConfigure' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+05-18  16:55:55.315  INFO  -||- [org.springframework.cloud.context.scope.GenericScope] [main] => BeanFactory id=a99f0510-61d8-31da-b49e-dee2168a9b76
+05-18  16:55:55.351  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.BaseInfoRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.352  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.BaseRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.353  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.McnRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.353  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.PrivilegeUserServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.354  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.PurchaseRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.355  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.TaskRemoteServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.357  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.finance.server.VendorCenterServer' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.358  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.process.client.ProcessClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.359  INFO  -||- [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] => Bean 'com.chenfan.code.generate.CodeGenerateClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05-18  16:55:55.936  INFO  -||- [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] => Tomcat initialized with port(s): 8092 (http)
+05-18  16:55:55.944  INFO  -||- [org.apache.catalina.core.StandardService] [main] => Starting service [Tomcat]
+05-18  16:55:55.944  INFO  -||- [org.apache.catalina.core.StandardEngine] [main] => Starting Servlet engine: [Apache Tomcat/9.0.37]
+05-18  16:55:56.061  INFO  -||- [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] [main] => Initializing Spring embedded WebApplicationContext
+05-18  16:55:56.061  INFO  -||- [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] => Root WebApplicationContext: initialization completed in 2442 ms
+05-18  16:55:56.364  INFO  -||- [org.redisson.Version] [main] => Redisson 3.14.0
+05-18  16:55:56.708  INFO  -||- [org.redisson.connection.pool.MasterPubSubConnectionPool] [redisson-netty-2-21] => 1 connections initialized for /10.228.81.233:6379
+05-18  16:55:56.724  INFO  -||- [org.redisson.connection.pool.MasterConnectionPool] [redisson-netty-2-19] => 24 connections initialized for /10.228.81.233:6379
+05-18  16:55:57.207  INFO  -||- [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure] [main] => Init DruidDataSource
+05-18  16:55:57.311  WARN  -||- [com.alibaba.druid.pool.DruidDataSource] [main] => removeAbandoned is true, not use in production.
+05-18  16:55:57.427  INFO  -||- [com.alibaba.druid.pool.DruidDataSource] [main] => {dataSource-1} inited
+05-18  16:55:57.575  INFO  -||- [org.hibernate.jpa.internal.util.LogHelper] [main] => HHH000204: Processing PersistenceUnitInfo [name: default]
+05-18  16:55:57.620  INFO  -||- [org.hibernate.Version] [main] => HHH000412: Hibernate ORM core version 5.4.18.Final
+05-18  16:55:57.731  INFO  -||- [org.hibernate.annotations.common.Version] [main] => HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+05-18  16:55:57.844  INFO  -||- [org.hibernate.dialect.Dialect] [main] => HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+05-18  16:55:58.008  INFO  -||- [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] => HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+05-18  16:55:58.017  INFO  -||- [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [main] => Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-18  16:55:58.467  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.CfBankAndCashMapper.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete]
+05-18  16:55:59.045  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingDetailMapper.insert] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Insert]
+05-18  16:55:59.050  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingDetailMapper.updateById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.UpdateById]
+05-18  16:55:59.064  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingHeaderMapper.insert] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Insert]
+05-18  16:55:59.069  WARN  -||- [com.baomidou.mybatisplus.core.injector.AbstractMethod] [main] => [com.chenfan.finance.dao.RuleBillingHeaderMapper.selectById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectById]
+05-18  16:55:59.306  WARN  -||- [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] => spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-18  16:56:01.496  INFO  -||- [com.alibaba.nacos.client.naming] [main] => initializer namespace from System Property :null
+05-18  16:56:01.497  INFO  -||- [com.alibaba.nacos.client.naming] [main] => initializer namespace from System Environment :null
+05-18  16:56:01.498  INFO  -||- [com.alibaba.nacos.client.naming] [main] => initializer namespace from System Property :null
+05-18  16:56:01.609  INFO  -||- [org.mongodb.driver.cluster] [main] => Cluster created with settings {hosts=[10.228.86.202:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+05-18  16:56:01.984  INFO  -||- [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] [main] => Exposing 1 endpoint(s) beneath base path '/actuator'
+05-18  16:56:02.166  INFO  -||- [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] [main] => Initializing ExecutorService 'sheduleClearMemory'
+05-18  16:56:02.175  INFO  -||- [com.chenfan.finance.config.XxlJobConfig] [main] => >>>>>>>>>>> xxl-job config init.
+05-18  16:56:02.228  WARN  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => No URLs will be polled as dynamic configuration sources.
+05-18  16:56:02.228  INFO  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+05-18  16:56:02.232  WARN  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => No URLs will be polled as dynamic configuration sources.
+05-18  16:56:02.232  INFO  -||- [com.netflix.config.sources.URLConfigurationSource] [main] => To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+05-18  16:56:02.653  INFO  -||- [org.mongodb.driver.cluster] [cluster-ClusterId{value='60a381214aa4791cdceead9b', description='null'}-10.228.86.202:27017] => Exception in monitor thread while connecting to server 10.228.86.202:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:70)
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:128)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:117)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mongodb.internal.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:64)
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:79)
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:65)
+	... 3 common frames omitted
+05-18  16:56:03.316  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:qcTaskJob, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@2495bc30[class com.chenfan.finance.job.FinanceJob#qcTaskJob]
+05-18  16:56:03.317  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:monitoringTask, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@12bc9450[class com.chenfan.finance.job.FinanceJob#monitoringTask]
+05-18  16:56:03.317  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:cfRdCalculateTaskJob, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@571010af[class com.chenfan.finance.job.FinanceJob#cfRdCalculateTaskJob]
+05-18  16:56:03.317  INFO  -||- [com.xxl.job.core.executor.XxlJobExecutor] [main] => >>>>>>>>>>> xxl-job register jobhandler success, name:cfWdtRdCalculateTaskJob, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@12917a56[class com.chenfan.finance.job.FinanceJob#cfWdtRdCalculateTaskJob]
+05-18  16:56:03.432  INFO  -||- [com.xxl.job.core.server.EmbedServer] [Thread-86] => >>>>>>>>>>> xxl-job remoting server start success, nettype = class com.xxl.job.core.server.EmbedServer, port = 9999
+05-18  16:56:04.816  INFO  -||- [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] => Tomcat started on port(s): 8092 (http) with context path ''
+05-18  16:56:04.820  INFO  -||- [com.alibaba.nacos.client.naming] [main] => [BEAT] adding beat: {"cluster":"DEFAULT","ip":"10.228.84.57","metadata":{"preserved.register.source":"SPRING_CLOUD"},"period":5000,"port":8092,"scheduled":false,"serviceName":"TEST_GROUP@@chenfan-cloud-finance","stopped":false,"weight":1.0} to beat map.
+05-18  16:56:04.830  INFO  -||- [com.alibaba.nacos.client.naming] [main] => [REGISTER-SERVICE] test registering service TEST_GROUP@@chenfan-cloud-finance with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ip":"10.228.84.57","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8092,"weight":1.0}
+05-18  16:56:04.836  INFO  -||- [com.alibaba.cloud.nacos.registry.NacosServiceRegistry] [main] => nacos registry, TEST_GROUP chenfan-cloud-finance 10.228.84.57:8092 register finished
+05-18  16:56:04.904  INFO  -||- [com.chenfan.finance.FinanceApplication] [main] => Started FinanceApplication in 12.532 seconds (JVM running for 17.616)
+05-18  16:56:04.909  INFO  -||- [com.chenfan.finance.commons.base.FinanceProjectInitRunner] [main] => ====================== init start =======================
+05-18  16:56:04.925  INFO  -||- [com.chenfan.finance.commons.base.FinanceProjectInitRunner] [main] =>  finance_project_key : 38e31604-054f-4307-a0bb-2e53cc607248 
+05-18  16:56:04.925  INFO  -||- [com.chenfan.finance.commons.base.FinanceProjectInitRunner] [main] => ====================== init end =======================
+05-18  16:56:04.928  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [main] => [fixed-10.228.81.30_3848-test] [subscribe] cc-test.yaml+TEST_GROUP+test
+05-18  16:56:04.929  INFO  -||- [com.alibaba.nacos.client.config.impl.CacheData] [main] => [fixed-10.228.81.30_3848-test] [add-listener] ok, tenant=test, dataId=cc-test.yaml, group=TEST_GROUP, cnt=1
+05-18  16:56:04.929  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [main] => [fixed-10.228.81.30_3848-test] [subscribe] cc.yaml+TEST_GROUP+test
+05-18  16:56:04.929  INFO  -||- [com.alibaba.nacos.client.config.impl.CacheData] [main] => [fixed-10.228.81.30_3848-test] [add-listener] ok, tenant=test, dataId=cc.yaml, group=TEST_GROUP, cnt=1
+05-18  16:56:04.929  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [main] => [fixed-10.228.81.30_3848-test] [subscribe] cc+TEST_GROUP+test
+05-18  16:56:04.929  INFO  -||- [com.alibaba.nacos.client.config.impl.CacheData] [main] => [fixed-10.228.81.30_3848-test] [add-listener] ok, tenant=test, dataId=cc, group=TEST_GROUP, cnt=1
+05-18  16:56:04.931  INFO  -||- [com.chenfan.ccp.util.start.ApplicationContextUtil] [main] => ======================================================================================
+05-18  16:56:04.931  INFO  -||- [com.chenfan.ccp.util.start.ApplicationContextUtil] [main] =>                                                                                       
+05-18  16:56:04.931  INFO  -||- [com.chenfan.ccp.util.start.ApplicationContextUtil] [main] => ................................服务启动成功,端口为8092................................
+05-18  16:56:04.931  INFO  -||- [com.chenfan.ccp.util.start.ApplicationContextUtil] [main] => ................................日志保存路径为: ./log/................................
+05-18  16:56:04.932  INFO  -||- [com.chenfan.ccp.util.start.ApplicationContextUtil] [main] =>                                                                                       
+05-18  16:56:04.932  INFO  -||- [com.chenfan.ccp.util.start.ApplicationContextUtil] [main] => ======================================================================================
+05-18  16:56:04.938  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:56:05.136  INFO  -||- [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] [RMI TCP Connection(2)-10.228.84.57] => Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-18  16:56:05.136  INFO  -||- [org.springframework.web.servlet.DispatcherServlet] [RMI TCP Connection(2)-10.228.84.57] => Initializing Servlet 'dispatcherServlet'
+05-18  16:56:05.157  INFO  -||- [org.springframework.web.servlet.DispatcherServlet] [RMI TCP Connection(2)-10.228.84.57] => Completed initialization in 20 ms
+05-18  16:56:05.193  INFO  -||- [org.mongodb.driver.cluster] [RMI TCP Connection(1)-10.228.84.57] => Cluster description not yet available. Waiting for 30000 ms before timing out
+05-18  16:56:34.639  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:56:35.197  WARN  -||- [org.springframework.boot.actuate.mongo.MongoHealthIndicator] [RMI TCP Connection(1)-10.228.84.57] => MongoDB health check failed
+org.springframework.dao.DataAccessResourceFailureException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=10.228.86.202:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]; nested exception is com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=10.228.86.202:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]
+	at org.springframework.data.mongodb.core.MongoExceptionTranslator.translateExceptionIfPossible(MongoExceptionTranslator.java:90)
+	at org.springframework.data.mongodb.core.MongoTemplate.potentiallyConvertRuntimeException(MongoTemplate.java:2902)
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:560)
+	at org.springframework.data.mongodb.core.MongoTemplate.executeCommand(MongoTemplate.java:476)
+	at org.springframework.boot.actuate.mongo.MongoHealthIndicator.doHealthCheck(MongoHealthIndicator.java:46)
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:82)
+	at org.springframework.boot.actuate.health.HealthIndicator.getHealth(HealthIndicator.java:37)
+	at org.springframework.boot.actuate.health.HealthEndpoint.getHealth(HealthEndpoint.java:81)
+	at org.springframework.boot.actuate.health.HealthEndpoint.getHealth(HealthEndpoint.java:38)
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getContribution(HealthEndpointSupport.java:108)
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getAggregateHealth(HealthEndpointSupport.java:119)
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getContribution(HealthEndpointSupport.java:105)
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getHealth(HealthEndpointSupport.java:83)
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getHealth(HealthEndpointSupport.java:70)
+	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:75)
+	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:65)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:77)
+	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:60)
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:121)
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:96)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1468)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:76)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401)
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:829)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:573)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:834)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:688)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:687)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=10.228.86.202:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]
+	at com.mongodb.internal.connection.BaseCluster.getDescription(BaseCluster.java:182)
+	at com.mongodb.internal.connection.SingleServerCluster.getDescription(SingleServerCluster.java:41)
+	at com.mongodb.client.internal.MongoClientDelegate.getConnectedClusterDescription(MongoClientDelegate.java:145)
+	at com.mongodb.client.internal.MongoClientDelegate.createClientSession(MongoClientDelegate.java:100)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.getClientSession(MongoClientDelegate.java:277)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:181)
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:186)
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:155)
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:150)
+	at org.springframework.data.mongodb.core.MongoTemplate.lambda$executeCommand$2(MongoTemplate.java:476)
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:558)
+	... 46 common frames omitted
+05-18  16:56:45.485  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================\\                      
+05-18  16:56:45.485  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] => ========================\\                      
+05-18  16:56:45.485  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] =>                          \\                     
+05-18  16:56:45.486  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          \\                     
+05-18  16:56:45.486  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] =>                           \\                    
+05-18  16:56:45.486  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           \\                    
+05-18  16:56:45.486  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestURI:        /invoice/common/list
+05-18  16:56:45.486  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] => RequestURI:        /charge/common/balance
+05-18  16:56:45.631  DEBUG -|MbY7BzgQUvMyNjXv|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-1] => ==>  Preparing: SELECT balance FROM cf_charge_common GROUP BY balance
+05-18  16:56:45.655  DEBUG -|MbY7BzgQUvMyNj4C|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList_COUNT] [http-nio-8092-exec-2] => ==>  Preparing: SELECT count(0) FROM cf_invoice_header WHERE (job_type = ?)
+05-18  16:56:45.656  DEBUG -|MbY7BzgQUvMyNjXv|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-1] => ==> Parameters: 
+05-18  16:56:45.664  DEBUG -|MbY7BzgQUvMyNj4C|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList_COUNT] [http-nio-8092-exec-2] => ==> Parameters: 3(Integer)
+05-18  16:56:45.668  DEBUG -|MbY7BzgQUvMyNj4C|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList_COUNT] [http-nio-8092-exec-2] => <==      Total: 1
+05-18  16:56:45.669  INFO  -|MbY7BzgQUvMyNj4C|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-2] =>     [sql]: ==> SELECT count(0) FROM cf_invoice_header WHERE (job_type = 3) <==   |   [time]: ==> 12 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [158]  <==
+05-18  16:56:45.670  DEBUG -|MbY7BzgQUvMyNj4C|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList] [http-nio-8092-exec-2] => ==>  Preparing: SELECT invoice_id,invoice_no,invoice_status,customer_invoice_status,customer_invoice_way,invoice_type,job_type,contract_url,finance_entity,brand_id,balance,balance_name,invoice_title,invoice_title_name,bank,bank_accounts,invoice_currency_code,invoice_exchange_rate,invoicel_debit,invoicel_credit,arap_date,invoice_date,invoice_by,remark,create_by,create_date,create_name,update_by,update_date,u8_state,update_name,company_id,tenant_id,clear_status,clear_amount,adjust_delay_money,adjust_qc_money,adjust_red_money,adjust_tax_money,adjust_other_money,adjust_real_money,date_start,date_end,reviewer,reviewer_date,advance_pay_money,account_id,account_name,account_type,flow_id,settle_create_date,settle_title,settle_description,settle_template FROM cf_invoice_header WHERE (job_type = ?) ORDER BY create_date DESC LIMIT ?
+05-18  16:56:45.671  DEBUG -|MbY7BzgQUvMyNjXv|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-1] => <==      Total: 47
+05-18  16:56:45.672  INFO  -|MbY7BzgQUvMyNjXv|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-1] =>     [sql]: ==> SELECT balance FROM cf_charge_common GROUP BY balance <==   |   [time]: ==> 20 ms <==   |   [size]: ==> 47 <==   |   [result]: ==> [CfChargeCommon(char ...  <==
+05-18  16:56:45.684  DEBUG -|MbY7BzgQUvMyNj4C|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList] [http-nio-8092-exec-2] => ==> Parameters: 3(Integer), 30(Integer)
+05-18  16:56:45.692  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] => RequestParams:     
+05-18  16:56:45.693  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] => Total:             209ms
+05-18  16:56:45.693  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] =>                           //                      
+05-18  16:56:45.693  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] =>                          //                       
+05-18  16:56:45.693  INFO  -|MbY7BzgQUvMyNjXv|- [HTTP_LOG] [http-nio-8092-exec-1] => ========================//                        
+
+
+
+05-18  16:56:45.705  DEBUG -|MbY7BzgQUvMyNj4C|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList] [http-nio-8092-exec-2] => <==      Total: 30
+05-18  16:56:45.706  INFO  -|MbY7BzgQUvMyNj4C|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-2] =>     [sql]: ==> select * from cf_invoice_header where (job_type = 3) order by create_date desc limit 30  <==   |   [time]: ==> 34 ms <==   |   [size]: ==> 30 <==   |   [result]: ==> [CfInvoiceHeader(inv ...  <==
+05-18  16:56:45.727  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================\\                      
+05-18  16:56:45.727  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          \\                     
+05-18  16:56:45.727  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           \\                    
+05-18  16:56:45.728  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestURI:        /charge/common/finance/entity
+05-18  16:56:45.729  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestParams:     340705523818200={"total":0,"pageSize":30,"pageNum":1,"accountIds":[]}
+05-18  16:56:45.729  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] => Total:             245ms
+05-18  16:56:45.729  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           //                      
+05-18  16:56:45.730  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          //                       
+05-18  16:56:45.730  INFO  -|MbY7BzgQUvMyNj4C|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================//                        
+
+
+
+05-18  16:56:45.738  DEBUG -|MbY7BzgQUvMyNjJj|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-6] => ==>  Preparing: SELECT finance_entity FROM cf_charge_common GROUP BY finance_entity
+05-18  16:56:45.741  DEBUG -|MbY7BzgQUvMyNjJj|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-6] => ==> Parameters: 
+05-18  16:56:45.747  DEBUG -|MbY7BzgQUvMyNjJj|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-6] => <==      Total: 10
+05-18  16:56:45.747  INFO  -|MbY7BzgQUvMyNjJj|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> SELECT finance_entity FROM cf_charge_common GROUP BY finance_entity <==   |   [time]: ==> 8 ms <==   |   [size]: ==> 10 <==   |   [result]: ==> [CfChargeCommon(char ...  <==
+05-18  16:56:45.748  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestParams:     entity=
+05-18  16:56:45.748  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] => Total:             21ms
+05-18  16:56:45.749  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           //                      
+05-18  16:56:45.749  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          //                       
+05-18  16:56:45.749  INFO  -|MbY7BzgQUvMyNjJj|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================//                        
+
+
+
+05-18  16:57:04.143  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:57:33.646  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:58:03.148  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:58:31.396  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] => ========================\\                      
+05-18  16:58:31.396  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] =>                          \\                     
+05-18  16:58:31.397  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] =>                           \\                    
+05-18  16:58:31.397  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] => RequestURI:        /charge/common/getMcnCharge
+05-18  16:58:31.401  DEBUG -|bQFJ3agQUvMyNjwK|- [com.chenfan.finance.dao.CfChargeCommonMapper.getMcnCharge] [http-nio-8092-exec-3] => ==>  Preparing: select charge_id, charge_code, charge_source_type, charge_type, check_status, arap_type, charge_source_code, charge_source_detail, amount_pp, balance, finance_entity, tax_invoice_no, invoice_no, create_by, create_name, create_date, brand_id from cf_charge_common where charge_source_type = 3 and check_status != 0 and charge_source_code = ?
+05-18  16:58:31.405  DEBUG -|bQFJ3agQUvMyNjwK|- [com.chenfan.finance.dao.CfChargeCommonMapper.getMcnCharge] [http-nio-8092-exec-3] => ==> Parameters: SR2105180009(String)
+05-18  16:58:31.408  DEBUG -|bQFJ3agQUvMyNjwK|- [com.chenfan.finance.dao.CfChargeCommonMapper.getMcnCharge] [http-nio-8092-exec-3] => <==      Total: 0
+05-18  16:58:31.409  INFO  -|bQFJ3agQUvMyNjwK|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-3] =>     [sql]: ==> select * from cf_charge_common where charge_source_type = 3 and check_status != 0 and charge_source_code = 'sr2105180009' <==   |   [time]: ==> 6 ms <==   |   [size]: ==> 0 <==   |   [result]: ==> []  <==
+05-18  16:58:31.410  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] => RequestParams:     chargeSourceCode=SR2105180009
+05-18  16:58:31.410  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] => Total:             14ms
+05-18  16:58:31.410  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] =>                           //                      
+05-18  16:58:31.410  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] =>                          //                       
+05-18  16:58:31.410  INFO  -|bQFJ3agQUvMyNjwK|- [HTTP_LOG] [http-nio-8092-exec-3] => ========================//                        
+
+
+
+05-18  16:58:32.653  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:59:02.155  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:59:31.658  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  16:59:34.945  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================\\                      
+05-18  16:59:34.945  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          \\                     
+05-18  16:59:34.945  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           \\                    
+05-18  16:59:34.946  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestURI:        /toc/getDataOfSuccess
+05-18  16:59:34.967  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestParams:     
+05-18  16:59:34.967  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] => Total:             22ms
+05-18  16:59:34.967  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           //                      
+05-18  16:59:34.967  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          //                       
+05-18  16:59:34.967  INFO  -|MvyIBzgQUvMyNjtk|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================//                        
+
+
+
+05-18  16:59:47.071  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] => ========================\\                      
+05-18  16:59:47.071  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] =>                          \\                     
+05-18  16:59:47.072  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] =>                           \\                    
+05-18  16:59:47.072  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] => RequestURI:        /toc/getDataOfSuccess
+05-18  16:59:47.083  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] => RequestParams:     
+05-18  16:59:47.083  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] => Total:             12ms
+05-18  16:59:47.083  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] =>                           //                      
+05-18  16:59:47.083  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] =>                          //                       
+05-18  16:59:47.083  INFO  -|MvyIBzgQUvMyNjCd|- [HTTP_LOG] [http-nio-8092-exec-10] => ========================//                        
+
+
+
+05-18  17:00:01.162  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:00:30.664  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:00:45.607  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================\\                      
+05-18  17:00:45.607  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          \\                     
+05-18  17:00:45.607  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           \\                    
+05-18  17:00:45.608  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestURI:        /toc/getDataOfSuccess
+05-18  17:00:45.617  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestParams:     
+05-18  17:00:45.618  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] => Total:             11ms
+05-18  17:00:45.618  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           //                      
+05-18  17:00:45.618  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          //                       
+05-18  17:00:45.618  INFO  -|MvyIBzgQUvMyNjcs|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================//                        
+
+
+
+05-18  17:00:49.878  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================\\                      
+05-18  17:00:49.880  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          \\                     
+05-18  17:00:49.880  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           \\                    
+05-18  17:00:49.881  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestURI:        /bank_and_cash/createNameList
+05-18  17:00:49.899  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] => ========================\\                      
+05-18  17:00:49.900  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] =>                          \\                     
+05-18  17:00:49.901  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] =>                           \\                    
+05-18  17:00:49.902  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] => RequestURI:        /charge/common/finance/entity
+05-18  17:00:49.918  DEBUG -|MbY7BzfgWHX2a19I|- [com.chenfan.finance.dao.CfBankAndCashMapper.selectList] [http-nio-8092-exec-6] => ==>  Preparing: SELECT create_by,create_name FROM cf_bank_and_cash GROUP BY create_name
+05-18  17:00:49.922  DEBUG -|MbY7BzfgWHX2a19I|- [com.chenfan.finance.dao.CfBankAndCashMapper.selectList] [http-nio-8092-exec-6] => ==> Parameters: 
+05-18  17:00:49.925  DEBUG -|MbY7BzfgWHX2a1ol|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-4] => ==>  Preparing: SELECT finance_entity FROM cf_charge_common GROUP BY finance_entity
+05-18  17:00:49.928  DEBUG -|MbY7BzfgWHX2a19I|- [com.chenfan.finance.dao.CfBankAndCashMapper.selectList] [http-nio-8092-exec-6] => <==      Total: 24
+05-18  17:00:49.928  DEBUG -|MbY7BzfgWHX2a1ol|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-4] => ==> Parameters: 
+05-18  17:00:49.929  INFO  -|MbY7BzfgWHX2a19I|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> SELECT create_by,create_name FROM cf_bank_and_cash GROUP BY create_name <==   |   [time]: ==> 9 ms <==   |   [size]: ==> 24 <==   |   [result]: ==> [CfBankAndCash(bankA ...  <==
+05-18  17:00:49.931  DEBUG -|MbY7BzfgWHX2a1ol|- [com.chenfan.finance.dao.CfChargeCommonMapper.selectList] [http-nio-8092-exec-4] => <==      Total: 10
+05-18  17:00:49.932  INFO  -|MbY7BzfgWHX2a1ol|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> SELECT finance_entity FROM cf_charge_common GROUP BY finance_entity <==   |   [time]: ==> 6 ms <==   |   [size]: ==> 10 <==   |   [result]: ==> [CfChargeCommon(char ...  <==
+05-18  17:00:49.933  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] => RequestParams:     entity=
+05-18  17:00:49.933  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] => Total:             34ms
+05-18  17:00:49.933  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] =>                           //                      
+05-18  17:00:49.933  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] =>                          //                       
+05-18  17:00:49.933  INFO  -|MbY7BzfgWHX2a1ol|- [HTTP_LOG] [http-nio-8092-exec-4] => ========================//                        
+
+
+
+05-18  17:00:49.940  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestParams:     
+05-18  17:00:49.940  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] => Total:             62ms
+05-18  17:00:49.940  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           //                      
+05-18  17:00:49.940  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          //                       
+05-18  17:00:49.940  INFO  -|MbY7BzfgWHX2a19I|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================//                        
+
+
+
+05-18  17:01:00.168  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:01:00.289  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] => ========================\\                      
+05-18  17:01:00.290  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] =>                          \\                     
+05-18  17:01:00.290  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] =>                           \\                    
+05-18  17:01:00.290  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] => RequestURI:        /bank_and_cash/getList
+05-18  17:01:00.310  INFO  -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.controller.CfBankAndCashController] [http-nio-8092-exec-7] => 进入方法>>实收付款列表查询...
+05-18  17:01:00.310  INFO  -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.controller.CfBankAndCashController] [http-nio-8092-exec-7] => 获取的关联的brandIds:[2, 3, 4, 8, 21, 22, 23, 24, 26, 27, 28, 29, 31, 32, 36, 39, 42, 52, 62, 63, 64, 65, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94],companyIds:[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1364035393439141890, 1369849143844270081, 1369942603104301057, 1381447836503117825, 1],userIds:null
+05-18  17:01:00.311  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================\\                      
+05-18  17:01:00.311  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          \\                     
+05-18  17:01:00.311  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           \\                    
+05-18  17:01:00.312  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestURI:        /bank_and_cash/payment/branch
+05-18  17:01:00.323  DEBUG -|MbY7BzfgWHX2a1X9|- [com.chenfan.finance.dao.CfBankAndCashMapper.selectList] [http-nio-8092-exec-8] => ==>  Preparing: SELECT payment_branch FROM cf_bank_and_cash GROUP BY payment_branch
+05-18  17:01:00.331  DEBUG -|MbY7BzfgWHX2a1X9|- [com.chenfan.finance.dao.CfBankAndCashMapper.selectList] [http-nio-8092-exec-8] => ==> Parameters: 
+05-18  17:01:00.338  DEBUG -|MbY7BzfgWHX2a1X9|- [com.chenfan.finance.dao.CfBankAndCashMapper.selectList] [http-nio-8092-exec-8] => <==      Total: 96
+05-18  17:01:00.340  INFO  -|MbY7BzfgWHX2a1X9|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> SELECT payment_branch FROM cf_bank_and_cash GROUP BY payment_branch <==   |   [time]: ==> 15 ms <==   |   [size]: ==> 96 <==   |   [result]: ==> [null, CfBankAndCash ...  <==
+05-18  17:01:00.343  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestParams:     
+05-18  17:01:00.343  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] => Total:             32ms
+05-18  17:01:00.344  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           //                      
+05-18  17:01:00.344  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          //                       
+05-18  17:01:00.344  INFO  -|MbY7BzfgWHX2a1X9|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================//                        
+
+
+
+05-18  17:01:00.345  DEBUG -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.dao.CfBankAndCashMapper.getList] [http-nio-8092-exec-7] => ==>  Preparing: select bank_and_cash_id, record_seq_no, record_type, arap_type, job_type, DATE_FORMAT(arap_date, '%Y-%m-%d') arap_date, brand_id, bank_and_cash_status, balance, collection_unit, bank, bank_no, amount, balance_balance, check_date, clear_no, check_no, record_user, charges_remark, account_in_date, account_in_user, payment_branch, outgo_bank, outgo_bankno, outgo_confirm_user, remark, company_id, create_by, create_name, create_date, update_by, update_name, update_date, currency_code, balance_name , (case when bac.balance_balance = bac.amount then '未核销' when bac.balance_balance = 0 then '全部核销' when bac.balance_balance > 0 and bac.balance_balance < bac.amount then '部分核销' else '金额出错' END ) as clear_status from cf_bank_and_cash bac WHERE bac.bank_and_cash_status != 0 AND bac.job_type in ( ? , ? ) AND bac.company_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) AND bac.brand_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) order by create_date desc limit ?, ?
+05-18  17:01:00.357  DEBUG -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.dao.CfBankAndCashMapper.getList] [http-nio-8092-exec-7] => ==> Parameters: 1(Integer), 2(Integer), 2(Long), 3(Long), 4(Long), 5(Long), 6(Long), 7(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 1364035393439141890(Long), 1369849143844270081(Long), 1369942603104301057(Long), 1381447836503117825(Long), 1(Long), 2(Integer), 3(Integer), 4(Integer), 8(Integer), 21(Integer), 22(Integer), 23(Integer), 24(Integer), 26(Integer), 27(Integer), 28(Integer), 29(Integer), 31(Integer), 32(Integer), 36(Integer), 39(Integer), 42(Integer), 52(Integer), 62(Integer), 63(Integer), 64(Integer), 65(Integer), 67(Integer), 68(Integer), 69(Integer), 71(Integer), 72(Integer), 73(Integer), 74(Integer), 75(Integer), 76(Integer), 77(Integer), 78(Integer), 79(Integer), 80(Integer), 81(Integer), 82(Integer), 83(Integer), 84(Integer), 85(Integer), 86(Integer), 87(Integer), 88(Integer), 89(Integer), 90(Integer), 91(Integer), 92(Integer), 93(Integer), 94(Integer), 0(Integer), 30(Integer)
+05-18  17:01:00.372  DEBUG -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.dao.CfBankAndCashMapper.getList] [http-nio-8092-exec-7] => <==      Total: 30
+05-18  17:01:00.374  INFO  -|MbY7BzfgWHX2a1AJ|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-7] =>     [sql]: ==> select * from cf_bank_and_cash bac where bac.bank_and_cash_status != 0 and bac.job_type in ( 1 , 2 ) and bac.company_id in ( 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 1364035393439141890 , 1369849143844270081 , 1369942603104301057 , 1381447836503117825 , 1 ) and bac.brand_id in ( 2 , 3 , 4 , 8 , 21 , 22 , 23 , 24 , 26 , 27 , 28 , 29 , 31 , 32 , 36 , 39 , 42 , 52 , 62 , 63 , 64 , 65 , 67 , 68 , 69 , 71 , 72 , 73 , 74 , 75 , 76 , 77 , 78 , 79 , 80 , 81 , 82 , 83 , 84 , 85 , 86 , 87 , 88 , 89 , 90 , 91 , 92 , 93 , 94 ) order by create_date desc limit 0, 30 <==   |   [time]: ==> 25 ms <==   |   [size]: ==> 30 <==   |   [result]: ==> [CfBankAndCashListSh ...  <==
+05-18  17:01:00.382  DEBUG -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.dao.CfBankAndCashMapper.count] [http-nio-8092-exec-7] => ==>  Preparing: select count(*) from cf_bank_and_cash bac WHERE bac.bank_and_cash_status != 0 AND bac.company_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) AND bac.brand_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )
+05-18  17:01:00.391  DEBUG -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.dao.CfBankAndCashMapper.count] [http-nio-8092-exec-7] => ==> Parameters: 2(Long), 3(Long), 4(Long), 5(Long), 6(Long), 7(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 1364035393439141890(Long), 1369849143844270081(Long), 1369942603104301057(Long), 1381447836503117825(Long), 1(Long), 2(Integer), 3(Integer), 4(Integer), 8(Integer), 21(Integer), 22(Integer), 23(Integer), 24(Integer), 26(Integer), 27(Integer), 28(Integer), 29(Integer), 31(Integer), 32(Integer), 36(Integer), 39(Integer), 42(Integer), 52(Integer), 62(Integer), 63(Integer), 64(Integer), 65(Integer), 67(Integer), 68(Integer), 69(Integer), 71(Integer), 72(Integer), 73(Integer), 74(Integer), 75(Integer), 76(Integer), 77(Integer), 78(Integer), 79(Integer), 80(Integer), 81(Integer), 82(Integer), 83(Integer), 84(Integer), 85(Integer), 86(Integer), 87(Integer), 88(Integer), 89(Integer), 90(Integer), 91(Integer), 92(Integer), 93(Integer), 94(Integer)
+05-18  17:01:00.396  DEBUG -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.dao.CfBankAndCashMapper.count] [http-nio-8092-exec-7] => <==      Total: 1
+05-18  17:01:00.396  INFO  -|MbY7BzfgWHX2a1AJ|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-7] =>     [sql]: ==> select count(*) from cf_bank_and_cash bac WHERE bac.bank_and_cash_status != 0 AND bac.company_id in ( 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 1364035393439141890 , 1369849143844270081 , 1369942603104301057 , 1381447836503117825 , 1 ) AND bac.brand_id in ( 2 , 3 , 4 , 8 , 21 , 22 , 23 , 24 , 26 , 27 , 28 , 29 , 31 , 32 , 36 , 39 , 42 , 52 , 62 , 63 , 64 , 65 , 67 , 68 , 69 , 71 , 72 , 73 , 74 , 75 , 76 , 77 , 78 , 79 , 80 , 81 , 82 , 83 , 84 , 85 , 86 , 87 , 88 , 89 , 90 , 91 , 92 , 93 , 94 ) <==   |   [time]: ==> 13 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [420]  <==
+05-18  17:01:00.397  INFO  -|MbY7BzfgWHX2a1AJ|- [com.chenfan.finance.controller.CfBankAndCashController] [http-nio-8092-exec-7] => 退出方法>>实收付款列表查询...
+05-18  17:01:00.406  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] => RequestParams:     
+05-18  17:01:00.407  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] => Total:             118ms
+05-18  17:01:00.407  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] =>                           //                      
+05-18  17:01:00.407  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] =>                          //                       
+05-18  17:01:00.407  INFO  -|MbY7BzfgWHX2a1AJ|- [HTTP_LOG] [http-nio-8092-exec-7] => ========================//                        
+
+
+
+05-18  17:01:15.013  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] => ========================\\                      
+05-18  17:01:15.013  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] =>                          \\                     
+05-18  17:01:15.014  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] =>                           \\                    
+05-18  17:01:15.014  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] => RequestURI:        /invoice/common/list
+05-18  17:01:15.024  DEBUG -|MbY7BzfgWHX2a1AW|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList_COUNT] [http-nio-8092-exec-1] => ==>  Preparing: SELECT count(0) FROM cf_invoice_header WHERE (job_type = ?)
+05-18  17:01:15.033  DEBUG -|MbY7BzfgWHX2a1AW|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList_COUNT] [http-nio-8092-exec-1] => ==> Parameters: 3(Integer)
+05-18  17:01:15.036  DEBUG -|MbY7BzfgWHX2a1AW|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList_COUNT] [http-nio-8092-exec-1] => <==      Total: 1
+05-18  17:01:15.037  INFO  -|MbY7BzfgWHX2a1AW|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-1] =>     [sql]: ==> SELECT count(0) FROM cf_invoice_header WHERE (job_type = 3) <==   |   [time]: ==> 11 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [158]  <==
+05-18  17:01:15.037  DEBUG -|MbY7BzfgWHX2a1AW|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList] [http-nio-8092-exec-1] => ==>  Preparing: SELECT invoice_id,invoice_no,invoice_status,customer_invoice_status,customer_invoice_way,invoice_type,job_type,contract_url,finance_entity,brand_id,balance,balance_name,invoice_title,invoice_title_name,bank,bank_accounts,invoice_currency_code,invoice_exchange_rate,invoicel_debit,invoicel_credit,arap_date,invoice_date,invoice_by,remark,create_by,create_date,create_name,update_by,update_date,u8_state,update_name,company_id,tenant_id,clear_status,clear_amount,adjust_delay_money,adjust_qc_money,adjust_red_money,adjust_tax_money,adjust_other_money,adjust_real_money,date_start,date_end,reviewer,reviewer_date,advance_pay_money,account_id,account_name,account_type,flow_id,settle_create_date,settle_title,settle_description,settle_template FROM cf_invoice_header WHERE (job_type = ?) ORDER BY create_date DESC LIMIT ?
+05-18  17:01:15.046  DEBUG -|MbY7BzfgWHX2a1AW|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList] [http-nio-8092-exec-1] => ==> Parameters: 3(Integer), 30(Integer)
+05-18  17:01:15.057  DEBUG -|MbY7BzfgWHX2a1AW|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectList] [http-nio-8092-exec-1] => <==      Total: 30
+05-18  17:01:15.058  INFO  -|MbY7BzfgWHX2a1AW|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-1] =>     [sql]: ==> select * from cf_invoice_header where (job_type = 3) order by create_date desc limit 30  <==   |   [time]: ==> 19 ms <==   |   [size]: ==> 30 <==   |   [result]: ==> [CfInvoiceHeader(inv ...  <==
+05-18  17:01:15.061  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] => RequestParams:     340974993970800={"total":158,"pageSize":30,"pageNum":1,"accountIds":[]}
+05-18  17:01:15.061  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] => Total:             48ms
+05-18  17:01:15.061  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] =>                           //                      
+05-18  17:01:15.061  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] =>                          //                       
+05-18  17:01:15.061  INFO  -|MbY7BzfgWHX2a1AW|- [HTTP_LOG] [http-nio-8092-exec-1] => ========================//                        
+
+
+
+05-18  17:01:29.673  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:01:33.648  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] => ========================\\                      
+05-18  17:01:33.648  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] =>                          \\                     
+05-18  17:01:33.649  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] =>                           \\                    
+05-18  17:01:33.649  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] => RequestURI:        /invoice/common/detail
+05-18  17:01:33.659  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-4] => ==>  Preparing: SELECT invoice_id,invoice_no,invoice_status,customer_invoice_status,customer_invoice_way,invoice_type,job_type,contract_url,finance_entity,brand_id,balance,balance_name,invoice_title,invoice_title_name,bank,bank_accounts,invoice_currency_code,invoice_exchange_rate,invoicel_debit,invoicel_credit,arap_date,invoice_date,invoice_by,remark,create_by,create_date,create_name,update_by,update_date,u8_state,update_name,company_id,tenant_id,clear_status,clear_amount,adjust_delay_money,adjust_qc_money,adjust_red_money,adjust_tax_money,adjust_other_money,adjust_real_money,date_start,date_end,reviewer,reviewer_date,advance_pay_money,account_id,account_name,account_type,flow_id,settle_create_date,settle_title,settle_description,settle_template FROM cf_invoice_header WHERE invoice_id=?
+05-18  17:01:33.667  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-4] => ==> Parameters: 1426(Long)
+05-18  17:01:33.670  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-4] => <==      Total: 1
+05-18  17:01:33.671  INFO  -|MbY7BzfgWHX2a1hV|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> select * from cf_invoice_header where invoice_id=1426  <==   |   [time]: ==> 10 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceHeader(inv ...  <==
+05-18  17:01:33.681  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-4] => ==>  Preparing: SELECT invoice_detail_id,invoice_id,charge_id,charge_type,arap_type,charge_source,charge_source_code,charge_source_detail_code,charge_code,charge_source_type,product_code,balance,currency_code,exchange_rate,price_pp,charge_unit,invoice_qty,invoice_debit,invoice_credit,remark,customer_invoice_no,customer_invoice_date,payment_days,finance_entity,create_date,create_name FROM cf_invoice_detail WHERE (invoice_id = ?)
+05-18  17:01:33.689  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-4] => ==> Parameters: 1426(Long)
+05-18  17:01:33.698  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-4] => <==      Total: 1
+05-18  17:01:33.699  INFO  -|MbY7BzfgWHX2a1hV|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> select * from cf_invoice_detail where (invoice_id = 1426) <==   |   [time]: ==> 17 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceDetail(inv ...  <==
+05-18  17:01:33.713  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-4] => ==>  Preparing: SELECT id,src_id,process_id,approval_id,active_status,create_date FROM approval_flow WHERE (src_id = ? AND process_id = ?) ORDER BY id DESC
+05-18  17:01:33.716  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-4] => ==> Parameters: 1426(Long), 1371280750556479488(Long)
+05-18  17:01:33.717  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-4] => <==      Total: 0
+05-18  17:01:33.718  INFO  -|MbY7BzfgWHX2a1hV|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> select * from approval_flow where (src_id = 1426 and process_id = 1371280750556479488) order by id desc <==   |   [time]: ==> 4 ms <==   |   [size]: ==> 0 <==   |   [result]: ==> []  <==
+05-18  17:01:33.724  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-4] => ==>  Preparing: SELECT invoice_detail_id,invoice_id,charge_id,charge_type,arap_type,charge_source,charge_source_code,charge_source_detail_code,charge_code,charge_source_type,product_code,balance,currency_code,exchange_rate,price_pp,charge_unit,invoice_qty,invoice_debit,invoice_credit,remark,customer_invoice_no,customer_invoice_date,payment_days,finance_entity,create_date,create_name FROM cf_invoice_detail WHERE (invoice_id = ?)
+05-18  17:01:33.732  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-4] => ==> Parameters: 1426(Long)
+05-18  17:01:33.742  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-4] => <==      Total: 1
+05-18  17:01:33.743  INFO  -|MbY7BzfgWHX2a1hV|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> select * from cf_invoice_detail where (invoice_id = 1426) <==   |   [time]: ==> 18 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceDetail(inv ...  <==
+05-18  17:01:33.784  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-4] => ==>  Preparing: SELECT clear_id,clear_no,invoice_no,clear_method,clear_status,job_type,actual_ar_ap_date,brand_id,balance,fi_user,bank,bank_no,bank_amount,check_no,currency_code,exchange_rate,clear_date,clear_by,clear_debit,clear_credit,clear_type,clear_balance,now_clear_debit,now_clear_credit,now_clear_type,now_clear_balance,last_balance_debit,last_balance_credit,last_balance_type,last_balance_balance,now_balance_debit,now_balance_credit,now_balance_type,now_balance_balance,remark,company_id,create_by,create_name,create_date,update_by,update_name,update_date FROM cf_clear_header WHERE (clear_status <> ? AND invoice_no = ?)
+05-18  17:01:33.787  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-4] => ==> Parameters: 0(Integer), INV2105180001(String)
+05-18  17:01:33.793  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-4] => <==      Total: 0
+05-18  17:01:33.793  INFO  -|MbY7BzfgWHX2a1hV|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> select * from cf_clear_header where (clear_status <> 0 and invoice_no = 'inv2105180001') <==   |   [time]: ==> 8 ms <==   |   [size]: ==> 0 <==   |   [result]: ==> []  <==
+05-18  17:01:33.800  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-4] => ==>  Preparing: SELECT multy_image_id,business_id,business_type,file_name,id FROM cf_multy_image WHERE (business_type = ? AND business_id = ?)
+05-18  17:01:33.803  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-4] => ==> Parameters: 1(Integer), 1426(Long)
+05-18  17:01:33.804  DEBUG -|MbY7BzfgWHX2a1hV|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-4] => <==      Total: 0
+05-18  17:01:33.804  INFO  -|MbY7BzfgWHX2a1hV|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-4] =>     [sql]: ==> select * from cf_multy_image where (business_type = 1 and business_id = 1426) <==   |   [time]: ==> 3 ms <==   |   [size]: ==> 0 <==   |   [result]: ==> []  <==
+05-18  17:01:33.813  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] => RequestParams:     invoiceId=1426
+05-18  17:01:33.813  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] => Total:             165ms
+05-18  17:01:33.813  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] =>                           //                      
+05-18  17:01:33.813  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] =>                          //                       
+05-18  17:01:33.813  INFO  -|MbY7BzfgWHX2a1hV|- [HTTP_LOG] [http-nio-8092-exec-4] => ========================//                        
+
+
+
+05-18  17:01:48.534  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================\\                      
+05-18  17:01:48.534  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          \\                     
+05-18  17:01:48.534  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           \\                    
+05-18  17:01:48.534  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestURI:        /advancePay/checkIfExistAdvanceByPoId
+05-18  17:01:48.542  DEBUG -|MbY7BzfgWHX2NlsD|- [com.chenfan.finance.dao.AdvancepayApplyMapper.selectCountByPoIdAndState] [http-nio-8092-exec-6] => ==>  Preparing: SELECT count(*) FROM advancepay_application WHERE po_id = ? AND state IN (0, 1, 2, 3, 4, 5, 6, 8) AND payment_type = ? AND is_delete = 0
+05-18  17:01:48.545  DEBUG -|MbY7BzfgWHX2NlsD|- [com.chenfan.finance.dao.AdvancepayApplyMapper.selectCountByPoIdAndState] [http-nio-8092-exec-6] => ==> Parameters: 1000027975(Long), 0(Integer)
+05-18  17:01:48.547  DEBUG -|MbY7BzfgWHX2NlsD|- [com.chenfan.finance.dao.AdvancepayApplyMapper.selectCountByPoIdAndState] [http-nio-8092-exec-6] => <==      Total: 1
+05-18  17:01:48.547  INFO  -|MbY7BzfgWHX2NlsD|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> SELECT count(*) FROM advancepay_application WHERE po_id = 1000027975 AND state IN (0, 1, 2, 3, 4, 5, 6, 8) AND payment_type = 0 AND is_delete = 0 <==   |   [time]: ==> 5 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [0]  <==
+05-18  17:01:48.548  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestParams:     poId=1000027975&firstOrLastPay=0
+05-18  17:01:48.549  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] => Total:             15ms
+05-18  17:01:48.549  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           //                      
+05-18  17:01:48.549  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          //                       
+05-18  17:01:48.549  INFO  -|MbY7BzfgWHX2NlsD|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================//                        
+
+
+
+05-18  17:01:59.174  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:02:04.990  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] => ========================\\                      
+05-18  17:02:04.990  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] =>                          \\                     
+05-18  17:02:04.991  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] =>                           \\                    
+05-18  17:02:04.991  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] => RequestURI:        /invoice/createNameList
+05-18  17:02:05.003  DEBUG -|MvyIBzgQUvMyNjCK|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.createNameList] [http-nio-8092-exec-5] => ==>  Preparing: select create_by,create_name from cf_invoice_header GROUP BY create_by
+05-18  17:02:05.005  DEBUG -|MvyIBzgQUvMyNjCK|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.createNameList] [http-nio-8092-exec-5] => ==> Parameters: 
+05-18  17:02:05.011  DEBUG -|MvyIBzgQUvMyNjCK|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.createNameList] [http-nio-8092-exec-5] => <==      Total: 27
+05-18  17:02:05.013  INFO  -|MvyIBzgQUvMyNjCK|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-5] =>     [sql]: ==> select create_by,create_name from cf_invoice_header GROUP BY create_by <==   |   [time]: ==> 9 ms <==   |   [size]: ==> 27 <==   |   [result]: ==> [CfInvoiceHeader(inv ...  <==
+05-18  17:02:05.025  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] => RequestParams:     
+05-18  17:02:05.025  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] => Total:             35ms
+05-18  17:02:05.025  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] =>                           //                      
+05-18  17:02:05.025  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] =>                          //                       
+05-18  17:02:05.025  INFO  -|MvyIBzgQUvMyNjCK|- [HTTP_LOG] [http-nio-8092-exec-5] => ========================//                        
+
+
+
+05-18  17:02:08.343  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================\\                      
+05-18  17:02:08.344  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          \\                     
+05-18  17:02:08.345  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           \\                    
+05-18  17:02:08.345  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestURI:        /charge/verifyChargeList
+05-18  17:02:08.393  INFO  -|MvyIBzgQUvMyNjTC|- [com.chenfan.finance.controller.ChargeController] [http-nio-8092-exec-8] => 获取的关联的brandIds:[2, 3, 5, 17, 19, 20, 21, 22, 23, 24, 25, 30, 36, 45, 50, 51, 53, 54, 55, 56, 57, 59, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 4, 8, 26, 27, 28, 29, 31, 32, 35, 39, 42, 52, 62, 63, 95, 96, 97, 98, 99, 100, 101, 103, 104, 105, 106, 107, 109, 114, 115, 116, 117, 118, 120, 121, 122, 123, 124, 125, 126, 127]
+05-18  17:02:08.398  INFO  -|MvyIBzgQUvMyNjTC|- [RPC_LOG] [http-nio-8092-exec-8] => 开始请求服务=chenfan-cloud-baseinfo,URI=/dict/value/list
+05-18  17:02:08.399  DEBUG -|MvyIBzgQUvMyNjTC|- [com.chenfan.finance.server.BaseInfoRemoteServer] [http-nio-8092-exec-8] => [BaseInfoRemoteServer#getDictList] ---> GET http://chenfan-cloud-baseinfo/dict/value/list?dictProfileCode=charge_type HTTP/1.1
+05-18  17:02:08.524  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.config.ChainedDynamicProperty] [http-nio-8092-exec-8] => Flipping property: chenfan-cloud-baseinfo.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+05-18  17:02:08.539  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.loadbalancer.BaseLoadBalancer] [http-nio-8092-exec-8] => Client: chenfan-cloud-baseinfo instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=chenfan-cloud-baseinfo,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+05-18  17:02:08.545  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.loadbalancer.DynamicServerListLoadBalancer] [http-nio-8092-exec-8] => Using serverListUpdater PollingServerListUpdater
+05-18  17:02:08.555  INFO  -|MvyIBzgQUvMyNjTC|- [com.alibaba.nacos.client.naming] [http-nio-8092-exec-8] => new ips(1) service: TEST_GROUP@@chenfan-cloud-baseinfo -> [{"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceId":"172.20.0.21#8102#DEFAULT#TEST_GROUP@@chenfan-cloud-baseinfo","ip":"172.20.0.21","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8102,"serviceName":"TEST_GROUP@@chenfan-cloud-baseinfo","weight":1.0}]
+05-18  17:02:08.558  INFO  -|MvyIBzgQUvMyNjTC|- [com.alibaba.nacos.client.naming] [http-nio-8092-exec-8] => current ips:(1) service: TEST_GROUP@@chenfan-cloud-baseinfo -> [{"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceId":"172.20.0.21#8102#DEFAULT#TEST_GROUP@@chenfan-cloud-baseinfo","ip":"172.20.0.21","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8102,"serviceName":"TEST_GROUP@@chenfan-cloud-baseinfo","weight":1.0}]
+05-18  17:02:08.568  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.config.ChainedDynamicProperty] [http-nio-8092-exec-8] => Flipping property: chenfan-cloud-baseinfo.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+05-18  17:02:08.570  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.loadbalancer.DynamicServerListLoadBalancer] [http-nio-8092-exec-8] => DynamicServerListLoadBalancer for client chenfan-cloud-baseinfo initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=chenfan-cloud-baseinfo,current list of Servers=[172.20.0.21:8102],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:172.20.0.21:8102;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@2687be9d
+05-18  17:02:09.549  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.config.ChainedDynamicProperty] [PollingServerListUpdater-0] => Flipping property: chenfan-cloud-baseinfo.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+05-18  17:02:28.678  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:02:29.671  DEBUG -|MvyIBzgQUvMyNjTC|- [com.chenfan.finance.server.BaseInfoRemoteServer] [http-nio-8092-exec-8] => [BaseInfoRemoteServer#getDictList] <--- ERROR HttpHostConnectException: Connect to 172.20.0.21:8102 [/172.20.0.21] failed: Connection timed out: connect (21273ms)
+05-18  17:02:29.672  ERROR -|MvyIBzgQUvMyNjTC|- [com.chenfan.finance.service.impl.CfChargeServiceImpl] [http-nio-8092-exec-8] => feign 获取字典错误
+feign.RetryableException: Connect to 172.20.0.21:8102 [/172.20.0.21] failed: Connection timed out: connect executing GET http://chenfan-cloud-baseinfo/dict/value/list?dictProfileCode=charge_type
+	at feign.FeignException.errorExecuting(FeignException.java:249)
+	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:124)
+	at feign.SynchronousMethodHandler.invoke(SynchronousMethodHandler.java:75)
+	at feign.ReflectiveFeign$FeignInvocationHandler.invoke(ReflectiveFeign.java:100)
+	at com.sun.proxy.$Proxy195.getDictList(Unknown Source)
+	at com.chenfan.finance.service.impl.CfChargeServiceImpl.getDicts(CfChargeServiceImpl.java:135)
+	at com.chenfan.finance.service.impl.CfChargeServiceImpl.verifyChargeList(CfChargeServiceImpl.java:526)
+	at com.chenfan.finance.service.impl.CfChargeServiceImpl$$FastClassBySpringCGLIB$$c26d54d3.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687)
+	at com.chenfan.finance.service.impl.CfChargeServiceImpl$$EnhancerBySpringCGLIB$$1c765e27.verifyChargeList(<generated>)
+	at com.chenfan.finance.controller.ChargeController.verifyChargeList(ChargeController.java:136)
+	at com.chenfan.finance.controller.ChargeController$$FastClassBySpringCGLIB$$70b9ebb8.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:100)
+	at com.chenfan.finance.commons.aspect.LoginAspect.around(LoginAspect.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.chenfan.finance.controller.ChargeController$$EnhancerBySpringCGLIB$$dca23a15.verifyChargeList(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.chenfan.ccp.plug.log.config.FilterConfig$CustomFilter.traceHttp(FilterConfig.java:144)
+	at com.chenfan.ccp.plug.log.config.FilterConfig$CustomFilter.doFilter(FilterConfig.java:200)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:141)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 172.20.0.21:8102 [/172.20.0.21] failed: Connection timed out: connect
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
+	at feign.httpclient.ApacheHttpClient.execute(ApacheHttpClient.java:83)
+	at org.springframework.cloud.openfeign.ribbon.FeignLoadBalancer.execute(FeignLoadBalancer.java:93)
+	at org.springframework.cloud.openfeign.ribbon.FeignLoadBalancer.execute(FeignLoadBalancer.java:56)
+	at com.netflix.client.AbstractLoadBalancerAwareClient$1.call(AbstractLoadBalancerAwareClient.java:104)
+	at com.netflix.loadbalancer.reactive.LoadBalancerCommand$3$1.call(LoadBalancerCommand.java:303)
+	at com.netflix.loadbalancer.reactive.LoadBalancerCommand$3$1.call(LoadBalancerCommand.java:287)
+	at rx.internal.util.ScalarSynchronousObservable$3.call(ScalarSynchronousObservable.java:231)
+	at rx.internal.util.ScalarSynchronousObservable$3.call(ScalarSynchronousObservable.java:228)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OnSubscribeConcatMap$ConcatMapSubscriber.drain(OnSubscribeConcatMap.java:286)
+	at rx.internal.operators.OnSubscribeConcatMap$ConcatMapSubscriber.onNext(OnSubscribeConcatMap.java:144)
+	at com.netflix.loadbalancer.reactive.LoadBalancerCommand$1.call(LoadBalancerCommand.java:185)
+	at com.netflix.loadbalancer.reactive.LoadBalancerCommand$1.call(LoadBalancerCommand.java:180)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OnSubscribeConcatMap.call(OnSubscribeConcatMap.java:94)
+	at rx.internal.operators.OnSubscribeConcatMap.call(OnSubscribeConcatMap.java:42)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.subscribe(Observable.java:10423)
+	at rx.Observable.subscribe(Observable.java:10390)
+	at rx.observables.BlockingObservable.blockForSingle(BlockingObservable.java:443)
+	at rx.observables.BlockingObservable.single(BlockingObservable.java:340)
+	at com.netflix.client.AbstractLoadBalancerAwareClient.executeWithLoadBalancer(AbstractLoadBalancerAwareClient.java:112)
+	at org.springframework.cloud.openfeign.ribbon.LoadBalancerFeignClient.execute(LoadBalancerFeignClient.java:83)
+	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:117)
+	... 93 common frames omitted
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 130 common frames omitted
+05-18  17:02:29.673  WARN  -|MvyIBzgQUvMyNjTC|- [com.chenfan.finance.commons.aspect.LoginAspect] [http-nio-8092-exec-8] => 参数错误 null
+05-18  17:02:29.680  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestParams:     salesType=&timeEnd=2021-4-30 23:59:59&chargeSource=&isInvoice=0&chargeType=&pageSize=30&rdRecordType=&brandIds=&pageNum=1&checkStatus=&total=0&taxRates=&timeBegin=2021-4-01 00:00:00&balance=&chargeSourceDetailCode=&chargeCode=
+05-18  17:02:29.680  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] => Total:             21337ms
+05-18  17:02:29.680  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           //                      
+05-18  17:02:29.680  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          //                       
+05-18  17:02:29.680  INFO  -|MvyIBzgQUvMyNjTC|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================//                        
+
+
+
+05-18  17:02:49.632  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] => ========================\\                      
+05-18  17:02:49.632  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] =>                          \\                     
+05-18  17:02:49.633  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] =>                           \\                    
+05-18  17:02:49.633  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] => RequestURI:        /toc/getDataOfSuccess
+05-18  17:02:49.645  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] => RequestParams:     
+05-18  17:02:49.645  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] => Total:             13ms
+05-18  17:02:49.645  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] =>                           //                      
+05-18  17:02:49.645  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] =>                          //                       
+05-18  17:02:49.645  INFO  -|MvyIBzgQUvMyNjtf|- [HTTP_LOG] [http-nio-8092-exec-9] => ========================//                        
+
+
+
+05-18  17:02:58.181  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:03:00.447  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] => ========================\\                      
+05-18  17:03:00.447  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] =>                          \\                     
+05-18  17:03:00.449  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] =>                           \\                    
+05-18  17:03:00.449  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] => RequestURI:        /advancePay/checkIfExistAdvanceByPoId
+05-18  17:03:00.460  DEBUG -|MbY7BzfgWHX2Nl22|- [com.chenfan.finance.dao.AdvancepayApplyMapper.selectCountByPoIdAndState] [http-nio-8092-exec-10] => ==>  Preparing: SELECT count(*) FROM advancepay_application WHERE po_id = ? AND state IN (0, 1, 2, 3, 4, 5, 6, 8) AND payment_type = ? AND is_delete = 0
+05-18  17:03:00.463  DEBUG -|MbY7BzfgWHX2Nl22|- [com.chenfan.finance.dao.AdvancepayApplyMapper.selectCountByPoIdAndState] [http-nio-8092-exec-10] => ==> Parameters: 1000027976(Long), 0(Integer)
+05-18  17:03:00.465  DEBUG -|MbY7BzfgWHX2Nl22|- [com.chenfan.finance.dao.AdvancepayApplyMapper.selectCountByPoIdAndState] [http-nio-8092-exec-10] => <==      Total: 1
+05-18  17:03:00.465  INFO  -|MbY7BzfgWHX2Nl22|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-10] =>     [sql]: ==> SELECT count(*) FROM advancepay_application WHERE po_id = 1000027976 AND state IN (0, 1, 2, 3, 4, 5, 6, 8) AND payment_type = 0 AND is_delete = 0 <==   |   [time]: ==> 4 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [0]  <==
+05-18  17:03:00.466  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] => RequestParams:     poId=1000027976&firstOrLastPay=0
+05-18  17:03:00.466  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] => Total:             19ms
+05-18  17:03:00.466  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] =>                           //                      
+05-18  17:03:00.466  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] =>                          //                       
+05-18  17:03:00.466  INFO  -|MbY7BzfgWHX2Nl22|- [HTTP_LOG] [http-nio-8092-exec-10] => ========================//                        
+
+
+
+05-18  17:03:27.683  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:03:42.550  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================\\                      
+05-18  17:03:42.550  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          \\                     
+05-18  17:03:42.552  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           \\                    
+05-18  17:03:42.552  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestURI:        /toc/getDataOfSuccess
+05-18  17:03:42.576  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestParams:     
+05-18  17:03:42.576  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] => Total:             27ms
+05-18  17:03:42.577  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           //                      
+05-18  17:03:42.577  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          //                       
+05-18  17:03:42.577  INFO  -|MvyIBzgQUvMyNjP6|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================//                        
+
+
+
+05-18  17:03:57.186  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:03:58.285  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================\\                      
+05-18  17:03:58.285  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          \\                     
+05-18  17:03:58.285  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           \\                    
+05-18  17:03:58.285  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestURI:        /invoice/common/detail
+05-18  17:03:58.291  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-6] => ==>  Preparing: SELECT invoice_id,invoice_no,invoice_status,customer_invoice_status,customer_invoice_way,invoice_type,job_type,contract_url,finance_entity,brand_id,balance,balance_name,invoice_title,invoice_title_name,bank,bank_accounts,invoice_currency_code,invoice_exchange_rate,invoicel_debit,invoicel_credit,arap_date,invoice_date,invoice_by,remark,create_by,create_date,create_name,update_by,update_date,u8_state,update_name,company_id,tenant_id,clear_status,clear_amount,adjust_delay_money,adjust_qc_money,adjust_red_money,adjust_tax_money,adjust_other_money,adjust_real_money,date_start,date_end,reviewer,reviewer_date,advance_pay_money,account_id,account_name,account_type,flow_id,settle_create_date,settle_title,settle_description,settle_template FROM cf_invoice_header WHERE invoice_id=?
+05-18  17:03:58.294  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-6] => ==> Parameters: 1176(Long)
+05-18  17:03:58.297  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-6] => <==      Total: 1
+05-18  17:03:58.297  INFO  -|MbY7BzgQUvMyNjyX|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> select * from cf_invoice_header where invoice_id=1176  <==   |   [time]: ==> 5 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceHeader(inv ...  <==
+05-18  17:03:58.309  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-6] => ==>  Preparing: SELECT invoice_detail_id,invoice_id,charge_id,charge_type,arap_type,charge_source,charge_source_code,charge_source_detail_code,charge_code,charge_source_type,product_code,balance,currency_code,exchange_rate,price_pp,charge_unit,invoice_qty,invoice_debit,invoice_credit,remark,customer_invoice_no,customer_invoice_date,payment_days,finance_entity,create_date,create_name FROM cf_invoice_detail WHERE (invoice_id = ?)
+05-18  17:03:58.312  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-6] => ==> Parameters: 1176(Long)
+05-18  17:03:58.321  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-6] => <==      Total: 1
+05-18  17:03:58.321  INFO  -|MbY7BzgQUvMyNjyX|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> select * from cf_invoice_detail where (invoice_id = 1176) <==   |   [time]: ==> 11 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceDetail(inv ...  <==
+05-18  17:03:58.330  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-6] => ==>  Preparing: SELECT id,src_id,process_id,approval_id,active_status,create_date FROM approval_flow WHERE (src_id = ? AND process_id = ?) ORDER BY id DESC
+05-18  17:03:58.332  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-6] => ==> Parameters: 1176(Long), 1371280750556479488(Long)
+05-18  17:03:58.334  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-6] => <==      Total: 2
+05-18  17:03:58.334  INFO  -|MbY7BzgQUvMyNjyX|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> select * from approval_flow where (src_id = 1176 and process_id = 1371280750556479488) order by id desc <==   |   [time]: ==> 3 ms <==   |   [size]: ==> 2 <==   |   [result]: ==> [ApprovalFlow(id=944 ...  <==
+05-18  17:03:58.340  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-6] => ==>  Preparing: SELECT invoice_detail_id,invoice_id,charge_id,charge_type,arap_type,charge_source,charge_source_code,charge_source_detail_code,charge_code,charge_source_type,product_code,balance,currency_code,exchange_rate,price_pp,charge_unit,invoice_qty,invoice_debit,invoice_credit,remark,customer_invoice_no,customer_invoice_date,payment_days,finance_entity,create_date,create_name FROM cf_invoice_detail WHERE (invoice_id = ?)
+05-18  17:03:58.342  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-6] => ==> Parameters: 1176(Long)
+05-18  17:03:58.349  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-6] => <==      Total: 1
+05-18  17:03:58.349  INFO  -|MbY7BzgQUvMyNjyX|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> select * from cf_invoice_detail where (invoice_id = 1176) <==   |   [time]: ==> 9 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceDetail(inv ...  <==
+05-18  17:03:58.353  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-6] => ==>  Preparing: SELECT clear_id,clear_no,invoice_no,clear_method,clear_status,job_type,actual_ar_ap_date,brand_id,balance,fi_user,bank,bank_no,bank_amount,check_no,currency_code,exchange_rate,clear_date,clear_by,clear_debit,clear_credit,clear_type,clear_balance,now_clear_debit,now_clear_credit,now_clear_type,now_clear_balance,last_balance_debit,last_balance_credit,last_balance_type,last_balance_balance,now_balance_debit,now_balance_credit,now_balance_type,now_balance_balance,remark,company_id,create_by,create_name,create_date,update_by,update_name,update_date FROM cf_clear_header WHERE (clear_status <> ? AND invoice_no = ?)
+05-18  17:03:58.356  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-6] => ==> Parameters: 0(Integer), INV2104080001(String)
+05-18  17:03:58.361  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-6] => <==      Total: 1
+05-18  17:03:58.361  INFO  -|MbY7BzgQUvMyNjyX|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> select * from cf_clear_header where (clear_status <> 0 and invoice_no = 'inv2104080001') <==   |   [time]: ==> 7 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfClearHeader(clear ...  <==
+05-18  17:03:58.376  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-6] => ==>  Preparing: SELECT multy_image_id,business_id,business_type,file_name,id FROM cf_multy_image WHERE (business_type = ? AND business_id = ?)
+05-18  17:03:58.379  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-6] => ==> Parameters: 1(Integer), 1176(Long)
+05-18  17:03:58.380  DEBUG -|MbY7BzgQUvMyNjyX|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-6] => <==      Total: 0
+05-18  17:03:58.381  INFO  -|MbY7BzgQUvMyNjyX|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-6] =>     [sql]: ==> select * from cf_multy_image where (business_type = 1 and business_id = 1176) <==   |   [time]: ==> 3 ms <==   |   [size]: ==> 0 <==   |   [result]: ==> []  <==
+05-18  17:03:58.389  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] => RequestParams:     invoiceId=1176
+05-18  17:03:58.389  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] => Total:             105ms
+05-18  17:03:58.389  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] =>                           //                      
+05-18  17:03:58.389  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] =>                          //                       
+05-18  17:03:58.389  INFO  -|MbY7BzgQUvMyNjyX|- [HTTP_LOG] [http-nio-8092-exec-6] => ========================//                        
+
+
+
+05-18  17:04:23.748  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================\\                      
+05-18  17:04:23.749  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          \\                     
+05-18  17:04:23.750  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           \\                    
+05-18  17:04:23.751  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestURI:        /invoice/common/detail
+05-18  17:04:23.767  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById_COUNT] [http-nio-8092-exec-8] => ==>  Preparing: SELECT count(0) FROM cf_invoice_header WHERE invoice_id = ?
+05-18  17:04:23.769  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById_COUNT] [http-nio-8092-exec-8] => ==> Parameters: 1176(Long)
+05-18  17:04:23.771  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById_COUNT] [http-nio-8092-exec-8] => <==      Total: 1
+05-18  17:04:23.771  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> SELECT count(0) FROM cf_invoice_header WHERE invoice_id = 1176 <==   |   [time]: ==> 3 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [1]  <==
+05-18  17:04:23.772  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-8] => ==>  Preparing: SELECT invoice_id,invoice_no,invoice_status,customer_invoice_status,customer_invoice_way,invoice_type,job_type,contract_url,finance_entity,brand_id,balance,balance_name,invoice_title,invoice_title_name,bank,bank_accounts,invoice_currency_code,invoice_exchange_rate,invoicel_debit,invoicel_credit,arap_date,invoice_date,invoice_by,remark,create_by,create_date,create_name,update_by,update_date,u8_state,update_name,company_id,tenant_id,clear_status,clear_amount,adjust_delay_money,adjust_qc_money,adjust_red_money,adjust_tax_money,adjust_other_money,adjust_real_money,date_start,date_end,reviewer,reviewer_date,advance_pay_money,account_id,account_name,account_type,flow_id,settle_create_date,settle_title,settle_description,settle_template FROM cf_invoice_header WHERE invoice_id=? LIMIT ?
+05-18  17:04:23.774  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-8] => ==> Parameters: 1176(Long), 30(Integer)
+05-18  17:04:23.777  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceHeaderMapper.selectById] [http-nio-8092-exec-8] => <==      Total: 1
+05-18  17:04:23.777  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> select * from cf_invoice_header where invoice_id=1176 limit 30  <==   |   [time]: ==> 4 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceHeader(inv ...  <==
+05-18  17:04:23.781  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-8] => ==>  Preparing: SELECT invoice_detail_id,invoice_id,charge_id,charge_type,arap_type,charge_source,charge_source_code,charge_source_detail_code,charge_code,charge_source_type,product_code,balance,currency_code,exchange_rate,price_pp,charge_unit,invoice_qty,invoice_debit,invoice_credit,remark,customer_invoice_no,customer_invoice_date,payment_days,finance_entity,create_date,create_name FROM cf_invoice_detail WHERE (invoice_id = ?)
+05-18  17:04:23.783  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-8] => ==> Parameters: 1176(Long)
+05-18  17:04:23.799  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-8] => <==      Total: 1
+05-18  17:04:23.799  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> select * from cf_invoice_detail where (invoice_id = 1176) <==   |   [time]: ==> 18 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceDetail(inv ...  <==
+05-18  17:04:23.804  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-8] => ==>  Preparing: SELECT id,src_id,process_id,approval_id,active_status,create_date FROM approval_flow WHERE (src_id = ? AND process_id = ?) ORDER BY id DESC
+05-18  17:04:23.806  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-8] => ==> Parameters: 1176(Long), 1371280750556479488(Long)
+05-18  17:04:23.807  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.ApprovalFlowMapper.selectList] [http-nio-8092-exec-8] => <==      Total: 2
+05-18  17:04:23.808  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> select * from approval_flow where (src_id = 1176 and process_id = 1371280750556479488) order by id desc <==   |   [time]: ==> 3 ms <==   |   [size]: ==> 2 <==   |   [result]: ==> [ApprovalFlow(id=944 ...  <==
+05-18  17:04:23.811  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-8] => ==>  Preparing: SELECT invoice_detail_id,invoice_id,charge_id,charge_type,arap_type,charge_source,charge_source_code,charge_source_detail_code,charge_code,charge_source_type,product_code,balance,currency_code,exchange_rate,price_pp,charge_unit,invoice_qty,invoice_debit,invoice_credit,remark,customer_invoice_no,customer_invoice_date,payment_days,finance_entity,create_date,create_name FROM cf_invoice_detail WHERE (invoice_id = ?)
+05-18  17:04:23.814  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-8] => ==> Parameters: 1176(Long)
+05-18  17:04:23.829  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfInvoiceDetailMapper.selectList] [http-nio-8092-exec-8] => <==      Total: 1
+05-18  17:04:23.830  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> select * from cf_invoice_detail where (invoice_id = 1176) <==   |   [time]: ==> 17 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfInvoiceDetail(inv ...  <==
+05-18  17:04:23.834  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-8] => ==>  Preparing: SELECT clear_id,clear_no,invoice_no,clear_method,clear_status,job_type,actual_ar_ap_date,brand_id,balance,fi_user,bank,bank_no,bank_amount,check_no,currency_code,exchange_rate,clear_date,clear_by,clear_debit,clear_credit,clear_type,clear_balance,now_clear_debit,now_clear_credit,now_clear_type,now_clear_balance,last_balance_debit,last_balance_credit,last_balance_type,last_balance_balance,now_balance_debit,now_balance_credit,now_balance_type,now_balance_balance,remark,company_id,create_by,create_name,create_date,update_by,update_name,update_date FROM cf_clear_header WHERE (clear_status <> ? AND invoice_no = ?)
+05-18  17:04:23.837  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-8] => ==> Parameters: 0(Integer), INV2104080001(String)
+05-18  17:04:23.843  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfClearHeaderMapper.selectOne] [http-nio-8092-exec-8] => <==      Total: 1
+05-18  17:04:23.843  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> select * from cf_clear_header where (clear_status <> 0 and invoice_no = 'inv2104080001') <==   |   [time]: ==> 8 ms <==   |   [size]: ==> 1 <==   |   [result]: ==> [CfClearHeader(clear ...  <==
+05-18  17:04:23.847  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-8] => ==>  Preparing: SELECT multy_image_id,business_id,business_type,file_name,id FROM cf_multy_image WHERE (business_type = ? AND business_id = ?)
+05-18  17:04:23.849  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-8] => ==> Parameters: 1(Integer), 1176(Long)
+05-18  17:04:23.851  DEBUG -|MbY7BzgQUvMyNjII|- [com.chenfan.finance.dao.CfMultyImageMapper.selectList] [http-nio-8092-exec-8] => <==      Total: 0
+05-18  17:04:23.851  INFO  -|MbY7BzgQUvMyNjII|- [com.chenfan.ccp.plug.log.handler.DynamicDataSourceInterceptor] [http-nio-8092-exec-8] =>     [sql]: ==> select * from cf_multy_image where (business_type = 1 and business_id = 1176) <==   |   [time]: ==> 3 ms <==   |   [size]: ==> 0 <==   |   [result]: ==> []  <==
+05-18  17:04:23.858  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] => RequestParams:     invoiceId=1176
+05-18  17:04:23.858  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] => Total:             110ms
+05-18  17:04:23.858  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] =>                           //                      
+05-18  17:04:23.858  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] =>                          //                       
+05-18  17:04:23.858  INFO  -|MbY7BzgQUvMyNjII|- [HTTP_LOG] [http-nio-8092-exec-8] => ========================//                        
+
+
+
+05-18  17:04:26.689  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:04:56.191  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:05:25.695  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:05:25.962  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] => ========================\\                      
+05-18  17:05:25.963  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] =>                          \\                     
+05-18  17:05:25.965  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] =>                           \\                    
+05-18  17:05:25.965  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] => RequestURI:        /toc/getDataOfSuccess
+05-18  17:05:25.986  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] => RequestParams:     
+05-18  17:05:25.986  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] => Total:             24ms
+05-18  17:05:25.986  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] =>                           //                      
+05-18  17:05:25.986  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] =>                          //                       
+05-18  17:05:25.987  INFO  -|MvyIBzgQUvMyNj3w|- [HTTP_LOG] [http-nio-8092-exec-9] => ========================//                        
+
+
+
+05-18  17:05:55.199  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:06:24.538  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] => ========================\\                      
+05-18  17:06:24.539  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] =>                          \\                     
+05-18  17:06:24.541  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] =>                           \\                    
+05-18  17:06:24.542  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] => RequestURI:        /toc/getDataOfSuccess
+05-18  17:06:24.551  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] => RequestParams:     
+05-18  17:06:24.552  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] => Total:             14ms
+05-18  17:06:24.552  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] =>                           //                      
+05-18  17:06:24.552  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] =>                          //                       
+05-18  17:06:24.552  INFO  -|vqmeQffgWHEoP6eg|- [HTTP_LOG] [http-nio-8092-exec-1] => ========================//                        
+
+
+
+05-18  17:06:24.702  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:06:27.913  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================\\                      
+05-18  17:06:27.914  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          \\                     
+05-18  17:06:27.914  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           \\                    
+05-18  17:06:27.914  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestURI:        /toc/getDataOfSuccess
+05-18  17:06:27.919  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] => RequestParams:     
+05-18  17:06:27.919  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] => Total:             6ms
+05-18  17:06:27.919  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] =>                           //                      
+05-18  17:06:27.919  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] =>                          //                       
+05-18  17:06:27.919  INFO  -|vqmeQffgWHEoP6Rg|- [HTTP_LOG] [http-nio-8092-exec-2] => ========================//                        
+
+
+
+05-18  17:06:54.204  INFO  -||- [com.alibaba.nacos.client.config.impl.ClientWorker] [com.alibaba.nacos.client.Worker.longPolling.fixed-10.228.81.30_3848-test] => get changedGroupKeys:[]
+05-18  17:07:04.876  INFO  -|MvyIBzgQUvMyNjTC|- [com.netflix.loadbalancer.PollingServerListUpdater] [Thread-119] => Shutting down the Executor Pool for PollingServerListUpdater
+05-18  17:07:04.882  INFO  -||- [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] [SpringContextShutdownHook] => Shutting down ExecutorService 'sheduleClearMemory'
+05-18  17:07:04.885  INFO  -||- [com.alibaba.cloud.nacos.registry.NacosServiceRegistry] [SpringContextShutdownHook] => De-registering from Nacos Server now...
+05-18  17:07:04.886  INFO  -||- [com.alibaba.nacos.client.naming] [SpringContextShutdownHook] => [BEAT] removing beat: TEST_GROUP@@chenfan-cloud-finance:10.228.84.57:8092 from beat map.
+05-18  17:07:04.886  INFO  -||- [com.alibaba.nacos.client.naming] [SpringContextShutdownHook] => [DEREGISTER-SERVICE] test deregistering service TEST_GROUP@@chenfan-cloud-finance with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceIdGenerator":"simple","ip":"10.228.84.57","ipDeleteTimeout":30000,"metadata":{},"port":8092,"weight":1.0}
+05-18  17:07:04.887  INFO  -||- [com.alibaba.cloud.nacos.registry.NacosServiceRegistry] [SpringContextShutdownHook] => De-registration finished.
+05-18  17:07:04.889  INFO  -||- [com.xxl.job.core.server.EmbedServer] [Thread-86] => >>>>>>>>>>> xxl-job remoting server stop.
+05-18  17:07:04.897  INFO  -||- [com.xxl.job.core.thread.ExecutorRegistryThread] [xxl-job, executor ExecutorRegistryThread] => >>>>>>>>>>> xxl-job registry-remove success, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='chenfan-finance', registryValue='http://10.228.84.57:9999/'}, registryResult:ReturnT [code=200, msg=null, content=null]
+05-18  17:07:04.897  INFO  -||- [com.xxl.job.core.thread.ExecutorRegistryThread] [xxl-job, executor ExecutorRegistryThread] => >>>>>>>>>>> xxl-job, executor registry thread destory.
+05-18  17:07:04.897  INFO  -||- [com.xxl.job.core.server.EmbedServer] [SpringContextShutdownHook] => >>>>>>>>>>> xxl-job remoting server destroy success.
+05-18  17:07:04.898  INFO  -||- [com.xxl.job.core.thread.TriggerCallbackThread] [xxl-job, executor TriggerCallbackThread] => >>>>>>>>>>> xxl-job, executor callback thread destory.
+05-18  17:07:04.898  INFO  -||- [com.xxl.job.core.thread.TriggerCallbackThread] [Thread-85] => >>>>>>>>>>> xxl-job, executor retry callback thread destory.
+05-18  17:07:04.898  INFO  -||- [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] [SpringContextShutdownHook] => Shutting down ExecutorService 'sheduleClearMemory'
+05-18  17:07:04.913  INFO  -||- [RocketmqRemoting] [NettyClientSelector_1] => closeChannel: close the connection to remote address[10.228.81.30:10911] result: true
+05-18  17:07:04.913  INFO  -||- [RocketmqRemoting] [NettyClientSelector_1] => closeChannel: close the connection to remote address[10.228.81.30:9876] result: true
+05-18  17:07:04.913  INFO  -||- [RocketmqRemoting] [NettyClientSelector_1] => closeChannel: close the connection to remote address[10.228.81.30:10909] result: true
+05-18  17:07:04.917  INFO  -||- [RocketmqRemoting] [NettyClientSelector_1] => closeChannel: close the connection to remote address[10.228.81.30:9876] result: true
+05-18  17:07:04.918  INFO  -||- [RocketmqRemoting] [NettyClientSelector_1] => closeChannel: close the connection to remote address[10.228.81.30:10911] result: true
+05-18  17:07:04.918  INFO  -||- [RocketmqRemoting] [NettyClientSelector_1] => closeChannel: close the connection to remote address[10.228.81.30:10909] result: true
+05-18  17:07:04.927  INFO  -||- [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [SpringContextShutdownHook] => Closing JPA EntityManagerFactory for persistence unit 'default'
+05-18  17:07:04.930  INFO  -||- [com.alibaba.druid.pool.DruidDataSource] [SpringContextShutdownHook] => {dataSource-1} closing ...
+05-18  17:07:04.931  INFO  -||- [com.alibaba.druid.pool.DruidDataSource] [SpringContextShutdownHook] => {dataSource-1} closed

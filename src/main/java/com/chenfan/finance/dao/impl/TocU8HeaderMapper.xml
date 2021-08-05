@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocU8HeaderMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocU8Header">
+    <id column="mapping_id" jdbcType="BIGINT" property="mappingId" />
+    <result column="month" jdbcType="VARCHAR" property="month" />
+    <result column="weekn_of_month" jdbcType="TINYINT" property="weeknOfMonth" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="daozhangt" jdbcType="TIMESTAMP" property="daozhangt" />
+    <result column="vtId" jdbcType="VARCHAR" property="vtid" />
+    <result column="u8db" jdbcType="VARCHAR" property="u8db" />
+    <result column="count_start_time" jdbcType="TIMESTAMP" property="countStartTime" />
+    <result column="count_end_time" jdbcType="TIMESTAMP" property="countEndTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mapping_id, `month`, weekn_of_month, `type`, brand_id, daozhangt, vtId, u8db, count_start_time, 
+    count_end_time
+  </sql>
+ <!-- <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from toc_u8_header
+    where mapping_id = #{mappingId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from toc_u8_header
+    where mapping_id = #{mappingId,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insertSelective" keyColumn="mapping_id" keyProperty="mappingId" parameterType="com.chenfan.finance.model.bo.TocU8Header" useGeneratedKeys="true">
+    insert into toc_u8_header
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="month != null">
+        `month`,
+      </if>
+      <if test="weeknOfMonth != null">
+        weekn_of_month,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="daozhangt != null">
+        daozhangt,
+      </if>
+      <if test="vtid != null">
+        vtId,
+      </if>
+      <if test="u8db != null">
+        u8db,
+      </if>
+      <if test="countStartTime != null">
+        count_start_time,
+      </if>
+      <if test="countEndTime != null">
+        count_end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="month != null">
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="weeknOfMonth != null">
+        #{weeknOfMonth,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="daozhangt != null">
+        #{daozhangt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vtid != null">
+        #{vtid,jdbcType=VARCHAR},
+      </if>
+      <if test="u8db != null">
+        #{u8db,jdbcType=VARCHAR},
+      </if>
+      <if test="countStartTime != null">
+        #{countStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countEndTime != null">
+        #{countEndTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chenfan.finance.model.bo.TocU8Header">
+    update toc_u8_header
+    <set>
+      <if test="month != null">
+        `month` = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="weeknOfMonth != null">
+        weekn_of_month = #{weeknOfMonth,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="daozhangt != null">
+        daozhangt = #{daozhangt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vtid != null">
+        vtId = #{vtid,jdbcType=VARCHAR},
+      </if>
+      <if test="u8db != null">
+        u8db = #{u8db,jdbcType=VARCHAR},
+      </if>
+      <if test="countStartTime != null">
+        count_start_time = #{countStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countEndTime != null">
+        count_end_time = #{countEndTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chenfan.finance.model.bo.TocU8Header">
+    update toc_u8_header
+    set `month` = #{month,jdbcType=VARCHAR},
+      weekn_of_month = #{weeknOfMonth,jdbcType=TINYINT},
+      `type` = #{type,jdbcType=TINYINT},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      daozhangt = #{daozhangt,jdbcType=TIMESTAMP},
+      vtId = #{vtid,jdbcType=VARCHAR},
+      u8db = #{u8db,jdbcType=VARCHAR},
+      count_start_time = #{countStartTime,jdbcType=TIMESTAMP},
+      count_end_time = #{countEndTime,jdbcType=TIMESTAMP}
+    where mapping_id = #{mappingId,jdbcType=BIGINT}
+  </update>-->
+</mapper>

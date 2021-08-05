@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocU8DetailMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocU8Detail">
+    <id column="detail_id" jdbcType="BIGINT" property="detailId" />
+    <result column="spu_code" jdbcType="VARCHAR" property="spuCode" />
+    <result column="spu_name" jdbcType="VARCHAR" property="spuName" />
+    <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
+    <result column="sku_name" jdbcType="VARCHAR" property="skuName" />
+    <result column="sku_count" jdbcType="DECIMAL" property="skuCount" />
+    <result column="sku_price" jdbcType="DECIMAL" property="skuPrice" />
+    <result column="total_money" jdbcType="DECIMAL" property="totalMoney" />
+    <result column="daozhangt" jdbcType="TIMESTAMP" property="daozhangt" />
+    <result column="zidingdan" jdbcType="VARCHAR" property="zidingdan" />
+    <result column="mapping_id" jdbcType="BIGINT" property="mappingId" />
+    <result column="oids" jdbcType="VARCHAR" property="oids" />
+    <result column="hava_refund_finance" property="havaRefundFinance"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+   spu_code, spu_name, sku_code,
+      sku_name, sku_count, sku_price,
+      total_money, daozhangt,
+      mapping_id, `oids`,hava_refund_finance
+  </sql>
+  <insert id="insertList" parameterType="list">
+    insert into toc_u8_detail (spu_code, spu_name, sku_code,
+      sku_name, sku_count, sku_price,
+      total_money, daozhangt,
+      mapping_id, `oids`,hava_refund_finance)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.spuCode,jdbcType=VARCHAR}, #{item.spuName,jdbcType=VARCHAR}, #{item.skuCode,jdbcType=VARCHAR},
+      #{item.skuName,jdbcType=VARCHAR}, #{item.skuCount,jdbcType=DECIMAL}, #{item.skuPrice,jdbcType=DECIMAL},
+      #{item.totalMoney,jdbcType=DECIMAL}, #{item.daozhangt,jdbcType=TIMESTAMP},
+      #{item.mappingId,jdbcType=BIGINT}, #{item.oids,jdbcType=VARCHAR},#{item.havaRefundFinance})
+    </foreach>
+  </insert>
+  <!--   String getOidsByMappingDetailId(Integer detailId);-->
+  <select id="getOidsByMappingDetailId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from toc_u8_detail
+    where detail_id=#{detailId}
+  </select>
+<!--selectByMappingId-->
+<select id="selectByMappingId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from toc_u8_detail
+    where mapping_id=#{mappingId}
+</select>
+  <select id="getDataOfWeek" parameterType="com.chenfan.finance.model.dto.TocReportDto$TocReportByWeek" resultType="com.chenfan.finance.model.TocReportRp$TocReportRpByWeek">
+    SELECT
+        `tud`.`detail_id`,
+        `tud`.`spu_code`,
+        `tud`.`spu_name`,
+        `tud`.`sku_code`,
+        `tud`.`sku_name`,
+        `tud`.`sku_count`,
+        `tud`.`sku_price`,
+        `tud`.`total_money`,
+        `tud`.`daozhangt`,
+        `tud`.`mapping_id`,
+        `tud`.`oids`,
+        `tud`.`hava_refund_finance`,
+         CONCAT(SUBSTRING(`tuh`.month,1,4),"年",SUBSTRING(`tuh`.month,5),"月") as month,
+        `tuh`.`weekn_of_month`,
+        `tuh`.`type`,
+        `tuh`.`count_start_time`,
+        `tuh`.`count_end_time`,
+        `tuh`.`brand_id`,
+        `tuh`.`order_no`
+    FROM
+	toc_u8_detail `tud`
+	LEFT JOIN toc_u8_header `tuh`
+	ON `tud`.mapping_id = `tuh`.mapping_id
+	<where>
+
+        <if test="skuNo !=null ">
+            and `tud`.sku_code = #{skuNo}
+        </if>
+        <if test="orderNo !=null">
+            and `tuh`.order_no = #{orderNo}
+        </if>
+        <if test="startTime !=null">
+           and `tud`.daozhangt <![CDATA[ > ]]> #{startTime}
+        </if>
+        <if test="endTime !=null">
+           and `tud`.daozhangt  <![CDATA[ < ]]> #{endTime}
+        </if>
+        <if test="brandIds !=null and brandIds.size() > 0">
+            AND `tuh`.brand_id in
+            <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </where>
+    order by tud.detail_id desc
+  </select>
+<select id="getDataOfWeekExportVo" resultType="com.chenfan.finance.model.vo.TocReportByWeekExportVo">
+    SELECT
+    `tud`.`detail_id`,
+    `tud`.`spu_code`,
+    `tud`.`spu_name`,
+    `tud`.`sku_code`,
+    `tud`.`sku_name`,
+    `tud`.`sku_count`,
+    `tud`.`sku_price`,
+    `tud`.`total_money`,
+    `tud`.`daozhangt`,
+    `tud`.`mapping_id`,
+    `tud`.`hava_refund_finance`,
+     CONCAT(SUBSTRING(`tuh`.month,1,4),"年",SUBSTRING(`tuh`.month,5),"月") as month,
+    `tuh`.`weekn_of_month`,
+    `tuh`.`type`,
+    `tuh`.`count_start_time`,
+    `tuh`.`count_end_time`,
+    `tuh`.`brand_id`,
+    `tuh`.`order_no`
+    FROM
+    toc_u8_detail `tud`
+    LEFT JOIN toc_u8_header `tuh`
+    ON `tud`.mapping_id = `tuh`.mapping_id
+    <where>
+
+        <if test="skuNo !=null ">
+            and `tud`.sku_code = #{skuNo}
+        </if>
+        <if test="orderNo !=null">
+            and `tuh`.order_no = #{orderNo}
+        </if>
+        <if test="startTime !=null">
+            and `tud`.daozhangt <![CDATA[ > ]]> #{startTime}
+        </if>
+        <if test="endTime !=null">
+            and `tud`.daozhangt  <![CDATA[ < ]]> #{endTime}
+        </if>
+        <if test="brandIds !=null and brandIds.size() > 0">
+            AND `tuh`.brand_id in
+            <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </where>
+</select>
+    <!--mappingIds-->
+    <select id="selectAmountSum" resultType="decimal">
+        SELECT IFNULL(sum(total_money),0)
+        FROM toc_u8_detail
+        <where>
+            mapping_id in
+            <foreach collection="mappingIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+
+    </select>
+</mapper>

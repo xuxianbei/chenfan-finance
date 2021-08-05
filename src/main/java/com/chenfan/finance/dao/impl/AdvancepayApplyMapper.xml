@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chenfan.finance.dao.AdvancepayApplyMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.dto.AdvancepayApply">
+    <id column="advance_pay_id" jdbcType="INTEGER" property="advancePayId"/>
+    <result column="advance_pay_code" jdbcType="VARCHAR" property="advancePayCode"/>
+    <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+    <result column="first_role_id" jdbcType="VARCHAR" property="firstRoleId"/>
+    <result column="po_id" jdbcType="BIGINT" property="poId"/>
+    <result column="po_code" jdbcType="VARCHAR" property="poCode"/>
+    <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+    <result column="vendor_id" jdbcType="INTEGER" property="vendorId"/>
+    <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode"/>
+    <result column="state" jdbcType="BIT" property="state"/>
+    <result column="payment_type" jdbcType="VARCHAR" property="paymentType"/>
+    <result column="task_person" jdbcType="VARCHAR" property="taskPerson"/>
+    <result column="duties" jdbcType="VARCHAR" property="duties"/>
+    <result column="receipt_department" jdbcType="VARCHAR" property="receiptDepartment"/>
+    <result column="bank" jdbcType="VARCHAR" property="bank"/>
+    <result column="payment" jdbcType="VARCHAR" property="payment"/>
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount"/>
+    <result column="is_arrive" jdbcType="INTEGER" property="isArrive"/>
+    <result column="enclosure" jdbcType="INTEGER" property="enclosure"/>
+    <result column="payment_use" jdbcType="VARCHAR" property="paymentUse"/>
+    <result column="money_capital" jdbcType="VARCHAR" property="moneyCapital"/>
+    <result column="money" jdbcType="DECIMAL" property="money"/>
+    <result column="department" jdbcType="VARCHAR" property="department"/>
+    <result column="manag_director" jdbcType="VARCHAR" property="managDirector"/>
+    <result column="accountant" jdbcType="VARCHAR" property="accountant"/>
+    <result column="financechief" jdbcType="VARCHAR" property="financechief"/>
+    <result column="generalmanager" jdbcType="VARCHAR" property="generalmanager"/>
+    <result column="cashier" jdbcType="VARCHAR" property="cashier"/>
+    <result column="verify_by" jdbcType="BIGINT" property="verifyBy"/>
+    <result column="verify_name" jdbcType="VARCHAR" property="verifyName"/>
+    <result column="verify_date" jdbcType="TIMESTAMP" property="verifyDate"/>
+    <result column="create_name" jdbcType="VARCHAR" property="createName"/>
+    <result column="create_by" jdbcType="BIGINT" property="createBy"/>
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+    <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+    <result column="update_by" jdbcType="BIGINT" property="updateBy"/>
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+    <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+  </resultMap>
+  <resultMap id="advancePayVoMap" type="com.chenfan.finance.model.vo.AdvancePayVo">
+    <id column="advance_pay_id" jdbcType="INTEGER" property="advancePayId"/>
+    <result column="advance_pay_code" jdbcType="VARCHAR" property="advancePayCode"/>
+    <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+    <result column="first_role_id" jdbcType="VARCHAR" property="firstRoleId"/>
+    <result column="po_id" jdbcType="BIGINT" property="poId"/>
+    <result column="po_code" jdbcType="VARCHAR" property="poCode"/>
+    <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+    <result column="vendor_id" jdbcType="INTEGER" property="vendorId"/>
+    <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode"/>
+    <result column="state" jdbcType="BIT" property="state"/>
+    <result column="paymentType" jdbcType="VARCHAR" property="paymentTypeOption"/>
+    <result column="payment_type" property="paymentType"/>
+    <result column="task_person" jdbcType="VARCHAR" property="taskPerson"/>
+    <result column="duties" jdbcType="VARCHAR" property="duties"/>
+    <result column="receipt_department" jdbcType="VARCHAR" property="receiptDepartment"/>
+    <result column="bank" jdbcType="VARCHAR" property="bank"/>
+    <result column="payment" jdbcType="VARCHAR" property="payment"/>
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount"/>
+    <result column="is_arrive" jdbcType="INTEGER" property="isArrive"/>
+    <result column="enclosure" jdbcType="INTEGER" property="enclosure"/>
+    <result column="payment_use" jdbcType="VARCHAR" property="paymentUse"/>
+    <result column="money_capital" jdbcType="VARCHAR" property="moneyCapital"/>
+    <result column="money" jdbcType="DECIMAL" property="money"/>
+    <result column="department" jdbcType="VARCHAR" property="department"/>
+    <result column="manag_director" jdbcType="VARCHAR" property="managDirector"/>
+    <result column="accountant" jdbcType="VARCHAR" property="accountant"/>
+    <result column="financechief" jdbcType="VARCHAR" property="financechief"/>
+    <result column="generalmanager" jdbcType="VARCHAR" property="generalmanager"/>
+    <result column="cashier" jdbcType="VARCHAR" property="cashier"/>
+    <result column="verify_by" jdbcType="BIGINT" property="verifyBy"/>
+    <result column="verify_name" jdbcType="VARCHAR" property="verifyName"/>
+    <result column="verify_date" jdbcType="TIMESTAMP" property="verifyDate"/>
+    <result column="create_name" jdbcType="VARCHAR" property="createName"/>
+    <result column="create_by" jdbcType="BIGINT" property="createBy"/>
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+    <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+    <result column="update_by" jdbcType="BIGINT" property="updateBy"/>
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+    <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+    <result column="ven_abb_name" property="venAbbName"/>
+    <result column="vendor_name" property="vendorName"/>
+    <result column="rrdQuantity" property="rrdQuantity"/>
+    <result column="rrdMoney" property="rrdMoney"/>
+    <result column="retainage_ratio" property="retainageRatio"/>
+    <result column="bargain_ratio" property="bargainRatio"/>
+    <result column="ppdQuantity" property="ppdQuantity"/>
+    <result column="tax_unit_price" property="taxUnitPrice"/>
+    <result column="poPayState" property="poPayState"/>
+    <result column="a_material_type" property="apaMaterialType"/>
+  </resultMap>
+  <resultMap id="excelVoMap" type="com.chenfan.finance.model.vo.AdvancepayApplyVo">
+    <id column="advance_pay_id" jdbcType="INTEGER" property="advancePayId"/>
+    <result column="advance_pay_code" jdbcType="VARCHAR" property="advancePayCode"/>
+    <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+    <result column="first_role_id" jdbcType="VARCHAR" property="firstRoleId"/>
+    <result column="po_id" jdbcType="BIGINT" property="poId"/>
+    <result column="po_code" jdbcType="VARCHAR" property="poCode"/>
+    <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+    <result column="vendor_id" jdbcType="INTEGER" property="vendorId"/>
+    <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode"/>
+    <result column="state" jdbcType="BIT" property="state"/>
+    <result column="paymentType" jdbcType="VARCHAR" property="paymentTypeOption"/>
+    <result column="payment_type" property="paymentType"/>
+    <result column="task_person" jdbcType="VARCHAR" property="taskPerson"/>
+    <result column="duties" jdbcType="VARCHAR" property="duties"/>
+    <result column="receipt_department" jdbcType="VARCHAR" property="receiptDepartment"/>
+    <result column="bank" jdbcType="VARCHAR" property="bank"/>
+    <result column="payment" jdbcType="VARCHAR" property="payment"/>
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount"/>
+    <result column="is_arrive" jdbcType="INTEGER" property="isArrive"/>
+    <result column="enclosure" jdbcType="INTEGER" property="enclosure"/>
+    <result column="payment_use" jdbcType="VARCHAR" property="paymentUse"/>
+    <result column="money_capital" jdbcType="VARCHAR" property="moneyCapital"/>
+    <result column="money" jdbcType="DECIMAL" property="money"/>
+    <result column="department" jdbcType="VARCHAR" property="department"/>
+    <result column="manag_director" jdbcType="VARCHAR" property="managDirector"/>
+    <result column="accountant" jdbcType="VARCHAR" property="accountant"/>
+    <result column="financechief" jdbcType="VARCHAR" property="financechief"/>
+    <result column="generalmanager" jdbcType="VARCHAR" property="generalmanager"/>
+    <result column="cashier" jdbcType="VARCHAR" property="cashier"/>
+    <result column="verify_by" jdbcType="BIGINT" property="verifyBy"/>
+    <result column="verify_name" jdbcType="VARCHAR" property="verifyName"/>
+    <result column="verify_date" jdbcType="TIMESTAMP" property="verifyDate"/>
+    <result column="create_name" jdbcType="VARCHAR" property="createName"/>
+    <result column="create_by" jdbcType="BIGINT" property="createBy"/>
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+    <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+    <result column="update_by" jdbcType="BIGINT" property="updateBy"/>
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+    <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+    <result column="ven_abb_name" property="venAbbName"/>
+    <result column="vendor_name" property="vendorName"/>
+    <result column="rrdQuantity" property="rrdQuantity"/>
+    <result column="rrdMoney" property="rrdMoney"/>
+    <result column="retainage_ratio" property="retainageRatio"/>
+    <result column="bargain_ratio" property="bargainRatio"/>
+    <result column="ppdQuantity" property="ppdQuantity"/>
+    <result column="tax_unit_price" property="taxUnitPrice"/>
+    <result column="po_type" property="poType"/>
+  </resultMap>
+  <resultMap id="advancePayInfoVoMap" type="com.chenfan.finance.model.vo.AdvancePayVo">
+    <id column="advance_pay_id" jdbcType="INTEGER" property="advancePayId"/>
+    <result column="advance_pay_code" jdbcType="VARCHAR" property="advancePayCode"/>
+    <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+    <result column="first_role_id" jdbcType="VARCHAR" property="firstRoleId"/>
+    <result column="po_id" jdbcType="BIGINT" property="poId"/>
+    <result column="po_code" jdbcType="VARCHAR" property="poCode"/>
+    <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+    <result column="vendor_id" jdbcType="INTEGER" property="vendorId"/>
+    <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode"/>
+    <result column="state" jdbcType="BIT" property="state"/>
+    <result column="paymentType" jdbcType="VARCHAR" property="paymentTypeOption"/>
+    <result column="payment_type" property="paymentType"/>
+    <result column="task_person" jdbcType="VARCHAR" property="taskPerson"/>
+    <result column="duties" jdbcType="VARCHAR" property="duties"/>
+    <result column="receipt_department" jdbcType="VARCHAR" property="receiptDepartment"/>
+    <result column="bank" jdbcType="VARCHAR" property="bank"/>
+    <result column="payment" jdbcType="VARCHAR" property="payment"/>
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount"/>
+    <result column="is_arrive" jdbcType="INTEGER" property="isArrive"/>
+    <result column="enclosure" jdbcType="INTEGER" property="enclosure"/>
+    <result column="payment_use" jdbcType="VARCHAR" property="paymentUse"/>
+    <result column="money_capital" jdbcType="VARCHAR" property="moneyCapital"/>
+    <result column="money" jdbcType="DECIMAL" property="money"/>
+    <result column="department" jdbcType="VARCHAR" property="department"/>
+    <result column="manag_director" jdbcType="VARCHAR" property="managDirector"/>
+    <result column="accountant" jdbcType="VARCHAR" property="accountant"/>
+    <result column="financechief" jdbcType="VARCHAR" property="financechief"/>
+    <result column="generalmanager" jdbcType="VARCHAR" property="generalmanager"/>
+    <result column="cashier" jdbcType="VARCHAR" property="cashier"/>
+    <result column="verify_by" jdbcType="BIGINT" property="verifyBy"/>
+    <result column="verify_name" jdbcType="VARCHAR" property="verifyName"/>
+    <result column="verify_date" jdbcType="TIMESTAMP" property="verifyDate"/>
+    <result column="create_name" jdbcType="VARCHAR" property="createName"/>
+    <result column="create_by" jdbcType="BIGINT" property="createBy"/>
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+    <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+    <result column="update_by" jdbcType="BIGINT" property="updateBy"/>
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+    <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+    <result column="ven_abb_name" property="venAbbName"/>
+    <result column="vendor_name" property="vendorName"/>
+    <result column="depart_name" property="departName"/>
+    <result column="rrdQuantity" property="rrdQuantity"/>
+    <result column="rrdMoney" property="rrdMoney"/>
+    <result column="retainage_ratio" property="retainageRatio"/>
+    <result column="bargain_ratio" property="bargainRatio"/>
+    <result column="update_price_reason" jdbcType="VARCHAR" property="updatePriceReason"/>
+    <result column="paymentTypeOption" property="paymentTypeOption"/>
+    <result column="po_type" jdbcType="INTEGER" property="poType"/>
+    <result column="a_material_type" jdbcType="INTEGER" property="apaMaterialType"/>
+    <result column="financial_body" jdbcType="VARCHAR" property="financialBody"/>
+    <result column="createDateString" jdbcType="VARCHAR" property="createDateString"/>
+    <result column="acc_name" jdbcType="VARCHAR" property="accname"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+        advance_pay_id, advance_pay_code, role_id, first_role_id, po_id, po_code, brand_id,
+        brand_name, vendor_id, vendor_code, state, payment_type, task_person, duties, receipt_department,
+        bank, payment, bank_account, is_arrive, enclosure, payment_use, money_capital, money,
+        department, manag_director, accountant, financechief, generalmanager, cashier, verify_by,
+        verify_name, verify_date, create_name, create_by, create_date, update_name, update_by,
+        update_date, is_delete,v.ven_abb_name
+  </sql>
+  <select id="selectCountByPoId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    SELECT
+           count(advance_pay_id)
+    FROM advancepay_application
+    WHERE po_id = #{poId,jdbcType=BIGINT}
+      AND is_delete = 0
+      and state in (0,1,2,3,4,5,6,8)
+  </select>
+  <select id="selectCountByPoIdAndState" resultType="java.lang.Integer">
+    SELECT
+           count(*)
+    FROM advancepay_application
+    WHERE po_id = #{poId,jdbcType=BIGINT}
+      AND state IN (0, 1, 2, 3, 4, 5, 6, 8)
+      AND payment_type = #{paymentType}
+      AND is_delete = 0
+  </select>
+  <sql id="listColumn">
+        a.advance_pay_id,
+        a.advance_pay_code,
+        a.role_id,
+        a.first_role_id,
+        a.po_id,
+        a.po_code,
+        a.brand_id,
+        a.brand_name,
+        a.vendor_id,
+        a.vendor_code,
+        a.state,
+        a.payment_type,
+        a.task_person,
+        a.duties,
+        a.receipt_department,
+        a.bank,
+        a.payment,
+        a.bank_account,
+        a.is_arrive,
+        a.enclosure,
+        a.payment_use,
+        a.money_capital,
+        a.money,
+        a.department,
+        a.manag_director,
+        a.accountant,
+        a.financechief,
+        a.generalmanager,
+        a.cashier,
+        a.verify_by,
+        a.verify_name,
+        a.verify_date,
+        a.create_name,
+        a.create_by,
+        a.create_date,
+        a.update_name,
+        a.update_by,
+        a.update_date,
+        a.is_delete,
+        a.update_price_reason
+  </sql>
+
+  <!--加入物料类型-->
+  <sql id="infoColumn2">
+    <include refid="listColumn"/>,
+    a.material_type as a_material_type
+  </sql>
+
+  <!--预付款申请单详情专用，获取采购单的采购类型和预付款申请单物料类型-->
+  <sql id="infoColumn3">
+    <include refid="listColumn"/>,
+    a.material_type as a_material_type,
+    <!--如果采购类型没有则先置为物料类型-->
+    IFNULL(ppm.po_type,a.material_type) as po_type
+  </sql>
+
+  <select id="selectAll" resultMap="advancePayVoMap">
+    SELECT<include refid="infoColumn2"/>,
+    IFNULL(rrd.rrdQuantity,0) as rrdQuantity,
+    IFNULL( rrd.rrdMoney,0) as rrdMoney,
+    ppm.retainage_ratio,
+    ppm.bargain_ratio,
+    (CASE
+    WHEN
+    (a.payment_type = 0)
+    THEN CONCAT(dc.payment_name,dc.proportion,'%')
+    WHEN
+    (a.payment_type = 1)
+    THEN CONCAT(dc.tail_name,dc.tail_proportion,'%')
+    WHEN
+    (a.payment_type = 2)
+    THEN '一期付款'
+    WHEN
+    (a.payment_type = 3)
+    THEN '二期付款'
+    WHEN
+    (a.payment_type = 4)
+    THEN '三期付款'
+    WHEN
+    (a.payment_type = 5)
+    THEN '四期付款'
+    WHEN
+    (a.payment_type = 6)
+    THEN '五期付款'
+    WHEN
+    (a.payment_type = 7)
+    THEN '六期付款'
+    WHEN
+    (a.payment_type = 8)
+    THEN '七期付款'
+    WHEN
+    (a.payment_type = 9)
+    THEN '八期付款'
+    END )paymentType,
+    (CASE WHEN rrd.arrivalQty != 0 THEN '是'
+    ELSE '否'
+    END )arrive,
+    if(a.advance_pay_id is NULL,NULL,(CASE
+    WHEN aaCount.aaCount =2 then '已完成'
+    WHEN a.state = 8 and dc.proportion = 100 THEN '已完成'
+    WHEN a.state = 8 and a.payment_type in(2,3,4,5,6,7,8,9) THEN '已完成'
+    ELSE (CASE WHEN a.state = 8 THEN CONCAT('已付款' ,(CASE
+    WHEN
+    (a.payment_type = 0)
+    THEN CONCAT(dc.payment_name,dc.proportion,'%')
+    WHEN
+    (a.payment_type = 1)
+    THEN CONCAT(dc.tail_name,dc.tail_proportion,'%')
+    END ))
+    ELSE '未付款'
+    END)
+    END
+    )) poPayState,
+    aaCount.aaCount,
+    dc.proportion
+    FROM advancepay_application a
+    LEFT JOIN (
+      SELECT
+      IFNULL( sum(rrd.quantity), 0 ) as rrdQuantity,
+      IFNULL(sum(rrd.tax_unit_price * rrd.quantity ),0) as rrdMoney,
+      IFNULL(sum(rrd.arrival_qty),0) as arrivalQty,
+      rrd.po_id
+      FROM cf_rd_record_detail rrd
+      WHERE rrd.is_delete = 0	GROUP BY rrd.po_id
+    ) rrd on  a.po_id = rrd.po_id
+    LEFT JOIN  cf_po_header ppm on ppm.po_id =a.po_id
+    LEFT JOIN downpayment_conf dc ON dc.payment_conf_id = a.payment_conf_id
+    LEFT JOIN (SELECT aa.po_id,COUNT(*) aaCount FROM advancepay_application aa WHERE aa.state = 8 GROUP BY aa.po_id) aaCount
+    ON aaCount.po_id = a.po_id
+    <include refid="whereConditions"/>
+    GROUP BY a.advance_pay_id
+    <trim prefix="having" suffixOverrides="and">
+      <if test="arrive != null and arrive == 1">
+          rrdQuantity != 0 AND
+      </if>
+      <if test="arrive != null and arrive == 0">
+
+        IFNULL(rrdQuantity,0.00) = 0 AND
+      </if>
+      <if test="poPayState != null and poPayState == 1">
+        (aaCount.aaCount = 2
+        OR
+        (dc.proportion = 100 and a.state = 8)) AND
+      </if>
+    </trim>
+    ORDER BY a.advance_pay_id DESC
+
+  </select>
+
+
+  <sql id="whereConditions">
+    <where>
+      a.is_delete = 0
+      <if test="companyId!=null">
+        AND a.company_id = #{companyId}
+      </if>
+      <if test="userIds!=null and userIds.size()>0">
+        AND a.create_by in
+        <foreach collection="userIds" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+      <if test="advancePayCode != null and advancePayCode != ''">
+        AND a.advance_pay_code LIKE concat ("%",#{advancePayCode},"%")
+      </if>
+      <if test="payType != null">
+        AND a.payment_type=#{payType}
+      </if>
+      <if test="createDateBegin!=null and createDateBegin!=''">
+        and a.create_date >= #{createDateBegin}
+      </if>
+      <if test="createDateEnd!=null and createDateEnd!=''">
+        and a.create_date <![CDATA[<=]]> #{createDateEnd}
+      </if>
+      <if test="taskPerson != null and taskPerson != ''">
+        AND a.task_person LIKE concat ("%",#{taskPerson},"%")
+      </if>
+      <if test="poCode != null and poCode != ''">
+        AND a.po_code LIKE concat ("%",#{poCode},"%")
+      </if>
+      <if test="brandIds !=null and brandIds.size() > 0">
+        AND a.brand_id in
+        <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+      <if test="brandName != null and brandName != ''">
+        AND a.brand_name=#{brandName}
+      </if>
+      <if test="vendorId != null">
+        AND a.vendor_id =#{vendorId}
+      </if>
+      <if test="createName != null and createName != ''">
+        AND a.create_name LIKE concat ("%",#{createName},"%")
+      </if>
+      <if test="state != null">
+        AND a.state = #{state}
+      </if>
+      <if test="poPayState != null and poPayState == 0">
+        and a.state != 8
+      </if>
+      <!--加入物料类型-->
+      <if test="materialType != null">
+        and a.material_type = #{materialType}
+      </if>
+      <if test="paymentType != null and paymentType != ''">
+        AND a.payment_type = #{paymentType}
+        <if test="proportion != null">
+          <if test="paymentType ==0">
+            AND dc.proportion = #{proportion}
+            AND dc.payment_name = #{proportionName}
+          </if>
+          <if test="paymentType ==1">
+            AND dc.tail_proportion = #{proportion}
+            AND dc.tail_name = #{proportionName}
+          </if>
+        </if>
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectByPayId" resultMap="advancePayInfoVoMap">
+    SELECT<include refid="infoColumn3"/>,a.vendor_id,sum(rrd.quantity) rrdQuantity,
+    DATE_FORMAT(a.finace_date,'%Y-%m-%d %H:%i:%S') as finaceDateString,
+    DATE_FORMAT(a.finace_gm_date,'%Y-%m-%d %H:%i:%S') as finaceGmDateString,
+    DATE_FORMAT(a.cashier_date,'%Y-%m-%d %H:%i:%S') as cashierDateString,
+    a.img_urls as imgUrls,
+    sum(
+    rrd.tax_unit_price * rrd.quantity
+    ) rrdMoney,ppm.retainage_ratio,ppm.bargain_ratio,
+    (CASE
+    WHEN
+    (a.payment_type = 0)
+    THEN CONCAT(dc.payment_name,dc.proportion,'%')
+    WHEN
+    (a.payment_type = 1)
+    THEN CONCAT(dc.tail_name,dc.tail_proportion,'%')
+    WHEN
+    (a.payment_type = 2)
+    THEN '一期付款'
+    WHEN
+    (a.payment_type = 3)
+    THEN '二期付款'
+    WHEN
+    (a.payment_type = 4)
+    THEN '三期付款'
+    WHEN
+    (a.payment_type = 5)
+    THEN '四期付款'
+    WHEN
+    (a.payment_type = 6)
+    THEN '五期付款'
+    WHEN
+    (a.payment_type = 7)
+    THEN '六期付款'
+    WHEN
+    (a.payment_type = 8)
+    THEN '七期付款'
+    WHEN
+    (a.payment_type = 9)
+    THEN '八期付款'
+    END )paymentTypeOption,
+    (CASE WHEN sum(rrd.quantity) != 0 THEN '是'
+    ELSE '否'
+    END )arrive
+    FROM
+    advancepay_application a
+    LEFT JOIN
+    cf_rd_record_detail rrd on  a.po_id = rrd.po_id AND rrd.is_delete = 0
+    LEFT JOIN  cf_po_header ppm on ppm.po_id =a.po_id
+    LEFT JOIN downpayment_conf dc ON dc.payment_conf_id = a.payment_conf_id
+    LEFT JOIN (SELECT aa.po_id,COUNT(*) aaCount FROM advancepay_application aa WHERE aa.state = 8 GROUP BY aa.po_id) aaCount
+    ON aaCount.po_id = a.po_id
+    WHERE
+    a.advance_pay_id = #{payId}
+  </select>
+
+  <select id="selectByPayIdAndUser" resultMap="advancePayInfoVoMap">
+    SELECT<include refid="infoColumn3"/>,a.vendor_id,sum(rrd.quantity) rrdQuantity,
+    DATE_FORMAT(a.finace_date,'%Y-%m-%d %H:%i:%S') as finaceDateString,
+    DATE_FORMAT(a.finace_gm_date,'%Y-%m-%d %H:%i:%S') as finaceGmDateString,
+    DATE_FORMAT(a.cashier_date,'%Y-%m-%d %H:%i:%S') as cashierDateString,
+    DATE_FORMAT( a.create_date, '%Y-%m-%d' ) as createDateString,
+    a.img_urls as imgUrls,
+    sum(
+    rrd.tax_unit_price * rrd.quantity
+    ) rrdMoney,ppm.retainage_ratio,ppm.bargain_ratio,
+    (CASE
+    WHEN
+    (a.payment_type = 0)
+    THEN CONCAT(dc.payment_name,dc.proportion,'%')
+    WHEN
+    (a.payment_type = 1)
+    THEN CONCAT(dc.tail_name,dc.tail_proportion,'%')
+    WHEN
+    (a.payment_type = 2)
+    THEN '一期付款'
+    WHEN
+    (a.payment_type = 3)
+    THEN '二期付款'
+    WHEN
+    (a.payment_type = 4)
+    THEN '三期付款'
+    WHEN
+    (a.payment_type = 5)
+    THEN '四期付款'
+    WHEN
+    (a.payment_type = 6)
+    THEN '五期付款'
+    WHEN
+    (a.payment_type = 7)
+    THEN '六期付款'
+    WHEN
+    (a.payment_type = 8)
+    THEN '七期付款'
+    WHEN
+    (a.payment_type = 9)
+    THEN '八期付款'
+    END )paymentTypeOption,
+    (CASE WHEN sum(rrd.quantity) != 0 THEN '是'
+    ELSE '否'
+    END )arrive,
+    a.acc_name
+    <!--逻辑变更，当前关联品牌企业类型为企业时，根据物料类型就行区分（成衣，辅料）-->
+    <!--IF(b.brand_type=1,IF(a.material_type = 0,b.financial_body,b.customer_name),null) as financial_body -->
+    FROM
+    advancepay_application a
+    LEFT JOIN
+    cf_rd_record_detail rrd on  a.po_id = rrd.po_id AND rrd.is_delete = 0
+    LEFT JOIN  cf_po_header ppm on ppm.po_id =a.po_id
+    LEFT JOIN downpayment_conf dc ON dc.payment_conf_id = a.payment_conf_id
+    LEFT JOIN (SELECT aa.po_id,COUNT(*) aaCount FROM advancepay_application aa WHERE aa.state = 8 GROUP BY aa.po_id) aaCount
+    ON aaCount.po_id = a.po_id
+    WHERE
+    a.advance_pay_id = #{payId}
+  </select>
+  <select id="selectTotalCount" resultType="java.math.BigDecimal">
+    SELECT SUM(money) FROM ( SELECT
+    a.money,
+    aaCount
+    FROM
+    advancepay_application a
+    LEFT JOIN downpayment_conf dc ON dc.payment_conf_id = a.payment_conf_id
+    LEFT JOIN (cf_po_header ppm,cf_po_detail ppd) ON ppm.po_id = a.po_id
+    AND ppm.po_id = ppd.po_id
+    AND ppm.is_delete = 0
+    AND ppm.is_delete = 0
+    LEFT JOIN (
+    cf_rd_record rr,cf_rd_record_detail rrd
+    ) ON rr.rd_record_id = rrd.rd_record_id
+    AND rr.state = 2
+    AND rr.is_delete = 0
+    AND rrd.is_delete = 0
+    LEFT JOIN (SELECT aa.po_id,COUNT(*) aaCount FROM advancepay_application aa WHERE aa.state = 8 GROUP BY aa.po_id) aaCount
+    ON aaCount.po_id = a.po_id
+    <include refid="whereConditions"/>
+    GROUP BY a.advance_pay_id
+    <if test="arrive != null and arrive == 1">
+      HAVING sum(rrd.quantity) != 0
+    </if>
+    <if test="arrive != null and arrive == 0">
+      HAVING
+      IFNULL(sum(rrd.quantity),0.00) = 0
+    </if>
+    <if test="poPayState != null and poPayState == 1">
+      HAVING aaCount.aaCount = 2
+    </if>
+    ) am
+  </select>
+  <select id="exportExcel" resultMap="excelVoMap">
+    SELECT<include refid="infoColumn2"/>,
+    IFNULL(rrd.rrdQuantity,0) as rrdQuantity,
+    IFNULL( rrd.rrdMoney,0) as rrdMoney,
+    ppm.retainage_ratio,
+    ppm.bargain_ratio,
+    (CASE
+    WHEN
+    (a.payment_type = 0)
+    THEN CONCAT(dc.payment_name,dc.proportion,'%')
+    WHEN
+    (a.payment_type = 1)
+    THEN CONCAT(dc.tail_name,dc.tail_proportion,'%')
+    WHEN
+    (a.payment_type = 2)
+    THEN '一期付款'
+    WHEN
+    (a.payment_type = 3)
+    THEN '二期付款'
+    WHEN
+    (a.payment_type = 4)
+    THEN '三期付款'
+    WHEN
+    (a.payment_type = 5)
+    THEN '四期付款'
+    WHEN
+    (a.payment_type = 6)
+    THEN '五期付款'
+    WHEN
+    (a.payment_type = 7)
+    THEN '六期付款'
+    WHEN
+    (a.payment_type = 8)
+    THEN '七期付款'
+    WHEN
+    (a.payment_type = 9)
+    THEN '八期付款'
+    END )paymentType,
+    (CASE WHEN rrd.arrivalQty != 0 THEN '是'
+    ELSE '否'
+    END )arrive,
+    if(a.advance_pay_id is NULL,NULL,(CASE
+    WHEN aaCount.aaCount =2 then '已完成'
+    WHEN a.state = 8 and dc.proportion = 100 THEN '已完成'
+    WHEN a.state = 8 and a.payment_type in(2,3,4,5,6,7,8,9) THEN '已完成'
+    ELSE (CASE WHEN a.state = 8 THEN CONCAT('已付款' ,(CASE
+    WHEN
+    (a.payment_type = 0)
+    THEN CONCAT(dc.payment_name,dc.proportion,'%')
+    WHEN
+    (a.payment_type = 1)
+    THEN CONCAT(dc.tail_name,dc.tail_proportion,'%')
+    END ))
+    ELSE '未付款'
+    END)
+    END
+    )) poPayState,
+    aaCount.aaCount,
+    dc.proportion
+    FROM advancepay_application a
+    LEFT JOIN (
+    SELECT
+    IFNULL( sum(rrd.quantity), 0 ) as rrdQuantity,
+    IFNULL(sum(rrd.tax_unit_price * rrd.quantity ),0) as rrdMoney,
+    IFNULL(sum(rrd.arrival_qty),0) as arrivalQty,
+    rrd.po_id
+    FROM cf_rd_record_detail rrd
+    WHERE rrd.is_delete = 0	GROUP BY rrd.po_id
+    ) rrd on  a.po_id = rrd.po_id
+    LEFT JOIN  cf_po_header ppm on ppm.po_id =a.po_id
+    LEFT JOIN downpayment_conf dc ON dc.payment_conf_id = a.payment_conf_id
+    LEFT JOIN (SELECT aa.po_id,COUNT(*) aaCount FROM advancepay_application aa WHERE aa.state = 8 GROUP BY aa.po_id) aaCount
+    ON aaCount.po_id = a.po_id
+    <include refid="whereConditions"/>
+    GROUP BY a.advance_pay_id
+    <trim prefix="having" suffixOverrides="and">
+      <if test="arrive != null and arrive == 1">
+        rrdQuantity != 0 AND
+      </if>
+      <if test="arrive != null and arrive == 0">
+
+        IFNULL(rrdQuantity,0.00) = 0 AND
+      </if>
+      <if test="poPayState != null and poPayState == 1">
+        (aaCount.aaCount = 2
+        OR
+        (dc.proportion = 100 and a.state = 8)) AND
+      </if>
+    </trim>
+    ORDER BY a.advance_pay_id DESC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from advancepay_application
+    where advance_pay_id = #{advancePayId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chenfan.finance.model.dto.AdvancepayApply">
+    INSERT INTO advancepay_application (advance_pay_id, advance_pay_code, role_id,
+                                        first_role_id, po_id, po_code,
+                                        brand_id, brand_name, vendor_id,
+                                        vendor_code, state, payment_type,
+                                        task_person, duties, receipt_department,
+                                        bank, payment, bank_account,
+                                        is_arrive, enclosure, payment_use,
+                                        money_capital, money, department,
+                                        manag_director, accountant, financechief,
+                                        generalmanager, cashier, verify_by,
+                                        verify_name, verify_date, create_name,
+                                        create_by, create_date, update_name,
+                                        update_by, update_date, is_delete)
+    VALUES (#{advancePayId,jdbcType=INTEGER}, #{advancePayCode,jdbcType=VARCHAR},
+            #{roleId,jdbcType=VARCHAR},
+            #{firstRoleId,jdbcType=VARCHAR}, #{poId,jdbcType=BIGINT}, #{poCode,jdbcType=VARCHAR},
+            #{brandId,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR},
+            #{vendorId,jdbcType=INTEGER},
+            #{vendorCode,jdbcType=VARCHAR}, #{state,jdbcType=BIT}, #{paymentType,jdbcType=VARCHAR},
+            #{taskPerson,jdbcType=VARCHAR}, #{duties,jdbcType=VARCHAR},
+            #{receiptDepartment,jdbcType=VARCHAR},
+            #{bank,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR},
+            #{isArrive,jdbcType=INTEGER}, #{enclosure,jdbcType=INTEGER},
+            #{paymentUse,jdbcType=VARCHAR},
+            #{moneyCapital,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL},
+            #{department,jdbcType=VARCHAR},
+            #{managDirector,jdbcType=VARCHAR}, #{accountant,jdbcType=VARCHAR},
+            #{financechief,jdbcType=VARCHAR},
+            #{generalmanager,jdbcType=VARCHAR}, #{cashier,jdbcType=VARCHAR},
+            #{verifyBy,jdbcType=BIGINT},
+            #{verifyName,jdbcType=VARCHAR}, #{verifyDate,jdbcType=TIMESTAMP},
+            #{createName,jdbcType=VARCHAR},
+            #{createBy,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP},
+            #{updateName,jdbcType=VARCHAR},
+            #{updateBy,jdbcType=BIGINT}, #{updateDate,jdbcType=TIMESTAMP},
+            #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chenfan.finance.model.dto.AdvancepayApply">
+    INSERT INTO advancepay_application
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="advancePayId != null">
+        advance_pay_id,
+      </if>
+      <if test="advancePayCode != null">
+        advance_pay_code,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="firstRoleId != null">
+        first_role_id,
+      </if>
+      <if test="poId != null">
+        po_id,
+      </if>
+      <if test="poCode != null">
+        po_code,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="brandName != null">
+        brand_name,
+      </if>
+      <if test="vendorId != null">
+        vendor_id,
+      </if>
+      <if test="vendorCode != null">
+        vendor_code,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="paymentType != null">
+        payment_type,
+      </if>
+      <if test="paymentConfId != null">
+        payment_conf_id,
+      </if>
+      <if test="taskPerson != null">
+        task_person,
+      </if>
+      <if test="duties != null">
+        duties,
+      </if>
+      <if test="receiptDepartment != null">
+        receipt_department,
+      </if>
+      <if test="bank != null">
+        bank,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="isArrive != null">
+        is_arrive,
+      </if>
+      <if test="enclosure != null">
+        enclosure,
+      </if>
+      <if test="paymentUse != null">
+        payment_use,
+      </if>
+      <if test="moneyCapital != null">
+        money_capital,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="managDirector != null">
+        manag_director,
+      </if>
+      <if test="accountant != null">
+        accountant,
+      </if>
+      <if test="financechief != null">
+        financechief,
+      </if>
+      <if test="generalmanager != null">
+        generalmanager,
+      </if>
+      <if test="cashier != null">
+        cashier,
+      </if>
+      <if test="verifyBy != null">
+        verify_by,
+      </if>
+      <if test="verifyName != null">
+        verify_name,
+      </if>
+      <if test="verifyDate != null">
+        verify_date,
+      </if>
+      <if test="createName != null">
+        create_name,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      create_date,
+      <if test="updateName != null">
+        update_name,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="materialType != null">
+        material_type,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="accname != null">
+        acc_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="advancePayId != null">
+        #{advancePayId,jdbcType=INTEGER},
+      </if>
+      <if test="advancePayCode != null">
+        #{advancePayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstRoleId != null">
+        #{firstRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="poId != null">
+        #{poId,jdbcType=BIGINT},
+      </if>
+      <if test="poCode != null">
+        #{poCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null">
+        #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="vendorCode != null">
+        #{vendorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="paymentType != null">
+        #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentConfId != null">
+        #{paymentConfId},
+      </if>
+      <if test="taskPerson != null">
+        #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="duties != null">
+        #{duties,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptDepartment != null">
+        #{receiptDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isArrive != null">
+        #{isArrive,jdbcType=INTEGER},
+      </if>
+      <if test="enclosure != null">
+        #{enclosure,jdbcType=INTEGER},
+      </if>
+      <if test="paymentUse != null">
+        #{paymentUse,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyCapital != null">
+        #{moneyCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="managDirector != null">
+        #{managDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="accountant != null">
+        #{accountant,jdbcType=VARCHAR},
+      </if>
+      <if test="financechief != null">
+        #{financechief,jdbcType=VARCHAR},
+      </if>
+      <if test="generalmanager != null">
+        #{generalmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="cashier != null">
+        #{cashier,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyBy != null">
+        #{verifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="verifyName != null">
+        #{verifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyDate != null">
+        #{verifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createName != null">
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      now(),
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="materialType != null">
+        #{materialType,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="accname != null">
+        #{accname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective"
+          parameterType="com.chenfan.finance.model.dto.AdvancepayApply">
+    UPDATE advancepay_application
+    <set>
+      <if test="advancePayCode != null">
+        advance_pay_code = #{advancePayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstRoleId != null">
+        first_role_id = #{firstRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="poId != null">
+        po_id = #{poId,jdbcType=BIGINT},
+      </if>
+      <if test="poCode != null">
+        po_code = #{poCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null">
+        vendor_id = #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="vendorCode != null">
+        vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="paymentType != null">
+        payment_type = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null">
+        task_person = #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="duties != null">
+        duties = #{duties,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptDepartment != null">
+        receipt_department = #{receiptDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isArrive != null">
+        is_arrive = #{isArrive,jdbcType=INTEGER},
+      </if>
+      <if test="paymentUse != null">
+        payment_use = #{paymentUse,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyCapital != null">
+        money_capital = #{moneyCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="managDirector != null">
+        manag_director = #{managDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="accountant != null">
+        accountant = #{accountant,jdbcType=VARCHAR},
+      </if>
+      <if test="financechief != null">
+        financechief = #{financechief,jdbcType=VARCHAR},
+      </if>
+      <if test="generalmanager != null">
+        generalmanager = #{generalmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="cashier != null">
+        cashier = #{cashier,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierDate != null">
+        cashier_date = #{cashierDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifyBy != null">
+        verify_by = #{verifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="verifyName != null">
+        verify_name = #{verifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyDate != null">
+        verify_date = #{verifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="applyConfirmName != null and applyConfirmName != ''">
+        apply_confirm_name = #{applyConfirmName},
+      </if>
+      <if test="applyConfirmDate != null">
+        apply_confirm_date = #{applyConfirmDate},
+      </if>
+      <if test="confirmName != null and confirmName != ''">
+        confirm_name = #{confirmName},
+      </if>
+      <if test="confirmDate != null">
+        confirm_date = #{confirmDate},
+      </if>
+      <if test="supplychainInternName != null and supplychainInternName != ''">
+        supplychain_intern_name = #{supplychainInternName},
+      </if>
+      <if test="supplychainInternDate != null">
+        supplychain_intern_date = #{supplychainInternDate},
+      </if>
+      <if test="finaceName != null and finaceName != ''">
+        finace_name = #{finaceName},
+      </if>
+      <if test="finaceDate != null">
+        finace_date = #{finaceDate},
+      </if>
+      <if test="finaceGMName != null and finaceGMName != ''">
+        finace_gm_name = #{finaceGMName},
+      </if>
+      <if test="finaceGMDate != null">
+        finace_gm_date = #{finaceGMDate},
+      </if>
+      <if test="cooOrHelperName != null and cooOrHelperName != ''">
+        coo_or_helper_name = #{cooOrHelperName},
+      </if>
+      <if test="cooOrHelperDate != null">
+        coo_or_helper_date = #{cooOrHelperDate},
+      </if>
+      <if test="imgUrls != null and imgUrls != ''">
+        img_urls = #{imgUrls},
+      </if>
+    </set>
+    WHERE advance_pay_id = #{advancePayId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeySelectiveWithenclosure"
+          parameterType="com.chenfan.finance.model.dto.AdvancepayApply">
+    UPDATE advancepay_application
+    <set>
+      <if test="advancePayCode != null">
+        advance_pay_code = #{advancePayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstRoleId != null">
+        first_role_id = #{firstRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="poId != null">
+        po_id = #{poId,jdbcType=BIGINT},
+      </if>
+      <if test="poCode != null">
+        po_code = #{poCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null">
+        vendor_id = #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="vendorCode != null">
+        vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="paymentType != null">
+        payment_type = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null">
+        task_person = #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="duties != null">
+        duties = #{duties,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptDepartment != null">
+        receipt_department = #{receiptDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isArrive != null">
+        is_arrive = #{isArrive,jdbcType=INTEGER},
+      </if>
+      enclosure = #{enclosure,jdbcType=INTEGER},
+      <if test="paymentUse != null">
+        payment_use = #{paymentUse,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyCapital != null">
+        money_capital = #{moneyCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="updatePriceReason != null and updatePriceReason!=''">
+        update_price_reason = #{updatePriceReason},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="managDirector != null">
+        manag_director = #{managDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="accountant != null">
+        accountant = #{accountant,jdbcType=VARCHAR},
+      </if>
+      <if test="financechief != null">
+        financechief = #{financechief,jdbcType=VARCHAR},
+      </if>
+      <if test="generalmanager != null">
+        generalmanager = #{generalmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="cashier != null">
+        cashier = #{cashier,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyBy != null">
+        verify_by = #{verifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="verifyName != null">
+        verify_name = #{verifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyDate != null">
+        verify_date = #{verifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="accname != null">
+        acc_name = #{accname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE advance_pay_id = #{advancePayId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chenfan.finance.model.dto.AdvancepayApply">
+    UPDATE advancepay_application
+    SET advance_pay_code   = #{advancePayCode,jdbcType=VARCHAR},
+        role_id            = #{roleId,jdbcType=VARCHAR},
+        first_role_id      = #{firstRoleId,jdbcType=VARCHAR},
+        po_id              = #{poId,jdbcType=BIGINT},
+        po_code            = #{poCode,jdbcType=VARCHAR},
+        brand_id           = #{brandId,jdbcType=INTEGER},
+        brand_name         = #{brandName,jdbcType=VARCHAR},
+        vendor_id          = #{vendorId,jdbcType=INTEGER},
+        vendor_code        = #{vendorCode,jdbcType=VARCHAR},
+        state              = #{state,jdbcType=BIT},
+        payment_type       = #{paymentType,jdbcType=VARCHAR},
+        task_person        = #{taskPerson,jdbcType=VARCHAR},
+        duties             = #{duties,jdbcType=VARCHAR},
+        receipt_department = #{receiptDepartment,jdbcType=VARCHAR},
+        bank               = #{bank,jdbcType=VARCHAR},
+        payment            = #{payment,jdbcType=VARCHAR},
+        bank_account       = #{bankAccount,jdbcType=VARCHAR},
+        is_arrive          = #{isArrive,jdbcType=INTEGER},
+        enclosure          = #{enclosure,jdbcType=INTEGER},
+        payment_use        = #{paymentUse,jdbcType=VARCHAR},
+        money_capital      = #{moneyCapital,jdbcType=VARCHAR},
+        money              = #{money,jdbcType=DECIMAL},
+        department         = #{department,jdbcType=VARCHAR},
+        manag_director     = #{managDirector,jdbcType=VARCHAR},
+        accountant         = #{accountant,jdbcType=VARCHAR},
+        financechief       = #{financechief,jdbcType=VARCHAR},
+        generalmanager     = #{generalmanager,jdbcType=VARCHAR},
+        cashier            = #{cashier,jdbcType=VARCHAR},
+        verify_by          = #{verifyBy,jdbcType=BIGINT},
+        verify_name        = #{verifyName,jdbcType=VARCHAR},
+        verify_date        = #{verifyDate,jdbcType=TIMESTAMP},
+        create_name        = #{createName,jdbcType=VARCHAR},
+        create_by          = #{createBy,jdbcType=BIGINT},
+        create_date        = #{createDate,jdbcType=TIMESTAMP},
+        update_name        = #{updateName,jdbcType=VARCHAR},
+        update_by          = #{updateBy,jdbcType=BIGINT},
+        update_date        = #{updateDate,jdbcType=TIMESTAMP},
+        is_delete          = #{isDelete,jdbcType=BIT}
+    WHERE advance_pay_id = #{advancePayId,jdbcType=INTEGER}
+  </update>
+  <update id="reject">
+    UPDATE advancepay_application
+    <set>
+      <if test="advancePayCode != null">
+        advance_pay_code = #{advancePayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstRoleId != null">
+        first_role_id = #{firstRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="poId != null">
+        po_id = #{poId,jdbcType=BIGINT},
+      </if>
+      <if test="poCode != null">
+        po_code = #{poCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null">
+        vendor_id = #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="vendorCode != null">
+        vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="paymentType != null">
+        payment_type = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null">
+        task_person = #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="duties != null">
+        duties = #{duties,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptDepartment != null">
+        receipt_department = #{receiptDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isArrive != null">
+        is_arrive = #{isArrive,jdbcType=INTEGER},
+      </if>
+      <if test="paymentUse != null">
+        payment_use = #{paymentUse,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyCapital != null">
+        money_capital = #{moneyCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="managDirector != null">
+        manag_director = #{managDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="accountant != null">
+        accountant = #{accountant,jdbcType=VARCHAR},
+      </if>
+      <if test="financechief != null">
+        financechief = #{financechief,jdbcType=VARCHAR},
+      </if>
+      <if test="generalmanager != null">
+        generalmanager = #{generalmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="cashier != null">
+        cashier = #{cashier,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyBy != null">
+        verify_by = #{verifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="verifyName != null">
+        verify_name = #{verifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyDate != null">
+        verify_date = #{verifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      apply_confirm_name = #{applyConfirmName},
+      apply_confirm_date = #{applyConfirmDate},
+      confirm_name = #{confirmName},
+      confirm_date = #{confirmDate},
+      supplychain_intern_name = #{supplychainInternName},
+      supplychain_intern_date = #{supplychainInternDate},
+      finace_name = #{finaceName},
+      finace_date = #{finaceDate},
+      finace_gm_name = #{finaceGMName},
+      finace_gm_date = #{finaceGMDate},
+      coo_or_helper_name = #{cooOrHelperName},
+      coo_or_helper_date = #{cooOrHelperDate},
+      img_urls = #{imgUrls}
+    </set>
+    WHERE advance_pay_id = #{advancePayId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="PayResultMap" type="com.chenfan.finance.model.vo.PaymentVo">
+    <result column="product_code" jdbcType="VARCHAR" property="productCode"/>
+    <result column="payment" jdbcType="VARCHAR" property="payment"/>
+    <result column="proportion" jdbcType="DECIMAL" property="proportion"/>
+  </resultMap>
+
+  <select id="getProductCode" resultMap="PayResultMap">
+    SELECT
+  po.`product_code`,
+  IF(
+    a.`payment_type` = 0,
+    '定金',
+    '尾款'
+  ) AS payment ,
+   IF(
+    a.`payment_type` = 0,
+    d.`proportion`,
+    d.`tail_proportion`
+  ) AS proportion
+FROM
+  advancepay_application a
+  LEFT JOIN downpayment_conf d
+    ON a.`payment_conf_id` = d.`payment_conf_id`,
+  cf_po_header p,
+  cf_po_detail po
+WHERE a.`advance_pay_id` = #{advancePayId}
+  AND a.`po_id` = p.`po_id`
+  AND p.`po_id` = po.`po_id`
+GROUP BY po.`product_code`
+
+</select>
+  <select id="selectPayType" resultType="java.lang.String">
+      select payment_type from advancepay_application a left join cf_po_header p on a.po_code=p.po_code where a.state!=7 and a.po_id=#{poCode}
+    </select>
+
+  <resultMap id="advanceVoMap" type="com.chenfan.finance.model.vo.AdvanceVo">
+    <result column="po_id" jdbcType="BIGINT" property="poId"/>
+    <result column="po_code" jdbcType="VARCHAR" property="poCode"/>
+    <result column="retainage_ratio" property="retainageRatio"/>
+    <result column="bargain_ratio" property="bargainRatio"/>
+    <result column="bargain" property="bargain"/>
+    <result column="retainage" property="retainage"/>
+    <result column="payment_conf_id" property="paymentConfigId"/>
+    <result column="po_type" property="poType"/>
+    <result column="task_person" property="taskPerson"/>
+    <result column="create_date" property="createDate"/>
+    <result column="receipt_department" property="receiptDepartment"/>
+    <result column="bank" property="bank"/>
+    <result column="payment" property="payment"/>
+    <result column="bank_account" property="bankAccount"/>
+    <result column="is_arrive" property="isArrive"/>
+    <result column="enclosure" property="enclosure"/>
+    <result column="payment_use" property="paymentUse"/>
+    <result column="money" property="money"/>
+    <result column="money_capital" property="moneyCapital"/>
+    <result column="department" property="department"/>
+    <result column="manag_director" property="managDirector"/>
+    <result column="accountant" property="accountant"/>
+    <result column="financechief" property="financechief"/>
+    <result column="generalmanager" property="generalmanager"/>
+    <result column="cashier" property="cashier"/>
+    <result column="advance_pay_id" property="advancePayId"/>
+    <result column="payment_type" property="paymentType"/>
+    <result column="acc_name" property="accname"/>
+    <association property="pays" select="getList" column="{poId=po_id,materialType=po_type}"/>
+  </resultMap>
+
+  <select id="selectByPoId" resultMap="advanceVoMap">
+        SELECT
+            a.payment_conf_id,
+            cp.bargain_ratio,
+            cp.bargain,
+            cp.retainage_ratio,
+            cp.retainage,
+            cp.po_type,
+            cp.po_id,
+            cp.po_code,
+            a.task_person,
+            a.create_date,
+            a.receipt_department,
+            a.bank,
+            a.payment,
+            a.bank_account,
+            a.is_arrive,
+            a.enclosure,
+            a.payment_use,
+            a.money,
+            a.money_capital,
+            a.department,
+            a.manag_director,
+            a.accountant,
+            a.financechief,
+            a.generalmanager,
+            a.cashier,
+            a.advance_pay_id,
+            a.payment_type,
+            a.acc_name
+        FROM
+            cf_po_header AS cp
+            LEFT JOIN advancepay_application AS a ON cp.po_id = a.po_id
+            AND a.is_delete = 0
+            AND a.state != 7
+            LEFT JOIN downpayment_conf AS dc ON dc.payment_conf_id = a.payment_conf_id
+        WHERE
+            cp.is_delete = 0
+            AND cp.po_code = #{poCode}
+        ORDER BY
+            a.payment_type DESC
+        LIMIT 1
+  </select>
+
+  <select id="getList" resultType="com.chenfan.finance.model.Pay">
+        select payment_type as payType,
+               money  as payValue
+        from advancepay_application
+        where po_id = #{poId}
+          and material_type = #{materialType}
+          and payment_type != 0
+          and payment_type != 1
+          and state != 7
+          and is_delete = 0
+        order by payment_type
+  </select>
+
+  <select id="findAdvancePayId" resultType="java.lang.Integer">
+    SELECT
+        advance_pay_id
+    FROM
+        advancepay_application
+    WHERE
+        is_delete = 0
+        AND state != 7
+        AND payment_type = #{paymentType}
+        AND po_code = #{poCode}
+        AND material_type = #{materialType}
+  </select>
+  <select id="findMoneyByPoId" resultType="java.math.BigDecimal">
+    SELECT
+        money
+    FROM
+        advancepay_application
+    WHERE
+        is_delete = 0
+        AND po_id = #{poId}
+        AND state != 7
+        AND payment_type = 2
+  </select>
+  <select id="findMoneyByPoCode" resultType="java.math.BigDecimal">
+    SELECT
+        money
+    FROM
+        advancepay_application
+    WHERE
+        is_delete = 0
+        AND po_code = #{poCode}
+        AND state != 7
+        AND payment_type = 2
+  </select>
+
+  <update id="updateAdvancepayDetails"
+          parameterType="com.chenfan.finance.model.Advancepay">
+    UPDATE advancepay_application
+    <set>
+      <if test="receiptDepartment != null">
+        receipt_department = #{receiptDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isArrive != null">
+        is_arrive = #{isArrive,jdbcType=INTEGER},
+      </if>
+      enclosure = #{enclosure,jdbcType=INTEGER},
+      <if test="paymentUse != null">
+        payment_use = #{paymentUse,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyCapital != null">
+        money_capital = #{moneyCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accname != null">
+        acc_name = #{accname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE advance_pay_id = #{advancePayId,jdbcType=INTEGER}
+  </update>
+
+  <select id="checkIfExists" resultType="java.lang.Integer">
+    select count(*) from
+    advancepay_application
+    where po_id in
+    <foreach collection="poIds" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and state != 7
+  </select>
+
+</mapper>

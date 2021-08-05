@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocSalesTradeOrderMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocSalesTradeOrder">
+    <id column="rec_id" jdbcType="INTEGER" property="recId" />
+    <result column="trade_id" jdbcType="INTEGER" property="tradeId" />
+    <result column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="platform_id" jdbcType="TINYINT" property="platformId" />
+    <result column="src_oid" jdbcType="VARCHAR" property="srcOid" />
+    <result column="suite_id" jdbcType="INTEGER" property="suiteId" />
+    <result column="src_tid" jdbcType="VARCHAR" property="srcTid" />
+    <result column="gift_type" jdbcType="INTEGER" property="giftType" />
+    <result column="refund_status" jdbcType="TINYINT" property="refundStatus" />
+    <result column="guarantee_mode" jdbcType="TINYINT" property="guaranteeMode" />
+    <result column="delivery_term" jdbcType="TINYINT" property="deliveryTerm" />
+    <result column="bind_oid" jdbcType="VARCHAR" property="bindOid" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="actual_num" jdbcType="DECIMAL" property="actualNum" />
+    <result column="refund_num" jdbcType="DECIMAL" property="refundNum" />
+    <result column="order_price" jdbcType="DECIMAL" property="orderPrice" />
+    <result column="share_price" jdbcType="DECIMAL" property="sharePrice" />
+    <result column="adjust" jdbcType="DECIMAL" property="adjust" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="share_amount" jdbcType="DECIMAL" property="shareAmount" />
+    <result column="share_amount2" jdbcType="DECIMAL" property="shareAmount2" />
+    <result column="share_post" jdbcType="DECIMAL" property="sharePost" />
+    <result column="paid" jdbcType="DECIMAL" property="paid" />
+    <result column="tax_rate" jdbcType="DECIMAL" property="taxRate" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="spec_no" jdbcType="VARCHAR" property="specNo" />
+    <result column="spec_code" jdbcType="VARCHAR" property="specCode" />
+    <result column="suite_no" jdbcType="VARCHAR" property="suiteNo" />
+    <result column="suite_name" jdbcType="VARCHAR" property="suiteName" />
+    <result column="suite_num" jdbcType="DECIMAL" property="suiteNum" />
+    <result column="suite_amount" jdbcType="DECIMAL" property="suiteAmount" />
+    <result column="suite_discount" jdbcType="DECIMAL" property="suiteDiscount" />
+    <result column="is_print_suite" jdbcType="INTEGER" property="isPrintSuite" />
+    <result column="api_goods_name" jdbcType="VARCHAR" property="apiGoodsName" />
+    <result column="api_spec_name" jdbcType="VARCHAR" property="apiSpecName" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="goods_type" jdbcType="TINYINT" property="goodsType" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="is_zero_cost" jdbcType="INTEGER" property="isZeroCost" />
+    <result column="stock_reserved" jdbcType="TINYINT" property="stockReserved" />
+    <result column="is_consigned" jdbcType="TINYINT" property="isConsigned" />
+    <result column="large_type" jdbcType="INTEGER" property="largeType" />
+    <result column="invoice_type" jdbcType="TINYINT" property="invoiceType" />
+    <result column="invoice_content" jdbcType="VARCHAR" property="invoiceContent" />
+    <result column="from_mask" jdbcType="INTEGER" property="fromMask" />
+    <result column="is_received" jdbcType="TINYINT" property="isReceived" />
+    <result column="is_master" jdbcType="INTEGER" property="isMaster" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    rec_id, trade_id, spec_id, platform_id, src_oid, suite_id, src_tid, gift_type, refund_status, 
+    guarantee_mode, delivery_term, bind_oid, num, price, actual_num, refund_num, order_price, 
+    share_price, adjust, discount, share_amount, share_amount2, share_post, paid, tax_rate, 
+    goods_name, goods_id, goods_no, spec_name, spec_no, spec_code, suite_no, suite_name, 
+    suite_num, suite_amount, suite_discount, is_print_suite, api_goods_name, api_spec_name, 
+    weight, commission, goods_type, flag, is_zero_cost, stock_reserved, is_consigned, 
+    large_type, invoice_type, invoice_content, from_mask, is_received, is_master, cid, 
+    remark, modified, created
+  </sql>
+  </mapper>

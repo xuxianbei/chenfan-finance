@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfQcRecordDetailMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfQcRecordDetail">
+    <id column="qc_charging_id" jdbcType="INTEGER" property="qcChargingId" />
+    <result column="qc_task_id" jdbcType="INTEGER" property="qcTaskId" />
+    <result column="inventory_code" jdbcType="VARCHAR" property="inventoryCode" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="season" jdbcType="VARCHAR" property="season" />
+    <result column="middle_class_id" jdbcType="INTEGER" property="middleClassId" />
+    <result column="middle_class_name" jdbcType="VARCHAR" property="middleClassName" />
+    <result column="qc_charging_type" jdbcType="VARCHAR" property="qcChargingType" />
+    <result column="qc_charging_qty" jdbcType="INTEGER" property="qcChargingQty" />
+    <result column="sales_type" jdbcType="BOOLEAN" property="salesType" />
+    <result column="qc_qty" jdbcType="INTEGER" property="qcQty" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    qc_charging_id, qc_task_id, inventory_code, product_code, goods_name, season, middle_class_id, 
+    middle_class_name, qc_charging_type, qc_charging_qty, sales_type, qc_qty
+  </sql>
+
+</mapper>

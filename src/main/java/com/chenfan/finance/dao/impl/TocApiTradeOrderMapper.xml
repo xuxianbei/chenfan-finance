@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocApiTradeOrderMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocApiTradeOrder">
+
+    <result column="platform_id" jdbcType="INTEGER" property="platformId" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="oid" jdbcType="VARCHAR" property="oid" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="process_status" jdbcType="TINYINT" property="processStatus" />
+    <result column="refund_status" jdbcType="TINYINT" property="refundStatus" />
+    <result column="process_refund_status" jdbcType="TINYINT" property="processRefundStatus" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="invoice_type" jdbcType="INTEGER" property="invoiceType" />
+    <result column="invoice_content" jdbcType="VARCHAR" property="invoiceContent" />
+    <result column="bind_oid" jdbcType="VARCHAR" property="bindOid" />
+    <result column="goods_id" jdbcType="VARCHAR" property="goodsId" />
+    <result column="spec_id" jdbcType="VARCHAR" property="specId" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="spec_no" jdbcType="VARCHAR" property="specNo" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="spec_code" jdbcType="VARCHAR" property="specCode" />
+    <result column="refund_id" jdbcType="VARCHAR" property="refundId" />
+    <result column="is_invalid_goods" jdbcType="INTEGER" property="isInvalidGoods" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="adjust_amount" jdbcType="DECIMAL" property="adjustAmount" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="share_discount" jdbcType="DECIMAL" property="shareDiscount" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="share_amount" jdbcType="DECIMAL" property="shareAmount" />
+    <result column="share_post" jdbcType="DECIMAL" property="sharePost" />
+    <result column="share_other" jdbcType="DECIMAL" property="shareOther" />
+    <result column="share_cost" jdbcType="DECIMAL" property="shareCost" />
+    <result column="refund_amount" jdbcType="DECIMAL" property="refundAmount" />
+    <result column="paid" jdbcType="DECIMAL" property="paid" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="modify_flag" jdbcType="INTEGER" property="modifyFlag" />
+    <result column="other_flags" jdbcType="INTEGER" property="otherFlags" />
+    <result column="gift_type" jdbcType="TINYINT" property="giftType" />
+    <result column="wms_type" jdbcType="TINYINT" property="wmsType" />
+    <result column="is_auto_wms" jdbcType="INTEGER" property="isAutoWms" />
+    <result column="warehouse_no" jdbcType="VARCHAR" property="warehouseNo" />
+    <result column="stockout_no" jdbcType="VARCHAR" property="stockoutNo" />
+    <result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
+    <result column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+   platform_id, tid, oid, `status`, process_status, refund_status, process_refund_status,
+    order_type, invoice_type, invoice_content, bind_oid, goods_id, spec_id, goods_no, 
+    spec_no, goods_name, spec_name, spec_code, refund_id, is_invalid_goods, num, price, 
+    adjust_amount, discount, share_discount, total_amount, share_amount, share_post, 
+    share_other, share_cost, refund_amount, paid, commission, modify_flag, other_flags, 
+    gift_type, wms_type, is_auto_wms, warehouse_no, stockout_no, logistics_no, cid, remark, 
+    modified, created
+  </sql>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.RejectionRetiredDetailMapper">
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.RejectionRetiredDetail">
+        <id column="rj_retired_detail_id"  property="rjRetiredDetailId"/>
+        <result column="rj_retired_id" jdbcType="INTEGER" property="rjRetiredId"/>
+        <result column="rj_retired_code" jdbcType="VARCHAR" property="rjRetiredCode"/>
+        <result column="inventory_id" jdbcType="INTEGER" property="inventoryId"/>
+        <result column="inventory_code" jdbcType="VARCHAR" property="inventoryCode"/>
+        <result column="product_code" jdbcType="VARCHAR" property="productCode"/>
+        <result column="quantity" jdbcType="DECIMAL" property="quantity"/>
+        <result column="account_state" jdbcType="BIT" property="accountState"/>
+        <result column="tax_unit_price" jdbcType="DECIMAL" property="taxUnitPrice"/>
+        <result column="unit_price" jdbcType="DECIMAL" property="unitPrice"/>
+        <result column="tax_rate" jdbcType="DECIMAL" property="taxRate"/>
+        <result column="free_tax_money" jdbcType="DECIMAL" property="freeTaxMoney"/>
+        <result column="included_tax_money" jdbcType="DECIMAL" property="includedTaxMoney"/>
+        <result column="tax_money" jdbcType="DECIMAL" property="taxMoney"/>
+        <result column="exch_name" jdbcType="VARCHAR" property="exchName"/>
+        <result column="account_code" jdbcType="VARCHAR" property="accountCode"/>
+        <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+        <result column="update_by" jdbcType="BIGINT" property="updateBy"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+        <result column="markup_rate" jdbcType="DECIMAL" property="markupRate"/>
+        <result column="markup_unit_price" jdbcType="DECIMAL" property="markupUnitPrice"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        rj_retired_detail_id, rj_retired_id, rj_retired_code, inventory_id, inventory_code,
+    product_code, quantity, account_state, tax_unit_price, unit_price, tax_rate, free_tax_money,
+    included_tax_money, tax_money, exch_name, account_code, update_name, update_by, update_date,
+    is_delete,markup_unit_price,markup_rate
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `${plm}`.rejection_retired_detail
+        where rj_retired_detail_id = #{rjRetiredDetailId,jdbcType=INTEGER}
+    </select>
+    <!--    List<RejectionRetiredDetail> selectListByPrimaryKeys(List<Long> rjRetiredDetailIds);-->
+    <select id="selectListByPrimaryKeys" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from `${plm}`.rejection_retired_detail
+        where rj_retired_detail_id in
+        <foreach collection="rjRetiredDetailIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

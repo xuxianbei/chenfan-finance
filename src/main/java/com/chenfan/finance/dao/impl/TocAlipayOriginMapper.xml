@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocAlipayOriginMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocAlipayOrigin">
+    <id column="finance_no" jdbcType="VARCHAR" property="financeNo" />
+    <result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="account_date" jdbcType="TIMESTAMP" property="accountDate" />
+    <result column="opposite_account" jdbcType="VARCHAR" property="oppositeAccount" />
+    <result column="income_amount" jdbcType="DECIMAL" property="incomeAmount" />
+    <result column="expend_amount" jdbcType="DECIMAL" property="expendAmount" />
+    <result column="account_left_amount" jdbcType="DECIMAL" property="accountLeftAmount" />
+    <result column="pay_way" jdbcType="TINYINT" property="payWay" />
+    <result column="business_type" jdbcType="TINYINT" property="businessType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="shop_alipay_account" jdbcType="VARCHAR" property="shopAlipayAccount" />
+    <result column="check_flag" jdbcType="INTEGER" property="checkFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    finance_no, business_no, tid, goods_name, account_date, opposite_account, income_amount,
+    expend_amount, account_left_amount, pay_way, business_type, remark, shop_alipay_account, 
+    check_flag
+  </sql>
+<insert id="insertList" parameterType="java.util.List">
+    insert ignore into toc_alipay_origin (finance_no, business_no,
+    tid, goods_name, account_date,
+    opposite_account, income_amount, expend_amount,
+    account_left_amount, pay_way, business_type,
+    remark,shop_alipay_account
+    )
+    VALUES
+    <foreach collection="subList" item="item" separator=",">
+      (#{item.financeNo,jdbcType=VARCHAR},
+      #{item.businessNo,jdbcType=VARCHAR},
+      #{item.tid,jdbcType=VARCHAR},
+      #{item.goodsName,jdbcType=VARCHAR},
+      #{item.accountDate,jdbcType=TIMESTAMP},
+      #{item.oppositeAccount,jdbcType=VARCHAR},
+      #{item.incomeAmount,jdbcType=DECIMAL},
+      #{item.expendAmount,jdbcType=DECIMAL},
+      #{item.accountLeftAmount,jdbcType=DECIMAL},
+      #{item.payWay,jdbcType=TINYINT},
+      #{item.businessType,jdbcType=TINYINT},
+      #{item.remark,jdbcType=VARCHAR},
+      #{shopAccount})
+    </foreach>
+  </insert>
+  <select id = "getAllDataByMonth" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from toc_alipay_origin
+    where account_date between #{timeRange.start} and #{timeRange.end}
+    and business_type in (0,1,2,10,11)
+    and check_flag = 0
+  </select>
+  <!--    List<TocAlipayOrigin> selectListByBean(TocAlipayOrigin tocAlipayOrigin);-->
+  <select id="selectListByBean" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from toc_alipay_origin
+    <where>
+      account_date   <![CDATA[ >=  ]]> #{accountDate}
+      <choose>
+        <when test="type !=null and type !=1">
+          and business_type in (2,10,11)
+        </when>
+        <otherwise>
+          and business_type in (0,1)
+          and income_amount>0
+        </otherwise>
+      </choose>
+      <if test="financeNo != null">
+          and finance_no  <![CDATA[ >  ]]> #{financeNo}
+      </if>
+     and ( check_flag=0
+        or check_flag=9
+      )
+    </where>
+    group by  tid
+    order by  finance_no
+   limit 1000
+  </select>
+  <!--   List<TocAlipayOrigin> selectListByBeanKey(String finance);-->
+  <select id="selectListByBeanKey" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from toc_alipay_origin
+    where finance_no=#{financeNo}
+    and (`check_flag` = 9 or `check_flag` = 0)
+  </select>
+  <!--   List<TocAlipayOrigin> selectListForGroup();-->
+  <select id="selectListForGroup" resultMap="BaseResultMap">
+      SELECT
+	     group_concat(finance_no) as finance_no, business_no, tid, goods_name, account_date, opposite_account, sum( income_amount ) as income_amount,
+    expend_amount, account_left_amount, pay_way, business_type, remark, shop_alipay_account,
+    check_flag
+
+    FROM
+	    toc_alipay_origin
+    WHERE
+      check_flag=9
+	  and  tid IN (
+            SELECT
+                tid
+            FROM
+                toc_alipay_origin
+            WHERE
+                `check_flag` = 9
+                AND tid like 'T200P%'
+
+                  AND tid not in
+                  <foreach collection="failTids" item="item" open="(" separator="," close=")">
+                      #{item}
+                  </foreach>
+
+                AND income_amount > 0
+            GROUP BY
+                tid
+            HAVING
+                count( * ) <![CDATA[ >  ]]> 1
+	    )
+
+    GROUP BY
+	    tid
+  </select>
+    <!--List<TocAlipayOrigin> selectListOfexpend(@Param("failTids") List<String> failTids);-->
+    <select id="selectListOfExpend" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        FROM
+        `toc_alipay_origin`
+        WHERE
+        expend_amount  <![CDATA[ <  ]]>  0
+        AND (
+        ${sqlString}
+        )
+        AND (remark like '%T200P%' or tid like '%T200P%')
+        AND goods_name is not null
+        AND  `check_flag` in (0,9)
+        AND finance_no not in
+        <foreach collection="failTids" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        limit 1000
+
+    </select>
+    <!--    List<TocAlipayOrigin> selectListOfFail(TocReportDto TocReportByFailure);-->
+    <select id="selectListOfFail" resultMap="BaseResultMap" parameterType="com.chenfan.finance.model.dto.TocReportDto$TocReportByFailure">
+        select <include refid="Base_Column_List"/>
+        FROM
+        `toc_alipay_origin`
+        <where>
+
+            <if test="startTime !=null">
+                and account_date   <![CDATA[ > ]]> #{startTime}
+            </if>
+            <if test="endTime !=null">
+                and account_date   <![CDATA[ <  ]]> #{endTime}
+            </if>
+            <if test="financeNo !=null">
+                and finance_no =#{financeNo}
+            </if>
+            <if test="isFail == null ">
+                and  `check_flag` in (0,9)
+            </if>
+            <if test="isFail != null  ">
+                <choose>
+                    <when test=" isFail == true ">
+                        and  `check_flag` = 9
+                    </when >
+                    <otherwise>
+                        and  `check_flag` = 0
+                    </otherwise>
+                </choose>
+
+            </if>
+            <if test="shopAccountList !=null and shopAccountList.size() > 0">
+                AND shop_alipay_account in
+                <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
+    <!---->
+
+    <select id="selectListOfFailExportVo" resultType="com.chenfan.finance.model.vo.AlipayOriginExportVo" parameterType="com.chenfan.finance.model.dto.TocReportDto$TocReportByFailure">
+        select <include refid="Base_Column_List"/>
+        FROM
+        `toc_alipay_origin`
+        <where>
+
+            <if test="startTime !=null">
+                and account_date   <![CDATA[ > ]]> #{startTime}
+            </if>
+            <if test="endTime !=null">
+                and account_date   <![CDATA[ <  ]]> #{endTime}
+            </if>
+            <if test="financeNo !=null">
+                and finance_no =#{financeNo}
+            </if>
+            <if test="isFail == null ">
+                and  `check_flag` in (0,9)
+            </if>
+            <if test="isFail != null  ">
+                <choose>
+                    <when test=" isFail == true ">
+                        and  `check_flag` = 9
+                    </when >
+                    <otherwise>
+                        and  `check_flag` = 0
+                    </otherwise>
+                </choose>
+
+            </if>
+            <if test="shopAccountList !=null and shopAccountList.size() > 0">
+                AND shop_alipay_account in
+                <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
+
+    <select id="selectDataOfSuccess" parameterType="com.chenfan.finance.model.dto.TocReportDto$TocReportBySuccess" resultType="com.chenfan.finance.model.TocReportRp$TocReportRpBySuccess">
+        SELECT
+            '收入' as type,
+            tio.finance_no as financeNo,
+            tio.tid,
+            tio.oid,
+            tio.shop_alipay_account as shopAlipayAccount,
+            tio.pay_date as payDate,
+            tio.sale_goods_no as saleGoodsNo,
+            tio.sale_goods_name as saleGoodsName,
+            tio.sale_spec_no as  saleSpecNo,
+            tio.sale_spec_name as saleSpecName,
+            tio.sale_qty as saleQty,
+            tio.total_share_amount as totalShareAmount,
+            tio.total_amt_after_share as totalAmtAfterShare,
+            tio.detail_received,
+            tio.check_type as checkType,
+            GROUP_CONCAT( tiod.stock_out_no ) as  stockOutNos,
+            tio.refund_qyt as refundQyt,
+            tio.create_order_date as createOrderDate,
+            tio.received_date as receivedDate,
+            tio.stock_out_date as stockOutDate,
+            tio.trade_no,
+            tio.shop_id,
+            tio.order_no,
+            sum(tiod.stock_out_num) as stockOutQyt,
+            case when  tio.order_no is not null  then '是' else '否' end as pushState
+
+        FROM
+            toc_income_order tio,
+            toc_income_order_stock_out tiod
+        <where>
+            tio.oid = tiod.oid
+            <if test="startTime !=null">
+                and tio.received_date   <![CDATA[ > ]]> #{startTime}
+            </if>
+            <if test="endTime !=null">
+                and tio.received_date   <![CDATA[ <  ]]> #{endTime}
+            </if>
+            <if test="financeNo !=null">
+                and tio.finance_no =#{financeNo}
+            </if>
+            <if test="orderNo != null">
+                and tio.order_no =#{orderNo}
+            </if>
+            <if test="shopAccountList !=null and shopAccountList.size() > 0">
+                AND `tio`.shop_alipay_account in
+                <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="skuNo !=null">
+                and tio.sale_spec_no =#{skuNo}
+            </if>
+            <if test="havingPush !=null">
+                <choose>
+                    <when test="havingPush == true">
+                        and tio.order_no is not null
+                    </when>
+                    <otherwise>
+                        and tio.order_no is  null
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        GROUP BY
+        tiod.oid
+        UNION ALL
+        SELECT
+            '支出' as type,
+            teo.finance_no as financeNo,
+            teo.tid,
+            teo.oid,
+            teo.shop_alipay_account as shopAlipayAccount,
+            teo.pay_date as payDate,
+            teo.sale_goods_no as saleGoodsNo,
+            teo.sale_goods_name as saleGoodsName,
+            teo.sale_spec_no as  saleSpecNo,
+            teo.sale_spec_name as saleSpecName,
+            teo.sale_qty as saleQty,
+            teo.total_share_amount as totalShareAmount,
+            teo.total_amt_after_share as totalAmtAfterShare,
+            teo.detail_received,
+            teo.check_type as checkType,
+            GROUP_CONCAT( teod.stock_out_no) as  stockOutNos,
+            teo.refund_qyt as refundQyt,
+            teo.create_order_date as createOrderDate,
+            teo.received_date as receivedDate,
+            teo.stock_out_date as stockOutDate,
+            teo.trade_no,
+            teo.shop_id,
+            teo.order_no,
+            sum(teod.stock_out_num) as stockOutQyt,
+            case when  teo.order_no is not null  then '是' else '否' end as pushState
+        FROM
+            toc_expend_order teo,
+            toc_expend_order_stock_out teod
+        <where>
+            teo.oid = teod.oid
+            <if test="startTime !=null">
+                and teo.received_date   <![CDATA[ > ]]> #{startTime}
+            </if>
+            <if test="endTime !=null">
+                and teo.received_date   <![CDATA[ <  ]]> #{endTime}
+            </if>
+            <if test="financeNo !=null">
+                and teo.finance_no =#{financeNo}
+            </if>
+            <if test="orderNo != null">
+                and teo.order_no =#{orderNo}
+            </if>
+            <if test="shopAccountList !=null and shopAccountList.size() > 0">
+                AND `teo`.shop_alipay_account in
+                <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="skuNo !=null">
+                and teo.sale_spec_no =#{skuNo}
+            </if>
+            <if test="havingPush !=null">
+                <choose>
+                    <when test="havingPush == true">
+                        and teo.order_no is not null
+                    </when>
+                    <otherwise>
+                        and teo.order_no is  null
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        GROUP BY
+        teod.oid
+    </select>
+
+   <select id="selectDataOfSuccessExportVo" parameterType="com.chenfan.finance.model.dto.TocReportDto$TocReportBySuccess" resultType="com.chenfan.finance.model.vo.TocReportBySuccessExportVo">
+       SELECT
+       '收入' as type,
+       tio.finance_no as financeNo,
+       tio.tid,
+       tio.oid,
+       tio.shop_alipay_account as shopAlipayAccount,
+       tio.pay_date as payDate,
+       tio.sale_goods_no as saleGoodsNo,
+       tio.sale_goods_name as saleGoodsName,
+       tio.sale_spec_no as  saleSpecNo,
+       tio.sale_spec_name as saleSpecName,
+       tio.sale_qty as saleQty,
+       tio.total_share_amount as totalShareAmount,
+       tio.total_amt_after_share as totalAmtAfterShare,
+       tio.detail_received,
+       tio.check_type as checkType,
+       GROUP_CONCAT( tiod.stock_out_no ) as  stockOutNos,
+       tio.refund_qyt as refundQyt,
+       tio.create_order_date as createOrderDate,
+       tio.received_date as receivedDate,
+       tio.stock_out_date as stockOutDate,
+       tio.trade_no,
+       tio.shop_id,
+       tio.order_no,
+       sum(tiod.stock_out_num) as stockOutQyt,
+       case when  tio.order_no is not null  then '是' else '否' end as pushState
+
+       FROM
+       toc_income_order tio,
+       toc_income_order_stock_out tiod
+       <where>
+           tio.oid = tiod.oid
+           <if test="startTime !=null">
+               and tio.received_date   <![CDATA[ > ]]> #{startTime}
+           </if>
+           <if test="endTime !=null">
+               and tio.received_date   <![CDATA[ <  ]]> #{endTime}
+           </if>
+           <if test="financeNo !=null">
+               and tio.finance_no =#{financeNo}
+           </if>
+           <if test="orderNo != null">
+               and tio.order_no =#{orderNo}
+           </if>
+           <if test="shopAccountList !=null and shopAccountList.size() > 0">
+               AND `tio`.shop_alipay_account in
+               <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                   #{item}
+               </foreach>
+           </if>
+           <if test="skuNo !=null">
+               and tio.sale_spec_no =#{skuNo}
+           </if>
+           <if test="havingPush !=null">
+               <choose>
+                   <when test="havingPush == true">
+                       and tio.order_no is not null
+                   </when>
+                   <otherwise>
+                       and tio.order_no is  null
+                   </otherwise>
+               </choose>
+           </if>
+       </where>
+       GROUP BY
+       tiod.oid
+       UNION ALL
+       SELECT
+       '支出' as type,
+       teo.finance_no as financeNo,
+       teo.tid,
+       teo.oid,
+       teo.shop_alipay_account as shopAlipayAccount,
+       teo.pay_date as payDate,
+       teo.sale_goods_no as saleGoodsNo,
+       teo.sale_goods_name as saleGoodsName,
+       teo.sale_spec_no as  saleSpecNo,
+       teo.sale_spec_name as saleSpecName,
+       teo.sale_qty as saleQty,
+       teo.total_share_amount as totalShareAmount,
+       teo.total_amt_after_share as totalAmtAfterShare,
+       teo.detail_received,
+       teo.check_type as checkType,
+       GROUP_CONCAT( teod.stock_out_no) as  stockOutNos,
+       teo.refund_qyt as refundQyt,
+       teo.create_order_date as createOrderDate,
+       teo.received_date as receivedDate,
+       teo.stock_out_date as stockOutDate,
+       teo.trade_no,
+       teo.shop_id,
+       teo.order_no,
+       sum(teod.stock_out_num) as stockOutQyt,
+       case when  teo.order_no is not null  then '是' else '否' end as pushState
+       FROM
+       toc_expend_order teo,
+       toc_expend_order_stock_out teod
+       <where>
+           teo.oid = teod.oid
+           <if test="startTime !=null">
+               and teo.received_date   <![CDATA[ > ]]> #{startTime}
+           </if>
+           <if test="endTime !=null">
+               and teo.received_date   <![CDATA[ <  ]]> #{endTime}
+           </if>
+           <if test="financeNo !=null">
+               and teo.finance_no =#{financeNo}
+           </if>
+           <if test="orderNo != null">
+               and teo.order_no =#{orderNo}
+           </if>
+           <if test="shopAccountList !=null and shopAccountList.size() > 0">
+               AND `teo`.shop_alipay_account in
+               <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                   #{item}
+               </foreach>
+           </if>
+           <if test="skuNo !=null">
+               and teo.sale_spec_no =#{skuNo}
+           </if>
+           <if test="havingPush !=null">
+               <choose>
+                   <when test="havingPush == true">
+                       and teo.order_no is not null
+                   </when>
+                   <otherwise>
+                       and teo.order_no is  null
+                   </otherwise>
+               </choose>
+           </if>
+       </where>
+       GROUP BY
+       teod.oid
+   </select>
+
+    <!--    BigDecimal selectBySum(List<String> shopAliPayAccounts, LocalDateTime firstDayOfMonth,LocalDateTime lastDayOfMonth);-->
+    <select id="selectBySum" resultType="decimal">
+        SELECT IFNULL(sum(income_amount+expend_amount),0) FROM toc_alipay_origin
+        <where>
+            shop_alipay_account in
+            <foreach collection="shopAccountList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            AND account_date <![CDATA[ >= ]]>  #{start,jdbcType=TIMESTAMP} and  account_date <![CDATA[ < ]]> #{end,jdbcType=TIMESTAMP}
+            AND check_flag =1
+        </where>
+    </select>
+</mapper>

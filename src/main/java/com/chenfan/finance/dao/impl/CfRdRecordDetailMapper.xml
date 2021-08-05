@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfRdRecordDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfRdRecordDetail">
+        <id column="rd_record_detail_id" property="rdRecordDetailId" />
+        <result column="rd_record_id" property="rdRecordId" />
+        <result column="pu_arr_detail_id" property="puArrDetailId" />
+        <result column="rj_retired_detail_id" property="rjRetiredDetailId" />
+        <result column="inventory_id" property="inventoryId" />
+        <result column="inventory_code" property="inventoryCode" />
+        <result column="product_code" property="productCode" />
+        <result column="quantity" property="quantity" />
+        <result column="invoice_state" property="invoiceState" />
+        <result column="invoice_money" property="invoiceMoney" />
+        <result column="invoice_quantity" property="invoiceQuantity" />
+        <result column="invoice_code" property="invoiceCode" />
+        <result column="is_delete" property="isDelete" />
+        <result column="actual_quantity" property="actualQuantity" />
+        <result column="tax_unit_price" property="taxUnitPrice" />
+        <result column="unit_price" property="unitPrice" />
+        <result column="tax_rate" property="taxRate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rd_record_detail_id, rd_record_id, pu_arr_detail_id, rj_retired_detail_id, inventory_id, inventory_code, product_code, quantity, invoice_state, invoice_money, invoice_quantity, invoice_code, is_delete, actual_quantity, tax_unit_price, unit_price, tax_rate
+    </sql>
+    <!-- List<CfMonitoringOrderVo> selectRdOrderAndArrivalOrderDifferencesForrefund(LocalDateTime startTime,LocalDateTime endTime);-->
+    <select id="selectRdOrderAndArrivalOrderDifferencesForRefund"  resultType="com.chenfan.finance.model.vo.CfMonitoringOrderVo">
+       SELECT`crrd`.id  ,
+      `crr`.rd_record_code,
+      `crrd`.inventory_code AS inventoryCode,
+      `crrd`.product_code AS productCode,
+     (`crrd`.quantity-`rrd`.quantity) AS  quantity ,
+     `crrd`.quantity AS  cfQuantity ,
+      `rrd`.quantity AS  plmQuantity ,
+
+
+    0 as accountQuantity,
+	  0 as cfAccountQuantity,
+	  0 as plmAccountQuantity,
+
+    (`crrd`.tax_unit_price-`rrd`.tax_unit_price) as taxUnitPrice,
+     `crrd`.tax_unit_price as cfTaxUnitPrice,
+    `rrd`.tax_unit_price as plmTaxUnitPrice,
+
+    (`crrd`.unit_price-`rrd`.unit_price) as unitPrice,
+     `crrd`.unit_price as cfUnitPrice,
+     `rrd`.unit_price as plmUnitPrice,
+
+     0 as unqualifiedQuantity,
+	 0  as cfUnqualifiedQuantity,
+	 0 as plmUnqualifiedQuantity,
+
+    (`crrd`.tax_rate-`rrd`.tax_rate) as taxRate,
+	`crrd`.tax_rate as cfTaxRate,
+	`rrd`.tax_rate as plmTaxRate
+     FROM `${eopofa}`.cf_rd_record_detail  `crrd` LEFT JOIN `${eopofa}`.cf_rd_record  `crr` on `crr`.rd_record_id=`crrd`.rd_record_id
+	 LEFT JOIN   `${plm}`.rejection_retired_detail `rrd` on `crrd`.rj_retired_detail_id=`rrd`.rj_retired_detail_id
+     WHERE  `crr`.bred_vouch=-1 and crrd.rj_retired_detail_id  !=0
+     AND `crr`.create_date BETWEEN #{startTime} AND #{endTime}
+     HAVING (
+         quantity!=0
+     or  accountQuantity!=0
+     or  taxUnitPrice !=0
+     or  unitPrice!=0
+     or  unqualifiedQuantity!=0
+     or  taxRate!=0
+     )
+    </select>
+
+    <select id="selectRdOrderAndArrivalOrderDifferences" resultType="com.chenfan.finance.model.vo.CfMonitoringOrderVo">
+      SELECT `crrd`.id  ,
+      `crr`.rd_record_code,
+      `crrd`.inventory_code AS inventoryCode,
+      `crrd`.product_code AS productCode,
+    (`crrd`.quantity-`pad`.qualified_quantity) AS  quantity ,
+     `crrd`.quantity AS  cfQuantity ,
+      `pad`.qualified_quantity AS  plmQuantity ,
+    (`crrd`.actual_qty-`pad`.qualified_quantity) as accountQuantity,
+	`crrd`.actual_qty as cfAccountQuantity,
+	`pad`.qualified_quantity as plmAccountQuantity,
+    (`crrd`.tax_unit_price-`pad`.tax_unit_price) as taxUnitPrice,
+     `crrd`.tax_unit_price as cfTaxUnitPrice,
+    `pad`.tax_unit_price as plmTaxUnitPrice,
+    (`crrd`.unit_price-`pad`.unit_price) as unitPrice,
+     `crrd`.unit_price as cfUnitPrice,
+     `pad`.unit_price as plmUnitPrice,
+    (`crrd`.rejection_qty-`pad`.unqualified_quantity) as unqualifiedQuantity,
+	`crrd`.rejection_qty as cfUnqualifiedQuantity,
+	`pad`.unqualified_quantity as plmUnqualifiedQuantity,
+    (`crrd`.tax_rate-`pad`.tax_rate) as taxRate,
+	`crrd`.tax_rate as cfTaxRate,
+	`pad`.tax_rate as plmTaxRate
+     FROM `${eopofa}`.cf_rd_record_detail `crrd` LEFT JOIN `${plm}`.pu_arrivalvouch_detail `pad`
+     ON  `pad`.pu_arr_detail_id=crrd.pu_arr_detail_id
+     LEFT JOIN `${eopofa}`.cf_rd_record `crr` ON `crr`.`rd_record_id`=`crrd`.`rd_record_id`
+     WHERE crrd.pu_arr_detail_id !=0 and `crr`.bred_vouch=1
+     AND `crr`.create_date BETWEEN #{startTime} AND #{endTime}
+     HAVING (
+         quantity!=0
+     or  accountQuantity!=0
+     or  taxUnitPrice !=0
+     or  unitPrice!=0
+     or  unqualifiedQuantity!=0
+     or  taxRate!=0
+     )
+    </select>
+
+
+    <select id="selectBrandIds" resultType="integer">
+        select brand_id from  `${plm}`.po_header_brand_mq
+    </select>
+    <select id="selectRdDetailIdsByPoId" resultType="long">
+        select rd_record_detail_id
+        from   cf_rd_record_detail
+        where  po_id=#{poId}
+    </select>
+
+    <select id="selectRdInfoDifferences" resultType="string">
+        SELECT
+            dah.asn_code
+        FROM
+            `${eopInbound}`.doc_asn_detail dsd
+            LEFT JOIN `${eopofa}`.cf_rd_record_detail crrd ON dsd.asn_detail_id = crrd.rd_record_detail_id
+            LEFT JOIN`${eopInbound}`.doc_asn_header dah ON dah.asn_id = dsd.asn_id
+        WHERE
+            dah.is_deleted = 0
+            AND dsd.is_deleted = 0
+            AND dah.asn_state = 2
+            AND crrd.rd_record_detail_id IS NULL
+            AND dah.create_time BETWEEN  #{startTime} AND #{endTime}
+            GROUP BY dah.asn_code
+    </select>
+
+    <!--    List<HashMap> selectRdDetailInfoDifferences(@Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);-->
+    <select id="selectRdDetailInfoDifferences" resultType="hashmap">
+        SELECT
+        crr.rd_record_code,
+        crrd.rd_record_detail_id,
+        crrd.tax_unit_price as cftax_unit_price,
+        crrd.unit_price as cfunit_price,
+        crrd.tax_rate as cftax_rate,
+        crrd.inventory_id as cfinventory_id,
+        crr.vendor_id as cfvendor_id,
+        crr.brand_id as cfbrand_id,
+        cpd.inventory_id,
+        cph.vendor_id ,
+        cph.brand_id,
+        cpd.tax_unit_price,
+        cpd.unit_price,
+        cpd.tax_rate
+        FROM `${eopofa}`.cf_rd_record_detail crrd
+        LEFT  JOIN `${eopofa}`.cf_po_detail cpd on crrd.po_detail_id=cpd.po_detail_id
+        LEFT  JOIN `${eopofa}`.cf_rd_record crr on crr.rd_record_id=crrd.rd_record_id
+        LEFT  JOIN  `${eopofa}`.cf_po_header cph on cph.po_id=crrd.po_id
+        WHERE crrd.po_detail_id is not null
+        AND (
+          crrd.tax_unit_price <![CDATA[<>]]>cpd.tax_unit_price
+        or
+          crrd.unit_price <![CDATA[<>]]>cpd.unit_price
+        or
+          crrd.tax_rate <![CDATA[<>]]> cpd.tax_rate
+        or
+          crrd.inventory_id <![CDATA[<>]]> cpd.inventory_id
+        or
+          crr.vendor_id <![CDATA[<>]]> cph.vendor_id
+        or
+          crr.brand_id <![CDATA[<>]]> cph.brand_id
+        )
+        AND  crr.create_date BETWEEN  #{startTime} AND #{endTime}
+
+
+    </select>
+</mapper>

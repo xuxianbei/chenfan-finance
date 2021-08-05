@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfBsOperationLogDao">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfBsOperationLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="operation_type" jdbcType="INTEGER" property="operationType" />
+    <result column="business_type" jdbcType="INTEGER" property="businessType" />
+    <result column="business_id" jdbcType="BIGINT" property="businessId" />
+    <result column="business_code" jdbcType="VARCHAR" property="businessCode" />
+    <result column="operation_date" jdbcType="TIMESTAMP" property="operationDate" />
+    <result column="operation_user_id" jdbcType="BIGINT" property="operationUserId" />
+    <result column="operation_user_name" jdbcType="VARCHAR" property="operationUserName" />
+    <result column="operation_content" jdbcType="VARCHAR" property="operationContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, operation_type, business_type, business_id, business_code, operation_date, operation_user_id, 
+    operation_user_name, operation_content
+  </sql>
+
+</mapper>

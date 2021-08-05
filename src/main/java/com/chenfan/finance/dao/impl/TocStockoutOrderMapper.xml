@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocStockoutOrderMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocStockoutOrder">
+    <id column="stockout_id" jdbcType="INTEGER" property="stockoutId" />
+    <result column="stockout_no" jdbcType="VARCHAR" property="stockoutNo" />
+    <result column="src_order_type" jdbcType="TINYINT" property="srcOrderType" />
+    <result column="src_order_id" jdbcType="INTEGER" property="srcOrderId" />
+    <result column="src_order_no" jdbcType="VARCHAR" property="srcOrderNo" />
+    <result column="outer_no" jdbcType="VARCHAR" property="outerNo" />
+    <result column="wms_status" jdbcType="INTEGER" property="wmsStatus" />
+    <result column="error_info" jdbcType="VARCHAR" property="errorInfo" />
+    <result column="warehouse_type" jdbcType="TINYINT" property="warehouseType" />
+    <result column="warehouse_id" jdbcType="SMALLINT" property="warehouseId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="order_type" jdbcType="TINYINT" property="orderType" />
+    <result column="freeze_reason" jdbcType="SMALLINT" property="freezeReason" />
+    <result column="is_allocated" jdbcType="INTEGER" property="isAllocated" />
+    <result column="consign_status" jdbcType="INTEGER" property="consignStatus" />
+    <result column="ebill_status" jdbcType="TINYINT" property="ebillStatus" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="goods_count" jdbcType="DECIMAL" property="goodsCount" />
+    <result column="goods_type_count" jdbcType="SMALLINT" property="goodsTypeCount" />
+    <result column="md5_str" jdbcType="VARCHAR" property="md5Str" />
+    <result column="raw_goods_count" jdbcType="DECIMAL" property="rawGoodsCount" />
+    <result column="custom_type" jdbcType="SMALLINT" property="customType" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_country" jdbcType="SMALLINT" property="receiverCountry" />
+    <result column="receiver_province" jdbcType="INTEGER" property="receiverProvince" />
+    <result column="receiver_city" jdbcType="INTEGER" property="receiverCity" />
+    <result column="receiver_district" jdbcType="INTEGER" property="receiverDistrict" />
+    <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
+    <result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
+    <result column="receiver_telno" jdbcType="VARCHAR" property="receiverTelno" />
+    <result column="receiver_zip" jdbcType="VARCHAR" property="receiverZip" />
+    <result column="receiver_area" jdbcType="VARCHAR" property="receiverArea" />
+    <result column="receiver_ring" jdbcType="VARCHAR" property="receiverRing" />
+    <result column="receiver_dtb" jdbcType="VARCHAR" property="receiverDtb" />
+    <result column="to_deliver_time" jdbcType="VARCHAR" property="toDeliverTime" />
+    <result column="pre_charge_time" jdbcType="VARCHAR" property="preChargeTime" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="logistics_id" jdbcType="SMALLINT" property="logisticsId" />
+    <result column="goods_total_amount" jdbcType="DECIMAL" property="goodsTotalAmount" />
+    <result column="unknown_goods_amount" jdbcType="DECIMAL" property="unknownGoodsAmount" />
+    <result column="goods_total_cost" jdbcType="DECIMAL" property="goodsTotalCost" />
+    <result column="calc_post_cost" jdbcType="DECIMAL" property="calcPostCost" />
+    <result column="post_cost" jdbcType="DECIMAL" property="postCost" />
+    <result column="calc_weight" jdbcType="DECIMAL" property="calcWeight" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="post_weight" jdbcType="DECIMAL" property="postWeight" />
+    <result column="package_id" jdbcType="INTEGER" property="packageId" />
+    <result column="package_cost" jdbcType="DECIMAL" property="packageCost" />
+    <result column="has_invoice" jdbcType="INTEGER" property="hasInvoice" />
+    <result column="printer_id" jdbcType="INTEGER" property="printerId" />
+    <result column="pick_error_count" jdbcType="INTEGER" property="pickErrorCount" />
+    <result column="picker_id" jdbcType="INTEGER" property="pickerId" />
+    <result column="sorter_id" jdbcType="INTEGER" property="sorterId" />
+    <result column="examiner_id" jdbcType="INTEGER" property="examinerId" />
+    <result column="consigner_id" jdbcType="INTEGER" property="consignerId" />
+    <result column="packager_id" jdbcType="INTEGER" property="packagerId" />
+    <result column="pack_score" jdbcType="INTEGER" property="packScore" />
+    <result column="pick_score" jdbcType="INTEGER" property="pickScore" />
+    <result column="checkouter_id" jdbcType="INTEGER" property="checkouterId" />
+    <result column="watcher_id" jdbcType="INTEGER" property="watcherId" />
+    <result column="batch_no" jdbcType="VARCHAR" property="batchNo" />
+    <result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
+    <result column="picklist_no" jdbcType="VARCHAR" property="picklistNo" />
+    <result column="picklist_seq" jdbcType="SMALLINT" property="picklistSeq" />
+    <result column="picklist_print_status" jdbcType="TINYINT" property="picklistPrintStatus" />
+    <result column="logistics_print_status" jdbcType="TINYINT" property="logisticsPrintStatus" />
+    <result column="sendbill_print_status" jdbcType="TINYINT" property="sendbillPrintStatus" />
+    <result column="invoice_print_status" jdbcType="TINYINT" property="invoicePrintStatus" />
+    <result column="flag_id" jdbcType="SMALLINT" property="flagId" />
+    <result column="consign_time" jdbcType="TIMESTAMP" property="consignTime" />
+    <result column="block_reason" jdbcType="INTEGER" property="blockReason" />
+    <result column="logistics_template_id" jdbcType="SMALLINT" property="logisticsTemplateId" />
+    <result column="sendbill_template_id" jdbcType="SMALLINT" property="sendbillTemplateId" />
+    <result column="pos_allocate_mode" jdbcType="INTEGER" property="posAllocateMode" />
+    <result column="note_count" jdbcType="SMALLINT" property="noteCount" />
+    <result column="reason_id" jdbcType="INTEGER" property="reasonId" />
+    <result column="lock_id" jdbcType="INTEGER" property="lockId" />
+    <result column="reserve" jdbcType="VARCHAR" property="reserve" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    stockout_id, stockout_no, src_order_type, src_order_id, src_order_no, outer_no, wms_status, 
+    error_info, warehouse_type, warehouse_id, customer_id, `status`, order_type, freeze_reason, 
+    is_allocated, consign_status, ebill_status, operator_id, goods_count, goods_type_count, 
+    md5_str, raw_goods_count, custom_type, receiver_name, receiver_country, receiver_province, 
+    receiver_city, receiver_district, receiver_address, receiver_mobile, receiver_telno, 
+    receiver_zip, receiver_area, receiver_ring, receiver_dtb, to_deliver_time, pre_charge_time, 
+    currency, logistics_id, goods_total_amount, unknown_goods_amount, goods_total_cost, 
+    calc_post_cost, post_cost, calc_weight, weight, post_weight, package_id, package_cost, 
+    has_invoice, printer_id, pick_error_count, picker_id, sorter_id, examiner_id, consigner_id, 
+    packager_id, pack_score, pick_score, checkouter_id, watcher_id, batch_no, logistics_no, 
+    picklist_no, picklist_seq, picklist_print_status, logistics_print_status, sendbill_print_status, 
+    invoice_print_status, flag_id, consign_time, block_reason, logistics_template_id, 
+    sendbill_template_id, pos_allocate_mode, note_count, reason_id, lock_id, reserve, 
+    remark, modified, created
+  </sql>
+
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocExpendOrderStockOutMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocExpendOrderStockOut">
+    <id column="stock_out_detail_id" jdbcType="BIGINT" property="stockOutDetailId" />
+    <result column="stock_out_id" jdbcType="BIGINT" property="stockOutId" />
+    <result column="stock_out_no" jdbcType="VARCHAR" property="stockOutNo" />
+    <result column="stock_out_num" jdbcType="DECIMAL" property="stockOutNum" />
+    <result column="stock_out_price" jdbcType="DECIMAL" property="stockOutPrice" />
+    <result column="stock_out_total_amount" jdbcType="DECIMAL" property="stockOutTotalAmount" />
+    <result column="stock_out_cost_price" jdbcType="DECIMAL" property="stockOutCostPrice" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="spec_no" jdbcType="VARCHAR" property="specNo" />
+    <result column="spec_code" jdbcType="VARCHAR" property="specCode" />
+    <result column="oid" jdbcType="VARCHAR" property="oid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stock_out_detail_id, stock_out_id, stock_out_no, stock_out_num, stock_out_price, 
+    stock_out_total_amount, stock_out_cost_price, goods_name, goods_no, spec_name, spec_id, 
+    spec_no, spec_code, oid
+  </sql>
+
+  <!--    int insertList(List<TocExpendOrderStockOut> list);-->
+  <insert id="insertList" parameterType="long">
+    insert  into toc_expend_order_stock_out (stock_out_detail_id, stock_out_id, stock_out_no,
+    stock_out_num, stock_out_price, stock_out_total_amount,
+    stock_out_cost_price, goods_name, goods_no,
+    spec_name, spec_id, spec_no,
+    spec_code, oid)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.stockOutDetailId,jdbcType=BIGINT}, #{item.stockOutId,jdbcType=BIGINT}, #{item.stockOutNo,jdbcType=VARCHAR},
+      #{item.stockOutNum,jdbcType=DECIMAL}, #{item.stockOutPrice,jdbcType=DECIMAL}, #{item.stockOutTotalAmount,jdbcType=DECIMAL},
+      #{item.stockOutCostPrice,jdbcType=DECIMAL}, #{item.goodsName,jdbcType=VARCHAR}, #{item.goodsNo,jdbcType=VARCHAR},
+      #{item.specName,jdbcType=VARCHAR}, #{item.specId,jdbcType=INTEGER}, #{item.specNo,jdbcType=VARCHAR},
+      #{item.specCode,jdbcType=VARCHAR}, #{item.oid,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+  <select id="selectListOfOids" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM toc_expend_order_stock_out
+    WHERE oid in
+    <foreach collection="oids" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+</mapper>

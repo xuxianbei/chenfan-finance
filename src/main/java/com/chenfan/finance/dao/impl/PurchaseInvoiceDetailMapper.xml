@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.PurchaseInvoiceDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.PurchaseInvoiceDetail">
+        <id column="purchase_invoice_detail_id" property="purchaseInvoiceDetailId" />
+        <result column="purchase_invoice_id" property="purchaseInvoiceId" />
+        <result column="inventory_id" property="inventoryId" />
+        <result column="inventory_code" property="inventoryCode" />
+        <result column="quantity" property="quantity" />
+        <result column="tax_unit_price" property="taxUnitPrice" />
+        <result column="unit_price" property="unitPrice" />
+        <result column="tax_rate" property="taxRate" />
+        <result column="record_code" property="recordCode" />
+        <result column="update_name" property="updateName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="is_delete" property="isDelete" />
+        <result column="rd_record_detail_id" property="rdRecordDetailId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        purchase_invoice_detail_id, purchase_invoice_id, inventory_id, inventory_code, quantity, tax_unit_price, unit_price, tax_rate, record_code, update_name, update_by, update_date, is_delete, rd_record_detail_id
+    </sql>
+
+    <insert id="insertAuto" keyColumn="purchase_invoice_detail_id" keyProperty="purchaseInvoiceDetailId" parameterType="com.chenfan.finance.model.PurchaseInvoiceDetail" useGeneratedKeys="true">
+    insert into purchase_invoice_detail (purchase_invoice_id, inventory_id, inventory_code,
+      quantity, tax_unit_price, unit_price,
+      tax_rate, record_code, update_name,
+      update_by, update_date, is_delete,
+      rd_record_detail_id, inventory_category)
+    values (#{purchaseInvoiceId,jdbcType=INTEGER}, #{inventoryId,jdbcType=INTEGER}, #{inventoryCode,jdbcType=VARCHAR},
+      #{quantity,jdbcType=DECIMAL}, #{taxUnitPrice,jdbcType=DECIMAL}, #{unitPrice,jdbcType=DECIMAL},
+      #{taxRate,jdbcType=DECIMAL}, #{recordCode,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR},
+      #{updateBy,jdbcType=BIGINT}, #{updateDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BOOLEAN},
+      #{rdRecordDetailId,jdbcType=BIGINT}, #{inventoryCategory,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>

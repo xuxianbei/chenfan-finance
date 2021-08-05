@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfChargeSplitMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfChargeSplit">
+        <id column="charge_id" property="chargeId" />
+        <result column="charge_code" property="chargeCode" />
+        <result column="charge_type" property="chargeType" />
+        <result column="check_status" property="checkStatus" />
+        <result column="arap_type" property="arapType" />
+        <result column="arap_check_date" property="arapCheckDate" />
+        <result column="product_code" property="productCode" />
+        <result column="charge_source" property="chargeSource" />
+        <result column="charge_source_code" property="chargeSourceCode" />
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode" />
+        <result column="charge_source_detail_id" property="chargeSourceDetailId" />
+        <result column="brand_id" property="brandId" />
+        <result column="contract_no" property="contractNo" />
+        <result column="currency_code" property="currencyCode" />
+        <result column="exchange_rate" property="exchangeRate" />
+        <result column="tax_rate" property="taxRate" />
+        <result column="charge_unit" property="chargeUnit" />
+        <result column="charge_qty" property="chargeQty" />
+        <result column="price_pp" property="pricePp" />
+        <result column="amount_pp" property="amountPp" />
+        <result column="balance" property="balance" />
+        <result column="charge_month_belong_to" property="chargeMonthBelongTo" />
+        <result column="tax_invoice_no" property="taxInvoiceNo" />
+        <result column="tax_invoice_date" property="taxInvoiceDate" />
+        <result column="customer_invoice_no" property="customerInvoiceNo" />
+        <result column="invoice_no" property="invoiceNo" />
+        <result column="invoice_title" property="invoiceTitle" />
+        <result column="invoice_title_name" property="invoiceTitleName" />
+        <result column="invoice_date" property="invoiceDate" />
+        <result column="clear_no" property="clearNo" />
+        <result column="actual_amount" property="actualAmount" />
+        <result column="actual_date" property="actualDate" />
+        <result column="actual_history_date" property="actualHistoryDate" />
+        <result column="remark" property="remark" />
+        <result column="charge_date" property="chargeDate" />
+        <result column="charge_history_checked" property="chargeHistoryChecked" />
+        <result column="charge_edited" property="chargeEdited" />
+        <result column="invoice_entrance_date" property="invoiceEntranceDate" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="sales_type" property="salesType" />
+        <result column="is_offset" property="isOffset" />
+        <result column="parent_id" property="parentId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        charge_id, charge_code, charge_type, check_status, arap_type, arap_check_date, product_code, charge_source, charge_source_code, charge_source_detail_code, charge_source_detail_id, brand_id, contract_no, currency_code, exchange_rate, tax_rate, charge_unit, charge_qty, price_pp, amount_pp, balance, charge_month_belong_to, tax_invoice_no, tax_invoice_date, customer_invoice_no, invoice_no, invoice_title, invoice_title_name, invoice_date, clear_no, actual_amount, actual_date, actual_history_date, remark, charge_date, charge_history_checked, charge_edited, invoice_entrance_date, company_id, create_by, create_name, create_date, update_by, update_name, update_date, sales_type, is_offset, parent_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfRdRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfRdRecord">
+        <id column="rd_record_id" property="rdRecordId" />
+        <result column="rd_record_code" property="rdRecordCode" />
+        <result column="cbus_type" property="cbusType" />
+        <result column="cwh_code" property="cwhCode" />
+        <result column="pu_arrival_id" property="puArrivalId" />
+        <result column="pu_arrival_code" property="puArrivalCode" />
+        <result column="rj_retired_id" property="rjRetiredId" />
+        <result column="rj_retired_code" property="rjRetiredCode" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="vendor_code" property="vendorCode" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="order_type" property="orderType" />
+        <result column="state" property="state" />
+        <result column="verify_by" property="verifyBy" />
+        <result column="verify_name" property="verifyName" />
+        <result column="verify_date" property="verifyDate" />
+        <result column="remark" property="remark" />
+        <result column="customer_id" property="customerId" />
+        <result column="customer_name" property="customerName" />
+        <result column="sale_billid" property="saleBillid" />
+        <result column="bred_vouch" property="bredVouch" />
+        <result column="reach_wangdiantong" property="reachWangdiantong" />
+        <result column="delivery_status" property="deliveryStatus" />
+        <result column="sys_org_code" property="sysOrgCode" />
+        <result column="sys_company_code" property="sysCompanyCode" />
+        <result column="create_name" property="createName" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_name" property="updateName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="is_delete" property="isDelete" />
+        <result column="rd_record_type" property="rdRecordType" />
+        <result column="push_warehouse" property="pushWarehouse" />
+        <result column="company_id" property="companyId" />
+        <result column="create_charge_flag" property="createChargeFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rd_record_id, rd_record_code, cbus_type, cwh_code, pu_arrival_id, pu_arrival_code, rj_retired_id, rj_retired_code, vendor_id, vendor_code, brand_id, brand_name, order_type, state, verify_by, verify_name, verify_date, remark, customer_id, customer_name, sale_billid, bred_vouch, reach_wangdiantong, delivery_status, sys_org_code, sys_company_code, create_name, create_by, create_date, update_name, update_by, update_date, is_delete, rd_record_type, push_warehouse, company_id, create_charge_flag
+    </sql>
+
+    <update id="batchUpdateChargeFlagByIds">
+        update cf_rd_record set create_charge_flag = 1
+        where rd_record_id in
+        <foreach collection="list" item="rdRecordId" index="index"
+                 open="(" separator="," close=")">
+            #{rdRecordId}
+        </foreach>
+    </update>
+
+    <update id="batchUpdateChargeFlagByDetailIds">
+        update cf_rd_record_detail set create_charge_flag = 1
+        where id in
+        <foreach collection="list" item="id"
+                 open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

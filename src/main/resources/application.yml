@@ -1,0 +1,33 @@
+server:
+    port: ${port:8092}
+    servlet:
+      context-path: /
+
+logging:
+  level:
+    com.chenfan.finance: DEBUG
+  file:
+    name: logs/chenfan-cloud-finace.log
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 2048MB
+      max-request-size: 200MB
+      resolve-lazily: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 6000000
+        readTimeout: 6000000
+        loggerLevel: basic
+  hystrix:
+    enabled: false
+
+scheduled:
+  cfWdtRd:  # 入库单明细计费任务
+    switch: true
+  cfRd:  # 普通采购单明细计费任务
+    switch: true

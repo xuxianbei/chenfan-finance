@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.DownpaymentConfMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.DownpaymentConf">
+        <id column="payment_conf_id" property="paymentConfId" />
+        <result column="payment_name" property="paymentName" />
+        <result column="proportion" property="proportion" />
+        <result column="tail_name" property="tailName" />
+        <result column="tail_proportion" property="tailProportion" />
+        <result column="sys_org_code" property="sysOrgCode" />
+        <result column="sys_company_code" property="sysCompanyCode" />
+        <result column="create_name" property="createName" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_name" property="updateName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="company_id" property="companyId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        payment_conf_id, payment_name, proportion, tail_name, tail_proportion, sys_org_code, sys_company_code, create_name, create_by, create_date, update_name, update_by, update_date, company_id
+    </sql>
+
+</mapper>

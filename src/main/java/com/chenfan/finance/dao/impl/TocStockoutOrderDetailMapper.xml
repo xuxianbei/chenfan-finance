@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocStockoutOrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocStockoutOrderDetail">
+    <id column="rec_id" jdbcType="INTEGER" property="recId" />
+    <result column="stockout_id" jdbcType="INTEGER" property="stockoutId" />
+    <result column="src_order_type" jdbcType="TINYINT" property="srcOrderType" />
+    <result column="src_order_detail_id" jdbcType="INTEGER" property="srcOrderDetailId" />
+    <result column="base_unit_id" jdbcType="SMALLINT" property="baseUnitId" />
+    <result column="unit_id" jdbcType="SMALLINT" property="unitId" />
+    <result column="unit_ratio" jdbcType="DECIMAL" property="unitRatio" />
+    <result column="num2" jdbcType="DECIMAL" property="num2" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="cost_price" jdbcType="DECIMAL" property="costPrice" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="spec_no" jdbcType="VARCHAR" property="specNo" />
+    <result column="spec_code" jdbcType="VARCHAR" property="specCode" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="batch_id" jdbcType="INTEGER" property="batchId" />
+    <result column="expire_date" jdbcType="TIMESTAMP" property="expireDate" />
+    <result column="is_examined" jdbcType="INTEGER" property="isExamined" />
+    <result column="is_package" jdbcType="INTEGER" property="isPackage" />
+    <result column="is_zero_cost" jdbcType="INTEGER" property="isZeroCost" />
+    <result column="scan_type" jdbcType="INTEGER" property="scanType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    rec_id, stockout_id, src_order_type, src_order_detail_id, base_unit_id, unit_id, 
+    unit_ratio, num2, num, price, total_amount, cost_price, goods_name, goods_id, goods_no, 
+    spec_name, spec_id, spec_no, spec_code, weight, position_id, batch_id, expire_date, 
+    is_examined, is_package, is_zero_cost, scan_type, remark, modified, created
+  </sql>
+  <!--    List<TocStockoutOrderDetail> selectListByTid(String tid);-->
+  <select id="selectListByTid" resultMap="BaseResultMap">
+    select  rec_id, stockout_id, src_order_type, src_order_detail_id, base_unit_id, unit_id,
+    unit_ratio, num2, num, price, total_amount, cost_price, goods_name, goods_id, goods_no,
+    spec_name, spec_id, spec_no, spec_code, weight, position_id, batch_id, expire_date,
+    is_examined, is_package, is_zero_cost, scan_type, remark, modified, created,
+    batch_time
+    from toc_stockout_order_detail `tsod` left join sales_trade_order `sto`
+    on `tsod`.src_order_detail_id=`sto`.rec_id
+    <where>
+      `sto`.src_tid=#{tid}
+    </where>
+
+  </select>
+
+</mapper>

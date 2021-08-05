@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfClearDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfClearDetail">
+        <id column="clear_detail_id" property="clearDetailId" />
+        <result column="clear_id" property="clearId" />
+        <result column="invoice_no" property="invoiceNo" />
+        <result column="invoice_title" property="invoiceTitle" />
+        <result column="balance" property="balance" />
+        <result column="balance_name" property="balanceName" />
+        <result column="invoice_title_name" property="invoiceTitleName" />
+        <result column="charge_type" property="chargeType" />
+        <result column="source_currency_code" property="sourceCurrencyCode" />
+        <result column="source_exchange_rate" property="sourceExchangeRate" />
+        <result column="charge_id" property="chargeId" />
+        <result column="arap_type" property="arapType" />
+        <result column="clear_debit" property="clearDebit" />
+        <result column="clear_credit" property="clearCredit" />
+        <result column="cleared_amount" property="clearedAmount" />
+        <result column="last_balance" property="lastBalance" />
+        <result column="now_balance" property="nowBalance" />
+        <result column="actual_clear_amount" property="actualClearAmount" />
+        <result column="charge_source_type" property="chargeSourceType" />
+        <result column="remark" property="remark" />
+        <result column="currency_code" property="currencyCode" />
+        <result column="exchange_rate" property="exchangeRate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        clear_detail_id, clear_id, invoice_no, invoice_title, balance, balance_name, invoice_title_name, charge_type, source_currency_code, source_exchange_rate, charge_id, arap_type, clear_debit, clear_credit, cleared_amount, last_balance, now_balance, actual_clear_amount, charge_source_id, remark, currency_code, exchange_rate
+    </sql>
+
+    <select id="getClearedDetailsByChargeIds" resultType="com.chenfan.finance.model.CfClearDetail">
+        select b.*
+        from cf_clear_header a
+        left join cf_clear_detail b on a.clear_id = b.clear_id
+        where a.clear_status=2  and b.charge_type=3 and b.charge_id in
+        <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+
+    </select>
+
+</mapper>

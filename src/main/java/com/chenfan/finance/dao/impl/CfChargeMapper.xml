@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfChargeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfCharge">
+        <id column="charge_id" property="chargeId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="arap_check_date" property="arapCheckDate"/>
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="contract_no" property="contractNo"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="exchange_rate" property="exchangeRate"/>
+        <result column="charge_unit" property="chargeUnit"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="charge_month_belong_to" property="chargeMonthBelongTo"/>
+        <result column="tax_invoice_no" property="taxInvoiceNo"/>
+        <result column="tax_invoice_date" property="taxInvoiceDate"/>
+        <result column="customer_invoice_no" property="customerInvoiceNo"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_name" property="invoiceTitleName"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="actual_history_date" property="actualHistoryDate"/>
+        <result column="remark" property="remark"/>
+        <result column="charge_date" property="chargeDate"/>
+        <result column="charge_history_checked" property="chargeHistoryChecked"/>
+        <result column="charge_edited" property="chargeEdited"/>
+        <result column="invoice_entrance_date" property="invoiceEntranceDate"/>
+        <result column="company_id" property="companyId"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_name" property="updateName"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="product_code" property="productCode"/>
+        <result column="sales_type" property="salesType"/>
+        <result column="tax_rate" property="taxRate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        charge_id, charge_code, charge_type, check_status, arap_type, arap_check_date, charge_source, charge_source_code, charge_source_detail_code, brand_id, contract_no, currency_code, exchange_rate, charge_unit, charge_qty, price_pp, amount_pp, balance, charge_month_belong_to, tax_invoice_no, tax_invoice_date, customer_invoice_no, invoice_no, invoice_title, invoice_title_name, invoice_date, clear_no, actual_amount, actual_date, actual_history_date, remark, charge_date, charge_history_checked, charge_edited, invoice_entrance_date, company_id, create_by, create_name, create_date, update_by, update_name, update_date, product_code, sales_type,tax_rate
+    </sql>
+
+    <select id="queryChargeList" resultMap="BaseResultMap">
+        SELECT
+        charge.*
+        FROM
+        cf_charge AS charge
+        <if test="invoiceNeed">
+            LEFT JOIN cf_invoice_header USING (invoice_no)
+        </if>
+        <where>
+            AND charge.check_status !=0
+            <if test="checkStatus != null">
+                AND charge.check_status =#{checkStatus}
+            </if>
+            <if test="chargeCode != null and chargeCode!=''">
+                AND charge.charge_code LIKE concat('%',#{chargeCode},'%')
+            </if>
+            <if test="chargeType != null and chargeType!=''">
+                AND charge.charge_type =#{chargeType}
+            </if>
+            <if test="arapType != null and arapType!=''">
+                AND charge.arap_type =#{arapType}
+            </if>
+            <if test="chargeSource != null">
+                AND charge.charge_source =#{chargeSource}
+            </if>
+            <if test="balance != null and balance!=''">
+                AND charge.balance =#{balance}
+            </if>
+            <if test="invoiceNo != null and invoiceNo!=''">
+                AND charge.invoice_no =#{invoiceNo}
+            </if>
+            <if test="chargeSourceDetailCode != null and chargeSourceDetailCode!=''">
+                AND charge.charge_source_detail_code LIKE concat('%',#{chargeSourceDetailCode},'%')
+            </if>
+            <if test="timeBegin!=null">
+                AND charge.create_date &gt;= #{timeBegin}
+            </if>
+            <if test="timeEnd!=null">
+                AND charge.create_date &lt;= #{timeEnd}
+            </if>
+            <if test="invoiceNeed">
+                AND charge.actual_amount != charge.amount_pp and charge.invoice_no IS NOT NULL
+                AND (cf_invoice_header.invoice_status=3 OR cf_invoice_header.invoice_status=4)
+            </if>
+            <if test="invoiceCreate">
+                AND charge.check_status = 3 and charge.invoice_no is null
+            </if>
+            <if test="companyId != null">
+                AND charge.company_id = {companyId,jdbcType=BIGINT}
+            </if>
+            <if test="userIds!=null and userIds.size()>0">
+                AND charge.create_by in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandIds !=null and brandIds.size() > 0">
+                AND charge.brand_id in
+                <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        order by  charge.charge_id desc
+    </select>
+
+
+    <resultMap id="ChargeVOResultMap" type="com.chenfan.finance.model.vo.CfChargeVO">
+        <id column="charge_id" property="chargeId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_ids" property="chargeIds"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="arap_check_date" property="arapCheckDate"/>
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="contract_no" property="contractNo"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="exchange_rate" property="exchangeRate"/>
+        <result column="charge_unit" property="chargeUnit"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="charge_month_belong_to" property="chargeMonthBelongTo"/>
+        <result column="tax_invoice_no" property="taxInvoiceNo"/>
+        <result column="tax_invoice_date" property="taxInvoiceDate"/>
+        <result column="customer_invoice_no" property="customerInvoiceNo"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_name" property="invoiceTitleName"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="actual_history_date" property="actualHistoryDate"/>
+        <result column="remark" property="remark"/>
+        <result column="charge_date" property="chargeDate"/>
+        <result column="charge_history_checked" property="chargeHistoryChecked"/>
+        <result column="charge_edited" property="chargeEdited"/>
+        <result column="invoice_entrance_date" property="invoiceEntranceDate"/>
+        <result column="company_id" property="companyId"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_name" property="updateName"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="product_code" property="productCode"/>
+    </resultMap>
+    <select id="queryChargeListByChargeIds" resultMap="ChargeVOResultMap">
+        SELECT
+        charge.charge_id,GROUP_CONCAT(charge.charge_id) as charge_ids,  charge.charge_code, charge.charge_type, charge.check_status, charge.arap_type, charge.arap_check_date, charge.charge_source,
+        charge.charge_source_code, charge.charge_source_detail_code, charge.brand_id, charge.contract_no, charge.currency_code, charge.exchange_rate,
+        charge.charge_unit, charge.charge_qty, charge.price_pp, charge.amount_pp, charge.balance, charge.charge_month_belong_to, charge.tax_invoice_no,
+        charge.tax_invoice_date, charge.customer_invoice_no, charge.invoice_no, charge.invoice_title, charge.invoice_title_name, charge.invoice_date,
+        charge.clear_no, charge.actual_amount, charge.actual_date, charge.actual_history_date, charge.remark, charge.charge_date, charge.charge_history_checked,
+        charge.charge_edited, charge.invoice_entrance_date, charge.product_code,charge.create_date,charge.create_name,charge.create_by
+        FROM
+        cf_charge AS charge
+        <where>
+            charge.check_status = 3
+            AND charge.product_code IS NOT NULL
+            AND charge.charge_source_code IS NOT NULL
+            AND charge.charge_type IS NOT NULL
+            AND (charge.invoice_no is null
+            <if test="no !=null and no!=''">
+                OR charge.invoice_no =#{no}
+            </if>
+            )
+            <if test="chargeIds !=null and chargeIds.size() > 0">
+                AND charge.charge_id in
+                <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        GROUP BY
+            charge.product_code,
+            charge.charge_source_code,
+            charge.charge_type
+        ORDER BY
+            charge.charge_id DESC
+    </select>
+
+    <resultMap id="JoinResultMap" type="com.chenfan.finance.model.vo.ChargeInvoiceDetailVO">
+        <id column="charge_id" property="chargeId"/>
+        <result column="invoice_detail_id" property="invoiceDetailId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="arap_check_date" property="arapCheckDate"/>
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="contract_no" property="contractNo"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="exchange_rate" property="exchangeRate"/>
+        <result column="charge_unit" property="chargeUnit"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="charge_month_belong_to" property="chargeMonthBelongTo"/>
+        <result column="tax_invoice_no" property="taxInvoiceNo"/>
+        <result column="tax_invoice_date" property="taxInvoiceDate"/>
+        <result column="customer_invoice_no" property="customerInvoiceNo"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_name" property="invoiceTitleName"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="actual_history_date" property="actualHistoryDate"/>
+        <result column="remark" property="remark"/>
+        <result column="charge_date" property="chargeDate"/>
+        <result column="charge_history_checked" property="chargeHistoryChecked"/>
+        <result column="charge_edited" property="chargeEdited"/>
+        <result column="invoice_entrance_date" property="invoiceEntranceDate"/>
+        <result column="company_id" property="companyId"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_name" property="updateName"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="product_code" property="productCode"/>
+        <result column="sales_type" property="salesType"/>
+    </resultMap>
+    <select id="queryChargeListByInvoiceId" resultMap="JoinResultMap">
+        SELECT
+        charge.charge_id, charge.charge_code, charge.charge_type, charge.check_status, charge.arap_type, charge.arap_check_date, charge.charge_source,
+        charge.charge_source_code, charge.charge_source_detail_code, charge.brand_id, charge.contract_no, charge.currency_code, charge.exchange_rate,
+        charge.charge_unit, charge.charge_qty, charge.price_pp, charge.amount_pp, charge.balance, charge.charge_month_belong_to, charge.tax_invoice_no,
+        charge.tax_invoice_date, charge.customer_invoice_no, charge.invoice_no, charge.invoice_title, charge.invoice_title_name, charge.invoice_date,
+        charge.clear_no, charge.actual_amount, charge.actual_date, charge.actual_history_date, charge.remark, charge.charge_date, charge.charge_history_checked,
+        charge.charge_edited, charge.invoice_entrance_date, charge.product_code, cid.invoice_detail_id, charge.create_name, charge.create_date
+        FROM
+        cf_charge AS charge LEFT JOIN cf_invoice_detail cid ON cid.charge_id = charge.charge_id
+        where cid.invoice_id = #{invoiceId}
+        AND charge.product_code IS NOT NULL
+        AND charge.charge_source_code IS NOT NULL
+        AND charge.charge_type IS NOT NULL
+        GROUP BY
+        charge.product_code,
+        charge.charge_source_code,
+        charge.charge_type
+    </select>
+
+    <update id="updateInvoiceNo">
+        UPDATE cf_charge cc LEFT JOIN cf_invoice_detail cid ON cid.charge_id = cc.charge_id
+        SET
+        cc.tax_invoice_no = #{customerInvoiceNo},
+        cc.tax_invoice_date = #{customerInvoiceDate},
+        cc.remark = #{remark}
+        WHERE cid.invoice_id = #{invoiceId} AND cc.product_code = #{productCode}
+    </update>
+
+    <update id="updateInvoiceInfo">
+        UPDATE cf_charge
+        SET
+        invoice_no = #{invoiceHeader.invoiceNo},
+        invoice_title = #{invoiceHeader.invoiceTitle},
+        invoice_title_name = #{invoiceHeader.invoiceTitleName},
+        invoice_date = #{invoiceHeader.invoiceDate}
+        WHERE charge_id IN
+        <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <update id="updateInvoiceEntranceDateByChargeIds">
+        UPDATE cf_charge
+        SET
+        invoice_entrance_date = now()
+        WHERE charge_id IN
+        <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="delRelevance" >
+        UPDATE cf_charge
+        SET
+        invoice_no = null,
+        invoice_title = null,
+        invoice_title_name = null,
+        invoice_date = null
+        WHERE charge_id IN
+        <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <update id="updateEpricePpByChargeIds">
+        UPDATE cf_charge
+        SET
+        price_pp = price_pp+#{money},
+        amount_pp =(price_pp+#{money})*charge_qty
+        WHERE charge_id IN
+        <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <select id="selectRelevance" resultType="java.lang.String">
+        select
+        invoice_no
+        from
+        cf_charge
+        WHERE charge_id IN
+        <foreach collection="chargeIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    <select id="getAllReferenceQuantity" resultType="com.chenfan.finance.model.vo.ChargeInQuantityMatchVO">
+        SELECT
+            product_code as productCode,
+            SUM(forsum.quantity) AS quantity,
+            SUM(forsum.arrival_qty) AS arrivalQty,
+            SUM(forsum.actual_qty) AS actualQty,
+            SUM(forsum.rejection_qty) AS rejectionQty
+        FROM
+            (
+                SELECT
+                    cf_po_detail.product_code,
+                    wdtdetail.*
+                FROM
+                    cf_charge
+                LEFT JOIN cf_wdt_rd_record_header wdtheader ON wdtheader.wdt_rd_record_code = cf_charge.charge_source_code
+                LEFT JOIN cf_wdt_rd_record_detail wdtdetail USING (wdt_rd_record_id)
+                LEFT JOIN cf_po_detail USING (po_detail_id)
+                WHERE
+                    wdt_rd_record_detail_id IS NOT NULL
+                AND pu_arr_detail_id IS NOT NULL
+                AND charge_id IN
+                <foreach collection="chargeIds" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                GROUP BY
+                    wdtdetail.pu_arr_detail_id
+            ) AS forsum
+        WHERE
+            forsum.product_code IS NOT NULL
+        GROUP BY
+            forsum.product_code
+
+    </select>
+    <select id="getAllRefPoIds" resultType="java.lang.Long">
+        SELECT DISTINCT
+        cf_po_detail.po_id
+        FROM
+        cf_charge
+        LEFT JOIN cf_wdt_rd_record_header wdtheader ON wdtheader.wdt_rd_record_code = cf_charge.charge_source_code
+        LEFT JOIN cf_wdt_rd_record_detail wdtdetail USING (wdt_rd_record_id)
+        LEFT JOIN cf_po_detail USING (po_detail_id)
+        WHERE
+         charge_id IN
+        <foreach collection="chargeIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        AND cf_po_detail.po_id IS NOT NULL
+    </select>
+
+    <resultMap id="CfChargeSkuListVOMap" type="com.chenfan.finance.model.vo.CfChargeSkuListVO">
+        <id column="charge_id" property="chargeId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="sales_type" property="salesType"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="tax_rate" property="taxRate"/>
+    </resultMap>
+    <select id="getChargeSkuList" resultMap="CfChargeSkuListVOMap">
+        SELECT
+            charge.*
+        FROM
+            cf_charge as charge
+        WHERE
+            charge.check_status != 0
+            and charge.product_code = #{productCode}
+            and charge.charge_source_code = #{chargeSourceCode}
+            and charge.sales_type = #{salesType}
+            and charge.charge_type =#{chargeType}
+            <if test="query.checkStatus != null">
+                AND charge.check_status =#{query.checkStatus}
+            </if>
+            <if test="query.isInvoice != null and query.isInvoice == 1">
+                AND charge.invoice_no is not null
+            </if>
+            <if test="query.isInvoice != null and query.isInvoice == 0">
+                AND charge.invoice_no is null
+            </if>
+            <if test="query.detailInvoiceNo != null and query.detailInvoiceNo !=''">
+                AND charge.invoice_no != #{query.detailInvoiceNo}
+            </if>
+            <if test="query.chargeIds!=null and query.chargeIds.size()>0">
+                AND charge.charge_id not in
+                <foreach collection="query.chargeIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="query.taxRates!=null and query.taxRates.size()>0">
+                AND charge.tax_rate in
+                <foreach collection="query.taxRates" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="query.chargeCode != null and query.chargeCode!=''">
+                AND charge.charge_code LIKE concat('%',#{query.chargeCode},'%')
+            </if>
+            <if test="query.chargeSource != null">
+                AND charge.charge_source =#{query.chargeSource}
+            </if>
+            <if test="query.brandId != null and query.brandId!=''">
+                AND charge.brand_id =#{query.brandId}
+            </if>
+            <if test="query.arapType != null and query.arapType!=''">
+                AND charge.arap_type =#{query.arapType}
+            </if>
+            <if test="query.balance != null and query.balance!=''">
+                AND charge.balance =#{query.balance}
+            </if>
+            <if test="query.chargeSourceDetailCode != null and query.chargeSourceDetailCode!=''">
+                AND charge.charge_source_detail_code LIKE concat('%',#{query.chargeSourceDetailCode},'%')
+            </if>
+            <if test="query.companyId != null">
+                AND charge.company_id = {companyId,jdbcType=BIGINT}
+            </if>
+            <if test="query.timeBegin!=null">
+                AND charge.create_date &gt;= #{query.timeBegin}
+            </if>
+            <if test="query.timeEnd!=null">
+                AND charge.create_date &lt;= #{query.timeEnd}
+            </if>
+            <if test="query.userIds!=null and query.userIds.size()>0">
+                AND charge.create_by in
+                <foreach collection="query.userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="query.brandIds !=null and query.brandIds.size() > 0">
+                AND charge.brand_id in
+                <foreach collection="query.brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            order by charge.create_date desc
+    </select>
+
+
+    <resultMap id="CfChargeListVOMap" type="com.chenfan.finance.model.vo.CfChargeListVO">
+        <id column="charge_id" property="chargeId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_ids" property="chargeIds"/>
+        <result column="balances" property="balances"/>
+        <result column="brands" property="brands"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="product_code" property="productCode"/>
+        <result column="sales_type" property="salesType"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="tax_rate" property="taxRate"/>
+    </resultMap>
+
+
+    <select id="chargeListChargeSourceGroup" resultMap="CfChargeListVOMap">
+        SELECT
+        charge.charge_id,
+        group_concat( charge.charge_id ) AS charge_ids,
+        group_concat( DISTINCT charge.balance SEPARATOR ',' ) AS balances,
+        group_concat( DISTINCT charge.brand_id SEPARATOR ',' ) AS brands,
+        charge.charge_code,
+        charge.charge_type,
+        charge.check_status,
+        charge.arap_type,
+        charge.product_code,
+        charge.charge_source,
+        charge.brand_id,
+        charge.charge_source_code,
+        charge.charge_source_detail_code,
+        charge.charge_qty,
+        charge.price_pp,
+        charge.amount_pp,
+        charge.balance,
+        charge.create_by,
+        charge.create_name,
+        charge.create_date,
+        charge.clear_no,
+        charge.actual_amount,
+        charge.invoice_no,
+        charge.sales_type,
+        charge.invoice_date,
+        charge.actual_date,
+        charge.tax_rate
+        FROM
+        cf_charge AS charge
+        <if test="invoiceNeed">
+            LEFT JOIN cf_invoice_header USING (invoice_no)
+        </if>
+        WHERE
+        charge.check_status != 0
+        AND charge.product_code IS NOT NULL
+        AND charge.sales_type IS NOT NULL
+        AND charge.charge_type IS NOT NULL
+        AND charge.charge_source IS NOT NULL
+        <if test="checkStatus != null">
+            AND charge.check_status =#{checkStatus}
+        </if>
+        <if test="isInvoice != null and isInvoice == 1">
+            AND charge.invoice_no is not null
+        </if>
+        <if test="isInvoice != null and isInvoice == 0">
+            AND charge.invoice_no is null
+        </if>
+        <if test="detailInvoiceNo != null and detailInvoiceNo !=''">
+            AND charge.invoice_no !=#{detailInvoiceNo}
+        </if>
+        <if test="chargeIds!=null and chargeIds.size()>0">
+            AND charge.charge_id not in
+            <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="taxRates!=null and taxRates.size()>0">
+            AND charge.tax_rate in
+            <foreach collection="taxRates" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="salesType != null">
+            AND charge.sales_type =#{salesType}
+        </if>
+        <if test="brandId != null and brandId!=''">
+            AND charge.brand_id =#{brandId}
+        </if>
+        <if test="arapType != null and arapType!=''">
+            AND charge.arap_type =#{arapType}
+        </if>
+        <if test="chargeSource != null">
+            AND charge.charge_source =#{chargeSource}
+        </if>
+        <if test="chargeSourceCode != null">
+            AND charge.charge_source_code =#{chargeSourceCode}
+        </if>
+        <if test="chargeCode != null and chargeCode!=''">
+            AND charge.charge_code LIKE concat('%',#{chargeCode},'%')
+        </if>
+        <if test="chargeType != null and chargeType!=''">
+            AND charge.charge_type =#{chargeType}
+        </if>
+        <if test="chargeSourceDetailCode != null and chargeSourceDetailCode!=''">
+            AND charge.charge_source_detail_code LIKE concat('%',#{chargeSourceDetailCode},'%')
+        </if>
+        <if test="balance != null and balance!=''">
+            AND charge.balance =#{balance}
+        </if>
+        <if test="invoiceNo != null and invoiceNo!=''">
+            AND charge.invoice_no =#{invoiceNo}
+        </if>
+        <if test="timeBegin!=null">
+            AND charge.create_date &gt;= #{timeBegin}
+        </if>
+        <if test="timeEnd!=null">
+            AND charge.create_date &lt;= #{timeEnd}
+        </if>
+        <if test="invoiceNeed">
+            AND charge.actual_amount != charge.amount_pp and charge.invoice_no IS NOT NULL
+            AND (cf_invoice_header.invoice_status=3 OR cf_invoice_header.invoice_status=4)
+        </if>
+        <if test="invoiceCreate">
+            AND charge.check_status = 3 and charge.invoice_no is null
+        </if>
+        <if test="companyId != null">
+            AND charge.company_id = {companyId,jdbcType=BIGINT}
+        </if>
+        <if test="userIds!=null and userIds.size()>0">
+            AND charge.create_by in
+            <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="brandIds !=null and brandIds.size() > 0">
+            AND charge.brand_id in
+            <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        GROUP BY
+        charge.product_code,
+        charge.sales_type,
+        charge.charge_type,
+        <if test="groupDetail">
+            charge.charge_source
+        </if>
+        <if test="!groupDetail">
+            charge.charge_source_code
+        </if>
+        ORDER BY
+        charge.charge_id DESC
+    </select>
+
+
+    <select id="queryChargeSkuListByInvoiceId"
+            resultType="com.chenfan.finance.model.vo.ChargeInvoiceSkuDetailVO">
+        SELECT
+        charge.charge_id, charge.charge_code, charge.charge_type, charge.check_status, charge.arap_type, charge.arap_check_date, charge.charge_source,
+        charge.charge_source_code, charge.charge_source_detail_code, charge.brand_id, charge.contract_no, charge.currency_code, charge.exchange_rate,
+        charge.charge_unit, charge.charge_qty, charge.price_pp, charge.amount_pp, charge.balance, charge.charge_month_belong_to, charge.tax_invoice_no,
+        charge.tax_invoice_date, charge.customer_invoice_no, charge.invoice_no, charge.invoice_title, charge.invoice_title_name, charge.invoice_date,
+        charge.clear_no, charge.actual_amount, charge.actual_date, charge.actual_history_date, charge.remark, charge.charge_date, charge.charge_history_checked,
+        charge.charge_edited, charge.invoice_entrance_date, charge.product_code, cid.invoice_detail_id, charge.create_name, charge.create_date
+        FROM
+        cf_charge AS charge LEFT JOIN cf_invoice_detail cid ON cid.charge_id = charge.charge_id
+        where cid.invoice_id = #{invoiceId}
+        AND charge.product_code = #{productCode}
+        AND charge.charge_source_code = #{chargeSourceCode}
+        AND charge.charge_type = #{chargeType}
+    </select>
+    <select id="selectByChargeId" resultMap="BaseResultMap">
+        SELECT charge_id,charge_code,charge_type,check_status,arap_type,arap_check_date,charge_source,charge_source_code,charge_source_detail_code,
+        brand_id,contract_no,currency_code,exchange_rate,charge_unit,charge_qty,price_pp,amount_pp,balance,charge_month_belong_to,tax_invoice_no,
+        tax_invoice_date,customer_invoice_no,invoice_no,invoice_title,invoice_title_name,invoice_date,clear_no,actual_amount,actual_date,actual_history_date,
+        remark,charge_date,charge_history_checked,charge_edited,invoice_entrance_date,company_id,create_by,create_name,create_date,update_by,update_name,update_date,product_code
+        FROM cf_charge
+        WHERE charge_id= #{chargeId}
+    </select>
+
+    <resultMap id="ChargeSkuVOResultMap" type="com.chenfan.finance.model.vo.CfChargeSkuVO">
+        <id column="charge_id" property="chargeId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="arap_check_date" property="arapCheckDate"/>
+        <result column="charge_source" property="chargeSource"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail_code" property="chargeSourceDetailCode"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="contract_no" property="contractNo"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="exchange_rate" property="exchangeRate"/>
+        <result column="charge_unit" property="chargeUnit"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="charge_month_belong_to" property="chargeMonthBelongTo"/>
+        <result column="tax_invoice_no" property="taxInvoiceNo"/>
+        <result column="tax_invoice_date" property="taxInvoiceDate"/>
+        <result column="customer_invoice_no" property="customerInvoiceNo"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_name" property="invoiceTitleName"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="actual_history_date" property="actualHistoryDate"/>
+        <result column="remark" property="remark"/>
+        <result column="charge_date" property="chargeDate"/>
+        <result column="charge_history_checked" property="chargeHistoryChecked"/>
+        <result column="charge_edited" property="chargeEdited"/>
+        <result column="invoice_entrance_date" property="invoiceEntranceDate"/>
+        <result column="company_id" property="companyId"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_name" property="updateName"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="product_code" property="productCode"/>
+    </resultMap>
+    <select id="queryChargeSkuListByChargeIds" resultMap="ChargeSkuVOResultMap">
+        SELECT
+            charge.charge_id,
+            charge.charge_code,
+            charge.charge_type,
+            charge.check_status,
+            charge.arap_type,
+            charge.arap_check_date,
+            charge.charge_source,
+            charge.charge_source_code,
+            charge.charge_source_detail_code,
+            charge.brand_id,
+            charge.contract_no,
+            charge.currency_code,
+            charge.exchange_rate,
+            charge.charge_unit,
+            charge.charge_qty,
+            charge.price_pp,
+            charge.amount_pp,
+            charge.balance,
+            charge.charge_month_belong_to,
+            charge.tax_invoice_no,
+            charge.tax_invoice_date,
+            charge.customer_invoice_no,
+            charge.invoice_no,
+            charge.invoice_title,
+            charge.invoice_title_name,
+            charge.invoice_date,
+            charge.clear_no,
+            charge.actual_amount,
+            charge.actual_date,
+            charge.actual_history_date,
+            charge.remark,
+            charge.charge_date,
+            charge.charge_history_checked,
+            charge.charge_edited,
+            charge.invoice_entrance_date,
+            charge.product_code,
+            charge.create_date,
+            charge.create_name,
+            charge.create_by
+        FROM
+            cf_charge AS charge
+        WHERE
+            charge.check_status = 3
+            AND (charge.invoice_no is null
+            <if test="no !=null and no!=''">
+                OR charge.invoice_no =#{no}
+            </if>
+            )
+            <if test="chargeIds !=null and chargeIds.size() > 0">
+                AND charge.charge_id in
+                <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            AND charge.product_code = #{productCode}
+            AND charge.charge_source_code = #{chargeSourceCode}
+            AND charge.charge_type = #{chargeType}
+    </select>
+    <select id="selectByChargeIds" resultMap="BaseResultMap">
+        SELECT * from cf_charge WHERE
+        <if test="chargeIds !=null and chargeIds.size() > 0">
+            charge_id in
+            <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+<select id="selectRdRecodeDetailIdsByCharge" resultType="long">
+    SELECT
+    cc.charge_source_detail_id
+    FROM
+    cf_charge cc
+    LEFT JOIN cf_charge_in cci ON cci.charge_id = cc.charge_id
+    WHERE
+    cc.check_status != 0
+    AND (charge_type = #{hk}
+    OR charge_type = #{red})
+    <include refid="queryList"></include>
+    GROUP BY
+    cc.charge_source_detail_id
+</select>
+    <select id="verifyChargeListPre" resultType="com.chenfan.finance.model.vo.CfChargeListVO">
+        SELECT
+       `rrt`.rd_record_type,
+        GROUP_CONCAT( DISTINCT b.balance SEPARATOR ',' ) AS balances,
+        GROUP_CONCAT( DISTINCT b.brand_id SEPARATOR ',' ) AS brands,
+        b.product_code,
+        b.goods_name as goodsName,
+        GROUP_CONCAT( DISTINCT b.sales_type SEPARATOR ',' ) AS salesTypeAll,
+        b.arap_type,
+        b.price_pp,
+        b.tax_rate,
+        SUM( b.arrival_qty ) AS arrival_qty,
+        SUM( b.rejection_qty ) AS rejection_qty,
+        SUM( b.actual_qty ) AS actual_qty,
+        SUM( b.defective_rejection_qty ) AS defective_rejection_qty,
+        GROUP_CONCAT( postpone_detail ) AS postpone_detail,
+        SUM(
+        IFNULL( b.postpone_deductions_total, 0 )) AS postpone_deductions_total,
+        IFNULL(sum(b.qa_deductions),0)  AS qa_deductions,
+        SUM( b.actual_qty ) - SUM( defective_rejection_qty ) AS settlementQty,
+        b.costs_price * (
+        SUM( b.actual_qty ) - SUM( defective_rejection_qty )) AS settlementAmount,
+        b.costs_price * (
+        SUM( b.actual_qty ) - SUM( defective_rejection_qty )) - SUM(
+        IFNULL( b.postpone_deductions_total, 0 )) - SUM(
+        IFNULL( money, 0 )) - SUM(IFNULL( b.qa_deductions,0) ) AS settlementAmountActual,
+        SUM(
+        IFNULL( c.bargain, 0 ) + IFNULL( c.retainage, 0 )) AS advancepay_amount,
+        SUM(
+        IFNULL( c.money, 0 )) AS advancepay_amount_actual,
+        GROUP_CONCAT( b.charge_id ) AS chargeIds,
+        GROUP_CONCAT( a.charge_id ) AS chargeIdsDelay,
+        GROUP_CONCAT( qc.qa_charge_ids) AS  chargeIdsQc,
+        GROUP_CONCAT( c.payid ) AS payIds,
+        b.is_offset
+        FROM
+        (
+        SELECT
+        GROUP_CONCAT( cc.charge_id ) AS charge_id,
+        cc.charge_source_detail_id,
+        cc.charge_source_code,
+        cc.charge_type,
+        cc.balance,
+        cc.brand_id,
+        cc.product_code,
+        cc.charge_source_detail_code,
+        cc.sales_type,
+        cc.arap_type,
+        cc.price_pp,
+        cc.tax_rate,
+        cc.is_offset,
+        ifnull(sum(cci.arrival_qty), 0) as arrival_qty,
+        ifnull(sum(cci.rejection_qty), 0) as rejection_qty,
+        ifnull(sum(cci.actual_qty), 0) as actual_qty,
+        ifnull(sum(cci.defective_rejection_qty), 0) as defective_rejection_qty,
+        IFNULL(sum(cci.qa_deductions),0) as qa_deductions,
+        postpone_detail,
+        IFNULL( cci.postpone_deductions_total, 0 ) AS postpone_deductions_total,
+        cci.red_deductions,
+        cci.tax_diff,
+        cci.others_deductions,
+        ifnull(cci.costs_price, cc.price_pp) as costs_price, cci.goods_name
+        FROM
+        cf_charge cc
+        LEFT JOIN cf_charge_in cci ON cci.charge_id = cc.charge_id
+        WHERE
+        cc.check_status != 0
+        AND (charge_type = #{hk}
+        OR charge_type = #{red})
+        <include refid="queryList"></include>
+        GROUP BY
+        charge_source_detail_id,
+        charge_type,
+        product_code,
+        price_pp,
+        balance,
+        tax_rate,
+        brand_id,
+        is_offset
+        ) b
+        LEFT JOIN (
+        SELECT
+        cc.charge_source_detail_id,
+        cc.amount_pp,
+        cc.charge_id
+        FROM
+        cf_rd_record_detail rdd
+        INNER JOIN cf_charge cc ON rdd.rd_record_detail_id = cc.charge_source_detail_id
+        WHERE
+        rdd.create_charge_flag = 1
+        AND cc.check_status != 0
+        AND charge_type =  #{delay}
+        <include refid="queryList"></include>
+        GROUP BY
+        charge_source_detail_id,
+        charge_type
+        ) a ON b.charge_source_detail_id = a.charge_source_detail_id
+        LEFT JOIN (
+        SELECT
+        aa.po_id,
+        rdd.rd_record_detail_id,
+        GROUP_CONCAT(aa.advance_pay_id) AS payid,
+        sum( aa.money ) AS money,
+        ph.bargain AS bargain,
+        ph.retainage AS retainage
+        FROM
+        advancepay_application aa
+        LEFT JOIN cf_po_header ph ON ph.po_id = aa.po_id
+        INNER JOIN ( SELECT z.rd_record_detail_id, z.po_id FROM cf_rd_record_detail z where z.rd_record_detail_id in
+        <foreach collection="rdRecordDetailIdList" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        GROUP BY po_id ) rdd ON rdd.po_id = aa.po_id
+        WHERE
+        aa.state = 8
+        <if test="isInvoice != null and isInvoice == 1">
+            AND aa.invoice_no is not null
+        </if>
+        <if test="isInvoice != null and isInvoice == 0">
+            AND aa.invoice_no is null
+        </if>
+        GROUP BY
+        aa.po_id
+        ) c ON c.rd_record_detail_id = b.charge_source_detail_id
+        LEFT JOIN (
+            select cqrad.rd_record_detail_id,
+            GROUP_CONCAT(cc.charge_id) as qa_charge_ids
+            from cf_qc_record_asn_detail cqrad left join  cf_charge cc ON cqrad.qc_charging_id = cc.charge_source_detail_id
+            GROUP BY
+            rd_record_detail_id
+        ) `qc` ON b.charge_source_detail_id = qc.rd_record_detail_id
+        LEFT JOIN
+        (
+        SELECT
+        crrd.rd_record_detail_id,crr.rd_record_type
+        FROM  cf_rd_record_detail `crrd`  LEFT JOIN cf_rd_record `crr`
+        ON crrd.rd_record_id =crr.rd_record_id
+        ) `rrt` ON b.charge_source_detail_id = `rrt`.rd_record_detail_id
+        GROUP BY
+        brand_id,
+        balance,
+        product_code,
+        costs_price,
+        tax_rate
+        <trim prefix="having" suffixOverrides="and">
+            <if test="arapType != null and arapType=='AR'">
+                 settlementAmount  &lt; 0 and
+            </if>
+            <if test="arapType != null and arapType=='AP'">
+                 settlementAmount >= 0 and
+            </if>
+            <if test="rdRecordType !=null">
+                 rd_record_type=#{rdRecordType} and
+            </if>
+            <if test="havingDelay !=null">
+                <choose>
+                    <when test="havingDelay== 0">
+                        chargeIdsDelay is null and
+                    </when>
+                    <otherwise>
+                        chargeIdsDelay is not null and
+                    </otherwise>
+                </choose>
+            </if>
+        </trim>
+
+    </select>
+    <sql id="queryList">
+        <if test="isInvoice != null and isInvoice == 1">
+            AND cc.invoice_no is not null
+        </if>
+        <if test="isInvoice != null and isInvoice == 0">
+            AND cc.invoice_no is null
+        </if>
+        <if test="detailInvoiceNo != null and detailInvoiceNo !=''">
+            AND cc.invoice_no !=#{detailInvoiceNo}
+        </if>
+        <if test="taxRates!=null and taxRates.size()>0">
+            AND cc.tax_rate in
+            <foreach collection="taxRates" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="salesType != null">
+            AND cc.sales_type =#{salesType}
+        </if>
+        <if test="brandId != null and brandId!=''">
+            AND cc.brand_id =#{brandId}
+        </if>
+        <if test="chargeSource != null">
+            AND cc.charge_source =#{chargeSource}
+        </if>
+        <if test="chargeSourceCode != null">
+            AND cc.charge_source_code =#{chargeSourceCode}
+        </if>
+        <if test="chargeType != null and chargeType!=''">
+            AND cc.charge_type =#{chargeType}
+        </if>
+        <if test="chargeSourceDetailCode != null and chargeSourceDetailCode!=''">
+            AND cc.charge_source_detail_code LIKE concat('%',#{chargeSourceDetailCode},'%')
+        </if>
+        <if test="balance != null and balance!=''">
+            AND cc.balance =#{balance}
+        </if>
+        <if test="invoiceNo != null and invoiceNo!=''">
+            AND cc.invoice_no =#{invoiceNo}
+        </if>
+        <if test="timeBegin!=null">
+            AND cc.create_date &gt;= #{timeBegin}
+        </if>
+        <if test="timeEnd!=null">
+            AND cc.create_date &lt;= #{timeEnd}
+        </if>
+        <if test="companyId != null">
+            AND cc.company_id = {companyId,jdbcType=BIGINT}
+        </if>
+        <if test="userIds!=null and userIds.size()>0">
+            AND cc.create_by in
+            <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="brandIds !=null and brandIds.size() > 0">
+            AND cc.brand_id in
+            <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </sql>
+
+    <select id="getSaleTypeWithInvoiceNo" resultType="java.lang.Integer">
+        select sales_type from cf_charge
+        where invoice_no = #{invoiceNo}
+        and sales_type is not null
+        limit 1
+    </select>
+    <!--    int  deleteOfLogic(String invoiceNo,Integer isOffset);-->
+    <update id="deleteOfLogic">
+        delete  from cf_charge
+        <where>
+            invoice_no = #{invoiceNo}
+            <if test="isOffset !=null">
+               and  is_offset=#{isOffset}
+            </if>
+        </where>
+    </update>
+    <!--    List<Integer> checkRdTypeByChargeId(List<Long> chargeIds);-->
+    <select id="checkRdTypeByChargeId" resultType="integer">
+        SELECT
+        crr.rd_record_type
+        FROM
+        cf_charge cc,
+        cf_rd_record crr
+        WHERE
+        charge_id IN
+        <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        AND cc.charge_source_code = crr.rd_record_code
+        AND crr.rd_record_type IS NOT NULL
+        GROUP BY
+        crr.rd_record_type
+    </select>
+
+    <!--    BigDecimal selectTaxRateOfInvoiceNo(String invoiceNo);-->
+    <select id="selectTaxRateOfInvoiceNo" resultType="decimal">
+    SELECT
+        cci.tax_rate
+    FROM
+        `cf_charge_in` cci
+        LEFT JOIN cf_charge cc ON cc.charge_id = cci.charge_id
+    WHERE
+        invoice_no = #{invoiceNo}
+        AND ( charge_type = '7' OR charge_type = '1' )
+    ORDER BY
+        charge_type
+        LIMIT 1
+    </select>
+    <!--    List<String> selectDiffChargeInAndCharge();-->
+    <select id="selectDiffChargeInAndCharge" resultType="string">
+        SELECT
+        charge_code
+        FROM
+        (
+        SELECT
+        a.charge_id,
+        a.charge_code,
+        cci.charge_id AS iid
+        FROM
+        ( SELECT charge_id, charge_code FROM cf_charge WHERE ( charge_type = '7' OR charge_type = '1' ) AND is_offset  &lt;&gt; 1 and charge_id &gt; 5180000) a
+        LEFT JOIN cf_charge_in cci ON cci.charge_id = a.charge_id
+        HAVING
+        iid IS NULL
+        ) b
+    </select>
+    <!--    int checkChargeAndChargeInIsHaving(List<Integer> chargeIds);-->
+    <select id="checkChargeAndChargeInIsHaving" resultType="long">
+       SELECT
+        charge_id
+        FROM
+        (
+        SELECT
+        a.charge_id,
+        a.charge_code,
+        cci.charge_id AS iid
+        FROM
+        ( SELECT charge_id, charge_code
+          FROM cf_charge
+          WHERE ( charge_type = '7' OR charge_type = '1' )
+          AND is_offset &lt;&gt; 1
+          AND  charge_id in
+            <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        ) a
+        LEFT JOIN cf_charge_in cci ON cci.charge_id = a.charge_id
+        HAVING
+        iid IS NULL
+        ) b
+    </select>
+</mapper>

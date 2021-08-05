@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfChargeCommonMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfChargeCommon">
+        <id column="charge_id" property="chargeId"/>
+        <result column="charge_code" property="chargeCode"/>
+        <result column="charge_source_type" property="chargeSourceType"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="arap_type" property="arapType"/>
+        <result column="charge_source_code" property="chargeSourceCode"/>
+        <result column="charge_source_detail" property="chargeSourceDetail"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="exchange_rate" property="exchangeRate"/>
+        <result column="tax_rate" property="taxRate"/>
+        <result column="charge_unit" property="chargeUnit"/>
+        <result column="charge_qty" property="chargeQty"/>
+        <result column="price_pp" property="pricePp"/>
+        <result column="amount_pp" property="amountPp"/>
+        <result column="balance" property="balance"/>
+        <result column="finance_entity" property="financeEntity"/>
+        <result column="charge_month_belong_to" property="chargeMonthBelongTo"/>
+        <result column="tax_invoice_no" property="taxInvoiceNo"/>
+        <result column="tax_invoice_date" property="taxInvoiceDate"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_name" property="invoiceTitleName"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="clear_no" property="clearNo"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="actual_date" property="actualDate"/>
+        <result column="actual_history_date" property="actualHistoryDate"/>
+        <result column="remark" property="remark"/>
+        <result column="charge_date" property="chargeDate"/>
+        <result column="invoice_entrance_date" property="invoiceEntranceDate"/>
+        <result column="sett_template" property="settTemplate"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_date" property="createDate"/>
+        <result column="company_id" property="companyId"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_name" property="updateName"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="split_type" property="splitType"/>
+        <result column="split_id" property="splitId"/>
+        <result column="bill_source_type" property="billSourceType"/>
+        <result column="invoice_form" property="invoiceForm"/>
+        <result column="invoice_type" property="invoiceType"/>
+        <result column="invoice_content" property="invoiceContent"/>
+        <result column="invoice_remark" property="invoiceRemark"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="overage" property="overage"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        charge_id, charge_code, charge_source_type, charge_type, check_status, arap_type, charge_source_code, charge_source_detail, currency_code, exchange_rate, tax_rate, charge_unit, charge_qty, price_pp, amount_pp, balance, finance_entity, charge_month_belong_to, tax_invoice_no, tax_invoice_date, invoice_no, invoice_title, invoice_title_name, invoice_date, clear_no, actual_amount, actual_date, actual_history_date, remark, charge_date, invoice_entrance_date, sett_template, create_by, create_name, create_date, company_id, tenant_id, update_by, update_name, update_date,brand_id
+    </sql>
+
+    <select id="getMcnCharge" parameterType="java.lang.String"
+            resultType="com.chenfan.finance.model.vo.McnChargeCommonVO">
+        select
+        a.charge_id,
+        a.charge_code,
+        a.charge_source_type,
+        a.charge_type,
+        a.check_status,
+        a.arap_type,
+        a.charge_source_code,
+        a.charge_source_detail,
+        a.amount_pp,
+        a.balance,
+        a.finance_entity,
+        a.tax_invoice_no,
+        a.invoice_no,
+        a.invoice_title,
+        (a.amount_pp - a.actual_amount) as clear_balance_amount,
+        (select GROUP_CONCAT(o.clear_no) from cf_clear_header o
+				left join cf_clear_detail p on o.clear_id = p.clear_id where p.charge_source_code = a.charge_source_code and p.charge_id = a.charge_id and o.clear_status != 0)
+        as clear_nos,
+        a.create_by,
+        a.create_name,
+        a.create_date,
+        a.brand_id,
+        a.split_type,
+        a.overage
+        from cf_charge_common a
+        where a.charge_source_code = #{chargeSourceCode}
+        and a.charge_source_type = 3 and check_status != 5
+        and a.check_status != 0
+    </select>
+
+    <select id="getBalanceByClearids" parameterType="java.lang.String"
+            resultType="com.chenfan.finance.model.vo.McnChargeCommonVO">
+        SELECT
+        a.clear_id,
+        b.balance
+        FROM
+        cf_clear_detail a
+        INNER JOIN cf_charge_common b ON a.charge_id = b.charge_id
+        WHERE
+        a.clear_id in
+        <foreach collection="clearids" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+</mapper>

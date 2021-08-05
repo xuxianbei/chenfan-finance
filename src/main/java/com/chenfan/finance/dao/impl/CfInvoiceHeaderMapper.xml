@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfInvoiceHeaderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfInvoiceHeader">
+        <id column="invoice_id" property="invoiceId"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_status" property="invoiceStatus"/>
+        <result column="customer_invoice_status" property="customerInvoiceStatus"/>
+        <result column="customer_invoice_way" property="customerInvoiceWay"/>
+        <result column="invoice_type" property="invoiceType"/>
+        <result column="job_type" property="jobType"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="balance" property="balance"/>
+        <result column="balance_name" property="balanceName"/>
+        <result column="contract_url" property="contractUrl"/>
+        <result column="finance_entity" property="financeEntity"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_name" property="invoiceTitleName"/>
+        <result column="bank" property="bank"/>
+        <result column="bank_accounts" property="bankAccounts"/>
+        <result column="invoice_currency_code" property="invoiceCurrencyCode"/>
+        <result column="invoice_exchange_rate" property="invoiceExchangeRate"/>
+        <result column="invoicel_debit" property="invoicelDebit"/>
+        <result column="invoicel_credit" property="invoicelCredit"/>
+        <result column="arap_date" property="arapDate"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="invoice_by" property="invoiceBy"/>
+        <result column="remark" property="remark"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_date" property="createDate"/>
+        <result column="create_name" property="createName"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="u8_state" property="u8State"/>
+        <result column="update_name" property="updateName"/>
+        <result column="company_id" property="companyId"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="clear_status" property="clearStatus"/>
+        <result column="clear_amount" property="clearAmount"/>
+        <result column="account_id" property="accountId"/>
+        <result column="account_name" property="accountName"/>
+        <result column="account_type" property="accountType"/>
+        <result column="flow_id" property="flowId"/>
+        <result column="settle_create_date" property="settleCreateDate"/>
+        <result column="settle_title" property="settleTitle"/>
+        <result column="settle_description" property="settleDescription"/>
+        <result column="settle_template" property="settleTemplate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        invoice_id, invoice_no, invoice_status, invoice_type, job_type, brand_id, balance, balance_name, invoice_title, invoice_title_name, bank, bank_accounts, invoice_currency_code, invoice_exchange_rate, invoicel_debit, invoicel_credit, arap_date, invoice_date, invoice_by, remark, create_by, create_date, create_name, update_by, update_date, update_name, company_id, clear_status, clear_amount
+        ,associated_invoice_no,associated_invoice_settlement_no
+    </sql>
+
+    <resultMap id="invoiceHeaderListResultMap" type="com.chenfan.finance.model.vo.CfInvoiceHeaderListVO">
+        <id column="invoice_id" property="invoiceId"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="invoice_status" property="invoiceStatus"/>
+        <result column="invoice_type" property="invoiceType"/>
+        <result column="job_type" property="jobType"/>
+        <result column="balance" property="balance"/>
+        <result column="invoicel_debit" property="invoicelDebit"/>
+        <result column="invoicel_credit" property="invoicelCredit"/>
+        <result column="create_date" property="createDate"/>
+        <result column="create_name" property="createName"/>
+        <result column="clear_status" property="clearStatus"/>
+        <result column="clear_amount" property="clearAmount"/>
+        <result column="date_start" property="dateStart"/>
+        <result column="date_end" property="dateEnd"/>
+        <result column="advance_pay_money" property="advancePayMoney"/>
+        <result column="rd_record_type" property="rdRecordType"/>
+        <result column="sales_type" property="salesType"/>
+        <result column="rd_record_type_name" property="rdRecordTypeName"/>
+    </resultMap>
+    <select id="selectRedListByAssociatedNo" resultMap="invoiceHeaderListResultMap" >
+         SELECT DISTINCT
+        ( cih.invoice_no ) AS invoice_no,
+        cih.invoice_status,
+        cih.job_type,
+        cih.invoice_type,
+        cih.balance,
+        cih.balance_name,
+        cih.brand_id,
+        cih.invoice_title,
+        cih.invoice_title_name,
+        cih.bank,
+        cih.bank_accounts,
+        cih.invoice_currency_code,
+        cih.invoice_exchange_rate,
+        cih.arap_date,
+        cih.invoice_date,
+        cih.invoice_by,
+        cih.remark,
+        cih.create_by,
+        cih.update_by,
+        cih.update_date,
+        cih.update_name,
+        cih.company_id,
+        case cih.invoice_type
+        WHEN 'AR' THEN
+        abs( cih.invoicel_debit - cih.invoicel_credit ) + IFNULL( cih.advance_pay_money, 0 )
+        ELSE
+        abs( cih.invoicel_debit - cih.invoicel_credit ) - IFNULL( cih.advance_pay_money, 0 )
+        END AS invoicelTotal,
+        cih.clear_amount,
+        ( abs( cih.invoicel_debit - cih.invoicel_credit ) - IFNULL( cih.clear_amount, 0 ) ) AS overInvoicel,
+        cih.clear_status,
+        cih.create_name,
+        cih.create_date,
+        DATE_FORMAT( cih.create_date, '%Y-%m-%d %H:%i:%s' ) AS createDateString,
+        cih.invoice_id,
+        cih.invoicel_debit,
+        cih.invoicel_credit,
+        cih.date_start,
+        cih.date_end,
+        cih.advance_pay_money,
+        cih.material_type as rd_record_type,
+        cih.sales_type,
+        CASE cih.material_type
+        WHEN 0 THEN
+        '成品'
+        WHEN 1 THEN
+        '辅料'
+        ELSE
+        ''
+        END AS rd_record_type_name
+        FROM
+        cf_invoice_header cih
+        LEFT JOIN cf_invoice_settlement cis ON cih.invoice_id = cis.invoice_id
+        <where>
+            cih.associated_invoice_no=#{associatedInvoiceNo}
+        </where>
+        ORDER BY cih.invoice_id DESC
+    </select>
+    <select id="invoiceHeaderListOfAssociated" resultMap="invoiceHeaderListResultMap" parameterType="com.chenfan.finance.model.dto.CfInvoiceHeaderListOfAssociatedDTO">
+        SELECT DISTINCT
+        ( cih.invoice_no ) AS invoice_no,
+        cih.invoice_status,
+        cih.job_type,
+        cih.invoice_type,
+        cih.balance,
+        cih.balance_name,
+        cih.brand_id,
+        cih.invoice_title,
+        cih.invoice_title_name,
+        cih.bank,
+        cih.bank_accounts,
+        cih.invoice_currency_code,
+        cih.invoice_exchange_rate,
+        cih.arap_date,
+        cih.invoice_date,
+        cih.invoice_by,
+        cih.remark,
+        cih.create_by,
+        cih.update_by,
+        cih.update_date,
+        cih.update_name,
+        cih.company_id,
+        case cih.invoice_type
+        WHEN 'AR' THEN
+        abs( cih.invoicel_debit - cih.invoicel_credit ) + IFNULL( cih.advance_pay_money, 0 )
+        ELSE
+        abs( cih.invoicel_debit - cih.invoicel_credit ) - IFNULL( cih.advance_pay_money, 0 )
+        END AS invoicelTotal,
+        cih.clear_amount,
+        ( abs( cih.invoicel_debit - cih.invoicel_credit ) - IFNULL( cih.clear_amount, 0 ) ) AS overInvoicel,
+        cih.clear_status,
+        cih.create_name,
+        cih.create_date,
+        DATE_FORMAT( cih.create_date, '%Y-%m-%d %H:%i:%s' ) AS createDateString,
+        cih.invoice_id,
+        cih.invoicel_debit,
+        cih.invoicel_credit,
+        cih.date_start,
+        cih.date_end,
+        cih.advance_pay_money,
+        cih.material_type as rd_record_type,
+        cih.sales_type,
+        CASE cih.material_type
+        WHEN 0 THEN
+        '成品'
+        WHEN 1 THEN
+        '辅料'
+        ELSE
+        ''
+        END AS rd_record_type_name
+        FROM
+        cf_invoice_header cih
+        LEFT JOIN cf_invoice_settlement cis ON cih.invoice_id = cis.invoice_id
+
+
+        <include refid="associated_condition"/>
+        ORDER BY cih.invoice_id DESC
+    </select>
+    <sql id="associated_condition">
+        <where>
+                (cih.associated_invoice_no is  null or cih.associated_invoice_no =#{associatedInvoiceNo})
+            AND
+                cih.invoice_status != 0
+            AND
+                cis.invoice_settlement_status = 1
+            AND
+                cih.invoice_type='AR'
+            AND
+                cis.invoice_settlement_rate=1
+            <if test="invoiceNo != null and invoiceNo!=''">
+                AND cih.invoice_no like concat('%',#{invoiceNo},'%')
+            </if>
+            <if test="invoiceSettlementNo != null and invoiceSettlementNo != ''">
+                AND cis.invoice_settlement_no like concat('%',#{invoiceSettlementNo},'%')
+            </if>
+            <if test="jobTypes !=null and jobTypes.size >0 ">
+                AND cih.job_type in
+                <foreach collection="jobTypes" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="balance!=null and balance!=''">
+                AND cih.balance = #{balance}
+            </if>
+            <if test="userIds!=null and userIds.size > 0">
+                AND cih.create_by in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandIds!=null and brandIds.size > 0">
+                AND cih.brand_id in
+                <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandId!=null ">
+                AND cih.brand_id =#{brandId}
+            </if>
+            <if test="rdRecordType != null">
+                AND   cih.material_type=#{rdRecordType}
+            </if>
+            <if test="salesType != null">
+                AND   cih.sales_type = #{salesType}
+            </if>
+        </where>
+    </sql>
+    <select id="invoiceHeaderList" parameterType="com.chenfan.finance.model.dto.CfInvoiceHeaderListDTO"
+            resultMap="invoiceHeaderListResultMap">
+        SELECT DISTINCT
+        ( cih.invoice_no ) AS invoice_no,
+        cih.invoice_status,
+        cih.job_type,
+        cih.invoice_type,
+        cih.balance,
+        cih.balance_name,
+        cih.brand_id,
+        cih.invoice_title,
+        cih.invoice_title_name,
+        cih.bank,
+        cih.bank_accounts,
+        cih.invoice_currency_code,
+        cih.invoice_exchange_rate,
+        cih.arap_date,
+        cih.invoice_date,
+        cih.invoice_by,
+        cih.remark,
+        cih.create_by,
+        cih.update_by,
+        cih.update_date,
+        cih.update_name,
+        cih.company_id,
+        case cih.invoice_type
+        WHEN 'AR' THEN
+        abs( cih.invoicel_debit - cih.invoicel_credit ) + IFNULL( cih.advance_pay_money, 0 )
+        ELSE
+        abs( cih.invoicel_debit - cih.invoicel_credit ) - IFNULL( cih.advance_pay_money, 0 )
+        END AS invoicelTotal,
+        cih.clear_amount,
+        ( abs( cih.invoicel_debit - cih.invoicel_credit ) - IFNULL( cih.clear_amount, 0 ) ) AS overInvoicel,
+        cih.clear_status,
+        cih.create_name,
+        cih.create_date,
+        DATE_FORMAT( cih.create_date, '%Y-%m-%d %H:%i:%s' ) AS createDateString,
+        cih.invoice_id,
+        cih.invoicel_debit,
+        cih.invoicel_credit,
+        cih.date_start,
+        cih.date_end,
+        cih.advance_pay_money,
+        cih.material_type as rd_record_type,
+        cih.sales_type,
+        CASE cih.material_type
+        WHEN 0 THEN
+        '成品'
+        WHEN 1 THEN
+        '辅料'
+        ELSE
+        ''
+        END AS rd_record_type_name
+        FROM
+        cf_invoice_header cih
+        LEFT JOIN cf_invoice_settlement cis ON cih.invoice_id = cis.invoice_id
+
+
+        <include refid="condition"/>
+        ORDER BY cih.invoice_id DESC
+    </select>
+
+    <sql id="condition">
+        <where>
+            cih.invoice_status != 0
+            <if test="productCode !=null and productCode !=''">
+                AND   cih.invoice_no in (select invoice_no
+                FROM  cf_charge
+                where product_code =#{productCode}
+                GROUP By invoice_no)
+            </if>
+            <if test="invoiceNo != null and invoiceNo!=''">
+                AND cih.invoice_no like concat('%',#{invoiceNo},'%')
+            </if>
+            <if test="jobTypes !=null and jobTypes.size >0 ">
+                AND cih.job_type in
+                <foreach collection="jobTypes" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="invoiceType!=null and invoiceType!=''">
+                AND cih.invoice_type = #{invoiceType}
+            </if>
+            <if test="invoiceStatus!=null">
+                AND cih.invoice_status = #{invoiceStatus}
+            </if>
+            <if test="balance!=null and balance!=''">
+                AND cih.balance = #{balance}
+            </if>
+            <if test="clearStatus!=null">
+                AND cih.clear_status = #{clearStatus}
+            </if>
+            <if test="userIds!=null and userIds.size > 0">
+                AND cih.create_by in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="balanceDateStart!=null and balanceDateStart!=''">
+                AND cih.date_start >= #{balanceDateStart}
+            </if>
+            <if test="balanceDateEnd!=null and balanceDateEnd!=''">
+                AND cih.date_end <![CDATA[<=]]> #{balanceDateEnd}
+            </if>
+            <if test="createDateBegin!=null and createDateBegin!=''">
+                AND cih.create_date >= #{createDateBegin}
+            </if>
+            <if test="createDateEnd!=null and createDateEnd!=''">
+                AND cih.create_date <![CDATA[<=]]> #{createDateEnd}
+            </if>
+            <if test="brandIds!=null and brandIds.size > 0">
+                AND cih.brand_id in
+                <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandIdz !=null and brandIdz.size>0">
+                AND cih.brand_id in
+                <foreach collection="brandIdz" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="invoiceSettlementNo != null and invoiceSettlementNo != ''">
+                AND cis.invoice_settlement_no like concat('%',#{invoiceSettlementNo},'%')
+            </if>
+            <if test="rdRecordType != null">
+                AND   cih.material_type=#{rdRecordType}
+            </if>
+        </where>
+    </sql>
+
+    <select id="createNameList" resultMap="BaseResultMap">
+        select create_by,create_name
+        from cf_invoice_header
+        GROUP BY create_by
+    </select>
+
+    <select id="getSourceCodesById" resultType="java.lang.String" parameterType="java.lang.Long">
+        select distinct cc.charge_source_code source_code from cf_invoice_header cih
+        left join cf_invoice_detail cid on cid.invoice_id = cih.invoice_id
+        left join cf_charge cc on cc.charge_id = cid.charge_id
+        where cih.invoice_id = #{invoiceId}
+    </select>
+
+    <resultMap id="PriceDetailMap" type="com.chenfan.finance.model.vo.PriceDetailInfo">
+        <result column="inventory_code" property="inventoryCode"/>
+        <result column="quantity" property="quantity"/>
+        <result column="tax_unit_price" property="taxPrice"/>
+        <result column="unit_price" property="unitPrice"/>
+        <result column="tax_rate" property="taxRate"/>
+        <result column="record_code" property="recordCode"/>
+        <result column="wdtRecordCode" property="wdtRecordCode"/>
+        <result column="type" property="type"/>
+        <result column="inventory_id" property="inventoryId"/>
+        <result column="vendor_id" property="vendorId"/>
+        <result column="rd_id" property="rdId"/>
+        <result column="po_id" property="poId"/>
+    </resultMap>
+
+    <select id="getPriceDetailInfos" resultMap="PriceDetailMap">
+        SELECT
+        rrd.inventory_code AS inventory_code ,- rrd.quantity AS quantity,
+        rr.rd_record_type AS type,
+        rrd.inventory_id AS inventory_id,
+        rr.vendor_id AS vendor_id,
+        rrd.tax_unit_price AS tax_unit_price,
+        rrd.unit_price AS unit_price,
+        rrd.tax_rate AS tax_rate,
+        rr.rd_record_code AS record_code,
+        "" as wdtRecordCode,
+        rrd.rd_record_detail_id as rd_id,
+        rrd.rj_retired_detail_id as po_id
+        FROM
+        cf_rd_record_detail rrd
+        LEFT JOIN cf_rd_record rr ON rrd.rd_record_id = rr.rd_record_id
+        <if test="codes!=null">
+            where rr.rd_record_code in
+            <foreach collection="codes" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        UNION ALL
+        SELECT
+        wrrd.inventory_code AS inventory_code,
+        wrrd.quantity AS quantity,
+        0 AS type,
+        wrrd.inventory_id AS inventory_id,
+        wrrd.vendor_id AS vendor_id,
+        wrrd.tax_price AS tax_unit_price,
+        wrrd.unit_price AS unit_price,
+        wrrd.tax_rate AS tax_rate,
+        wrrd.rd_record_code AS record_code,
+        wrrh.wdt_rd_record_code as wdtRecordCode,
+        wrrd.rd_record_detail_id as rd_id,
+        wrrd.po_detail_id as po_id
+        FROM
+        cf_wdt_rd_record_detail wrrd
+        LEFT JOIN cf_wdt_rd_record_header wrrh ON wrrd.wdt_rd_record_id = wrrh.wdt_rd_record_id
+        <if test="codes!=null">
+            where wrrh.wdt_rd_record_code in
+            <foreach collection="codes" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+    </select>
+    <select id="getPoType" resultType="java.lang.Integer">
+	    SELECT
+             crr.rd_record_type
+        FROM
+            cf_invoice_header ih
+            LEFT JOIN ( cf_charge cc, cf_rd_record `crr` )
+            ON cc.invoice_no = ih.invoice_no
+            AND crr.rd_record_code = cc.charge_source_code
+           WHERE
+            ih.invoice_id =  #{invoiceId}
+    </select>
+    <!--	int updateAdjustById(Long invoiceId);-->
+    <update id="updateAdjustById">
+        update cf_invoice_header
+        set adjust_delay_money = null,
+        adjust_qc_money =null,
+        adjust_red_money=null,
+        adjust_tax_money=null,
+        adjust_other_money=null,
+        adjust_real_money=null
+        where invoice_id = #{invoiceId}
+    </update>
+    <select id="selectByAssociated" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from cf_invoice_header
+        <where>
+            associated_invoice_no=#{invoiceNo}
+            <if test="invoiceIdsOfAssociated != null and invoiceIdsOfAssociated.size() >0">
+               or invoice_id in
+                <foreach collection="invoiceIdsOfAssociated" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <!--	int unAssociated(String associatedInvoiceNo,String  associatedInvoiceSettlementNo );-->
+    <update id="unAssociated">
+        UPDATE cf_invoice_header
+        <set>
+            <if test="associatedInvoiceNo !=null and associatedInvoiceNo !=''">
+                associated_invoice_no=null,
+                associated_invoice_settlement_no=null,
+            </if>
+            <if test="associatedInvoiceSettlementNo !=null and associatedInvoiceSettlementNo !=''">
+                associated_invoice_settlement_no=null,
+            </if>
+        </set>
+        <where>
+            <if test="associatedInvoiceNo !=null and associatedInvoiceNo !=''">
+              and   associated_invoice_no=#{associatedInvoiceNo}
+            </if>
+            <if test="associatedInvoiceSettlementNo !=null and associatedInvoiceSettlementNo !=''">
+              and   associated_invoice_settlement_no=#{associatedInvoiceSettlementNo}
+            </if>
+        </where>
+    </update>
+    <!--	int associated(@Param("invoiceId") Long invoiceId,@Param("associatedInvoiceSettlementNo") String  associatedInvoiceSettlementNo);-->
+    <update id="associated">
+         UPDATE cf_invoice_header
+         SET associated_invoice_settlement_no=#{associatedInvoiceSettlementNo}
+         <where>
+             associated_invoice_no =#{invoiceNo}
+         </where>
+    </update>
+</mapper>

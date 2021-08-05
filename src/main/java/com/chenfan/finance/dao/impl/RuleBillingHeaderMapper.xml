@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.RuleBillingHeaderMapper">
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.RuleBillingHeader">
+        <id column="rule_billing_id" jdbcType="BIGINT" property="ruleBillingId" />
+        <result column="rule_billing_no" jdbcType="VARCHAR" property="ruleBillingNo" />
+        <result column="rule_billing_name" jdbcType="VARCHAR" property="ruleBillingName" />
+        <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+        <result column="rule_billing_status" jdbcType="INTEGER" property="ruleBillingStatus" />
+        <result column="begin_date" jdbcType="DATE" property="beginDate" />
+        <result column="end_date" jdbcType="DATE" property="endDate" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="company_id" jdbcType="BIGINT" property="companyId" />
+        <result column="create_by" jdbcType="BIGINT" property="createBy" />
+        <result column="create_name" jdbcType="VARCHAR" property="createName" />
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+        <result column="update_name" jdbcType="VARCHAR" property="updateName" />
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    rule_billing_id, rule_billing_no, rule_billing_name, business_type, rule_billing_status,
+    begin_date, end_date, remark, company_id, create_by, create_name, create_date, update_by,
+    update_name, update_date
+  </sql>
+    <sql id="Base_Column_List1">
+    rh.rule_billing_id,rh.rule_billing_no,rh.rule_billing_name,rh.business_type,
+    rh.rule_billing_status,rh.begin_date,rh.end_date,rh.remark,rh.company_id,rh.create_by,rh.create_name,rh.create_date,rh.update_by,
+    rh.update_name,rh.update_date
+  </sql>
+
+    <resultMap id="ListResultMap" type="com.chenfan.finance.model.vo.RuleBillingHeaderListVo">
+        <id column="rule_billing_id" jdbcType="BIGINT" property="ruleBillingId" />
+        <result column="rule_billing_no" jdbcType="VARCHAR" property="ruleBillingNo" />
+        <result column="rule_billing_name" jdbcType="VARCHAR" property="ruleBillingName" />
+        <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+        <result column="rule_billing_status" jdbcType="INTEGER" property="ruleBillingStatus" />
+        <result column="begin_date" jdbcType="DATE" property="beginDate" />
+        <result column="end_date" jdbcType="DATE" property="endDate" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="company_id" jdbcType="BIGINT" property="companyId" />
+        <result column="create_by" jdbcType="BIGINT" property="createBy" />
+        <result column="create_name" jdbcType="VARCHAR" property="createName" />
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+        <result column="update_name" jdbcType="VARCHAR" property="updateName" />
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    </resultMap>
+    <select id="selectAll" resultMap="ListResultMap" parameterType="com.chenfan.finance.model.bo.RuleBillingHeaderListBo">
+        select
+        <include refid="Base_Column_List1" />
+        from rule_billing_header rh
+        where
+        rule_billing_status !=0
+        <if test="businessType !=null  and businessType!='' ">
+            and rh.business_type =#{businessType}
+        </if>
+        <if test="ruleBillingStatus!=null and ruleBillingStatus!='' ">
+            and rh.rule_billing_status =#{ruleBillingStatus}
+        </if>
+        <if test="ruleBillingName!=null and ruleBillingName!='' ">
+            and rh.rule_billing_name like concat(#{ruleBillingName},"%")
+        </if>
+        <if test="createName!=null">
+            and rh.create_name =#{createName}
+        </if>
+        <if test="companyIds!=null and companyIds.size()>0">
+            AND rh.company_id in
+            <foreach collection="companyIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="userIds!=null and userIds.size()>0">
+            AND rh.create_by in
+            <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="createDateStart != null and  createDateStart != ''">
+            and rh.create_date >= #{createDateStart}
+        </if>
+        <if test="createDateEnd != null and  createDateEnd != ''">
+            and rh.create_date <![CDATA[ <= ]]> #{createDateEnd}
+        </if>
+        GROUP BY rh.rule_billing_id
+        ORDER BY rh.create_date desc
+    </select>
+
+    <update id="updateState">
+     update  rule_billing_header
+     set  rule_billing_status = #{ruleBillingStatus},
+     update_date= now()
+     where rule_billing_id =#{ruleBillingId}
+  </update>
+    <select id="selectByRuleBillingId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from rule_billing_header
+        where rule_billing_id = #{ruleBillingId,jdbcType=BIGINT}
+        and rule_billing_status != 0
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from rule_billing_header
+        where rule_billing_id = #{ruleBillingId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByState" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from rule_billing_header
+        where business_type = #{businessType}
+        and rule_billing_status = 1
+        <if test="ruleBillingId !=null">
+            and rule_billing_id != #{ruleBillingId}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from rule_billing_header
+    where rule_billing_id = #{ruleBillingId,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.chenfan.finance.model.RuleBillingHeader">
+    insert into rule_billing_header (rule_billing_id, rule_billing_no, rule_billing_name,
+      business_type, rule_billing_status, begin_date,
+      end_date, remark, company_id,
+      create_by, create_name, create_date,
+      update_by, update_name, update_date
+      )
+    values (#{ruleBillingId,jdbcType=BIGINT}, #{ruleBillingNo,jdbcType=VARCHAR}, #{ruleBillingName,jdbcType=VARCHAR},
+      #{businessType,jdbcType=VARCHAR}, #{ruleBillingStatus,jdbcType=INTEGER}, #{beginDate,jdbcType=DATE},
+      #{endDate,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT},
+      #{createBy,jdbcType=BIGINT}, #{createName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=BIGINT}, #{updateName,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="ruleBillingId" parameterType="com.chenfan.finance.model.bo.RuleBillingHeaderBo">
+        insert into rule_billing_header
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ruleBillingId != null">
+                rule_billing_id,
+            </if>
+            <if test="ruleBillingNo != null">
+                rule_billing_no,
+            </if>
+            <if test="ruleBillingName != null">
+                rule_billing_name,
+            </if>
+            <if test="businessType != null">
+                business_type,
+            </if>
+            <if test="ruleBillingStatus != null">
+                rule_billing_status,
+            </if>
+            <if test="beginDate != null">
+                begin_date,
+            </if>
+            <if test="endDate != null">
+                end_date,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createName != null">
+                create_name,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateBy != null">
+                update_by,
+            </if>
+            <if test="updateName != null">
+                update_name,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ruleBillingId != null">
+                #{ruleBillingId,jdbcType=BIGINT},
+            </if>
+            <if test="ruleBillingNo != null">
+                #{ruleBillingNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleBillingName != null">
+                #{ruleBillingName,jdbcType=VARCHAR},
+            </if>
+            <if test="businessType != null">
+                #{businessType,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleBillingStatus != null">
+                #{ruleBillingStatus,jdbcType=INTEGER},
+            </if>
+            <if test="beginDate != null">
+                #{beginDate,jdbcType=DATE},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=DATE},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=BIGINT},
+            </if>
+            <if test="createName != null">
+                #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy,jdbcType=BIGINT},
+            </if>
+            <if test="updateName != null">
+                #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.chenfan.finance.model.RuleBillingHeader">
+        update rule_billing_header
+        <set>
+            <if test="ruleBillingNo != null">
+                rule_billing_no = #{ruleBillingNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleBillingName != null">
+                rule_billing_name = #{ruleBillingName,jdbcType=VARCHAR},
+            </if>
+            <if test="businessType != null">
+                business_type = #{businessType,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleBillingStatus != null">
+                rule_billing_status = #{ruleBillingStatus,jdbcType=INTEGER},
+            </if>
+            <if test="beginDate != null">
+                begin_date = #{beginDate,jdbcType=DATE},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate,jdbcType=DATE},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy,jdbcType=BIGINT},
+            </if>
+            <if test="createName != null">
+                create_name = #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy,jdbcType=BIGINT},
+            </if>
+            <if test="updateName != null">
+                update_name = #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where rule_billing_id = #{ruleBillingId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.chenfan.finance.model.RuleBillingHeader">
+    update rule_billing_header
+    set rule_billing_no = #{ruleBillingNo,jdbcType=VARCHAR},
+      rule_billing_name = #{ruleBillingName,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=VARCHAR},
+      rule_billing_status = #{ruleBillingStatus,jdbcType=INTEGER},
+      begin_date = #{beginDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where rule_billing_id = #{ruleBillingId,jdbcType=BIGINT}
+  </update>
+</mapper>

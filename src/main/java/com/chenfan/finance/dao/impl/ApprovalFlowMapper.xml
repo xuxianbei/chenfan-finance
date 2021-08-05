@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.ApprovalFlowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.ApprovalFlow">
+        <id column="id" property="id" />
+        <result column="src_id" property="srcId" />
+        <result column="process_id" property="processId" />
+        <result column="approval_id" property="approvalId" />
+        <result column="active_status" property="activeStatus" />
+        <result column="create_date" property="createDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, src_id, process_id, approval_id, active_status, create_date
+    </sql>
+
+</mapper>

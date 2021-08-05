@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfTaxInvoiceHeaderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfTaxInvoiceHeader">
+        <id column="tax_invoice_id" property="taxInvoiceId"/>
+        <result column="tax_invoice_no" property="taxInvoiceNo"/>
+        <result column="tax_invoice_status" property="taxInvoiceStatus"/>
+        <result column="tax_invoice_type" property="taxInvoiceType"/>
+        <result column="tax_invoice_way" property="taxInvoiceWay"/>
+        <result column="job_type" property="jobType"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="invoice_title" property="invoiceTitle"/>
+        <result column="invoice_title_type" property="invoiceTitleType"/>
+        <result column="taxpayer_identification_number" property="taxpayerIdentificationNumber"/>
+        <result column="billing_address" property="billingAddress"/>
+        <result column="billing_account" property="billingAccount"/>
+        <result column="billing_tel" property="billingTel"/>
+        <result column="billing_bank" property="billingBank"/>
+        <result column="invoicel_debit" property="invoicelDebit"/>
+        <result column="billing_content" property="billingContent"/>
+        <result column="remark" property="remark"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="payment_days" property="paymentDays"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="invoice_remark" property="invoiceRemark"/>
+        <result column="clear_status" property="clearStatus"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_date" property="createDate"/>
+        <result column="create_name" property="createName"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="update_name" property="updateName"/>
+        <result column="company_id" property="companyId"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="flow_id" property="flowId"/>
+        <result column="balance" property="balance"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        tax_invoice_id, tax_invoice_no, tax_invoice_status, tax_invoice_type, tax_invoice_way, job_type, brand_id, invoice_title, invoice_title_type, taxpayer_identification_number, billing_address, billing_account, billing_tel, billing_bank, invoicel_debit, billing_content, remark, create_by, create_date, create_name, update_by, update_date, update_name, company_id, tenant_id
+    </sql>
+
+    <select id="exportList" parameterType="com.chenfan.finance.model.dto.TaxInvoiceCommonListDto"
+            resultType="com.chenfan.finance.model.vo.TaxInvoiceHeaderExportVO">
+        SELECT
+        ih.tax_invoice_id,
+        ih.tax_invoice_no,
+        ih.tax_invoice_status,
+        ih.invoice_title,
+        ih.taxpayer_identification_number,
+        ih.billing_address,
+        ih.billing_account,
+        ih.billing_tel,
+        ih.billing_bank,
+        ih.invoicel_debit,
+        ih.billing_content,
+        ih.tax_invoice_type,
+        ih.tax_invoice_way,
+        ih.remark,
+        ih.invoice_no,
+        ih.invoice_date,
+        ih.payment_days,
+        ih.invoice_remark,
+        ih.balance,
+        ctid.finance_entity,
+        ih.invoicel_debit,
+        ctid.charge_source_code,
+        ctid.create_name,
+        GROUP_CONCAT( ctid.charge_code ) AS relatedFeeCode,
+        ih.clear_status
+        FROM
+        cf_tax_invoice_header ih
+        LEFT JOIN cf_tax_invoice_detail ctid ON ih.tax_invoice_id = ctid.tax_invoice_id
+        WHERE 1=1
+        <if test="dto.invoiceNo != null and dto.invoiceNo != ''">
+            and ih.invoice_no like CONCAT('%', #{dto.invoiceNo},'%')
+        </if>
+        <if test="dto.invoiceTitle != null and dto.invoiceTitle != ''">
+            and ih.invoice_title like CONCAT('%', #{dto.invoiceTitle},'%')
+        </if>
+        <if test="dto.taxInvoiceStatus != null">
+            and ih.tax_invoice_status = #{dto.taxInvoiceStatus}
+        </if>
+        <if test="dto.clearStatus != null">
+            and ih.clear_status = #{dto.clearStatus}
+        </if>
+        <if test="dto.balance != null and dto.balance != ''">
+            and ih.balance = #{dto.balance}
+        </if>
+        <if test="dto.inVoiceBeginDate != null">
+            and ih.invoice_date <![CDATA[ >= ]]> #{dto.inVoiceBeginDate}
+        </if>
+        <if test="dto.invoiceEndDate != null">
+            and ih.invoice_date <![CDATA[ <= ]]> #{dto.invoiceEndDate}
+        </if>
+        <if test="dto.createBeginDate != null">
+            and ih.create_date <![CDATA[ >= ]]> #{dto.createBeginDate}
+        </if>
+        <if test="dto.createEndDate != null">
+            and ih.create_date <![CDATA[ <= ]]> #{dto.createEndDate}
+        </if>
+        <if test="dto.taxInvoiceNo != null and dto.taxInvoiceNo != ''">
+            and ih.tax_invoice_no like CONCAT('%', #{dto.taxInvoiceNo}, '%')
+        </if>
+        <if test="dto.chargeSourceCode != null and dto.chargeSourceCode != ''">
+            and ctid.charge_source_code like CONCAT('%', #{dto.chargeSourceCode}, '%')
+        </if>
+        GROUP BY
+        ih.tax_invoice_id
+        ORDER BY
+        ih.create_date DESC
+    </select>
+</mapper>

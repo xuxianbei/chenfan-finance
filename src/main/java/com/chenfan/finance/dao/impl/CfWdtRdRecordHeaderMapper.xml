@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfWdtRdRecordHeaderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfWdtRdRecordHeader">
+        <id column="wdt_rd_record_id" property="wdtRdRecordId" />
+        <result column="wdt_rd_record_code" property="wdtRdRecordCode" />
+        <result column="wdt_purchase_code" property="wdtPurchaseCode" />
+        <result column="warehouse_name" property="warehouseName" />
+        <result column="out_code" property="outCode" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="state" property="state" />
+        <result column="remark" property="remark" />
+        <result column="is_delete" property="isDelete" />
+        <result column="audit_date" property="auditDate" />
+        <result column="audit_by" property="auditBy" />
+        <result column="audit_name" property="auditName" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        wdt_rd_record_id, wdt_rd_record_code, wdt_purchase_code, warehouse_name, out_code, brand_id, brand_name, state, remark, is_delete, audit_date, audit_by, audit_name, company_id, create_by, create_name, create_date, update_by, update_name, update_date
+    </sql>
+
+    <update id="batchUpdateChargeFlagByIds">
+        update cf_wdt_rd_record_header set create_charge_flag = 1
+        where wdt_rd_record_id in
+        <foreach collection="list" item="wdtRdRecordId" index="index"
+                 open="(" separator="," close=")">
+            #{wdtRdRecordId}
+        </foreach>
+    </update>
+
+</mapper>

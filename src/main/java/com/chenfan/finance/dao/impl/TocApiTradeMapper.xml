@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocApiTradeMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocApiTrade">
+
+    <result column="platform_id" jdbcType="TINYINT" property="platformId" />
+    <result column="shop_id" jdbcType="SMALLINT" property="shopId" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="process_status" jdbcType="TINYINT" property="processStatus" />
+    <result column="trade_status" jdbcType="TINYINT" property="tradeStatus" />
+    <result column="guarantee_mode" jdbcType="TINYINT" property="guaranteeMode" />
+    <result column="pay_status" jdbcType="TINYINT" property="payStatus" />
+    <result column="delivery_term" jdbcType="TINYINT" property="deliveryTerm" />
+    <result column="pay_method" jdbcType="TINYINT" property="payMethod" />
+    <result column="refund_status" jdbcType="TINYINT" property="refundStatus" />
+    <result column="is_new" jdbcType="INTEGER" property="isNew" />
+    <result column="bad_reason" jdbcType="INTEGER" property="badReason" />
+    <result column="modify_flag" jdbcType="INTEGER" property="modifyFlag" />
+    <result column="fenxiao_type" jdbcType="TINYINT" property="fenxiaoType" />
+    <result column="purchase_id" jdbcType="VARCHAR" property="purchaseId" />
+    <result column="fenxiao_nick" jdbcType="VARCHAR" property="fenxiaoNick" />
+    <result column="order_count" jdbcType="SMALLINT" property="orderCount" />
+    <result column="goods_count" jdbcType="DECIMAL" property="goodsCount" />
+    <result column="trade_time" jdbcType="TIMESTAMP" property="tradeTime" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="buyer_message" jdbcType="VARCHAR" property="buyerMessage" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="remark_flag" jdbcType="TINYINT" property="remarkFlag" />
+    <result column="buyer_nick" jdbcType="VARCHAR" property="buyerNick" />
+    <result column="buyer_name" jdbcType="VARCHAR" property="buyerName" />
+    <result column="buyer_email" jdbcType="VARCHAR" property="buyerEmail" />
+    <result column="buyer_area" jdbcType="VARCHAR" property="buyerArea" />
+    <result column="id_card_type" jdbcType="TINYINT" property="idCardType" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="pay_id" jdbcType="VARCHAR" property="payId" />
+    <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_country" jdbcType="SMALLINT" property="receiverCountry" />
+    <result column="receiver_province" jdbcType="INTEGER" property="receiverProvince" />
+    <result column="receiver_city" jdbcType="INTEGER" property="receiverCity" />
+    <result column="receiver_district" jdbcType="INTEGER" property="receiverDistrict" />
+    <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
+    <result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
+    <result column="receiver_telno" jdbcType="VARCHAR" property="receiverTelno" />
+    <result column="receiver_zip" jdbcType="VARCHAR" property="receiverZip" />
+    <result column="receiver_area" jdbcType="VARCHAR" property="receiverArea" />
+    <result column="receiver_ring" jdbcType="VARCHAR" property="receiverRing" />
+    <result column="to_deliver_time" jdbcType="VARCHAR" property="toDeliverTime" />
+    <result column="pre_charge_time" jdbcType="VARCHAR" property="preChargeTime" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="is_prev_notify" jdbcType="INTEGER" property="isPrevNotify" />
+    <result column="receiver_hash" jdbcType="VARCHAR" property="receiverHash" />
+    <result column="goods_amount" jdbcType="DECIMAL" property="goodsAmount" />
+    <result column="post_amount" jdbcType="DECIMAL" property="postAmount" />
+    <result column="other_amount" jdbcType="DECIMAL" property="otherAmount" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="receivable" jdbcType="DECIMAL" property="receivable" />
+    <result column="paid" jdbcType="DECIMAL" property="paid" />
+    <result column="credit_card_paid" jdbcType="DECIMAL" property="creditCardPaid" />
+    <result column="platform_cost" jdbcType="DECIMAL" property="platformCost" />
+    <result column="received" jdbcType="DECIMAL" property="received" />
+    <result column="trade_prepay" jdbcType="DECIMAL" property="tradePrepay" />
+    <result column="dap_amount" jdbcType="DECIMAL" property="dapAmount" />
+    <result column="cod_amount" jdbcType="DECIMAL" property="codAmount" />
+    <result column="pi_amount" jdbcType="DECIMAL" property="piAmount" />
+    <result column="ext_cod_fee" jdbcType="DECIMAL" property="extCodFee" />
+    <result column="refund_amount" jdbcType="DECIMAL" property="refundAmount" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="logistics_type" jdbcType="TINYINT" property="logisticsType" />
+    <result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
+    <result column="invoice_type" jdbcType="TINYINT" property="invoiceType" />
+    <result column="invoice_title" jdbcType="VARCHAR" property="invoiceTitle" />
+    <result column="invoice_content" jdbcType="VARCHAR" property="invoiceContent" />
+    <result column="trade_from" jdbcType="INTEGER" property="tradeFrom" />
+    <result column="trade_mask" jdbcType="INTEGER" property="tradeMask" />
+    <result column="wms_type" jdbcType="TINYINT" property="wmsType" />
+    <result column="warehouse_no" jdbcType="VARCHAR" property="warehouseNo" />
+    <result column="stockout_no" jdbcType="VARCHAR" property="stockoutNo" />
+    <result column="is_auto_wms" jdbcType="INTEGER" property="isAutoWms" />
+    <result column="arrive_interval" jdbcType="SMALLINT" property="arriveInterval" />
+    <result column="consign_interval" jdbcType="SMALLINT" property="consignInterval" />
+    <result column="arrive_cut_time" jdbcType="CHAR" property="arriveCutTime" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="real_score" jdbcType="INTEGER" property="realScore" />
+    <result column="got_score" jdbcType="INTEGER" property="gotScore" />
+    <result column="is_sealed" jdbcType="INTEGER" property="isSealed" />
+    <result column="cust_data" jdbcType="VARCHAR" property="custData" />
+    <result column="x_salesman_id" jdbcType="INTEGER" property="xSalesmanId" />
+    <result column="deliver_trade_id" jdbcType="INTEGER" property="deliverTradeId" />
+    <result column="is_preorder" jdbcType="INTEGER" property="isPreorder" />
+    <result column="x_customer_id" jdbcType="INTEGER" property="xCustomerId" />
+    <result column="x_logistics_id" jdbcType="SMALLINT" property="xLogisticsId" />
+    <result column="x_trade_flag" jdbcType="INTEGER" property="xTradeFlag" />
+    <result column="x_is_freezed" jdbcType="INTEGER" property="xIsFreezed" />
+    <result column="x_warehouse_id" jdbcType="SMALLINT" property="xWarehouseId" />
+    <result column="is_external" jdbcType="INTEGER" property="isExternal" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+     platform_id, shop_id, tid, process_status, trade_status, guarantee_mode,
+    pay_status, delivery_term, pay_method, refund_status, is_new, bad_reason, modify_flag, 
+    fenxiao_type, purchase_id, fenxiao_nick, order_count, goods_count, trade_time, pay_time, 
+    end_time, buyer_message, remark, remark_flag, buyer_nick, buyer_name, buyer_email, 
+    buyer_area, id_card_type, id_card, pay_id, pay_account, receiver_name, receiver_country, 
+    receiver_province, receiver_city, receiver_district, receiver_address, receiver_mobile, 
+    receiver_telno, receiver_zip, receiver_area, receiver_ring, to_deliver_time, pre_charge_time, 
+    currency, is_prev_notify, receiver_hash, goods_amount, post_amount, other_amount, 
+    discount, receivable, paid, credit_card_paid, platform_cost, received, trade_prepay, 
+    dap_amount, cod_amount, pi_amount, ext_cod_fee, refund_amount, commission, logistics_type, 
+    logistics_no, invoice_type, invoice_title, invoice_content, trade_from, trade_mask, 
+    wms_type, warehouse_no, stockout_no, is_auto_wms, arrive_interval, consign_interval, 
+    arrive_cut_time, score, real_score, got_score, is_sealed, cust_data, x_salesman_id, 
+    deliver_trade_id, is_preorder, x_customer_id, x_logistics_id, x_trade_flag, x_is_freezed, 
+    x_warehouse_id, is_external, modified, created
+  </sql>
+ </mapper>

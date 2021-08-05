@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocBrandMappingMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocBrandMapping">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="shop_alipay_account" jdbcType="VARCHAR" property="shopAlipayAccount" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, brand_name, brand_id, shop_alipay_account, `state`
+  </sql>
+
+  <select id="selectOfList" resultMap="BaseResultMap">
+  SELECT id, brand_name, brand_id, `state`,group_concat(shop_alipay_account) as shop_alipay_account FROM `toc_brand_mapping`  where  state=1 and brand_id is not null GROUP BY brand_id
+</select>
+<!--      List<TocBrandMapping> selectOne(String shopAccount);-->
+  <select id="selectOne" resultMap="BaseResultMap">
+      SELECT id, brand_name, brand_id, `state`,shop_alipay_account FROM `toc_brand_mapping`  where  state=1 and brand_id is not null and shop_alipay_account=#{shopAccount} limit 1
+  </select>
+  <!--selectShopAccountByBrandIds-->
+  <select id="selectShopAccountByBrandIds" resultType="string">
+    SELECT shop_alipay_account
+    FROM `toc_brand_mapping`
+    <where>
+      state=1
+      <if test="brandIds !=null and brandIds.size()>0">
+        and brand_id in
+        <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+
+  </select>
+  <select id="selectShopAccountAll" resultType="string">
+        SELECT shop_alipay_account
+        FROM `toc_brand_mapping`
+        WHERE state=1
+        AND brand_id is not null
+  </select>
+
+</mapper>

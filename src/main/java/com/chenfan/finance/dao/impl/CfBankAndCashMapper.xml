@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfBankAndCashMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfBankAndCash">
+        <id column="bank_and_cash_id" property="bankAndCashId" />
+        <result column="record_seq_no" property="recordSeqNo" />
+        <result column="record_type" property="recordType" />
+        <result column="arap_type" property="arapType" />
+        <result column="arap_date" property="arapDate" />
+        <result column="job_type" property="jobType"/>
+        <result column="brand_id" property="brandId" />
+        <result column="bank_and_cash_status" property="bankAndCashStatus" />
+        <result column="balance" property="balance" />
+        <result column="collection_unit" property="collectionUnit" />
+        <result column="bank" property="bank" />
+        <result column="bank_no" property="bankNo" />
+        <result column="amount" property="amount" />
+        <result column="balance_balance" property="balanceBalance" />
+        <result column="check_date" property="checkDate" />
+        <result column="clear_no" property="clearNo" />
+        <result column="check_no" property="checkNo" />
+        <result column="record_user" property="recordUser" />
+        <result column="charges_remark" property="chargesRemark" />
+        <result column="account_in_date" property="accountInDate" />
+        <result column="account_in_user" property="accountInUser" />
+        <result column="payment_branch" property="paymentBranch" />
+        <result column="outgo_bank" property="outgoBank" />
+        <result column="outgo_bankno" property="outgoBankno" />
+        <result column="outgo_confirm_user" property="outgoConfirmUser" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="clear_status" property="clearStatus" />
+        <result column="balance_name" property="balanceName" />
+        <result column="pay_company" property="payCompany" />
+        <result column="pay_company_id" property="payCompanyId"/>
+        <result column="pay_bank" property="payBank" />
+        <result column="pay_bank_no" property="payBankNo" />
+        <result column="pay_account_in_user" property="payAccountInUser" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        bank_and_cash_id, record_seq_no, record_type, arap_type, arap_date, brand_id, bank_and_cash_status, balance, collection_unit, bank, bank_no, amount, balance_balance, check_date, clear_no, check_no, record_user, charges_remark, account_in_date, account_in_user, payment_branch, outgo_bank, outgo_bankno, outgo_confirm_user, remark, company_id, create_by, create_name, create_date, update_by, update_name, update_date, balance_name
+    </sql>
+
+    <sql id="list_sql">
+        bank_and_cash_id,
+        record_seq_no,
+        record_type,
+        arap_type,
+        job_type,
+        DATE_FORMAT(arap_date, '%Y-%m-%d') arap_date,
+        brand_id,
+        bank_and_cash_status,
+        balance,
+        collection_unit,
+        bank,
+        bank_no,
+        amount,
+        balance_balance,
+        check_date,
+        clear_no,
+        check_no,
+        record_user,
+        charges_remark,
+        account_in_date,
+        account_in_user,
+        payment_branch,
+        outgo_bank,
+        outgo_bankno,
+        outgo_confirm_user,
+        remark,
+        company_id,
+        create_by,
+        create_name,
+        create_date,
+        update_by,
+        update_name,
+        update_date,
+        currency_code,
+        balance_name
+    </sql>
+
+    <insert id="create" parameterType="com.chenfan.finance.model.CfBankAndCash" useGeneratedKeys="true" keyProperty="bankAndCashId" keyColumn="bank_and_cash_id">
+        <selectKey resultType="long" keyProperty="bankAndCashId" order="AFTER">
+            SELECT LAST_INSERT_ID()
+            </selectKey>
+        insert into cf_bank_and_cash
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bankAndCashId != null">
+                bank_and_cash_id,
+            </if>
+            <if test="recordSeqNo != null">
+                record_seq_no,
+            </if>
+            <if test="recordType != null">
+                record_type,
+            </if>
+            <if test="arapType != null">
+                arap_type,
+            </if>
+            <if test="arapDate != null">
+                arap_date,
+            </if>
+            <if test="brandId != null">
+                brand_id,
+            </if>
+            <if test="balance != null">
+                balance,
+            </if>
+            <if test="collectionUnit != null">
+                collection_unit,
+            </if>
+            <if test="bank != null">
+                bank,
+            </if>
+            <if test="bankNo != null">
+                bank_no,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="balanceBalance != null">
+                balance_balance,
+            </if>
+            <if test="checkDate != null">
+                check_date,
+            </if>
+            <if test="clearNo != null">
+                clear_no,
+            </if>
+            <if test="checkNo != null">
+                check_no,
+            </if>
+            <if test="recordUser != null">
+                record_user,
+            </if>
+            <if test="chargesRemark != null">
+                charges_remark,
+            </if>
+            <if test="accountInDate != null">
+                account_in_date,
+            </if>
+            <if test="accountInUser != null">
+                account_in_user,
+            </if>
+            <if test="paymentBranch != null">
+                payment_branch,
+            </if>
+            <if test="outgoBank != null">
+                outgo_bank,
+            </if>
+            <if test="outgoBankno != null">
+                outgo_bankno,
+            </if>
+            <if test="outgoConfirmUser != null">
+                outgo_confirm_user,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createName != null">
+                create_name,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateBy != null">
+                update_by,
+            </if>
+            <if test="updateName != null">
+                update_name,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="bankAndCashStatus != null">
+                bank_and_cash_status,
+            </if>
+            <if test="balanceName != null">
+                balance_name,
+            </if>
+            <if test="sourceCode != null">
+                source_code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bankAndCashId != null">
+                #{bankAndCashId,jdbcType=BIGINT},
+            </if>
+            <if test="recordSeqNo != null">
+                #{recordSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="recordType != null">
+                #{recordType,jdbcType=VARCHAR},
+            </if>
+            <if test="arapType != null">
+                #{arapType,jdbcType=VARCHAR},
+            </if>
+            <if test="arapDate != null">
+                #{arapDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="brandId != null">
+                #{brandId,jdbcType=INTEGER},
+            </if>
+            <if test="balance != null">
+                #{balance,jdbcType=VARCHAR},
+            </if>
+            <if test="collectionUnit != null">
+                #{collectionUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="bank != null">
+                #{bank,jdbcType=VARCHAR},
+            </if>
+            <if test="bankNo != null">
+                #{bankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="balanceBalance != null">
+                #{balanceBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="checkDate != null">
+                #{checkDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="clearNo != null">
+                #{clearNo,jdbcType=VARCHAR},
+            </if>
+            <if test="checkNo != null">
+                #{checkNo,jdbcType=VARCHAR},
+            </if>
+            <if test="recordUser != null">
+                #{recordUser,jdbcType=VARCHAR},
+            </if>
+            <if test="chargesRemark != null">
+                #{chargesRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="accountInDate != null">
+                #{accountInDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="accountInUser != null">
+                #{accountInUser,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentBranch != null">
+                #{paymentBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoBank != null">
+                #{outgoBank,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoBankno != null">
+                #{outgoBankno,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoConfirmUser != null">
+                #{outgoConfirmUser,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=BIGINT},
+            </if>
+            <if test="createName != null">
+                #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy,jdbcType=BIGINT},
+            </if>
+            <if test="updateName != null">
+                #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bankAndCashStatus != null">
+                #{bankAndCashStatus,jdbcType=INTEGER},
+            </if>
+            <if test="balanceName != null">
+                #{balanceName,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceCode != null">
+                #{sourceCode,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.chenfan.finance.model.CfBankAndCash">
+        update cf_bank_and_cash
+        <set>
+            <if test="recordType != null">
+                record_type = #{recordType,jdbcType=VARCHAR},
+            </if>
+            <if test="arapType != null">
+                arap_type = #{arapType,jdbcType=VARCHAR},
+            </if>
+            <if test="arapDate != null">
+                arap_date = #{arapDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="brandId != null">
+                brand_id = #{brandId,jdbcType=BIGINT},
+            </if>
+            <if test="balance != null">
+                balance = #{balance,jdbcType=VARCHAR},
+            </if>
+            <if test="collectionUnit != null">
+                collection_unit = #{collectionUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="bank != null">
+                bank = #{bank,jdbcType=VARCHAR},
+            </if>
+            <if test="bankNo != null">
+                bank_no = #{bankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="balanceBalance != null">
+                balance_balance = #{balanceBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="checkDate != null">
+                check_date = #{checkDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="clearNo != null">
+                clear_no = #{clearNo,jdbcType=VARCHAR},
+            </if>
+            <if test="checkNo != null">
+                check_no = #{checkNo,jdbcType=VARCHAR},
+            </if>
+            <if test="recordUser != null">
+                record_user = #{recordUser,jdbcType=VARCHAR},
+            </if>
+            <if test="chargesRemark != null">
+                charges_remark = #{chargesRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="accountInDate != null">
+                account_in_date = #{accountInDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="accountInUser != null">
+                account_in_user = #{accountInUser,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentBranch != null">
+                payment_branch = #{paymentBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoBank != null">
+                outgo_bank = #{outgoBank,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoBankno != null">
+                outgo_bankno = #{outgoBankno,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoConfirmUser != null">
+                outgo_confirm_user = #{outgoConfirmUser,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy,jdbcType=BIGINT},
+            </if>
+            <if test="createName != null">
+                create_name = #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy,jdbcType=BIGINT},
+            </if>
+            <if test="updateName != null">
+                update_name = #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = NOW(),
+            </if>
+            <if test="bankAndCashStatus != null">
+                bank_and_cash_status = #{bankAndCashStatus,jdbcType=INTEGER},
+            </if>
+            <if test="balanceName != null">
+                balance_name = #{balanceName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where bank_and_cash_id = #{bankAndCashId}
+    </update>
+
+    <update id="delete" parameterType="com.chenfan.finance.model.vo.CfBankAndCashShowRequestVo">
+        update cf_bank_and_cash bac
+        set bank_and_cash_status = 0
+        <if test="recordSeqNos!=null">
+            where bac.record_seq_no in
+            <foreach collection="recordSeqNos" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </update>
+
+    <resultMap id="ListResultMap" type="com.chenfan.finance.model.vo.CfBankAndCashListShowVo">
+        <id column="bank_and_cash_id" property="bankAndCashId" />
+        <result column="record_seq_no" property="recordSeqNo" />
+        <result column="record_type" property="recordType" />
+        <result column="arap_type" property="arapType" />
+        <result column="arap_date" property="arapDate" />
+        <result column="brand_id" property="brandId" />
+        <result column="bank_and_cash_status" property="bankAndCashStatus" />
+        <result column="balance" property="balance" />
+        <result column="collection_unit" property="collectionUnit" />
+        <result column="bank" property="bank" />
+        <result column="bank_no" property="bankNo" />
+        <result column="amount" property="amount" />
+        <result column="balance_balance" property="balanceBalance" />
+        <result column="check_date" property="checkDate" />
+        <result column="clear_no" property="clearNo" />
+        <result column="check_no" property="checkNo" />
+        <result column="record_user" property="recordUser" />
+        <result column="charges_remark" property="chargesRemark" />
+        <result column="account_in_date" property="accountInDate" />
+        <result column="account_in_user" property="accountInUser" />
+        <result column="payment_branch" property="paymentBranch" />
+        <result column="outgo_bank" property="outgoBank" />
+        <result column="outgo_bankno" property="outgoBankno" />
+        <result column="outgo_confirm_user" property="outgoConfirmUser" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="clear_status" property="clearStatus" />
+        <result column="balance_name" property="balanceName" />
+        <result column="job_type" property="jobType"/>
+    </resultMap>
+
+    <select id="getList" parameterType="com.chenfan.finance.model.vo.CfBankAndCashShowRequestVo" resultMap="ListResultMap">
+        select <include refid="list_sql"/>,
+        (case
+        when bac.balance_balance = bac.amount then '未核销'
+        when bac.balance_balance = 0 then '全部核销'
+        when bac.balance_balance > 0 and bac.balance_balance <![CDATA[<]]> bac.amount then '部分核销'
+        else '金额出错'
+        END ) as clear_status
+        from cf_bank_and_cash bac
+        <where>
+            bac.bank_and_cash_status != 0
+            <if test="brandId !=null ">
+                AND bac.brand_id = #{brandId}
+            </if>
+            <if test="jobTypes !=null and jobTypes.size >0 ">
+                AND bac.job_type in
+                <foreach collection="jobTypes" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="companyIds != null and companyIds.size()>0">
+                AND bac.company_id in
+                <foreach collection="companyIds" item="companyId" open="(" separator="," close=")">
+                    #{companyId}
+                </foreach>
+            </if>
+            <if test="userIds!=null and userIds.size()>0">
+                AND bac.create_by in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandIds !=null and brandIds.size() > 0">
+                AND bac.brand_id in
+                <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="states != null and states.size() > 0">
+                AND bac.bank_and_cash_status in
+                <foreach collection="states" item="state"  open="(" close=")" separator=",">
+                    #{state}
+                </foreach>
+            </if>
+            <if test="balances != null and balances.size() > 0">
+                AND bac.balance in
+                <foreach collection="balances" item="balance"  open="(" close=")" separator=",">
+                    #{balance}
+                </foreach>
+            </if>
+            <if test="arApTypes != null and arApTypes.size() > 0">
+                AND bac.arap_type in
+                <foreach collection="arApTypes" item="arApType"  open="(" close=")" separator=",">
+                    #{arApType}
+                </foreach>
+            </if>
+            <if test="recordSeqNos != null and recordSeqNos.size() > 0">
+                AND bac.record_seq_no like
+                <foreach collection="recordSeqNos" item="recordSeqNo"  open="(" close=")" separator=",">
+                    CONCAT('%',#{recordSeqNo},'%')
+                </foreach>
+            </if>
+            <if test="recordTypes != null and recordTypes.size() > 0">
+                AND bac.record_type in
+                <foreach collection="recordTypes" item="recordType"  open="(" close=")" separator=",">
+                    #{recordType}
+                </foreach>
+            </if>
+            <if test="clearStatus != null and clearStatus == 2">
+                AND bac.balance_balance = bac.amount
+            </if>
+            <if test="clearStatus != null and clearStatus == 1">
+                AND bac.balance_balance > 0 and bac.balance_balance <![CDATA[<]]> bac.amount
+            </if>
+            <if test="clearStatus != null and clearStatus == 0">
+                AND bac.balance_balance = 0
+            </if>
+            <if test="checkNos != null and checkNos.size() > 0">
+                AND bac.check_no in
+                <foreach collection="checkNos" item="checkNo"  open="(" close=")" separator=",">
+                    #{checkNo}
+                </foreach>
+            </if>
+            <if test="arapDateStart != null">
+                AND bac.arap_date > #{arapDateStart}
+            </if>
+            <if test="arapDateEnd != null">
+                AND bac.arap_date <![CDATA[<]]> #{arapDateEnd}
+            </if>
+            <if test="verificationFlag != null and verificationFlag == 1">
+                And bac.balance_balance > 0
+            </if>
+        </where>
+        order by create_date desc
+        limit #{offset}, #{pageSize}
+    </select>
+
+
+    <resultMap id="ExportResultMap" type="com.chenfan.finance.model.vo.CfBankAndCashListExportVo">
+        <result column="record_seq_no" jdbcType="VARCHAR" property="recordSeqNo"/>
+        <result column="record_type" jdbcType="VARCHAR" property="recordType"/>
+        <result column="arap_type" jdbcType="VARCHAR" property="arapType"/>
+        <result column="arap_date" jdbcType="VARCHAR" property="arapDate"/>
+        <result column="balance" jdbcType="VARCHAR" property="balance"/>
+        <result column="bank_and_cash_status" jdbcType="INTEGER" property="bankAndCashStatus"/>
+        <result column="collection_unit" jdbcType="VARCHAR" property="collectionUnit"/>
+        <result column="check_no" jdbcType="VARCHAR" property="checkNo"/>
+        <result column="clear_status" jdbcType="VARCHAR" property="clearStatus"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="record_user" jdbcType="VARCHAR" property="recordUser"/>
+    </resultMap>
+    <select id="export" parameterType="com.chenfan.finance.model.vo.CfBankAndCashShowRequestVo" resultMap="ExportResultMap">
+        select bank_and_cash_id,record_seq_no,bank_and_cash_status,record_type,arap_type,DATE_FORMAT(
+        arap_date, '%Y-%m-%d' ) AS arap_date,balance,amount,collection_unit,record_user,check_no,
+        (case
+        when bac.balance_balance = bac.amount then '未核销'
+        when bac.balance_balance = 0 then '全部核销'
+        when bac.balance_balance > 0 and bac.balance_balance <![CDATA[<]]> bac.amount then '部分核销'
+        else '金额出错'
+        END ) as clear_status
+        from cf_bank_and_cash bac
+        <where>
+            bac.bank_and_cash_status != 0
+            <if test="companyIds != null">
+                AND bac.company_id = {companyId,jdbcType=BIGINT}
+            </if>
+            <if test="userIds!=null and userIds.size()>0">
+                AND bac.create_by in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandIds !=null and brandIds.size() > 0">
+                AND bac.brand_id in
+                <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="states != null and states.size() > 0">
+                AND bac.bank_and_cash_status in
+                <foreach collection="states" item="state"  open="(" close=")" separator=",">
+                    #{state}
+                </foreach>
+            </if>
+            <if test="balances != null and balances.size() > 0">
+                AND bac.balance in
+                <foreach collection="balances" item="balance"  open="(" close=")" separator=",">
+                    #{balance}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.chenfan.finance.model.vo.CfBankAndCashShowRequestVo" resultType="java.lang.Integer">
+        select count(*)
+        from cf_bank_and_cash bac
+        <where>
+            bac.bank_and_cash_status != 0
+            <if test="brandId !=null ">
+                AND bac.brand_id = #{brandId}
+            </if>
+            <if test="companyIds != null and companyIds.size()>0">
+                AND bac.company_id in
+                <foreach collection="companyIds" item="companyId" open="(" separator="," close=")">
+                    #{companyId}
+                </foreach>
+            </if>
+            <if test="userIds!=null and userIds.size()>0">
+                AND bac.create_by in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="brandIds !=null and brandIds.size() > 0">
+                AND bac.brand_id in
+                <foreach collection="brandIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="states != null and states.size() > 0">
+                AND bac.bank_and_cash_status in
+                <foreach collection="states" item="state"  open="(" close=")" separator=",">
+                    #{state}
+                </foreach>
+            </if>
+            <if test="balances != null and balances.size() > 0">
+                AND bac.balance in
+                <foreach collection="balances" item="balance"  open="(" close=")" separator=",">
+                    #{balance}
+                </foreach>
+            </if>
+            <if test="arApTypes != null and arApTypes.size() > 0">
+                AND bac.arap_type in
+                <foreach collection="arApTypes" item="arApType"  open="(" close=")" separator=",">
+                    #{arApType}
+                </foreach>
+            </if>
+            <if test="recordSeqNos != null and recordSeqNos.size() > 0">
+                AND bac.record_seq_no like
+                <foreach collection="recordSeqNos" item="recordSeqNo"  open="(" close=")" separator=",">
+                    CONCAT('%',#{recordSeqNo},'%')
+                </foreach>
+            </if>
+            <if test="recordTypes != null and recordTypes.size() > 0">
+                AND bac.record_type in
+                <foreach collection="recordTypes" item="recordType"  open="(" close=")" separator=",">
+                    #{recordType}
+                </foreach>
+            </if>
+            <if test="clearStatus != null and clearStatus == 2">
+                AND bac.balance_balance = bac.amount
+            </if>
+            <if test="clearStatus != null and clearStatus == 1">
+                AND bac.balance_balance > 0 and bac.balance_balance <![CDATA[<]]> bac.amount
+            </if>
+            <if test="clearStatus != null and clearStatus == 0">
+                AND bac.balance_balance = 0
+            </if>
+            <if test="checkNos != null and checkNos.size() > 0">
+                AND bac.check_no in
+                <foreach collection="checkNos" item="checkNo"  open="(" close=")" separator=",">
+                    #{checkNo}
+                </foreach>
+            </if>
+            <if test="arapDateStart != null">
+                AND bac.arap_date > #{arapDateStart}
+            </if>
+            <if test="arapDateEnd != null">
+                AND bac.arap_date <![CDATA[<]]> #{arapDateEnd}
+            </if>
+            <if test="verificationFlag != null and verificationFlag == 1">
+                And bac.balance_balance > 0
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="InfoMap" type="com.chenfan.finance.model.vo.CfBankAndCashInfoVo">
+        <result column="bank_and_cash_id" jdbcType="BIGINT" property="bankAndCashId"/>
+        <result column="record_seq_no" jdbcType="VARCHAR" property="recordSeqNo"/>
+        <result column="record_type" jdbcType="VARCHAR" property="recordType"/>
+        <result column="arap_type" jdbcType="VARCHAR" property="arapType"/>
+        <result column="arap_date" jdbcType="TIMESTAMP" property="arapDate"/>
+        <result column="balance" jdbcType="VARCHAR" property="balance"/>
+        <result column="balance_balance" jdbcType="DECIMAL" property="balanceBalance"/>
+        <result column="bank_and_cash_status" jdbcType="INTEGER" property="bankAndCashStatus"/>
+        <result column="collection_unit" jdbcType="VARCHAR" property="collectionUnit"/>
+        <result column="check_no" jdbcType="VARCHAR" property="checkNo"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="record_user" jdbcType="VARCHAR" property="recordUser"/>
+        <result column="check_date" jdbcType="TIMESTAMP" property="checkDate"/>
+        <result column="bank" jdbcType="VARCHAR" property="bank"/>
+        <result column="bank_no" jdbcType="VARCHAR" property="bankNo"/>
+        <result column="payment_branch" jdbcType="VARCHAR" property="paymentBranch"/>
+        <result column="outgo_bank" jdbcType="VARCHAR" property="outgoBank"/>
+        <result column="outgo_bankno" jdbcType="VARCHAR" property="outgoBankno"/>
+        <result column="outgo_confirm_user" jdbcType="VARCHAR" property="outgoConfirmUser"/>
+        <result column="charges_remark" jdbcType="VARCHAR" property="chargesRemark"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="brand_id" jdbcType="BIGINT" property="brandId"/>
+        <result column="account_in_date" jdbcType="TIMESTAMP" property="accountInDate"/>
+        <result column="account_in_user" jdbcType="VARCHAR" property="accountInUser"/>
+        <result column="clear_no" jdbcType="VARCHAR" property="clearNo"/>
+        <result column="input_amount" jdbcType="DECIMAL" property="inputAmount"/>
+        <result column="output_amount" jdbcType="DECIMAL" property="outputAmount"/>
+        <result column="balance_name" jdbcType="VARCHAR" property="balanceName"/>
+        <result column="pay_company" property="payCompany" />
+        <result column="pay_bank" property="payBank" />
+        <result column="pay_bank_no" property="payBankNo" />
+        <result column="job_type" property="jobType"/>
+    </resultMap>
+    <select id="info" resultMap="InfoMap">
+        select if(arap_type=2 or arap_type=4,amount,null) as output_amount,if(arap_type= 1 or arap_type = 3,amount,null) as input_amount,record_seq_no,record_type,arap_type,arap_date,record_user,charges_remark,remark,brand_id,balance,amount,balance_balance,check_date,check_no,
+        collection_unit,bank,bank_no,payment_branch,outgo_bank,outgo_bankno,outgo_confirm_user,bank_and_cash_id,bank_and_cash_status,account_in_date,account_in_user,clear_no,balance_name,
+        pay_company, pay_bank, pay_bank_no, job_type, pay_company_id, create_by, create_name, create_date
+         from cf_bank_and_cash bac
+        where bank_and_cash_id = #{bankAndCashId}
+    </select>
+
+    <select id="getInfoByCode" resultMap="InfoMap">
+        select record_seq_no,record_type,arap_type,arap_date,record_user,charges_remark,remark,brand_id,balance,amount,balance_balance,check_date,check_no, pay_company,
+        collection_unit,bank,bank_no,payment_branch,outgo_bank,outgo_bankno,outgo_confirm_user,bank_and_cash_id,bank_and_cash_status,account_in_date,account_in_user,clear_no,balance_name,job_type
+        ,pay_bank,pay_bank_no
+         from cf_bank_and_cash bac
+        where record_seq_no = #{recordSeqNo}
+    </select>
+    <select id="getAllCanClearNos" resultType="com.chenfan.finance.model.dto.AdvancepayApplyInvoiceToBank">
+        SELECT
+        DISTINCT
+        advance_pay_code as advancePayCode,
+        money,
+        b.balance_balance as actmoney
+        FROM
+        advancepay_application a
+        LEFT JOIN cf_bank_and_cash b ON a.advance_pay_code = b.source_code
+        WHERE
+        po_id IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        AND (
+        bank_and_cash_status = 2
+        OR bank_and_cash_status = 3
+        )
+    </select>
+
+</mapper>

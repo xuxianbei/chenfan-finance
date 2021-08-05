@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.AdvancepayApplicationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.AdvancepayApplication">
+        <id column="advance_pay_id" property="advancePayId" />
+        <result column="advance_pay_code" property="advancePayCode" />
+        <result column="role_id" property="roleId" />
+        <result column="first_role_id" property="firstRoleId" />
+        <result column="po_id" property="poId" />
+        <result column="po_code" property="poCode" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="vendor_code" property="vendorCode" />
+        <result column="state" property="state" />
+        <result column="payment_conf_id" property="paymentConfId" />
+        <result column="payment_type" property="paymentType" />
+        <result column="task_person" property="taskPerson" />
+        <result column="duties" property="duties" />
+        <result column="receipt_department" property="receiptDepartment" />
+        <result column="bank" property="bank" />
+        <result column="payment" property="payment" />
+        <result column="bank_account" property="bankAccount" />
+        <result column="is_arrive" property="isArrive" />
+        <result column="enclosure" property="enclosure" />
+        <result column="payment_use" property="paymentUse" />
+        <result column="money_capital" property="moneyCapital" />
+        <result column="money" property="money" />
+        <result column="apply_confirm_name" property="applyConfirmName" />
+        <result column="apply_confirm_date" property="applyConfirmDate" />
+        <result column="confirm_name" property="confirmName" />
+        <result column="confirm_date" property="confirmDate" />
+        <result column="supplychain_intern_name" property="supplychainInternName" />
+        <result column="supplychain_intern_date" property="supplychainInternDate" />
+        <result column="finace_name" property="finaceName" />
+        <result column="finace_date" property="finaceDate" />
+        <result column="finace_gm_name" property="finaceGmName" />
+        <result column="finace_gm_date" property="finaceGmDate" />
+        <result column="coo_or_helper_name" property="cooOrHelperName" />
+        <result column="coo_or_helper_date" property="cooOrHelperDate" />
+        <result column="department" property="department" />
+        <result column="manag_director" property="managDirector" />
+        <result column="accountant" property="accountant" />
+        <result column="financechief" property="financechief" />
+        <result column="generalmanager" property="generalmanager" />
+        <result column="cashier" property="cashier" />
+        <result column="verify_by" property="verifyBy" />
+        <result column="verify_name" property="verifyName" />
+        <result column="verify_date" property="verifyDate" />
+        <result column="create_name" property="createName" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_name" property="updateName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="update_price_reason" property="updatePriceReason" />
+        <result column="is_delete" property="isDelete" />
+        <result column="cashier_date" property="cashierDate" />
+        <result column="img_urls" property="imgUrls" />
+        <result column="material_type" property="materialType" />
+        <result column="company_id" property="companyId" />
+        <result column="charge_in_id" property="chargeInId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        advance_pay_id, advance_pay_code, role_id, first_role_id, po_id, po_code, brand_id, brand_name, vendor_id, vendor_code, state, payment_conf_id, payment_type, task_person, duties, receipt_department, bank, payment, bank_account, is_arrive, enclosure, payment_use, money_capital, money, apply_confirm_name, apply_confirm_date, confirm_name, confirm_date, supplychain_intern_name, supplychain_intern_date, finace_name, finace_date, finace_gm_name, finace_gm_date, coo_or_helper_name, coo_or_helper_date, department, manag_director, accountant, financechief, generalmanager, cashier, verify_by, verify_name, verify_date, create_name, create_by, create_date, update_name, update_by, update_date, update_price_reason, is_delete, cashier_date, img_urls, material_type, company_id, charge_in_id
+    </sql>
+
+    <select id="queryPaidAdvancepayList" resultType="com.chenfan.finance.model.AdvancepayApplication">
+        select
+            advance_pay_id,
+            advance_pay_code,
+            po_id,
+            po_code,
+            state,
+            money
+        from advancepay_application
+        where state = #{state}
+        and po_id in
+        <foreach collection="poIds" item="poId" index="index"
+                 open="(" separator="," close=")">
+            #{poId}
+        </foreach>
+    </select>
+
+    <update id="recordChargeInByAdvancePayIds">
+        update advancepay_application set charge_in_id = #{chargeInId}
+        where advance_pay_id in
+        <foreach collection="advancePayIds" item="advancePayId" index="index"
+                 open="(" separator="," close=")">
+            #{advancePayId}
+        </foreach>
+    </update>
+
+</mapper>

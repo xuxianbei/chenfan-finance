@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.TocSalesTradeMapper">
+  <resultMap id="BaseResultMap" type="com.chenfan.finance.model.bo.TocSalesTrade">
+    <id column="trade_id" jdbcType="INTEGER" property="tradeId" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="platform_id" jdbcType="TINYINT" property="platformId" />
+    <result column="shop_id" jdbcType="SMALLINT" property="shopId" />
+    <result column="warehouse_id" jdbcType="SMALLINT" property="warehouseId" />
+    <result column="warehouse_type" jdbcType="TINYINT" property="warehouseType" />
+    <result column="src_tids" jdbcType="VARCHAR" property="srcTids" />
+    <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
+    <result column="trade_status" jdbcType="TINYINT" property="tradeStatus" />
+    <result column="check_step" jdbcType="TINYINT" property="checkStep" />
+    <result column="consign_status" jdbcType="INTEGER" property="consignStatus" />
+    <result column="trade_from" jdbcType="INTEGER" property="tradeFrom" />
+    <result column="trade_type" jdbcType="INTEGER" property="tradeType" />
+    <result column="delivery_term" jdbcType="TINYINT" property="deliveryTerm" />
+    <result column="freeze_reason" jdbcType="SMALLINT" property="freezeReason" />
+    <result column="refund_status" jdbcType="INTEGER" property="refundStatus" />
+    <result column="unmerge_mask" jdbcType="INTEGER" property="unmergeMask" />
+    <result column="fenxiao_type" jdbcType="TINYINT" property="fenxiaoType" />
+    <result column="fenxiao_nick" jdbcType="VARCHAR" property="fenxiaoNick" />
+    <result column="trade_time" jdbcType="TIMESTAMP" property="tradeTime" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="delay_to_time" jdbcType="INTEGER" property="delayToTime" />
+    <result column="goods_count" jdbcType="DECIMAL" property="goodsCount" />
+    <result column="goods_type_count" jdbcType="SMALLINT" property="goodsTypeCount" />
+    <result column="single_spec_no" jdbcType="VARCHAR" property="singleSpecNo" />
+    <result column="raw_goods_count" jdbcType="DECIMAL" property="rawGoodsCount" />
+    <result column="raw_goods_type_count" jdbcType="SMALLINT" property="rawGoodsTypeCount" />
+    <result column="customer_type" jdbcType="TINYINT" property="customerType" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="buyer_nick" jdbcType="VARCHAR" property="buyerNick" />
+    <result column="id_card_type" jdbcType="TINYINT" property="idCardType" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_country" jdbcType="SMALLINT" property="receiverCountry" />
+    <result column="receiver_province" jdbcType="INTEGER" property="receiverProvince" />
+    <result column="receiver_city" jdbcType="INTEGER" property="receiverCity" />
+    <result column="receiver_district" jdbcType="INTEGER" property="receiverDistrict" />
+    <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
+    <result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
+    <result column="receiver_telno" jdbcType="VARCHAR" property="receiverTelno" />
+    <result column="receiver_zip" jdbcType="VARCHAR" property="receiverZip" />
+    <result column="receiver_area" jdbcType="VARCHAR" property="receiverArea" />
+    <result column="receiver_ring" jdbcType="VARCHAR" property="receiverRing" />
+    <result column="receiver_dtb" jdbcType="VARCHAR" property="receiverDtb" />
+    <result column="to_deliver_time" jdbcType="VARCHAR" property="toDeliverTime" />
+    <result column="pre_charge_time" jdbcType="VARCHAR" property="preChargeTime" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="is_prev_notify" jdbcType="TINYINT" property="isPrevNotify" />
+    <result column="logistics_id" jdbcType="SMALLINT" property="logisticsId" />
+    <result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
+    <result column="buyer_message" jdbcType="VARCHAR" property="buyerMessage" />
+    <result column="cs_remark" jdbcType="VARCHAR" property="csRemark" />
+    <result column="remark_flag" jdbcType="TINYINT" property="remarkFlag" />
+    <result column="print_remark" jdbcType="VARCHAR" property="printRemark" />
+    <result column="note_count" jdbcType="SMALLINT" property="noteCount" />
+    <result column="buyer_message_count" jdbcType="TINYINT" property="buyerMessageCount" />
+    <result column="cs_remark_count" jdbcType="TINYINT" property="csRemarkCount" />
+    <result column="cs_remark_change_count" jdbcType="SMALLINT" property="csRemarkChangeCount" />
+    <result column="goods_amount" jdbcType="DECIMAL" property="goodsAmount" />
+    <result column="post_amount" jdbcType="DECIMAL" property="postAmount" />
+    <result column="other_amount" jdbcType="DECIMAL" property="otherAmount" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="receivable" jdbcType="DECIMAL" property="receivable" />
+    <result column="discount_change" jdbcType="DECIMAL" property="discountChange" />
+    <result column="trade_prepay" jdbcType="DECIMAL" property="tradePrepay" />
+    <result column="dap_amount" jdbcType="DECIMAL" property="dapAmount" />
+    <result column="cod_amount" jdbcType="DECIMAL" property="codAmount" />
+    <result column="pi_amount" jdbcType="DECIMAL" property="piAmount" />
+    <result column="ext_cod_fee" jdbcType="DECIMAL" property="extCodFee" />
+    <result column="goods_cost" jdbcType="DECIMAL" property="goodsCost" />
+    <result column="post_cost" jdbcType="DECIMAL" property="postCost" />
+    <result column="other_cost" jdbcType="DECIMAL" property="otherCost" />
+    <result column="profit" jdbcType="DECIMAL" property="profit" />
+    <result column="paid" jdbcType="DECIMAL" property="paid" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="volume" jdbcType="DECIMAL" property="volume" />
+    <result column="tax" jdbcType="DECIMAL" property="tax" />
+    <result column="tax_rate" jdbcType="DECIMAL" property="taxRate" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="invoice_type" jdbcType="TINYINT" property="invoiceType" />
+    <result column="invoice_title" jdbcType="VARCHAR" property="invoiceTitle" />
+    <result column="invoice_content" jdbcType="VARCHAR" property="invoiceContent" />
+    <result column="invoice_id" jdbcType="INTEGER" property="invoiceId" />
+    <result column="salesman_id" jdbcType="INTEGER" property="salesmanId" />
+    <result column="sales_score" jdbcType="INTEGER" property="salesScore" />
+    <result column="checker_id" jdbcType="INTEGER" property="checkerId" />
+    <result column="fchecker_id" jdbcType="INTEGER" property="fcheckerId" />
+    <result column="checkouter_id" jdbcType="INTEGER" property="checkouterId" />
+    <result column="split_package_num" jdbcType="INTEGER" property="splitPackageNum" />
+    <result column="flag_id" jdbcType="SMALLINT" property="flagId" />
+    <result column="bad_reason" jdbcType="INTEGER" property="badReason" />
+    <result column="is_sealed" jdbcType="INTEGER" property="isSealed" />
+    <result column="gift_mask" jdbcType="TINYINT" property="giftMask" />
+    <result column="split_from_trade_id" jdbcType="INTEGER" property="splitFromTradeId" />
+    <result column="large_type" jdbcType="TINYINT" property="largeType" />
+    <result column="stockout_no" jdbcType="VARCHAR" property="stockoutNo" />
+    <result column="logistics_template_id" jdbcType="INTEGER" property="logisticsTemplateId" />
+    <result column="sendbill_template_id" jdbcType="INTEGER" property="sendbillTemplateId" />
+    <result column="revert_reason" jdbcType="SMALLINT" property="revertReason" />
+    <result column="cancel_reason" jdbcType="SMALLINT" property="cancelReason" />
+    <result column="is_unpayment_sms" jdbcType="INTEGER" property="isUnpaymentSms" />
+    <result column="package_id" jdbcType="INTEGER" property="packageId" />
+    <result column="trade_mask" jdbcType="INTEGER" property="tradeMask" />
+    <result column="reserve" jdbcType="VARCHAR" property="reserve" />
+    <result column="version_id" jdbcType="SMALLINT" property="versionId" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    trade_id, trade_no, platform_id, shop_id, warehouse_id, warehouse_type, src_tids, 
+    pay_account, trade_status, check_step, consign_status, trade_from, trade_type, delivery_term, 
+    freeze_reason, refund_status, unmerge_mask, fenxiao_type, fenxiao_nick, trade_time, 
+    pay_time, delay_to_time, goods_count, goods_type_count, single_spec_no, raw_goods_count, 
+    raw_goods_type_count, customer_type, customer_id, buyer_nick, id_card_type, id_card, 
+    receiver_name, receiver_country, receiver_province, receiver_city, receiver_district, 
+    receiver_address, receiver_mobile, receiver_telno, receiver_zip, receiver_area, receiver_ring, 
+    receiver_dtb, to_deliver_time, pre_charge_time, currency, is_prev_notify, logistics_id, 
+    logistics_no, buyer_message, cs_remark, remark_flag, print_remark, note_count, buyer_message_count, 
+    cs_remark_count, cs_remark_change_count, goods_amount, post_amount, other_amount, 
+    discount, receivable, discount_change, trade_prepay, dap_amount, cod_amount, pi_amount, 
+    ext_cod_fee, goods_cost, post_cost, other_cost, profit, paid, weight, volume, tax, 
+    tax_rate, commission, invoice_type, invoice_title, invoice_content, invoice_id, salesman_id, 
+    sales_score, checker_id, fchecker_id, checkouter_id, split_package_num, flag_id, 
+    bad_reason, is_sealed, gift_mask, split_from_trade_id, large_type, stockout_no, logistics_template_id, 
+    sendbill_template_id, revert_reason, cancel_reason, is_unpayment_sms, package_id, 
+    trade_mask, reserve, version_id, modified, created
+  </sql>
+ </mapper>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfChargeInMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfChargeIn">
+        <id column="charge_in_id" property="chargeInId" />
+        <result column="charge_id" property="chargeId" />
+        <result column="rule_billing_id" property="ruleBillingId" />
+        <result column="brand_id" property="brandId" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="inventory_code" property="inventoryCode" />
+        <result column="product_code" property="productCode" />
+        <result column="goods_name" property="goodsName" />
+        <result column="sales_type" property="salesType" />
+        <result column="costs_price" property="costsPrice" />
+        <result column="tax_rate" property="taxRate" />
+        <result column="arrival_qty" property="arrivalQty" />
+        <result column="rejection_qty" property="rejectionQty" />
+        <result column="actual_qty" property="actualQty" />
+        <result column="defective_rejection_qty" property="defectiveRejectionQty" />
+        <result column="postpone_detail" property="postponeDetail" />
+        <result column="postpone_deductions_total" property="postponeDeductionsTotal" />
+        <result column="qa_deductions" property="qaDeductions" />
+        <result column="red_deductions" property="redDeductions" />
+        <result column="tax_diff" property="taxDiff" />
+        <result column="others_deductions" property="othersDeductions" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="advancepay_amount" property="advancepayAmount" />
+        <result column="advancepay_amount_actual" property="advancepayAmountActual" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        charge_in_id, charge_id, rule_billing_id, brand_id, vendor_id, inventory_code, product_code, goods_name, sales_type, costs_price, tax_rate, arrival_qty, rejection_qty, actual_qty, defective_rejection_qty, postpone_detail, postpone_deductions_total, qa_deductions, red_deductions, tax_diff, others_deductions, remark, company_id, create_by, create_name, create_date, update_by, update_name, update_date, advancepay_amount, advancepay_amount_actual
+    </sql>
+
+    <resultMap id="QueryResultMap" type="com.chenfan.finance.model.vo.ChargeInVO">
+        <id column="charge_in_id" property="chargeInId" />
+        <result column="charge_id" property="chargeId" />
+        <result column="rule_billing_id" property="ruleBillingId" />
+        <result column="brand_id" property="brandId" />
+        <result column="vendor_id" property="vendorId" />
+        <result column="inventory_code" property="inventoryCode" />
+        <result column="product_code" property="productCode" />
+        <result column="goods_name" property="goodsName" />
+        <result column="sales_type" property="salesType" />
+        <result column="costs_price" property="costsPrice" />
+        <result column="tax_rate" property="taxRate" />
+        <result column="arrival_qty" property="arrivalQty" />
+        <result column="rejection_qty" property="rejectionQty" />
+        <result column="actual_qty" property="actualQty" />
+        <result column="defective_rejection_qty" property="defectiveRejectionQty" />
+        <result column="postpone_detail" property="postponeDetail" />
+        <result column="postpone_deductions_total" property="postponeDeductionsTotal" />
+        <result column="qa_deductions" property="qaDeductions" />
+        <result column="red_deductions" property="redDeductions" />
+        <result column="tax_diff" property="taxDiff" />
+        <result column="others_deductions" property="othersDeductions" />
+        <result column="advancepay_amount" property="advancepayAmount"/>
+        <result column="advancepay_amount_actual" property="advancepayAmountActual"/>
+    </resultMap>
+    <select id="checkQtyByChargeIds" resultMap="QueryResultMap">
+        SELECT product_code,IFNULL(sum(arrival_qty-rejection_qty-defective_rejection_qty),0) as settlementQty FROM cf_charge_in
+        <where>
+            <if test="chargeIds !=null and chargeIds.size() > 0">
+                AND charge_id in
+                <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        GROUP BY
+        product_code,
+        costs_price,
+        tax_rate
+    </select>
+    <select id="queryChargeInByChargeIds" resultMap="QueryResultMap">
+        SELECT
+        cci.charge_in_id,
+        cci.charge_id,
+        cci.rule_billing_id,
+        cci.brand_id,
+        cci.vendor_id,
+        cci.inventory_code,
+        cci.product_code,
+        cci.goods_name,
+        cci.sales_type,
+        cci.costs_price,
+        cci.tax_rate,
+        cci.markup_unit_price,
+        cci.unit_price,
+        SUM( cci.arrival_qty ) AS arrival_qty,
+        SUM( cci.rejection_qty ) AS rejection_qty,
+        SUM( cci.actual_qty ) AS actual_qty,
+        SUM( cci.defective_rejection_qty ) AS defective_rejection_qty,
+        GROUP_CONCAT( postpone_detail ) AS postpone_detail,
+        SUM( IFNULL( cci.postpone_deductions_total, 0 ) ) AS postpone_deductions_total,
+        SUM( cci.qa_deductions ) AS qa_deductions,
+        cci.red_deductions,
+        cci.tax_diff,
+        cci.others_deductions,
+        SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) AS settlementQty,
+        cci.costs_price * ( SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) ) AS settlementAmount,
+        cci.costs_price * ( SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) ) - SUM( IFNULL( cci.postpone_deductions_total, 0 ) ) - SUM( IFNULL( cci.qa_deductions, 0 ) ) AS actualAmount,
+        (cci.costs_price -cci.unit_price) * ( SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) ) as tax_money,
+        0 AS advancepay_amount,
+        0 AS advancepay_amount_actual
+        FROM
+        cf_charge_in cci
+        <where>
+            <if test="chargeIds !=null and chargeIds.size() > 0">
+                AND charge_id in
+                <foreach collection="chargeIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        GROUP BY
+         cci.product_code,
+         cci.costs_price,
+         cci.tax_rate
+    </select>
+
+    <select id="selectChargeInDetail" resultMap="QueryResultMap">
+        SELECT
+            cci.charge_in_id,
+            cci.charge_id,
+            cci.rule_billing_id,
+            cci.brand_id,
+            cci.vendor_id,
+            cci.inventory_code,
+            cci.product_code,
+            cci.goods_name,
+            cci.sales_type,
+            cci.costs_price,
+            cci.tax_rate,
+            cci.markup_unit_price,
+            cci.markup_rate,
+            cci.unit_price,
+            SUM( cci.arrival_qty ) AS arrival_qty,
+            SUM( cci.rejection_qty ) AS rejection_qty,
+            SUM( cci.actual_qty ) AS actual_qty,
+            SUM( cci.defective_rejection_qty ) AS defective_rejection_qty,
+            GROUP_CONCAT( postpone_detail ) AS postpone_detail,
+            SUM( IFNULL( cci.postpone_deductions_total, 0 ) ) AS postpone_deductions_total,
+            SUM( IFNULL( cci.qa_deductions, 0 ) ) AS qa_deductions,
+            SUM( IFNULL( cci.red_deductions, 0 ) ) AS red_deductions,
+            cci.tax_diff,
+            cci.others_deductions,
+            SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) AS settlementQty,
+            cci.costs_price * ( SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) ) AS settlementAmount,
+            cci.costs_price * ( SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) ) - SUM( IFNULL( cci.postpone_deductions_total, 0 ) ) - sum( IFNULL( cci.advancepay_amount_actual, 0 ) ) - SUM( IFNULL( cci.qa_deductions, 0 ) ) AS actualAmount,
+            (cci.costs_price -cci.unit_price) * ( SUM( cci.actual_qty ) - SUM( defective_rejection_qty ) ) as tax_money,
+            0 AS advancepay_amount,
+            0 AS advancepay_amount_actual
+        FROM
+            cf_charge_in cci,
+            cf_charge cc,
+            cf_invoice_header cih
+        WHERE
+            cc.charge_id = cci.charge_id
+            AND cih.invoice_no = cc.invoice_no
+            AND cih.invoice_id = #{invoiceId}
+
+        GROUP BY
+            cci.product_code,
+            cci.costs_price,
+            cci.tax_rate
+    </select>
+    <select id="selectChargeInByRdRecodeDetailId" resultMap="BaseResultMap">
+        select *
+        from cf_charge_in cci left  join f_charge cc
+        on cc.charge_id = cci.charge_id
+        <where>
+            cc.charge_source_detail_id=#{rdRecodeDetailId}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenfan.finance.dao.CfInvoiceSettlementMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chenfan.finance.model.CfInvoiceSettlement">
+        <id column="invoice_settlement_id" property="invoiceSettlementId" />
+        <result column="invoice_settlement_no" property="invoiceSettlementNo" />
+        <result column="invoice_id" property="invoiceId" />
+        <result column="invoice_no" property="invoiceNo" />
+        <result column="invoice_settlement_status" property="invoiceSettlementStatus" />
+        <result column="brand_id" property="brandId" />
+        <result column="balance" property="balance" />
+        <result column="invoice_settlement_rate" property="invoiceSettlementRate" />
+        <result column="invoice_settlement_money" property="invoiceSettlementMoney" />
+        <result column="clear_no" property="clearNo" />
+        <result column="clear_date" property="clearDate" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="payment_date" property="paymentDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        invoice_settlement_id, invoice_settlement_no, invoice_id, invoice_no, invoice_settlement_status, brand_id, balance, invoice_settlement_rate, invoice_settlement_money, clear_no, clear_date, remark, company_id, create_by, create_name, create_date, update_by, update_name, update_date, payment_date
+    </sql>
+    <update id="invalidSettlementById">
+        update cf_invoice_settlement
+        set invoice_settlement_status=8,
+        clear_no=null,
+        clear_date=null,
+        invoice_settlement_money=null
+
+        where invoice_settlement_id=#{invoiceSettlementId}
+    </update>
+    <!--selectByAssociated-->
+    <select id="selectByAssociated" resultMap="BaseResultMap">
+        SELECT cis.*
+        FROM cf_invoice_settlement cis left join cf_invoice_header cih on cis.invoice_id=cih.invoice_id
+        <where>
+            invoice_settlement_status not in (0,8)
+            <if test="associatedInvoiceNo !=null and associatedInvoiceNo !=''">
+                and   cih.associated_invoice_no=#{associatedInvoiceNo}
+            </if>
+            <if test="associatedInvoiceSettlementNo !=null and associatedInvoiceSettlementNo !=''">
+                and   cih.associated_invoice_settlement_no=#{associatedInvoiceSettlementNo}
+            </if>
+        </where>
+
+    </select>
+</mapper>
